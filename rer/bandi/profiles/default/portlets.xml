@@ -9,7 +9,7 @@
 
   <portlet
     addview="rer.bandi.portlets.collection.BandoCollectionPortlet"
-    title="Bandi Collection Portlet"
+    title="Bandi"
     />
 
 </portlets>

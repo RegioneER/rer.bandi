@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0dev (unreleased)
--------------------
+1.0.0dev (unreleased)
+---------------------
   [mmariani]
 
  - release iniziale da specifiche: https://support.redturtle.it/clienti/rer-regione-emilia-romagna/attivita-rer/119/

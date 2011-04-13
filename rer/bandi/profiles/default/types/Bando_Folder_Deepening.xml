@@ -2,9 +2,9 @@
 <object name="Bando Folder Deepening"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="rer.bandi" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-  <property name="title" i18n:translate="">Bando Folder Deepening</property>
+  <property name="title" i18n:translate="">Cartella Approfondimento</property>
   <property name="description"
-    i18n:translate="">A folder that is handled in a special way by Bando.</property>
+    i18n:translate="">Una cartella per i documenti usati dal bando.</property>
   <property name="content_meta_type">BandoFolderDeepening</property>
   <property name="content_icon">++resource++folder_bando_deep.gif</property>
   <property name="product">rer.bandi</property>
