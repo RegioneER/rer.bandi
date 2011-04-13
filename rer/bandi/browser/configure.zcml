@@ -1,0 +1,119 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="rer.bandi">
+
+  <include package="plone.app.contentmenu" />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    name="bando_view"
+    template="bando.pt"
+    permission="zope2.View"
+    for="..interfaces.IBando"
+    class=".bando.BandoView"
+    />
+  <browser:menuItem
+    for="..interfaces.IBando"
+    menu="plone_displayviews"
+    title="Default"
+    action="@@bando_view"
+    description="Default view, with other info at bottom"
+    />
+
+
+  <browser:page
+    name="bando_right_view"
+    template="bando.pt"
+    permission="zope2.View"
+    for="..interfaces.IBando"
+    class=".bando.BandoView"
+    />
+ <browser:menuItem
+    for="..interfaces.IBando"
+    menu="plone_displayviews"
+    title="On Right"
+    action="@@bando_right_view"
+    description="Show other info on right"
+    />
+
+
+  <browser:page
+    for="*"
+    name="search_bandi_form"
+    class=".search.SearchBandiForm"
+    template="search_form.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    for="*"
+    name="search_bandi"
+    template="search.pt"
+    permission="zope2.View"
+    />
+
+
+
+  <browser:page
+    for="Products.ATContentTypes.interface.IATTopic"
+    name="collection_bandi_view"
+    template="collection.pt"
+    permission="zope2.View"
+    />
+  <browser:menuItem
+    for="Products.ATContentTypes.interface.IATTopic"
+    menu="plone_displayviews"
+    title="Bandi con scadenza"
+    action="@@collection_bandi_view"
+    />
+
+
+
+  <!-- NB: il template fa un controllo sul nome della vista -->
+  <browser:page
+    for="Products.ATContentTypes.interface.IATTopic"
+    name="collection_bandi_tipologia_view"
+    template="collection.pt"
+    permission="zope2.View"
+    />
+  <browser:menuItem
+    for="Products.ATContentTypes.interface.IATTopic"
+    menu="plone_displayviews"
+    title="Bandi con tipologia e scadenza"
+    action="@@collection_bandi_tipologia_view"
+    />
+
+
+
+  <browser:resource
+    name="folder_bando.gif"
+    file="folder_bando.gif"
+    />
+
+  <browser:resource
+    name="folder_bando_deep.gif"
+    file="folder_bando_deep.gif"
+    />
+
+  <browser:resource
+    name="rer-bandi.css"
+    file="bandi.css"
+    />
+
+
+  <browser:resource
+    name="stato_bandi.js"
+    file="stato_bandi.js"
+    />
+
+  <browser:page
+    name="plone_context_state"
+    for="rer.bandi.interfaces.IBando"
+    permission="zope2.View"
+    class=".context.ContextState"
+    allowed_interface="plone.app.layout.globals.interfaces.IContextState"
+    />
+
+</configure>

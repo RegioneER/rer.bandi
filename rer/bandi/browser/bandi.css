@@ -1,0 +1,37 @@
+.rer-contextual-portlets-right {
+	width: 17em;
+	margin-left: 1em;
+	float: right;
+}
+
+#content .rer-contextual-portlets a {
+	background: none;
+	padding:1px 0 1px 1px;
+}
+
+.rer-contextual-description {
+    margin-bottom: 10px;
+}
+
+.rer-contextual-text-right {
+	float: left;
+	width: 60%;
+}
+
+.contextualbody .navTreeItem .description {
+/*	display:none; */
+}
+.contextualbody .navTreeItem li {
+	list-style-type:none;
+}
+
+.rer-contextual-portlets ul {
+	margin: 0.5em 0 0 0.5em;
+}
+
+.contextualbody .navTreeItem a, 
+.contextualbody dd.portletItem .navTreeItem a {
+	display:inline
+}
+
+

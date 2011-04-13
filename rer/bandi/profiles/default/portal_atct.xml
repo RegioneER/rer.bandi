@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<atcttool
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <topic_indexes>
+
+    <metadata name="chiusura_procedimento_bando" description="" enabled="False"
+              friendlyName=""/>
+
+    <metadata name="destinatari" description="" enabled="False"
+              friendlyName=""/>
+
+    <metadata name="riferimenti_bando" description="" enabled="False"
+              friendlyName=""/>
+
+    <metadata name="scadenza_bando" description="" enabled="False"
+              friendlyName=""/>>
+
+    <metadata name="tipologia_bando" description="" enabled="False"
+              friendlyName=""/>
+
+  </topic_indexes>
+</atcttool>

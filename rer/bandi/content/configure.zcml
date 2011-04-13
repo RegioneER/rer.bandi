@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="rer.bandi">
+
+  <!-- configure your content components here -->
+  
+  <!-- -*- extra stuff goes here -*- -->
+  <class class=".bandofolderdeepening.BandoFolderDeepening">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IBandoFolderDeepening"
+        />
+  </class>
+  <class class=".bando.Bando">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IBando"
+        />
+  </class>
+
+</configure>

@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+    <div metal:fill-slot="main">
+    <metal:main-macro define-macro="main"
+                      tal:define="kssClassesView context/@@kss_field_decorator_view;
+                                  getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                                  templateId template/getId;
+                                  test python:lambda cond, a, b: [b,a][cond]
+                                  ">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
+            Title or id
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
+            Description
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+
+        <div metal:define-macro="text-field-view"
+             id="parent-fieldname-text" class="stx"
+             tal:define="kss_class python:getKssClasses('text',
+                         templateId=templateId, macro='text-field-view');
+                         has_text exists:context/aq_base/getText;
+                         text python:has_text and here.getText() or ''"
+             tal:condition="text"
+             tal:attributes="class python:test(here.Format() in ('text/structured',
+                                                   'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
+            <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+        </div>
+
+        <metal:listingmacro define-macro="listing">
+        <dl tal:repeat="item python:context.queryCatalog(portal_type='Bando')">
+          <dt tal:content="item/pretty_title_or_id" />
+          <dd>
+            <div tal:content="item/Description" />
+              <div>pubblicazione <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" /></div>
+              <div tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
+                tipologia <span tal:content="item/tipologia_bando" />
+              </div>
+              <div>scadenza <span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" /></div>
+          </dd>
+        </dl>
+        </metal:listingmacro>
+
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </metal:main-macro>
+    </div>
+
+</body>
+</html>

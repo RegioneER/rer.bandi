@@ -1,0 +1,57 @@
+<dl class="portlet portletCollection"
+    i18n:domain="plone"
+    tal:define="collection_url view/collection_url;
+                plone_view context/@@plone;
+                toLocalizedTime nocall:plone_view/toLocalizedTime;
+                getIcon nocall:plone_view/getIcon;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
+            <span tal:content="view/data/header" />
+        </a>
+        <span class="portletTopRight"></span>
+    </dt>
+    
+    <tal:events tal:repeat="obj view/results">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/obj/odd;
+                    item_icon python:getIcon(obj);"
+        tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        <div>
+          <a href="#"
+             class="tile"
+             tal:attributes="href obj/getURL;
+                             title obj/Description">
+              <img tal:replace="structure item_icon/html_tag" />
+              <span tal:replace="obj/pretty_title_or_id">
+               Title
+              </span>
+          </a>
+          <div tal:condition="view/data/show_description"
+               tal:content="obj/Description">
+          </div>
+          <div tal:condition="view/data/show_tipologia_bando"
+               tal:content="obj/tipologia_bando">
+          </div>
+          <div tal:condition="python:view.data.show_effective and obj.EffectiveDate!='None'"
+               tal:content="python:toLocalizedTime(obj.EffectiveDate)">
+          </div>
+          <div tal:condition="view/data/show_scadenza_bando"
+               tal:content="python:toLocalizedTime(obj.scadenza_bando, long_format=True)">
+          </div>
+        </div>
+    </dd>
+    </tal:events>
+    
+    <dd class="portletFooter" tal:condition="view/data/show_more">
+        <span class="portletBottomLeft"></span>
+        <span>
+          <a tal:attributes="href view/more_target_url" tal:content="view/data/show_more_text">
+             More&hellip;
+          </a>
+        </span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

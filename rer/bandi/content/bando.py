@@ -1,0 +1,117 @@
+
+from zope.interface import implements
+
+from Products.Archetypes import atapi
+from Products.ATContentTypes.content import folder
+from Products.ATContentTypes.content import document
+from Products.ATContentTypes.content import schemata
+
+from rer.bandi import bandiMessageFactory as _
+
+from rer.bandi.interfaces import IBando
+from rer.bandi.config import PROJECTNAME
+
+BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + atapi.Schema((
+
+    # -*- Your Archetypes field definitions here ... -*-
+
+    atapi.StringField(
+        'tipologia_bando',
+        storage=atapi.AnnotationStorage(),
+        vocabulary_factory = 'rer.bandi.tipologia.vocabulary',
+        widget=atapi.SelectionWidget(
+            label=u"Tipologia di Bando",
+            format='radio',
+        ),
+        required=True,
+    ),
+
+
+    atapi.LinesField(
+        'destinatari',
+        storage=atapi.AnnotationStorage(),
+        vocabulary_factory = 'rer.bandi.destinatari.vocabulary',
+        widget=atapi.MultiSelectionWidget(
+            label=u"Destinatari",
+            format='checkbox',
+        ),
+    ),
+
+
+    atapi.DateTimeField(
+        'scadenza_bando',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.CalendarWidget(
+            label=_(u"Data e ora di scadenza"),
+            description=_(u"Scadenza dei termini per partecipare al bando"),
+        ),
+        validators=('isValidDate'),
+    ),
+
+
+    atapi.DateTimeField(
+        'chiusura_procedimento_bando',
+        storage=atapi.AnnotationStorage(),
+        widget=atapi.CalendarWidget(
+            label=_(u"Data chiusura procedimento"),
+            show_hm = False,
+        ),
+        validators=('isValidDate'),
+    ),
+
+
+    atapi.TextField(
+        'riferimenti_bando',
+        storage=atapi.AnnotationStorage(),
+        searchable=True,
+        widget=atapi.RichWidget(
+            label=_(u"Riferimenti"),
+            description=_(u"indicare la struttura di riferimento e il responsabile del procedimento"),
+        ),
+    ),
+
+
+))
+
+# Set storage on fields copied from ATFolderSchema, making sure
+# they work well with the python bridge properties.
+
+BandoSchema['title'].storage = atapi.AnnotationStorage()
+BandoSchema['description'].storage = atapi.AnnotationStorage()
+
+schemata.finalizeATCTSchema(
+    BandoSchema,
+    folderish=True,
+    moveDiscussion=False
+)
+
+#BandoSchema.changeSchemataForField('subject', 'default')
+#BandoSchema.changeSchemataForField('relatedItems', 'default')
+BandoSchema['relatedItems'].widget.visible = {'view': 'visible', 'edit': 'visible'}
+
+
+
+class Bando(folder.ATFolder):
+    implements(IBando)
+
+    meta_type = "Bando"
+    schema = BandoSchema
+
+    title = atapi.ATFieldProperty('title')
+    description = atapi.ATFieldProperty('description')
+
+    # -*- Your ATSchema to Python Property Bridges Here ... -*-
+
+    tipologia_bando = atapi.ATFieldProperty('tipologia_bando')
+
+    destinatari = atapi.ATFieldProperty('destinatari')
+
+    scadenza_bando = atapi.ATFieldProperty('scadenza_bando')
+
+    chiusura_procedimento_bando = atapi.ATFieldProperty('chiusura_procedimento_bando')
+
+    riferimenti_bando = atapi.ATFieldProperty('riferimenti_bando')
+
+
+atapi.registerType(Bando, PROJECTNAME)
+

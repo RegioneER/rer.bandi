@@ -1,0 +1,152 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="rer.bandi">
+
+  <head>
+    <metal:css fill-slot="css_slot">
+        <style type="text/css" media="all"
+            tal:content="string: @import url(${context/++resource++rer-bandi.css});">
+        </style>
+    </metal:css>
+  </head>
+
+  <body>
+    <metal:fill fill-slot="main">
+      <metal:main_macro define-macro="main"
+            tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '_');
+            base_macros here/base/macros;
+            view_template python:'%s_view' % portal_type;
+            view_macros python:path('here/%s/macros|nothing' % view_template);
+            header_macro view_macros/header | header_macro | base_macros/header;
+            body_macro view_macros/body | body_macro | base_macros/body;
+            folderlisting_macro view_macros/folderlisting | folderlisting | base_macros/folderlisting;
+            footer_macro view_macros/footer | footer_macro | base_macros/footer">
+
+        <metal:use_header use-macro="header_macro" />
+        
+        <div class="contextualbody">
+            <div class="documentDescription rer-contextual-description">
+                <metal:field use-macro="python:here.widget('description', mode='view')">
+                    Description
+                </metal:field>
+            </div>
+            <div tal:attributes="class python: 'right' in view.__name__ and 'rer-contextual-text rer-contextual-text-right' or 'rer-contextual-text'">
+                <p tal:condition="python: not here.getText() and is_editable"
+                    i18n:translate="no_body_text"
+                    i18n:domain="plone"
+                    class="discreet">
+                    This item does not have any body text, click the edit tab to change it.
+                </p>
+                <div tal:replace="structure context/getText">
+                    Body text
+                </div>
+            </div>
+
+            <h4>riferimenti</h4>
+            <div tal:content="structure context/riferimenti_bando">
+              Riferimenti bando
+            </div>
+
+            <table class="vertical listing">
+              <thead>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>tipologia</th>
+                  <td tal:content="string:${context/tipologia_bando}">
+                    Tipologia bando
+                  </td>
+                </tr>
+
+                <tr tal:condition="context/destinatari|nothing">
+                  <th>destinatari</th>
+                  <td>
+                    <ul>
+                      <li tal:repeat="dest context/destinatari"
+                          tal:content="dest">
+                          Destinatario
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>pubblicazione</th>
+                  <td tal:condition="context/EffectiveDate">
+                    <tal:pubblicazione content="python:here.toLocalizedTime(context.EffectiveDate())">
+                      data di pubblicazione
+                    </tal:pubblicazione>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>scadenza</th>
+                  <td>
+                    <div tal:condition="context/scadenza_bando|nothing"
+                         tal:replace="python:here.toLocalizedTime(context.scadenza_bando, long_format=True)">
+                      scadenza bando
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th>chiusura procedimento</th>
+                  <td>
+                    <div tal:condition="context/chiusura_procedimento_bando|nothing"
+                         tal:replace="python:here.toLocalizedTime(context.chiusura_procedimento_bando)">
+                      chiusura procedimento
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+
+
+            <div tal:attributes="class python: 'right' in view.__name__ and 'rer-contextual-portlets rer-contextual-portlets-right' or 'rer-contextual-portlets'">
+                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
+                              condition="foldeeps">
+                    <tal:foldeep repeat="foldeep foldeeps">
+                        <dl class="portlet portletNavigationTree">
+                            <dt class="portletHeader">
+                                <span tal:content="foldeep/title">
+                                    header
+                                </span>
+                            </dt>
+                            <dd class="portletItem lastItem"
+                                tal:define="folder_path foldeep/path">
+                                <ul class="navTree navTreeLevel0"
+                                    tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
+                                    tal:condition="objs">
+                                  <li class="navTreeItem visualNoMarker"
+                                      tal:repeat="obj objs">
+                                    <img tal:replace="structure obj/icon" />
+                                    <a tal:attributes="href obj/url"
+                                       tal:content="obj/title">title</a>
+                                    <span tal:condition="obj/filesize|nothing"
+                                          tal:content="string:(${obj/filesize})">1Mb</span>
+                                    <div class="description"
+                                         tal:condition="obj/description"
+                                         tal:content="obj/description">description</div> 
+                                  </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </tal:foldeep>
+                </tal:foldeeps>
+            </div>
+        </div>
+    
+        <metal:use_footer use-macro="footer_macro" />
+
+      </metal:main_macro>
+    </metal:fill>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+    <metal:head fill-slot="top_slot"
+                tal:define="dummy python:request.set('disable_border',1)" />
+    <metal:block fill-slot="column_one_slot" />
+    <metal:block fill-slot="column_two_slot" />
+
+    <metal:block fill-slot="javascript_head_slot">
+      <script type="text/javascript" src='jscalendar/calendar_stripped.js'></script>
+      <script type="text/javascript" src='jscalendar/calendar-en.js'></script>
+      <script type="text/javascript" src='jscalendar/calendar-setup.js'></script>
+      <script type="text/javascript" src="jquery.js"></script>
+      <script type="text/javascript" src="++resource++stato_bandi.js"></script>
+    </metal:block>
+
+    <metal:block fill-slot="css_slot">
+      <link type="text/css" rel="stylesheet" href="jscalendar/calendar-system.css" />
+    </metal:block>
+
+
+<div metal:fill-slot="main">
+
+    <h1 class="documentFirstHeading">Ricerca Bandi</h1>
+
+    <form action="search_bandi"
+          class="enableAutoFocus"
+          method="get"
+          name="search"
+          id="searchform"
+          tal:define="DateTime python:modules['DateTime'].DateTime">
+
+            <div class="field">
+                <label for="SearchableText">Cerca su tutto</label>
+
+                <div class="formHelp" i18n:translate="help_search_title">
+                    Inserisci qui i termini per la ricerca di testo. Parole multiple sono normalmente
+                    trovate in AND, specificare OR per una ricerca esclusiva. Il testo di questo campo
+                    sarà cercato in tutti i contenuti degli elementi, nei titoli e nelle descrizioni. 
+                </div>
+
+                <input type="text"
+                       name="SearchableText"
+                       size="50"
+                       />
+            </div>
+
+
+            <div class="field">
+
+              <label>Stato:</label>
+
+              <select id="stato_bandi">
+                <option value="*" selected="selected">Tutti</option>
+                <option value="aperti">Aperti</option>
+                <option value="in_corso">In corso</option>
+                <option value="conclusi">Conclusi</option>
+              </select>
+            </div>
+
+
+            <div class="field">
+                <label for="tipologia">Tipologia</label>
+
+                <br />
+
+                <tal:items repeat="t_tipo view/terms_tipologia">
+                <input class="noborder"
+                       type="checkbox"
+                       name="getTipologia_bando"
+                       checked="checked"
+                       tal:attributes="value t_tipo/token;
+                                       id python:'tipol_%s' % t_tipo.token" />
+                <label tal:attributes="for python:'tipol_%s'% t_tipo.token"
+                       tal:content="t_tipo/title"
+                       />
+                <br />
+                </tal:items>
+            </div>
+
+
+            <div class="field">
+                <label for="destinatari">Destinatari</label>
+
+                <br />
+
+                <tal:items repeat="t_dest view/terms_destinatari">
+                <input class="noborder"
+                       type="checkbox"
+                       name="getDestinatari"
+                       tal:attributes="value t_dest/token;
+                                       id python:'tipol_%s' % t_dest.token" />
+                <label tal:attributes="for python:'tipol_%s'% t_dest.token"
+                       tal:content="t_dest/title"
+                       />
+                <br />
+                </tal:items>
+            </div>
+
+
+            <div class="field">
+                <label for="Subject" i18n:translate="label_categories">Categories</label>
+
+                <div class="formHelp" i18n:translate="help_search_categories">
+                Return items matching some or all of these Categories.
+                Multiple words may be found by pressing <strong>Ctrl</strong>
+                (or <strong>Apple</strong> key on Mac) while clicking the
+                keywords.
+                </div>
+
+                <select name="Subject:list"
+                        id="Subject"
+                        size="7"
+                        multiple="multiple"
+                        tal:define="contentSubjects here/Subject;
+                                    usedSubjects python:here.portal_catalog.uniqueValuesFor('Subject');"
+                        >
+                    <option value="#"
+                            tal:repeat="subject usedSubjects"
+                            tal:content="subject"
+                            tal:attributes="value subject"
+                            i18n:domain="plone-metadata"
+                            i18n:translate=""
+                            >dummy</option>
+                </select>
+                <br />
+
+                <input type="radio"
+                       name="Subject_usage:ignore_empty"
+                       id="Subject_or"
+                       value=""
+                       class="noborder"
+                       tal:attributes="checked python:1"/>
+                    <label for="Subject_or" i18n:translate="description_subject_or">
+                        Match any
+                    </label>
+                    <br />
+
+                <input type="radio"
+                        name="Subject_usage:ignore_empty"
+                        id="Subject_and"
+                        value="operator:and"
+                        class="noborder"
+                        tal:attributes="checked python:0"/>
+                <label for="Subject_and" i18n:translate="description_subject_and">
+                    Match all
+                </label>
+            </div>
+
+            <input type="hidden" name="portal_type" value="Bando" />
+            <input type="hidden" name="sort_on" value="effective" />
+            <input type="hidden" name="sort_order" value="reverse" />
+
+            <div class="visualClear" id="clear-space-before-submit"><!-- --></div>
+
+            <div class="formControls">
+                <input class="context"
+                       type="submit"
+                       name="submit"
+                       value="Search"
+                       i18n:attributes="value label_search;"
+                       />
+            </div>
+
+    </form>
+
+</div>
+
+</html>
