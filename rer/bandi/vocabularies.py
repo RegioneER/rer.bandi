@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from lxml.builder import E
 import lxml.etree
 import os
 
@@ -15,26 +16,11 @@ class ConfigurationError(Exception):
 class XMLFileVocabulary(object):
     """
     Retrieves a vocabulary by reading an XML file on the filesystem.
-
-    example file:
-        <?xml version="1.0" encoding="utf-8" ?>
-        <vocab-list>
-          <vocabulary name="rer.bandi.tipologia.vocabulary">
-            <term token="beni_servizi">
-              Acquisizione beni e servizi
-            </term>
-            <term token="agevolazioni">
-              Agevolazioni, finanziamenti, contributi
-            </term>
-            <term token="altro">
-              Altro
-            </term>
-          </vocabulary>
-        </vocab-list>
     """
     implements( IVocabularyFactory )
 
-    def __init__(self, envvar, vocabulary_name):
+
+    def __init__(self, envvar, vocabulary_name, default_terms=None):
         """
         envvar:
             environment variable containing the path of the XML file
@@ -46,7 +32,15 @@ class XMLFileVocabulary(object):
         if envvar not in os.environ:
             raise ConfigurationError("Missing environment variable %s" % envvar)
 
-        fin = open(os.environ[envvar], 'rb')
+        filename = os.environ[envvar]
+
+        if not os.path.exists(filename):
+            fout = open(filename, 'wb')
+            fout.write(self.default_file_contents(vocabulary_name, default_terms))
+            fout.close()
+            raise ConfigurationError("Vocabulary file file %s created with default values. Please check the contents and run again." % filename)
+
+        fin = open(filename, 'rb')
 
         try:
             xml = lxml.etree.parse(fin)
@@ -55,6 +49,7 @@ class XMLFileVocabulary(object):
 
         fin.close()
         self.terms = self.extract_terms(xml, vocabulary_name)
+
 
     def extract_terms(self, xml, vocabulary_name):
         terms = []
@@ -68,12 +63,31 @@ class XMLFileVocabulary(object):
             terms.append(SimpleTerm(token=token, value=value, title=title))
         return sorted(terms, key=lambda x: x.title)
 
+
     def __call__(self, context):
         return SimpleVocabulary(self.terms)
 
 
-TipologiaBandoVocabularyFactory = XMLFileVocabulary('PLONE_RER_BANDI_VOCAB', 'rer.bandi.tipologia.vocabulary')
+    def default_file_contents(self, vocabulary_name, default_terms):
+        voc = E('vocabulary', name=vocabulary_name)
+        for token, title in default_terms:
+            voc.append(E('term', title, token=token))
+        root = E('vocab-list')
+        root.append(voc)
 
+        xmlbytes = lxml.etree.tostring(root, xml_declaration=True, encoding='utf-8', pretty_print=True)
+
+        return xmlbytes
+
+
+
+TipologiaBandoVocabularyFactory = XMLFileVocabulary(envvar='PLONE_RER_BANDI_VOCAB',
+                                                    vocabulary_name='rer.bandi.tipologia.vocabulary',
+                                                    default_terms=[
+                                                        ('beni_servizi', 'Acquisizione beni e servizi'),
+                                                        ('agevolazioni', 'Agevolazioni, finanziamenti, contributi'),
+                                                        ('altro', 'Altro'),
+                                                    ])
 
 
 class DestinatariVocabulary(object):
