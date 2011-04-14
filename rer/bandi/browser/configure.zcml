@@ -59,6 +59,7 @@
   <browser:page
     for="Products.ATContentTypes.interface.IATTopic"
     name="collection_bandi_view"
+    class=".collection.CollectionBandiView"
     template="collection.pt"
     permission="zope2.View"
     />
@@ -75,6 +76,7 @@
   <browser:page
     for="Products.ATContentTypes.interface.IATTopic"
     name="collection_bandi_tipologia_view"
+    class=".collection.CollectionBandiView"
     template="collection.pt"
     permission="zope2.View"
     />

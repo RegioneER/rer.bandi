@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from zope.component import getMultiAdapter
+from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 
-from rer.bandi import bandiMessageFactory as _
 from rer.bandi.interfaces import IBandoFolderDeepening
 
 
 class IBandoView(Interface):
     pass
-
 
 
 class BandoView(BrowserView):
@@ -21,6 +20,8 @@ class BandoView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document

@@ -58,7 +58,7 @@
               <tbody>
                 <tr>
                   <th>tipologia</th>
-                  <td tal:content="string:${context/tipologia_bando}">
+                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
                     Tipologia bando
                   </td>
                 </tr>

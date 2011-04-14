@@ -49,7 +49,7 @@
             <div tal:content="item/Description" />
               <div>pubblicazione <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" /></div>
               <div tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
-                tipologia <span tal:content="item/tipologia_bando" />
+                tipologia <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
               </div>
               <div>scadenza <span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" /></div>
           </dd>

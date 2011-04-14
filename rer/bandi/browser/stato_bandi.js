@@ -20,29 +20,29 @@ function iso_date_string(date) {
 $('#stato_bandi')
     .change(function(ev) {
                 var today = iso_date_string(new Date()),
-                    $form = $(this).closest('form');
+                    $form = $(this).parents('form').first();
 
                 $('input[name^=getScadenza_bando],input[name^=getChiusura_procedimento]', $form).remove();
 
                 switch ($('option:selected', this).attr('value')) {
                     case 'aperti':
                         $form.append(
-                            $('<input type="text" name="getScadenza_bando">').attr('value', today),
-                            $('<input type="text" name="getScadenza_bando_usage" value="range:min">')
+                            $('<input type="hidden" name="getScadenza_bando">').attr('value', today),
+                            $('<input type="hidden" name="getScadenza_bando_usage" value="range:min">')
                             );
                         break;
                     case 'in_corso':
                         $form.append(
-                            $('<input type="text" name="getScadenza_bando">').attr('value', today),
-                            $('<input type="text" name="getScadenza_bando_usage" value="range:max">'),
-                            $('<input type="text" name="getChiusura_procedimento_bando">').attr('value', today),
-                            $('<input type="text" name="getChiusura_procedimento_bando_usage" value="range:min">')
+                            $('<input type="hidden" name="getScadenza_bando">').attr('value', today),
+                            $('<input type="hidden" name="getScadenza_bando_usage" value="range:max">'),
+                            $('<input type="hidden" name="getChiusura_procedimento_bando">').attr('value', today),
+                            $('<input type="hidden" name="getChiusura_procedimento_bando_usage" value="range:min">')
                             );
                         break;
                     case 'conclusi':
                         $form.append(
-                            $('<input type="text" name="getChiusura_procedimento_bando">').attr('value', today),
-                            $('<input type="text" name="getChiusura_procedimento_bando_usage" value="range:max">')
+                            $('<input type="hidden" name="getChiusura_procedimento_bando">').attr('value', today),
+                            $('<input type="hidden" name="getChiusura_procedimento_bando_usage" value="range:max">')
                             );
                         break;
                     default:

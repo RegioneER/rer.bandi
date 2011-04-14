@@ -19,27 +19,27 @@
                     item_icon python:getIcon(obj);"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <div>
-          <a href="#"
-             class="tile"
-             tal:attributes="href obj/getURL;
-                             title obj/Description">
-              <img tal:replace="structure item_icon/html_tag" />
-              <span tal:replace="obj/pretty_title_or_id">
-               Title
-              </span>
-          </a>
-          <div tal:condition="view/data/show_description"
-               tal:content="obj/Description">
-          </div>
-          <div tal:condition="view/data/show_tipologia_bando"
-               tal:content="obj/tipologia_bando">
-          </div>
-          <div tal:condition="python:view.data.show_effective and obj.EffectiveDate!='None'"
-               tal:content="python:toLocalizedTime(obj.EffectiveDate)">
-          </div>
-          <div tal:condition="view/data/show_scadenza_bando"
-               tal:content="python:toLocalizedTime(obj.scadenza_bando, long_format=True)">
-          </div>
+          <ul>
+            <li>
+              <a href="#"
+                 class="tile"
+                 tal:attributes="href obj/getURL;
+                                 title obj/Description">
+                  <img tal:replace="structure item_icon/html_tag" />
+                  <span tal:replace="obj/pretty_title_or_id">
+                   Title
+                  </span>
+              </a>
+            </li>
+            <li tal:condition="view/data/show_description"
+                tal:content="obj/Description" />
+            <li tal:condition="view/data/show_tipologia_bando"
+                tal:content="python: view.voc_tipologia.getTermByToken(obj.tipologia_bando).title" />
+            <li tal:condition="python:view.data.show_effective and obj.EffectiveDate!='None'"
+                tal:content="python:toLocalizedTime(obj.EffectiveDate)" />
+            <li tal:condition="view/data/show_scadenza_bando"
+                tal:content="python:toLocalizedTime(obj.scadenza_bando, long_format=True)" />
+          </ul>
         </div>
     </dd>
     </tal:events>
