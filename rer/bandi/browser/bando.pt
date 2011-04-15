@@ -45,11 +45,11 @@
                 <div tal:replace="structure context/getText">
                     Body text
                 </div>
-            </div>
 
-            <h4>riferimenti</h4>
-            <div tal:content="structure context/riferimenti_bando">
-              Riferimenti bando
+	            <hr />
+	            <div tal:content="structure context/riferimenti_bando">
+	              	Riferimenti bando
+	            </div>
             </div>
 
             <table class="vertical listing">

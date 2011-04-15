@@ -19,7 +19,7 @@
     menu="plone_displayviews"
     title="Default"
     action="@@bando_view"
-    description="Default view, with other info at bottom"
+    description="Vista predefinita, altre informazioni sotto"
     />
 
 
@@ -33,9 +33,9 @@
  <browser:menuItem
     for="..interfaces.IBando"
     menu="plone_displayviews"
-    title="On Right"
+    title="Sulla destra"
     action="@@bando_right_view"
-    description="Show other info on right"
+    description="Mostra altre informazioni a destra"
     />
 
 
@@ -90,8 +90,8 @@
 
 
   <browser:resource
-    name="folder_bando.gif"
-    file="folder_bando.gif"
+    name="bando.gif"
+    file="bando.gif"
     />
 
   <browser:resource

@@ -3,20 +3,31 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <topic_indexes>
 
-    <metadata name="chiusura_procedimento_bando" description="" enabled="False"
-              friendlyName=""/>
+  <index name="getChiusura_procedimento_bando" description=""
+     enabled="True" friendlyName="Bando: chiusura procedimento">
+   <criteria>ATFriendlyDateCriteria</criteria>
+   <criteria>ATDateRangeCriterion</criteria>
+  </index>
 
-    <metadata name="destinatari" description="" enabled="False"
-              friendlyName=""/>
+  <index name="getDestinatari" description="" enabled="True" friendlyName="Bando: destinatari">
+   <criteria>ATSelectionCriterion</criteria>
+   <criteria>ATCurrentAuthorCriterion</criteria>
+   <criteria>ATSimpleStringCriterion</criteria>
+   <criteria>ATListCriterion</criteria>
+  </index>
 
-    <metadata name="riferimenti_bando" description="" enabled="False"
-              friendlyName=""/>
+  <index name="getScadenza_bando" description=""
+     enabled="True" friendlyName="Bando: scadenza">
+   <criteria>ATFriendlyDateCriteria</criteria>
+   <criteria>ATDateRangeCriterion</criteria>
+  </index>
 
-    <metadata name="scadenza_bando" description="" enabled="False"
-              friendlyName=""/>>
-
-    <metadata name="tipologia_bando" description="" enabled="False"
-              friendlyName=""/>
+  <index name="getTipologia_bando" description="" enabled="True" friendlyName="Bando: tipologia">
+   <criteria>ATSelectionCriterion</criteria>
+   <criteria>ATCurrentAuthorCriterion</criteria>
+   <criteria>ATSimpleStringCriterion</criteria>
+   <criteria>ATListCriterion</criteria>
+  </index>
 
   </topic_indexes>
 </atcttool>

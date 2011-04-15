@@ -1,14 +1,14 @@
 Changelog
 =========
 
-1.0.0dev (unreleased)
----------------------
-  [mmariani]
+1.0.0 (2011-04-15)
+------------------
 
- - release iniziale da specifiche: https://support.redturtle.it/clienti/rer-regione-emilia-romagna/attivita-rer/119/
- - AT Bando e AT Bando Folder Deepening
- - vocabulary tipologie da file esterno XML
- - portlet per le collection di bandi
- - 2 viste per le collection di bandi
- - form di ricerca
+- release iniziale da specifiche: https://support.redturtle.it/clienti/rer-regione-emilia-romagna/attivita-rer/119/
+  [mmariani]
+- AT Bando e AT Bando Folder Deepening [mmariani]
+- vocabulary tipologie da file esterno XML [mmariani]
+- portlet per le collection di bandi [mmariani]
+- 2 viste per le collection di bandi [mmariani]
+- form di ricerca [mmariani]
 
