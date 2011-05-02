@@ -42,31 +42,6 @@
                 Scadenza termini partecipazione: <span tal:replace="python:toLocalizedTime(obj.scadenza_bando, long_format=True)" />
             </tal:scadenza>
         </p>
-          <!--ul>
-            <li class="bandoTitle">
-              <a href="#"
-                 class="tile"
-                 tal:attributes="href obj/getURL;
-                                 title obj/Description">
-                  <span tal:replace="obj/pretty_title_or_id">
-                   Title
-                  </span>
-              </a>
-            </li>
-            <li class="discreet bandoDescription"
-			    tal:condition="python:view.data.show_description and obj.Description"
-                tal:content="obj/Description" />
-            <li tal:condition="view/data/show_tipologia_bando"
-                tal:content="python: view.voc_tipologia.getTermByToken(obj.tipologia_bando).title" />
-            <li tal:condition="python:view.data.show_effective and (obj.EffectiveDate!='None' or obj.scadenza_bando)">
-                <tal:effective condition="python:view.data.show_effective and obj.EffectiveDate!='None'">
-                	<strong>Pubblicato il:</strong> <span tal:replace="python:toLocalizedTime(obj.EffectiveDate)" />
-				</tal:effective>
-                <tal:scadenza condition="obj/scadenza_bando">
-                    <strong>Scadenza termini partecipazione:</strong> <span tal:replace="python:toLocalizedTime(obj.scadenza_bando, long_format=True)" />
-			    </tal:scadenza>
-			</li>
-          </ul-->
         </div>
     </dd>
     </tal:events>

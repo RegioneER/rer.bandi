@@ -29,7 +29,7 @@
             <div class="field">
                 <label for="SearchableText">Ricerca testuale </label>
 
-                <div class="formHelp" i18n:translate="help_search_title">
+                <div class="formHelp">
                     Per una semplice ricerca di testo inserisci qui i termini desiderati.
 					Possono essere cercate più parole contemporaneamente combinandole con gli operatori AND e OR.
 					Il testo inserito in questo campo verrà cercato nei tre campi di testo dei bandi  

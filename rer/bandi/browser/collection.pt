@@ -50,17 +50,25 @@
 			   tal:content="item/pretty_title_or_id" />
           <dd>
             <div tal:content="item/Description" />
-              <div tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
-                <strong>Tipologia di bando:</strong> <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
+              <div class="bandoType"
+			       tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
+                Tipologia di bando: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
               </div>
-              <div tal:condition="python:item.effective.Date() != '1000/01/01'">
-              	<strong>Data di pubblicazione:</strong> 
-				<span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
-			  </div>
-              <div tal:condition="item/scadenza_bando">
-              	<strong>Scadenza termini partecipazione:</strong> 
-				<span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" />
-			  </div>
+              <div class="bandiDates"
+			       tal:condition="python:item.effective.Date() != '1000/01/01' or item.scadenza_bando">
+              	<tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
+					Pubblicato il: 
+					<span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
+				</tal:pubblicazione>
+				<span tal:omit-tag=""
+				      tal:condition="python:item.effective.Date() != '1000/01/01' and item.scadenza_bando">
+				      	|
+				      </span>
+	            <tal:scadenza_bando condition="item/scadenza_bando">
+	              	Scadenza termini partecipazione: 
+					<span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" />
+				</tal:scadenza_bando>
+			</div>
           </dd>
         </dl>
         </metal:listingmacro>

@@ -51,11 +51,9 @@
 	              	Riferimenti bando
 	            </div>
             </div>
+            <div style="float:right">
             
-            <table class="vertical listing">
-              <thead>
-              </thead>
-              <tbody>
+            <table class="vertical listing tableRight">
                 <tr>
                   <th>Tipologia di bando</th>
                   <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
@@ -85,28 +83,23 @@
                 </tr>
 
                 <tr>
-                  <th>Data di scadenza</th>
-                  <td>
-                    <div tal:condition="context/scadenza_bando|nothing"
-                         tal:replace="python:here.toLocalizedTime(context.scadenza_bando, long_format=True)">
-                      scadenza bando
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <th>Scadenza termini presentazione</th>
+                  <th>Scadenza termini partecipazione</th>
                   <td>
                     <div tal:condition="context/chiusura_procedimento_bando|nothing"
-                         tal:replace="python:here.toLocalizedTime(context.chiusura_procedimento_bando)">
+					     tal:replace="python:here.toLocalizedTime(context.scadenza_bando, long_format=True)">
                       chiusura procedimento
                     </div>
                   </td>
                 </tr>
-
-              </tbody>
-              <tfoot>
-              </tfoot>
+                <tr>
+				  <th>Chiusura procedimento</th>
+                  <td>
+                    <div tal:condition="context/scadenza_bando|nothing"
+                         tal:replace="python:here.toLocalizedTime(context.chiusura_procedimento_bando)">
+                      scadenza bando
+                    </div>
+                  </td>
+                </tr>
             </table>
 
             <div class="visualClear" tal:condition="python:'right' not in view.__name__"></div>

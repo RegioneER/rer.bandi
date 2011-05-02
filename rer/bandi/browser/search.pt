@@ -172,8 +172,20 @@
                 </span>
             </span>
 
-            scadenza: <span tal:content="python:toLocalizedTime(result.scadenza_bando, long_format=1)" />
-
+            <div tal:condition="python:result.effective.Date() != '1000/01/01' or result.scadenza_bando">
+                <tal:pubblicazione condition="python:result.effective.Date() != '1000/01/01'">
+                    Pubblicato il: 
+                    <span tal:content="python:here.toLocalizedTime(result.EffectiveDate)" />
+                </tal:pubblicazione>
+                <span tal:omit-tag=""
+                      tal:condition="python:result.effective.Date() != '1000/01/01' and result.scadenza_bando">
+                        |
+                      </span>
+                <tal:scadenza_bando condition="result/scadenza_bando">
+                    Scadenza termini partecipazione: 
+                    <span tal:content="python:here.toLocalizedTime(result.scadenza_bando)" />
+                </tal:scadenza_bando>
+            </div>
             </dd>
 
         </tal:entry>
