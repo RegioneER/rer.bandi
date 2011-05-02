@@ -35,7 +35,7 @@
                     Description
                 </metal:field>
             </div>
-            <div tal:attributes="class python: 'right' in view.__name__ and 'rer-contextual-text rer-contextual-text-right' or 'rer-contextual-text'">
+            <div class="rer-contextual-text rer-contextual-text-right">
                 <p tal:condition="python: not here.getText() and is_editable"
                     i18n:translate="no_body_text"
                     i18n:domain="plone"
@@ -51,20 +51,20 @@
 	              	Riferimenti bando
 	            </div>
             </div>
-
+            
             <table class="vertical listing">
               <thead>
               </thead>
               <tbody>
                 <tr>
-                  <th>tipologia</th>
+                  <th>Tipologia di bando</th>
                   <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
                     Tipologia bando
                   </td>
                 </tr>
 
                 <tr tal:condition="context/destinatari|nothing">
-                  <th>destinatari</th>
+                  <th>Destinatari</th>
                   <td>
                     <ul>
                       <li tal:repeat="dest context/destinatari"
@@ -76,7 +76,7 @@
                 </tr>
 
                 <tr>
-                  <th>pubblicazione</th>
+                  <th>Data di pubblicazione</th>
                   <td tal:condition="context/EffectiveDate">
                     <tal:pubblicazione content="python:here.toLocalizedTime(context.EffectiveDate())">
                       data di pubblicazione
@@ -85,7 +85,7 @@
                 </tr>
 
                 <tr>
-                  <th>scadenza</th>
+                  <th>Data di scadenza</th>
                   <td>
                     <div tal:condition="context/scadenza_bando|nothing"
                          tal:replace="python:here.toLocalizedTime(context.scadenza_bando, long_format=True)">
@@ -95,7 +95,7 @@
                 </tr>
 
                 <tr>
-                  <th>chiusura procedimento</th>
+                  <th>Scadenza termini presentazione</th>
                   <td>
                     <div tal:condition="context/chiusura_procedimento_bando|nothing"
                          tal:replace="python:here.toLocalizedTime(context.chiusura_procedimento_bando)">
@@ -109,7 +109,7 @@
               </tfoot>
             </table>
 
-
+            <div class="visualClear" tal:condition="python:'right' not in view.__name__"></div>
             <div tal:attributes="class python: 'right' in view.__name__ and 'rer-contextual-portlets rer-contextual-portlets-right' or 'rer-contextual-portlets'">
                 <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
                               condition="foldeeps">
@@ -143,7 +143,7 @@
                 </tal:foldeeps>
             </div>
         </div>
-    
+        <div class="visualClear"></div>
         <metal:use_footer use-macro="footer_macro" />
 
       </metal:main_macro>

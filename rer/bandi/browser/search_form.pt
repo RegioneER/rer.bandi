@@ -11,37 +11,28 @@
     <metal:block fill-slot="column_one_slot" />
     <metal:block fill-slot="column_two_slot" />
 
-    <metal:block fill-slot="javascript_head_slot">
-      <script type="text/javascript" src='jscalendar/calendar_stripped.js'></script>
-      <script type="text/javascript" src='jscalendar/calendar-en.js'></script>
-      <script type="text/javascript" src='jscalendar/calendar-setup.js'></script>
-      <script type="text/javascript" src="jquery.js"></script>
-      <script type="text/javascript" src="++resource++stato_bandi.js"></script>
-    </metal:block>
-
-    <metal:block fill-slot="css_slot">
-      <link type="text/css" rel="stylesheet" href="jscalendar/calendar-system.css" />
-    </metal:block>
-
-
 <div metal:fill-slot="main">
 
     <h1 class="documentFirstHeading">Ricerca Bandi</h1>
-
+    
+	<p class="searchBandiDescription">
+		Questa maschera di ricerca permette di trovare i bandi nel sito che soddisfano uno o più criteri di ricerca 
+	</p>
+	
     <form action="search_bandi"
           class="enableAutoFocus"
           method="get"
           name="search"
           id="searchform"
           tal:define="DateTime python:modules['DateTime'].DateTime">
-
+        
             <div class="field">
-                <label for="SearchableText">Cerca su tutto</label>
+                <label for="SearchableText">Ricerca testuale </label>
 
                 <div class="formHelp" i18n:translate="help_search_title">
-                    Inserisci qui i termini per la ricerca di testo. Parole multiple sono normalmente
-                    trovate in AND, specificare OR per una ricerca esclusiva. Il testo di questo campo
-                    sarà cercato in tutti i contenuti degli elementi, nei titoli e nelle descrizioni. 
+                    Per una semplice ricerca di testo inserisci qui i termini desiderati.
+					Possono essere cercate più parole contemporaneamente combinandole con gli operatori AND e OR.
+					Il testo inserito in questo campo verrà cercato nei tre campi di testo dei bandi  
                 </div>
 
                 <input type="text"
@@ -54,9 +45,14 @@
             <div class="field">
 
               <label>Stato:</label>
-
-              <select id="stato_bandi">
-                <option value="*" selected="selected">Tutti</option>
+              
+			  <div class="formHelp" i18n:translate="">
+                Cerca i bandi aperti (non sono scaduti i termini per la partecipazione), 
+				in corso (sono scaduti i termini di partecipazione e il procedimento non è ancora chiuso) o conclusi (il procedimento è chiuso)
+                </div>
+              
+			  <select name="stato_bandi" id="stato_bandi">
+                <option value="" selected="selected">Tutti</option>
                 <option value="aperti">Aperti</option>
                 <option value="in_corso">In corso</option>
                 <option value="conclusi">Conclusi</option>
@@ -67,7 +63,9 @@
             <div class="field">
                 <label for="tipologia">Tipologia</label>
 
-                <br />
+                <div class="formHelp" i18n:translate="">
+                Seleziona le tipologie di bandi
+                </div>
 
                 <tal:items repeat="t_tipo view/terms_tipologia">
                 <input class="noborder"
@@ -87,7 +85,9 @@
             <div class="field">
                 <label for="destinatari">Destinatari</label>
 
-                <br />
+                <div class="formHelp" i18n:translate="">
+                Seleziona i destinatari dei bandi
+                </div>
 
                 <tal:items repeat="t_dest view/terms_destinatari">
                 <input class="noborder"
@@ -129,27 +129,6 @@
                             >dummy</option>
                 </select>
                 <br />
-
-                <input type="radio"
-                       name="Subject_usage:ignore_empty"
-                       id="Subject_or"
-                       value=""
-                       class="noborder"
-                       tal:attributes="checked python:1"/>
-                    <label for="Subject_or" i18n:translate="description_subject_or">
-                        Match any
-                    </label>
-                    <br />
-
-                <input type="radio"
-                        name="Subject_usage:ignore_empty"
-                        id="Subject_and"
-                        value="operator:and"
-                        class="noborder"
-                        tal:attributes="checked python:0"/>
-                <label for="Subject_and" i18n:translate="description_subject_and">
-                    Match all
-                </label>
             </div>
 
             <input type="hidden" name="portal_type" value="Bando" />

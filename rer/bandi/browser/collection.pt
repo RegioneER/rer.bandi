@@ -44,14 +44,23 @@
 
         <metal:listingmacro define-macro="listing">
         <dl tal:repeat="item python:context.queryCatalog(portal_type='Bando')">
-          <dt tal:content="item/pretty_title_or_id" />
+          <dt>
+          	<a tal:attributes="href item/getURL;
+			                   title item/pretty_title_or_id"
+			   tal:content="item/pretty_title_or_id" />
           <dd>
             <div tal:content="item/Description" />
-              <div>pubblicazione <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" /></div>
               <div tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
-                tipologia <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
+                <strong>Tipologia di bando:</strong> <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
               </div>
-              <div>scadenza <span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" /></div>
+              <div tal:condition="python:item.effective.Date() != '1000/01/01'">
+              	<strong>Data di pubblicazione:</strong> 
+				<span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
+			  </div>
+              <div tal:condition="item/scadenza_bando">
+              	<strong>Scadenza termini partecipazione:</strong> 
+				<span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" />
+			  </div>
           </dd>
         </dl>
         </metal:listingmacro>

@@ -51,6 +51,7 @@
     for="*"
     name="search_bandi"
     template="search.pt"
+	class=".search.SearchBandi"
     permission="zope2.View"
     />
 
@@ -105,10 +106,10 @@
     />
 
 
-  <browser:resource
+  <!--browser:resource
     name="stato_bandi.js"
     file="stato_bandi.js"
-    />
+    /-->
 
   <browser:page
     name="plone_context_state"

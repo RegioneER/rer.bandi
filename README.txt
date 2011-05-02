@@ -26,3 +26,6 @@ genera un file predefinito::
       </vocabulary>
     </vocab-list>
 
+Ricerca bandi
+-------------
+Per cercare i bandi, basta richiamare la vista "search_bandi_form" da qualunque zona del sito.
