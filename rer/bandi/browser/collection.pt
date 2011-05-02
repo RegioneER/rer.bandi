@@ -54,7 +54,7 @@
 			       tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
                 Tipologia di bando: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
               </div>
-              <div class="bandiDates"
+              <div class="bandoDates"
 			       tal:condition="python:item.effective.Date() != '1000/01/01' or item.scadenza_bando">
               	<tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
 					Pubblicato il: 
@@ -66,7 +66,7 @@
 				      </span>
 	            <tal:scadenza_bando condition="item/scadenza_bando">
 	              	Scadenza termini partecipazione: 
-					<span tal:content="python:here.toLocalizedTime(item.scadenza_bando)" />
+					<span tal:content="python:here.toLocalizedTime(item.scadenza_bando, long_format=True)" />
 				</tal:scadenza_bando>
 			</div>
           </dd>
