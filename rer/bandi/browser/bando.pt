@@ -51,7 +51,6 @@
 	              	Riferimenti bando
 	            </div>
             </div>
-            <div style="float:right">
             
             <table class="vertical listing tableRight">
                 <tr>
@@ -135,7 +134,6 @@
                     </tal:foldeep>
                 </tal:foldeeps>
             </div>
-        </div>
         <div class="visualClear"></div>
         <metal:use_footer use-macro="footer_macro" />
 
