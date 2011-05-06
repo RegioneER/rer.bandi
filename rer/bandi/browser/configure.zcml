@@ -25,7 +25,7 @@
 
   <browser:page
     name="bando_right_view"
-    template="bando.pt"
+    template="bando-right.pt"
     permission="zope2.View"
     for="..interfaces.IBando"
     class=".bando.BandoView"

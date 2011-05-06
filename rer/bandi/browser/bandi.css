@@ -15,7 +15,7 @@
 
 .rer-contextual-text-right {
 	float: left;
-	width: 60%;
+	/*width: 60%;*/
 }
 
 .contextualbody .navTreeItem .description {
@@ -35,5 +35,10 @@
 }
 
 .tableRight{
+	width:100%;
+}
+
+.bandiColumnRight{
+	width:40%;
 	float:right;
 }

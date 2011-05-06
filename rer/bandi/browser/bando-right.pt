@@ -37,7 +37,7 @@
             </div>
             <div class="rer-contextual-text rer-contextual-text-right">
             	<div class="bandiColumnRight">
-					<table class="vertical listing tableRight">
+				    <table class="vertical listing tableRight">
 		                <tr>
 		                  <th>Tipologia di bando</th>
 		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
@@ -85,7 +85,41 @@
 		                  </td>
 		                </tr>
 		            </table>
-				</div>
+            		
+					<div class="rer-contextual-portlets">
+		                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
+		                              condition="foldeeps">
+		                    <tal:foldeep repeat="foldeep foldeeps">
+		                        <dl class="portlet portletNavigationTree">
+		                            <dt class="portletHeader">
+		                                <span tal:content="foldeep/title">
+		                                    header
+		                                </span>
+		                            </dt>
+		                            <dd class="portletItem lastItem"
+		                                tal:define="folder_path foldeep/path">
+		                                <ul class="navTree navTreeLevel0"
+		                                    tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
+		                                    tal:condition="objs">
+		                                  <li class="navTreeItem visualNoMarker"
+		                                      tal:repeat="obj objs">
+		                                    <img tal:replace="structure obj/icon" />
+		                                    <a tal:attributes="href obj/url"
+		                                       tal:content="obj/title">title</a>
+		                                    <span tal:condition="obj/filesize|nothing"
+		                                          tal:content="string:(${obj/filesize})">1Mb</span>
+		                                    <div class="description"
+		                                         tal:condition="obj/description"
+		                                         tal:content="obj/description">description</div> 
+		                                  </li>
+		                                </ul>
+		                            </dd>
+		                          </dl>
+		                      </tal:foldeep>
+		                  </tal:foldeeps>
+		            </div>
+            	</div>
+				
 				
                 <p tal:condition="python: not here.getText() and is_editable"
                     i18n:translate="no_body_text"
@@ -101,39 +135,6 @@
                 <div tal:content="structure context/riferimenti_bando">
                     Riferimenti bando
                 </div>
-            </div>
-            <div class="visualClear"></div>
-            <div class="rer-contextual-portlets">
-                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
-                              condition="foldeeps">
-                    <tal:foldeep repeat="foldeep foldeeps">
-                        <dl class="portlet portletNavigationTree">
-                            <dt class="portletHeader">
-                                <span tal:content="foldeep/title">
-                                    header
-                                </span>
-                            </dt>
-                            <dd class="portletItem lastItem"
-                                tal:define="folder_path foldeep/path">
-                                <ul class="navTree navTreeLevel0"
-                                    tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
-                                    tal:condition="objs">
-                                  <li class="navTreeItem visualNoMarker"
-                                      tal:repeat="obj objs">
-                                    <img tal:replace="structure obj/icon" />
-                                    <a tal:attributes="href obj/url"
-                                       tal:content="obj/title">title</a>
-                                    <span tal:condition="obj/filesize|nothing"
-                                          tal:content="string:(${obj/filesize})">1Mb</span>
-                                    <div class="description"
-                                         tal:condition="obj/description"
-                                         tal:content="obj/description">description</div> 
-                                  </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                    </tal:foldeep>
-                </tal:foldeeps>
             </div>
         <div class="visualClear"></div>
         <metal:use_footer use-macro="footer_macro" />
