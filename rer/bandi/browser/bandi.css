@@ -13,9 +13,8 @@
     margin-bottom: 10px;
 }
 
-.rer-contextual-text-right {
-	float: left;
-	/*width: 60%;*/
+#content .rer-contextual-text-right {
+	float: none;
 }
 
 .contextualbody .navTreeItem .description {
@@ -41,4 +40,5 @@
 .bandiColumnRight{
 	width:40%;
 	float:right;
+    margin-left: 1em;
 }
