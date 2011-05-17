@@ -3,10 +3,30 @@ Introduzione
 
 Prodotto per i Bandi regionali
 
-Configurazione vocabolario
---------------------------
 
-Il prodotto di aspetta un variabile d'ambiente di nome ``PLONE_RER_BANDI_VOCAB``.
+Configurazione vocabolario destinatari
+--------------------------------------
+
+Il prodotto cerca l'elenco dei possibili destinatari in una property:
+
+    portal_properties.rer_bandi_settings.destinatari_bandi
+
+Questa viene interpretata come campo multilinea.
+
+In assenza di questo oggetto o property, viene usato l'elenco di default:
+
+    Cittadini
+    Imprese
+    Enti locali
+    Associazioni
+    Altro
+
+
+
+Configurazione vocabolario tipologie
+------------------------------------
+
+Il prodotto si aspetta un variabile d'ambiente di nome ``PLONE_RER_BANDI_VOCAB``.
 E' possibile specificarla nel buildout::
 
     [instance]
