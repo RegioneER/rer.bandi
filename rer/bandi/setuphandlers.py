@@ -57,4 +57,19 @@ def add_catalog_indexes(context):
         portal.plone_log('Indexing new indexes %s.' % ', '.join(indexables))
         catalog.manage_reindexIndex(ids=indexables)
 
+def addPropertySheet(context):
+    portal = context.getSite()
+    DEST=('Cittadini|Cittadini',
+          'Imprese|Imprese',
+          'Enti locali|Enti locali',
+          'Associazioni|Associazioni',
+          'Altro|Altro')
+    portal_properties = getToolByName(portal, 'portal_properties')
+    rer_bandi_settings = getattr(portal_properties, 'rer_bandi_settings',None)
+    if not rer_bandi_settings:
+        portal_properties.addPropertySheet(id='rer_bandi_settings',title='RER Bandi settings')
+        portal.plone_log("Added RER Bandi settings property-sheet")
+        rer_bandi_settings = getattr(portal_properties, 'rer_bandi_settings',None)
+    if not rer_bandi_settings.hasProperty('destinatari_bandi'):
+        rer_bandi_settings.manage_addProperty(id='destinatari_bandi',value=DEST,type='lines')
 

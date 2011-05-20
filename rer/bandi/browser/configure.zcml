@@ -91,8 +91,8 @@
 
 
   <browser:resource
-    name="bando.gif"
-    file="bando.gif"
+    name="bando.png"
+    file="bando.png"
     />
 
   <browser:resource
@@ -101,15 +101,9 @@
     />
 
   <browser:resource
-    name="rer-bandi.css"
+    name="bandi.css"
     file="bandi.css"
     />
-
-
-  <!--browser:resource
-    name="stato_bandi.js"
-    file="stato_bandi.js"
-    /-->
 
   <browser:page
     name="plone_context_state"

@@ -7,14 +7,6 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="rer.bandi">
 
-  <head>
-    <metal:css fill-slot="css_slot">
-        <style type="text/css" media="all"
-            tal:content="string: @import url(${context/++resource++rer-bandi.css});">
-        </style>
-    </metal:css>
-  </head>
-
   <body>
     <metal:fill fill-slot="main">
       <metal:main_macro define-macro="main"

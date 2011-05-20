@@ -17,5 +17,13 @@
     title="rer.bandi catalog indexes">
       Setup handler to add indexes to catalog
   </import-step>
-
+  
+  <import-step
+    id="rer.bandi-dest"
+    version="20110411-01"
+    handler="rer.bandi.setuphandlers.addPropertySheet"
+    title="rer.bandi bandi propertysheet">
+      Setup handler to add property sheet
+  </import-step>
+  
 </import-steps>

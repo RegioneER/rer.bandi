@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">Bando</property>
   <property name="content_meta_type">Bando</property>
-  <property name="content_icon">++resource++bando.gif</property>
+  <property name="content_icon">++resource++bando.png</property>
   <property name="product">rer.bandi</property>
   <property name="factory">addBando</property>
   <property name="immediate_view">atct_edit</property>
