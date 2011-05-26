@@ -41,18 +41,20 @@ def add_catalog_indexes(context):
     indexes = catalog.indexes()
 
     wanted = [
-            ('getChiusura_procedimento_bando', 'DateIndex'),
-            ('getDestinatari', 'KeywordIndex'),
-            ('getScadenza_bando', 'DateIndex'),
-            ('getTipologia_bando', 'FieldIndex'),
+            ('getChiusura_procedimento_bando', 'DateIndex',{'indexed_attrs': 'getChiusura_procedimento_bando', }),
+            ('getDestinatari', 'KeywordIndex',{'indexed_attrs': 'destinatari', }),
+            ('getScadenza_bando', 'DateIndex',{'indexed_attrs': 'getScadenza_bando', }),
+            ('getTipologia_bando', 'FieldIndex',{'indexed_attrs': 'getTipologia_bando', }),
             ]
 
     indexables = []
-    for name, meta_type in wanted:
-        if name not in indexes:
-            catalog.addIndex(name, meta_type)
-            indexables.append(name)
-            portal.plone_log('Added %s for field %s.' % (meta_type, name))
+    for idx in wanted:
+        if idx[0] in indexes:
+            portal.plone_log("Found the '%s' index in the catalog, nothing changed.\n" % idx[0])
+        else:
+            catalog.addIndex(name=idx[0], type=idx[1], extra=idx[2])
+            portal.plone_log("Added '%s' (%s) to the catalog.\n" % (idx[0], idx[1]))
+            indexables.append(idx[0])
     if len(indexables) > 0:
         portal.plone_log('Indexing new indexes %s.' % ', '.join(indexables))
         catalog.manage_reindexIndex(ids=indexables)

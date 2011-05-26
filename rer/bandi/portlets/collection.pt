@@ -19,14 +19,15 @@
                     item_icon python:getIcon(obj);"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <div class="bandoInfos">
-          <a href="#"
-             class="tile"
-             tal:attributes="href obj/getURL;
-                             title obj/Description">
-              <h3 tal:replace="obj/pretty_title_or_id">
-               Title
-              </h3>
-          </a>
+          <h3>
+              <a href="#"
+			     class="tile"
+                 tal:attributes="href obj/getURL;
+                                 title obj/Description"
+                 tal:content="obj/pretty_title_or_id">
+                   Title
+              </a>
+          </h3>
 		  <p class="documentDescription bandoDescription"
 		        tal:condition="python:view.data.show_description and obj.Description"
                 tal:content="obj/Description" />

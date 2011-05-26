@@ -41,7 +41,7 @@
 		                  <th>Destinatari</th>
 		                  <td>
 		                    <ul>
-		                      <li tal:repeat="dest context/destinatari"
+		                      <li tal:repeat="dest view/getDestinatariNames"
 		                          tal:content="dest">
 		                          Destinatario
 		                      </li>

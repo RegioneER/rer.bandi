@@ -43,34 +43,55 @@
         </div>
 
         <metal:listingmacro define-macro="listing">
-        <dl tal:repeat="item python:context.queryCatalog(portal_type='Bando')">
-          <dt>
-          	<a tal:attributes="href item/getURL;
-			                   title item/pretty_title_or_id"
-			   tal:content="item/pretty_title_or_id" />
-          <dd>
-            <div tal:content="item/Description" />
-              <div class="bandoType"
-			       tal:condition="python:view.__name__=='collection_bandi_tipologia_view'">
-                Tipologia di bando: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
-              </div>
-              <div class="bandoDates"
-			       tal:condition="python:item.effective.Date() != '1000/01/01' or item.scadenza_bando">
-              	<tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
-					Pubblicato il: 
-					<span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
-				</tal:pubblicazione>
-				<span tal:omit-tag=""
-				      tal:condition="python:item.effective.Date() != '1000/01/01' and item.scadenza_bando">
-				      	|
-				      </span>
-	            <tal:scadenza_bando condition="item/scadenza_bando">
-	              	Scadenza termini partecipazione: 
-					<span tal:content="python:here.toLocalizedTime(item.scadenza_bando, long_format=True)" />
-				</tal:scadenza_bando>
-			</div>
-          </dd>
-        </dl>
+            <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;
+                                limit_display limit_display|request/limit_display|nothing;
+                                more_url more_url|request/more_url|string:folder_contents;
+                                is_a_topic python:here.portal_type=='Topic';
+                                folderContents folderContents|nothing; folderContents python:folderContents or is_a_topic and here.queryCatalog(contentFilter, batch=True) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
+                                use_view_action site_properties/typesUseViewActionInListings|python:();
+                                over_limit python: limit_display and len(folderContents) > limit_display;
+                                folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
+                                batch folderContents;
+                                show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
+            <tal:listing condition="folderContents">
+                <dl tal:repeat="item folderContents">
+                  <dt>
+                    <a tal:attributes="href item/getURL;
+                                       title item/pretty_title_or_id"
+                       tal:content="item/pretty_title_or_id" />
+				  </dt>
+                  <dd>
+                    <div tal:content="item/Description" />
+                      <div class="bandoType"
+                           tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
+                        Tipologia di bando: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
+                      </div>
+                      <div class="bandoDates"
+                           tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1000/01/01' or item.scadenza_bando)">
+                        <tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
+                            Pubblicato il: 
+                            <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
+                        </tal:pubblicazione>
+                        <span tal:omit-tag=""
+                              tal:condition="python:item.effective.Date() != '1000/01/01' and item.scadenza_bando">
+                                |
+                              </span>
+                        <tal:scadenza_bando condition="item/scadenza_bando">
+                            Scadenza termini partecipazione: 
+                            <span tal:content="python:here.toLocalizedTime(item.scadenza_bando, long_format=True)" />
+                        </tal:scadenza_bando>
+                    </div>
+                  </dd>
+                </dl>
+			</tal:listing>
+            <metal:empty metal:define-slot="no_items_in_listing">
+                <p class="discreet"
+                   tal:condition="not: folderContents"
+                   i18n:translate="description_no_items_in_folder">
+                    There are currently no items in this folder.
+                </p>
+            </metal:empty>
+		    </tal:foldercontents>
         </metal:listingmacro>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />

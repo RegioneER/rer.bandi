@@ -6,6 +6,7 @@ Changelog
 
 - modifiche varie ai template per #126 #127 e #128 [andrea]
 - destinatari da PropertySheetVocabulary [mmariani]
+- sistemato l'indice per i destinatari, per essere modificato da keywordmanager [andrea]
 
 1.0.0 (2011-04-15)
 ------------------

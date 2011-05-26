@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from zope.app.schema.vocabulary import IVocabularyFactory
-from zope.component import getMultiAdapter, getUtility
-from zope.interface import implements, Interface
-
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-
 from rer.bandi.interfaces import IBandoFolderDeepening
-
+from zope.app.schema.vocabulary import IVocabularyFactory, IVocabularyFactory
+from zope.component import getMultiAdapter, getUtility
+from zope.interface import implements, Interface
 
 class IBandoView(Interface):
     pass
@@ -89,5 +86,18 @@ class BandoView(BrowserView):
             if size/const[c] > 0:
                 break
         return '%.2f %s' % (float(size/float(const[c])), c)
-
+    
+    def getDestinatariNames(self):
+        """
+        Return the values of destinatari vocabulary
+        """
+        dest_utility=getUtility(IVocabularyFactory,'rer.bandi.destinatari.vocabulary')
+        destinatari=self.context.getDestinatari()
+        if not dest_utility:
+            return dest
+        dest_values=[]
+        dest_vocab=dest_utility(self.context)
+        for dest in destinatari:
+            dest_values.append(dest_vocab.getTerm(dest).title)
+        return dest_values
 
