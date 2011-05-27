@@ -42,7 +42,7 @@ def add_catalog_indexes(context):
 
     wanted = [
             ('getChiusura_procedimento_bando', 'DateIndex',{'indexed_attrs': 'getChiusura_procedimento_bando', }),
-            ('getDestinatari', 'KeywordIndex',{'indexed_attrs': 'destinatari', }),
+            ('getDestinatariBando', 'KeywordIndex',{'indexed_attrs': 'getDestinatariBando', }),
             ('getScadenza_bando', 'DateIndex',{'indexed_attrs': 'getScadenza_bando', }),
             ('getTipologia_bando', 'FieldIndex',{'indexed_attrs': 'getTipologia_bando', }),
             ]

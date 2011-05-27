@@ -52,5 +52,7 @@
     component=".vocabularies.DestinatariVocabularyFactory"
     />
 
+  <!-- indexer per i destinatari -->
+  <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
 
 </configure>
