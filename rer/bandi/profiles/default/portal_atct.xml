@@ -9,7 +9,7 @@
    <criteria>ATDateRangeCriterion</criteria>
   </index>
 
-  <index name="getDestinatari" description="" enabled="True" friendlyName="Bando: destinatari">
+  <index name="getDestinatariBando" description="" enabled="True" friendlyName="Bando: destinatari">
    <criteria>ATSelectionCriterion</criteria>
    <criteria>ATCurrentAuthorCriterion</criteria>
    <criteria>ATSimpleStringCriterion</criteria>

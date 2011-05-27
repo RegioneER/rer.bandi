@@ -92,7 +92,7 @@
                 <tal:items repeat="t_dest view/terms_destinatari">
                 <input class="noborder"
                        type="checkbox"
-                       name="getDestinatari"
+                       name="getDestinatariBando"
                        tal:attributes="value t_dest/token;
                                        id python:'tipol_%s' % t_dest.token" />
                 <label tal:attributes="for python:'tipol_%s'% t_dest.token"
