@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.1-UNRELEASED (2011-05-??)
+1.0.1 (2011-05-31)
 ------------------
 
 - modifiche varie ai template per #126 #127 e #128 [andrea]
