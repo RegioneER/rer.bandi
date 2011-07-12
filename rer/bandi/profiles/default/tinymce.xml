@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object>
+ <resourcetypes>
+  <link_using_uids value="True"/>
+  <linkable purge="False">
+   <element value="Bando" />
+  </linkable>
+  <containsobjects purge="False">
+   <element value="Bando"/>
+   <element value="BandoFolderDeepening" />
+  </containsobjects>
+ </resourcetypes>
+</object>
