@@ -3,13 +3,17 @@
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
     <permission name="rer.bandi: Add Bando Folder Deepening" acquire="False">
-      <role name="Manager" />
+      <role name="Contributor" />
+	  <role name="Manager" />
+	  <role name="Owner" />
     </permission>
     <permission name="rer.bandi: Add Bando" acquire="False">
-      <role name="Manager" />
+      <role name="Contributor" />
+	  <role name="Manager" />
     </permission>
     <permission name="rer.bandi: Add Bandi Portlet" acquire="False">
       <role name="Manager" />
+	  <role name="Contributor" />
     </permission>
   </permissions>
 </rolemap>
