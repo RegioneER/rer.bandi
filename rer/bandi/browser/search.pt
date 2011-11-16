@@ -100,7 +100,8 @@
 
         <dl class="searchResults">
         <tal:results repeat="result batch">
-        <tal:entry define="result_url result/getURL;
+        <tal:entry define="isAnon context/@@plone_portal_state/anonymous;
+		                   result_url result/getURL;
                            result_type result/portal_type;
                            item_icon python:plone_view.getIcon(result);
                            url python:'%s?searchterm=%s'%(test(result_type in use_view_action, result_url+'/view', result_url+'/'), searchterm);">

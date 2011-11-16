@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import implements
 from Acquisition import aq_inner
 from plone.app.layout.globals.interfaces import IContextState

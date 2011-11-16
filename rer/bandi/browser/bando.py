@@ -3,7 +3,12 @@
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from rer.bandi.interfaces import IBandoFolderDeepening
-from zope.app.schema.vocabulary import IVocabularyFactory, IVocabularyFactory
+
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    from zope.schema.interfaces import IVocabularyFactory
+
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
 

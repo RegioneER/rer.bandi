@@ -3,7 +3,12 @@
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from zope.app.schema.vocabulary import IVocabularyFactory
+
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    from zope.schema.interfaces import IVocabularyFactory
+
 from zope.component import getUtility
 
 class SearchBandiForm(BrowserView):

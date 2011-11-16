@@ -11,22 +11,23 @@
     <metal:fill fill-slot="main">
       <metal:main_macro define-macro="main"
             tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '_');
-            base_macros here/base/macros;
-            view_template python:'%s_view' % portal_type;
-            view_macros python:path('here/%s/macros|nothing' % view_template);
-            header_macro view_macros/header | header_macro | base_macros/header;
-            body_macro view_macros/body | body_macro | base_macros/body;
-            folderlisting_macro view_macros/folderlisting | folderlisting | base_macros/folderlisting;
-            footer_macro view_macros/footer | footer_macro | base_macros/footer">
-
-        <metal:use_header use-macro="header_macro" />
+            view_template python:'%s_view' % portal_type;">
         
-        <div class="contextualbody">
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+		<h1 class="documentFirstHeading" tal:content="here/Title"> 
+            Title
+        </h1>
+		<div tal:replace="structure provider:plone.belowcontenttitle" />
+        
+		<div class="contextualbody">
             <div class="documentDescription rer-contextual-description">
                 <metal:field use-macro="python:here.widget('description', mode='view')">
                     Description
                 </metal:field>
             </div>
+			
+			<div tal:replace="structure provider:plone.abovecontentbody" />
+			
             <div class="rer-contextual-text rer-contextual-text-right">
             	<div class="bandiColumnRight">
 					<table class="vertical listing tableRight">
@@ -126,8 +127,8 @@
                 </tal:foldeeps>
             </div>
         <div class="visualClear"></div>
-        <metal:use_footer use-macro="footer_macro" />
-
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+        </div>
       </metal:main_macro>
     </metal:fill>
   </body>

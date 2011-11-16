@@ -2,15 +2,6 @@
 <import-steps>
 
   <import-step
-    id="rer.bandi-versioning"
-    version="20110401-01"
-    handler="rer.bandi.setuphandlers.setVersionedTypes"
-    title="rer.bandi: Version">
-      Setup handler to put under version control the specified portal types
-    <dependency step="typeinfo"/>
-  </import-step>
-
-  <import-step
     id="rer.bandi-indexes"
     version="20110411-01"
     handler="rer.bandi.setuphandlers.add_catalog_indexes"

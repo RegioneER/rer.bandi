@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from zope.app.schema.vocabulary import IVocabularyFactory
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    from zope.schema.interfaces import IVocabularyFactory
+    
 from zope.component import getUtility
 from zope.interface import implements, Interface
 

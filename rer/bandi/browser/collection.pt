@@ -52,6 +52,7 @@
                                 over_limit python: limit_display and len(folderContents) > limit_display;
                                 folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
                                 batch folderContents;
+								isAnon context/@@plone_portal_state/anonymous;
                                 show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
             <tal:listing condition="folderContents">
                 <dl tal:repeat="item folderContents">

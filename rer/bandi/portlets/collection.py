@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from zope import schema
-from zope.app.schema.vocabulary import IVocabularyFactory
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    from zope.schema.interfaces import IVocabularyFactory
 from zope.component import getMultiAdapter, getUtility
 from zope.formlib import form
 from zope.interface import implements
