@@ -6,7 +6,7 @@
     i18n_domain="rer.bandi">
     
   <five:registerPackage package="." initialize=".initialize" />
-
+  <i18n:registerTranslations directory="locales" />
 
   <!-- Load these here as permissions are used by .browser and .portlets -->
 
