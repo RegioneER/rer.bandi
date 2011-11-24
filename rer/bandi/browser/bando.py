@@ -69,7 +69,11 @@ class BandoView(BrowserView):
                 if obj.Type=='File':
                     dictfields['url']=obj.getURL() + "/at_download/file"
                     obj_file=obj.getObject().getFile()
-                    dictfields['filesize']= self.getSizeString(obj_file.getSize())
+                    if obj_file.meta_type=='ATBlob':
+                        obj_size=obj_file.get_size()
+                    else:
+                         obj_size=obj_file.getSize()
+                    dictfields['filesize']= self.getSizeString(obj_size)
                 icon = ploneview.getIcon(obj)
                 dictfields['icon'] = icon.html_tag()
                 values.append(dictfields)
