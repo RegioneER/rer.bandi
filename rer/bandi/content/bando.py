@@ -20,8 +20,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         vocabulary_factory = 'rer.bandi.tipologia.vocabulary',
         widget=atapi.SelectionWidget(
-            label=u"Tipologia di Bando",
-            format='radio',
+            label=_('tipologia_bando_label', default=u"Tipologia di Bando"),
+            description=_('tipologia_bando_help',default=''),
         ),
         required=True,
     ),
@@ -32,7 +32,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         vocabulary_factory = 'rer.bandi.destinatari.vocabulary',
         widget=atapi.MultiSelectionWidget(
-            label=u"Destinatari",
+            label=_('destinatari_label',default=u"Destinatari"),
+            description=_('destinatari_help',default=''),
             format='checkbox',
         ),
     ),
@@ -42,8 +43,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'scadenza_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_(u"Data e ora di scadenza"),
-            description=_(u"Scadenza dei termini per partecipare al bando"),
+            label=_('scadenza_bando_label',default=u"Data e ora di scadenza"),
+            description=_('scadenza_bando_help',default=u"Scadenza dei termini per partecipare al bando"),
         ),
         validators=('isValidDate'),
     ),
@@ -53,7 +54,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'chiusura_procedimento_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_(u"Data chiusura procedimento"),
+            label=_('chiusura_procedimento_bando_label',default=u"Data chiusura procedimento"),
+            description=_('chiusura_procedimento_bando_help',default=u''),
             show_hm = False,
         ),
         validators=('isValidDate'),
@@ -65,8 +67,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         searchable=True,
         widget=atapi.RichWidget(
-            label=_(u"Riferimenti"),
-            description=_(u"indicare la struttura di riferimento e il responsabile del procedimento"),
+            label=_('riferimenti_bando_label',default=u"Riferimenti"),
+            description=_('riferimenti_bando_help',default=u"indicare la struttura di riferimento e il responsabile del procedimento"),
         ),
     ),
 

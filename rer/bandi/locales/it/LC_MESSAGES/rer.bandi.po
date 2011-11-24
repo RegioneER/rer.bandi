@@ -1,0 +1,125 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-11-24 08:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: rer.bandi\n"
+
+#: ./portlets/collection.py:200
+msgid "Add Collection Portlet"
+msgstr ""
+
+#. Default: "Bando"
+#: ./profiles/default/types/Bando.xml
+msgid "Bando"
+msgstr ""
+
+#. Default: "Cartella Approfondimento"
+#: ./profiles/default/types/Bando_Folder_Deepening.xml
+msgid "Cartella Approfondimento"
+msgstr ""
+
+#: ./portlets/collection.py:219
+msgid "Edit Collection Portlet"
+msgstr ""
+
+#: ./portlets/collection.py:37
+msgid "Find the collection which provides the items to list"
+msgstr ""
+
+#: ./portlets/collection.py:48
+msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+msgstr ""
+
+#: ./portlets/collection.py:42
+msgid "Limit"
+msgstr ""
+
+#: ./portlets/collection.py:32
+msgid "Portlet header"
+msgstr ""
+
+#: ./portlets/collection.py:47
+msgid "Show more... link"
+msgstr ""
+
+#: ./portlets/collection.py:43
+msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
+msgstr ""
+
+#: ./portlets/collection.py:36
+msgid "Target collection"
+msgstr ""
+
+#: ./portlets/collection.py:201
+msgid "This portlet display a listing of items from a Collection."
+msgstr ""
+
+#: ./portlets/collection.py:33
+msgid "Title of the rendered portlet"
+msgstr ""
+
+#. Default: "Una cartella per i documenti usati dal bando."
+#: ./profiles/default/types/Bando_Folder_Deepening.xml
+msgid "Una cartella per i documenti usati dal bando."
+msgstr ""
+
+#: ./content/bando.py:58
+msgid "chiusura_procedimento_bando_help"
+msgstr ""
+
+#. Default: "Data chiusura procedimento"
+#: ./content/bando.py:57
+msgid "chiusura_procedimento_bando_label"
+msgstr ""
+
+#: ./content/bando.py:36
+msgid "destinatari_help"
+msgstr ""
+
+#. Default: "Destinatari"
+#: ./content/bando.py:35
+msgid "destinatari_label"
+msgstr ""
+
+#. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
+#: ./content/bando.py:71
+msgid "riferimenti_bando_help"
+msgstr ""
+
+#. Default: "Riferimenti"
+#: ./content/bando.py:70
+msgid "riferimenti_bando_label"
+msgstr ""
+
+#. Default: "Scadenza dei termini per partecipare al bando"
+#: ./content/bando.py:47
+msgid "scadenza_bando_help"
+msgstr ""
+
+#. Default: "Data e ora di scadenza"
+#: ./content/bando.py:46
+msgid "scadenza_bando_label"
+msgstr ""
+
+#: ./content/bando.py:24
+msgid "tipologia_bando_help"
+msgstr ""
+
+#. Default: "Tipologia di Bando"
+#: ./content/bando.py:23
+msgid "tipologia_bando_label"
+msgstr ""
+
