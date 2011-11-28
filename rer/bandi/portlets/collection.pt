@@ -1,5 +1,5 @@
 <dl class="portlet portletCollection portletBandi"
-    i18n:domain="plone"
+    i18n:domain="rer.bandi"
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
@@ -37,7 +37,7 @@
 			 
 		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.EffectiveDate!='None' or obj.scadenza_bando)">
                 <tal:pubblicazione condition="python:view.data.show_effective and obj.EffectiveDate!='None'">
-                    Pubblicato il: 
+                    <span tal:omit-tag="" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(obj.EffectiveDate)" />
                 </tal:pubblicazione>
                 <span tal:omit-tag=""
@@ -45,7 +45,7 @@
                         |
                 </span>
                 <tal:scadenza_bando condition="python:view.data.show_scadenza_bando and obj.scadenza_bando">
-                    Scadenza termini partecipazione: 
+                    <span tal:omit-tag="" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                     <span tal:content="python:toLocalizedTime(obj.scadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>
             </div>

@@ -20,7 +20,7 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         vocabulary_factory = 'rer.bandi.tipologia.vocabulary',
         widget=atapi.SelectionWidget(
-            label=_('tipologia_bando_label', default=u"Tipologia di Bando"),
+            label=_('tipologia_bando_label', default=u"Announcement type"),
             description=_('tipologia_bando_help',default=''),
         ),
         required=True,
@@ -32,7 +32,7 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         vocabulary_factory = 'rer.bandi.destinatari.vocabulary',
         widget=atapi.MultiSelectionWidget(
-            label=_('destinatari_label',default=u"Destinatari"),
+            label=_('destinatari_label',default=u"Recipients"),
             description=_('destinatari_help',default=''),
             format='checkbox',
         ),
@@ -43,8 +43,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'scadenza_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_('scadenza_bando_label',default=u"Data e ora di scadenza"),
-            description=_('scadenza_bando_help',default=u"Scadenza dei termini per partecipare al bando"),
+            label=_('scadenza_bando_label',default=u"Expiration date and time"),
+            description=_('scadenza_bando_help',default=u"Deadline to participate in the announcement"),
         ),
         validators=('isValidDate'),
     ),
@@ -54,7 +54,7 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'chiusura_procedimento_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_('chiusura_procedimento_bando_label',default=u"Data chiusura procedimento"),
+            label=_('chiusura_procedimento_bando_label',default=u"Closing date procedure"),
             description=_('chiusura_procedimento_bando_help',default=u''),
             show_hm = False,
         ),
@@ -67,8 +67,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         searchable=True,
         widget=atapi.RichWidget(
-            label=_('riferimenti_bando_label',default=u"Riferimenti"),
-            description=_('riferimenti_bando_help',default=u"indicare la struttura di riferimento e il responsabile del procedimento"),
+            label=_('riferimenti_bando_label',default=u"References"),
+            description=_('riferimenti_bando_help',default=u""),
         ),
     ),
 

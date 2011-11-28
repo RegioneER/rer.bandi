@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="rer.bandi">
 
 <body>
 
@@ -56,21 +56,32 @@
                                 show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
             <tal:listing condition="folderContents">
                 <dl tal:repeat="item folderContents">
-                  <dt>
-                    <a tal:attributes="href item/getURL;
+                  <dt class="bandoTitle"
+				      tal:define="stato_bando python:view.getBandoState(item)">
+				    <span tal:condition="stato_bando"
+					      tal:define="stato_class python:stato_bando[0];
+						              stato_str python:stato_bando[1]"
+                          tal:attributes="class string:state-${stato_class} bandoStateClass"
+                          i18n:domain="rer.bandi"
+                          i18n:translate=""
+                          tal:content="stato_str">
+                            stato
+                          </span>
+                    <a class="bandoTitle" tal:attributes="href item/getURL;
                                        title item/pretty_title_or_id"
                        tal:content="item/pretty_title_or_id" />
-				  </dt>
-                  <dd>
+                  </dt>
+                  <dd class="bandoDetail">
                     <div tal:content="item/Description" />
                       <div class="bandoType"
                            tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
-                        Tipologia di bando: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
+                        <span tal:omit-tag=""
+						      i18n:translate="tipologia_bando_label">Announcement type</span>: <span tal:content="python:view.voc_tipologia.getTermByToken(item.tipologia_bando).title" />
                       </div>
                       <div class="bandoDates"
                            tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1000/01/01' or item.scadenza_bando)">
                         <tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
-                            Pubblicato il: 
+                            <span tal:omit-tag="" i18n:translate="bandi_published_on">Published on</span>: 
                             <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
                         </tal:pubblicazione>
                         <span tal:omit-tag=""
@@ -78,7 +89,7 @@
                                 |
                               </span>
                         <tal:scadenza_bando condition="item/scadenza_bando">
-                            Scadenza termini partecipazione: 
+                            <span tal:omit-tag="" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>: 
                             <span tal:content="python:here.toLocalizedTime(item.scadenza_bando, long_format=True)" />
                         </tal:scadenza_bando>
                     </div>

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-11-24 08:07+0000\n"
+"POT-Creation-Date: 2011-11-28 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,40 +76,64 @@ msgstr ""
 msgid "Una cartella per i documenti usati dal bando."
 msgstr ""
 
+#. Default: "Published on"
+#: ./browser/collection.pt:84
+msgid "bandi_published_on"
+msgstr ""
+
+#. Default: "Closing process"
+#: ./browser/bando-right.pt:70
+msgid "bando_chiusura_procedimento"
+msgstr ""
+
+#. Default: "Publication date"
+#: ./browser/bando-right.pt:53
+msgid "bando_pub_date"
+msgstr ""
+
+#. Default: "Deadline participation terms"
+#: ./browser/bando-right.pt:62
+msgid "bando_scadenza_partecipazione"
+msgstr ""
+
 #: ./content/bando.py:58
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
-#. Default: "Data chiusura procedimento"
+#. Default: "Closing date procedure"
 #: ./content/bando.py:57
 msgid "chiusura_procedimento_bando_label"
+msgstr ""
+
+#. Default: "There are currently no items in this folder."
+#: ./browser/collection.pt:100
+msgid "description_no_items_in_folder"
 msgstr ""
 
 #: ./content/bando.py:36
 msgid "destinatari_help"
 msgstr ""
 
-#. Default: "Destinatari"
-#: ./content/bando.py:35
+#. Default: "Recipients"
+#: ./browser/bando-right.pt:41
 msgid "destinatari_label"
 msgstr ""
 
-#. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
 #: ./content/bando.py:71
 msgid "riferimenti_bando_help"
 msgstr ""
 
-#. Default: "Riferimenti"
+#. Default: "References"
 #: ./content/bando.py:70
 msgid "riferimenti_bando_label"
 msgstr ""
 
-#. Default: "Scadenza dei termini per partecipare al bando"
+#. Default: "Deadline to participate in the announcement"
 #: ./content/bando.py:47
 msgid "scadenza_bando_help"
 msgstr ""
 
-#. Default: "Data e ora di scadenza"
+#. Default: "Expiration date and time"
 #: ./content/bando.py:46
 msgid "scadenza_bando_label"
 msgstr ""
@@ -118,8 +142,8 @@ msgstr ""
 msgid "tipologia_bando_help"
 msgstr ""
 
-#. Default: "Tipologia di Bando"
-#: ./content/bando.py:23
+#. Default: "Announcement type"
+#: ./browser/bando-right.pt:34
 msgid "tipologia_bando_label"
 msgstr ""
 

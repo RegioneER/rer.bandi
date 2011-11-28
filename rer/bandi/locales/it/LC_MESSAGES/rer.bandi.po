@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-11-24 08:07+0000\n"
+"POT-Creation-Date: 2011-11-28 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,89 +37,114 @@ msgstr ""
 
 #: ./portlets/collection.py:37
 msgid "Find the collection which provides the items to list"
-msgstr ""
+msgstr "Trova una collezione chee mostrerà gli elementi selezionati"
 
 #: ./portlets/collection.py:48
 msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
-msgstr ""
+msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
 #: ./portlets/collection.py:42
 msgid "Limit"
-msgstr ""
+msgstr "Limite"
 
 #: ./portlets/collection.py:32
 msgid "Portlet header"
-msgstr ""
+msgstr "Titolo portlet"
 
 #: ./portlets/collection.py:47
 msgid "Show more... link"
-msgstr ""
+msgstr "Link altro..."
 
 #: ./portlets/collection.py:43
 msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
-msgstr ""
+msgstr "Specifica il numero massimo di elementi da mostrare nella portlet. Lascialo vuoto per mostrarli tutti."
 
 #: ./portlets/collection.py:36
 msgid "Target collection"
-msgstr ""
+msgstr "Collezione di riferimento"
 
 #: ./portlets/collection.py:201
 msgid "This portlet display a listing of items from a Collection."
-msgstr ""
+msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
 #: ./portlets/collection.py:33
 msgid "Title of the rendered portlet"
-msgstr ""
+msgstr "Titolo della portlet."
 
 #. Default: "Una cartella per i documenti usati dal bando."
 #: ./profiles/default/types/Bando_Folder_Deepening.xml
 msgid "Una cartella per i documenti usati dal bando."
 msgstr ""
 
+#. Default: "Published on"
+#: ./browser/collection.pt:84
+msgid "bandi_published_on"
+msgstr "Pubblicato il"
+
+#. Default: "Closing process"
+#: ./browser/bando-right.pt:70
+msgid "bando_chiusura_procedimento"
+msgstr "Chiusura procedimento"
+
+#. Default: "Publication date"
+#: ./browser/bando-right.pt:53
+msgid "bando_pub_date"
+msgstr "Data di pubblicazione"
+
+#. Default: "Deadline participation terms"
+#: ./browser/bando-right.pt:62
+msgid "bando_scadenza_partecipazione"
+msgstr "Scadenza termini partecipazione"
+
 #: ./content/bando.py:58
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
-#. Default: "Data chiusura procedimento"
+#. Default: "Closing date procedure"
 #: ./content/bando.py:57
 msgid "chiusura_procedimento_bando_label"
-msgstr ""
+msgstr "Data chiusura procedimento"
+
+#. Default: "There are currently no items in this folder."
+#: ./browser/collection.pt:100
+msgid "description_no_items_in_folder"
+msgstr "Non ci sono elementi."
 
 #: ./content/bando.py:36
 msgid "destinatari_help"
 msgstr ""
 
-#. Default: "Destinatari"
-#: ./content/bando.py:35
+#. Default: "Recipients"
+#: ./browser/bando-right.pt:41
 msgid "destinatari_label"
-msgstr ""
+msgstr "Destinatari"
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
 #: ./content/bando.py:71
 msgid "riferimenti_bando_help"
-msgstr ""
+msgstr "indicare la struttura di riferimento e il responsabile del procedimento"
 
-#. Default: "Riferimenti"
+#. Default: "References"
 #: ./content/bando.py:70
 msgid "riferimenti_bando_label"
-msgstr ""
+msgstr "Riferimenti"
 
-#. Default: "Scadenza dei termini per partecipare al bando"
+#. Default: "Deadline to participate in the announcement"
 #: ./content/bando.py:47
 msgid "scadenza_bando_help"
-msgstr ""
+msgstr "Scadenza dei termini per partecipare al bando"
 
-#. Default: "Data e ora di scadenza"
+#. Default: "Expiration date and time"
 #: ./content/bando.py:46
 msgid "scadenza_bando_label"
-msgstr ""
+msgstr "Data e ora di scadenza"
 
 #: ./content/bando.py:24
 msgid "tipologia_bando_help"
 msgstr ""
 
-#. Default: "Tipologia di Bando"
-#: ./content/bando.py:23
+#. Default: "Announcement type"
+#: ./browser/bando-right.pt:34
 msgid "tipologia_bando_label"
-msgstr ""
+msgstr "Tipologia di bando"
 
