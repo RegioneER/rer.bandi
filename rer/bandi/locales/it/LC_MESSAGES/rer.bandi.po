@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-11-28 09:12+0000\n"
+"POT-Creation-Date: 2011-12-13 14:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Domain: rer.bandi\n"
 
 #: ./portlets/collection.py:200
-msgid "Add Collection Portlet"
-msgstr ""
+msgid "Add Bandi Portlet"
+msgstr "Aggiungi Portlet Bandi"
 
 #. Default: "Bando"
 #: ./profiles/default/types/Bando.xml
@@ -31,9 +31,13 @@ msgstr ""
 msgid "Cartella Approfondimento"
 msgstr ""
 
+#: ./browser/collection.py:32
+msgid "Closed"
+msgstr "Chiuso"
+
 #: ./portlets/collection.py:219
-msgid "Edit Collection Portlet"
-msgstr ""
+msgid "Edit Bandi Portlet"
+msgstr "Modifica Portlet Bandi"
 
 #: ./portlets/collection.py:37
 msgid "Find the collection which provides the items to list"
@@ -43,9 +47,17 @@ msgstr "Trova una collezione chee mostrerà gli elementi selezionati"
 msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
 msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
+#: ./browser/collection.py:34
+msgid "In progress"
+msgstr "In svolgimento"
+
 #: ./portlets/collection.py:42
 msgid "Limit"
 msgstr "Limite"
+
+#: ./browser/collection.py:29
+msgid "Open"
+msgstr "Aperto"
 
 #: ./portlets/collection.py:32
 msgid "Portlet header"
@@ -64,7 +76,7 @@ msgid "Target collection"
 msgstr "Collezione di riferimento"
 
 #: ./portlets/collection.py:201
-msgid "This portlet display a listing of items from a Collection."
+msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
 #: ./portlets/collection.py:33
@@ -77,7 +89,7 @@ msgid "Una cartella per i documenti usati dal bando."
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:84
+#: ./browser/collection.pt:83
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
 
@@ -106,7 +118,7 @@ msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:100
+#: ./browser/collection.pt:99
 msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi."
 

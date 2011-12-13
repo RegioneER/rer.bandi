@@ -6,6 +6,8 @@ Changelog
 
 - fix css interlinea (#261) [nekorin]
 - Plone 4.1 compatibility [andrea]
+- added locales [andrea]
+- added icons for bando states [andrea]
 
 1.0.4 (2011-11-02)
 ------------------

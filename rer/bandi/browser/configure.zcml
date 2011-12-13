@@ -88,17 +88,11 @@
     action="@@collection_bandi_tipologia_view"
     />
 
-
-
-  <browser:resource
-    name="bando.png"
-    file="bando.png"
-    />
-
-  <browser:resource
-    name="folder_bando_deep.gif"
-    file="folder_bando_deep.gif"
-    />
+   <!--DIRECTORY REGISTRATION-->
+  <browser:resourceDirectory
+        name="rer.bandi.images"
+        directory="images"
+        />
 
   <browser:resource
     name="bandi.css"

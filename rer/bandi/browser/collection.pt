@@ -63,7 +63,6 @@
 						              stato_str python:stato_bando[1]"
                           tal:attributes="class string:state-${stato_class} bandoStateClass"
                           i18n:domain="rer.bandi"
-                          i18n:translate=""
                           tal:content="stato_str">
                             stato
                           </span>

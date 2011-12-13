@@ -6,7 +6,7 @@
   <property name="description"
     i18n:translate="">Una cartella per i documenti usati dal bando.</property>
   <property name="content_meta_type">BandoFolderDeepening</property>
-  <property name="content_icon">++resource++folder_bando_deep.gif</property>
+  <property name="content_icon">++resource++rer.bandi.images/folder_bando_deep.gif</property>
   <property name="product">rer.bandi</property>
   <property name="factory">addBandoFolderDeepening</property>
   <property name="immediate_view">atct_edit</property>

@@ -1,29 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from zope import schema
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    from zope.schema.interfaces import IVocabularyFactory
-from zope.component import getMultiAdapter, getUtility
-from zope.formlib import form
-from zope.interface import implements
-
+from Products.ATContentTypes.interface import IATTopic, IATContentType
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.memoize.instance import memoize
-from plone.portlets.interfaces import IPortletDataProvider
 from plone.portlet.collection import PloneMessageFactory as _
-
-#from plone.memoize import ram
-#from plone.memoize.compress import xhtml_compress
-
-from Products.ATContentTypes.interface import IATTopic, IATContentType
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
+from plone.portlets.interfaces import IPortletDataProvider
 from rer.bandi.interfaces import IBando
-
+from zope import schema
+from zope.component import getMultiAdapter, getUtility
+from zope.formlib import form
+from zope.i18n import translate
+from zope.interface import implements
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    from zope.schema.interfaces import IVocabularyFactory
 
 class IBandoCollectionPortlet(IPortletDataProvider):
     """A portlet which renders the results of a collection object.
@@ -184,7 +178,17 @@ class Renderer(base.Renderer):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         return portal_state.portal()
 
-
+    def getBandoState(self,bando):
+        """
+        """
+        if not bando.scadenza_bando.isPast():
+            return ('open',translate(_(u'Open'),context=self.request))
+        else:
+            if bando.chiusura_procedimento_bando.isPast():
+                return ('closed',translate(_(u'Closed'),context=self.request))
+            else:
+                return ('inProgress',translate(_(u'In progress'),context=self.request))
+        return ()
 
 class AddForm(base.AddForm):
     """Portlet add form.
@@ -197,8 +201,8 @@ class AddForm(base.AddForm):
     form_fields['target_collection'].custom_widget = UberSelectionWidget
     form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
-    label = _(u"Add Collection Portlet")
-    description = _(u"This portlet display a listing of items from a Collection.")
+    label = _(u"Add Bandi Portlet")
+    description = _(u"This portlet display a listing of bandi from a Collection.")
 
     def create(self, data):
         return Assignment(**data)
@@ -216,7 +220,7 @@ class EditForm(base.EditForm):
     form_fields['target_collection'].custom_widget = UberSelectionWidget
     form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
-    label = _(u"Edit Collection Portlet")
-    description = _(u"This portlet display a listing of items from a Collection.")
+    label = _(u"Edit Bandi Portlet")
+    description = _(u"This portlet display a listing of bandi from a Collection.")
 
 

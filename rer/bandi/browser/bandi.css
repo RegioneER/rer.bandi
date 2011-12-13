@@ -17,9 +17,6 @@
 	float: none;
 }
 
-.contextualbody .navTreeItem .description {
-/*	display:none; */
-}
 .contextualbody .navTreeItem li {
 	list-style-type:none;
 }
@@ -43,7 +40,60 @@
     margin-left: 1em;
 }
 
-#content .bandoInfos h3 {
-    line-height: 1.5em;
-    margin-top: 0;
+/*** etichette bandi ***/
+/*dt.bandoState {
+    display: inline;
+    color: #FFF;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    padding: 0.2em 0;
+}
+
+dt.bandoState .bandoTitle{
+    margin-left: 5.5em;	
+}
+
+.bandoClosed {
+    background-image: url(++resource++rer.bandi.images/bando_chiuso.png);
+}
+.bandoOpen {
+    background-image: url(++resource++rer.bandi.images/bando_aperto.png);
+}*/
+
+/*** etichette bandi ***/
+
+.bandoTitle .bandoStateClass {
+    display:block;
+	width:46px;
+	height:11px;
+	text-indent: -9999em;
+    float: right;
+	margin-left: 0.5em;
+    margin-top: 0.3em;
+}
+.state-closed {
+    background-image: url(++resource++rer.bandi.images/bando_closed.png);
+}
+.state-open {
+    background-image: url(++resource++rer.bandi.images/bando_open.png);
+}
+
+.state-inProgress {
+    background-image: url(++resource++rer.bandi.images/bando_inprogress.png);
+}
+
+.bandoDetail {
+    clear: both;
+}
+dd.bandoDetail {
+    margin: 0 0;
+    padding: 0.5em 0 0;
+}
+dl.bandoItem {
+    border-bottom: 1px dashed #CCC;
+    padding: 0.5em 0 0.7em;
+    margin: 0.5em 0;
+}
+.labelTB {
+    font-weight: bold;
 }

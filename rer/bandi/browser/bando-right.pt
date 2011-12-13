@@ -30,15 +30,15 @@
             <div class="rer-contextual-text rer-contextual-text-right">
             	<div class="bandiColumnRight">
 				    <table class="vertical listing tableRight">
-		                <tr>
-		                  <th>Tipologia di bando</th>
-		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
-		                    Tipologia bando
-		                  </td>
-		                </tr>
-		
-		                <tr tal:condition="context/getDestinatari|nothing">
-                          <th>Destinatari</th>
+                        <tr>
+                          <th i18n:translate="tipologia_bando_label">Announcement type</th>
+                          <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
+                            Tipologia bando
+                          </td>
+                        </tr>
+        
+                        <tr tal:condition="context/getDestinatari|nothing">
+                          <th i18n:translate="destinatari_label">Recipients</th>
                           <td>
                             <ul>
                               <li tal:repeat="dest view/getDestinatariNames"
@@ -50,7 +50,7 @@
                         </tr>
         
                         <tr tal:condition="context/getEffectiveDate">
-                          <th>Data di pubblicazione</th>
+                          <th i18n:translate="bando_pub_date">Publication date</th>
                           <td>
                             <tal:pubblicazione content="python:here.toLocalizedTime(context.EffectiveDate())">
                               data di pubblicazione
@@ -59,7 +59,7 @@
                         </tr>
         
                         <tr tal:condition="context/getScadenza_bando|nothing">
-                          <th>Scadenza termini partecipazione</th>
+                          <th i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</th>
                           <td>
                             <div tal:replace="python:here.toLocalizedTime(context.getScadenza_bando(), long_format=True)">
                               chiusura procedimento
@@ -67,14 +67,14 @@
                           </td>
                         </tr>
                         <tr tal:condition="context/getChiusura_procedimento_bando|nothing">
-                          <th>Chiusura procedimento</th>
+                          <th i18n:translate="bando_chiusura_procedimento">Closing process</th>
                           <td>
                             <div tal:replace="python:here.toLocalizedTime(context.getChiusura_procedimento_bando())">
                               scadenza bando
                             </div>
                           </td>
                         </tr>
-		            </table>
+                    </table>
             		
 					<div class="rer-contextual-portlets">
 		                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
