@@ -42,21 +42,27 @@
 
 /*** etichette bandi ***/
 
-.bandoTitle .bandoStateClass {
+.bandoInfos .bandoStateClass {
     display:block;
-    padding-left:48px;
+    padding-left:52px;
 	background-repeat:no-repeat;
 	background-position:left center;
+	font-weight: normal;
+	font-size: 0.8em;
+	text-transform: uppercase;
 }
 .state-closed {
     background-image: url(++resource++rer.bandi.images/bando_closed.png);
+    color: #700;
 }
 .state-open {
     background-image: url(++resource++rer.bandi.images/bando_open.png);
+    color: #255a01;
 }
 
 .state-inProgress {
     background-image: url(++resource++rer.bandi.images/bando_inprogress.png);
+    color: #9c6f02;
 }
 
 .bandoDetail {

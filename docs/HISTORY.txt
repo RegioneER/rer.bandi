@@ -8,6 +8,7 @@ Changelog
 - Plone 4.1 compatibility [andrea]
 - added locales [andrea]
 - added icons for bando states [andrea]
+- modificato template portlet [nekorin]
 
 1.0.4 (2011-11-02)
 ------------------

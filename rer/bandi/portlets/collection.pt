@@ -8,7 +8,7 @@
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
-            <span tal:content="view/data/header" />
+            <span class="tile" tal:content="view/data/header" />
         </a>
         <span class="portletTopRight"></span>
     </dt>
@@ -18,23 +18,23 @@
         tal:define="oddrow repeat/obj/odd;
                     item_icon python:getIcon(obj);"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
-        <div class="bandoInfos">
-		  <h3 class="bandoTitle"
-                      tal:define="stato_bando python:view.getBandoState(obj)">
-                    <span tal:condition="stato_bando"
-                          tal:define="stato_class python:stato_bando[0];
-                                      stato_str python:stato_bando[1]"
-                          tal:attributes="class string:state-${stato_class} bandoStateClass"
-                          i18n:domain="rer.bandi"
-                          tal:content="stato_str">
-                            stato
-                          </span>
+        <div class="bandoInfos"
+             tal:define="stato_bando python:view.getBandoState(obj)">
+            <div tal:condition="stato_bando"
+                  tal:define="stato_class python:stato_bando[0];
+                              stato_str python:stato_bando[1]"
+                  tal:attributes="class string:state-${stato_class} bandoStateClass"
+                  i18n:domain="rer.bandi"
+                  tal:content="stato_str">
+                    stato
+             </div>
+		  <h3 class="bandoTitle">
                     <a class="bandoTitle" tal:attributes="href obj/getURL;
                                        title obj/pretty_title_or_id"
                        tal:content="obj/pretty_title_or_id" />
 	      </h3>
 		
-		  <p class="documentDescription bandoDescription"
+		  <p class="bandoDescription"
 		        tal:condition="python:view.data.show_description and obj.Description"
                 tal:content="obj/Description" />
 		  <p class="bandoType"
@@ -43,7 +43,7 @@
 			 
 		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.EffectiveDate!='None' or obj.scadenza_bando)">
                 <tal:pubblicazione condition="python:view.data.show_effective and obj.EffectiveDate!='None'">
-                    <span tal:omit-tag="" i18n:translate="bandi_published_on">Published on</span>:
+                    <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(obj.EffectiveDate)" />
                 </tal:pubblicazione>
                 <span tal:omit-tag=""
@@ -51,7 +51,7 @@
                         |
                 </span>
                 <tal:scadenza_bando condition="python:view.data.show_scadenza_bando and obj.scadenza_bando">
-                    <span tal:omit-tag="" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
+                    <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                     <span tal:content="python:toLocalizedTime(obj.scadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>
             </div>
@@ -62,7 +62,7 @@
     <dd class="portletFooter" tal:condition="view/data/show_more">
         <span class="portletBottomLeft"></span>
         <span>
-          <a tal:attributes="href view/more_target_url" tal:content="view/data/show_more_text">
+          <a class="arrowLink" tal:attributes="href view/more_target_url" tal:content="view/data/show_more_text">
              More&hellip;
           </a>
         </span>
