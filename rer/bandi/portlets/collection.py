@@ -7,6 +7,7 @@ from plone.app.portlets.portlets import base
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.memoize.instance import memoize
 from plone.portlet.collection import PloneMessageFactory as _
+from rer.bandi import bandiMessageFactory as __
 from plone.portlets.interfaces import IPortletDataProvider
 from rer.bandi.interfaces import IBando
 from zope import schema
@@ -182,12 +183,12 @@ class Renderer(base.Renderer):
         """
         """
         if not bando.scadenza_bando.isPast():
-            return ('open',translate(_(u'Open'),context=self.request))
+            return ('open',translate(__(u'Open'),context=self.request))
         else:
             if bando.chiusura_procedimento_bando.isPast():
-                return ('closed',translate(_(u'Closed'),context=self.request))
+                return ('closed',translate(__(u'Closed'),context=self.request))
             else:
-                return ('inProgress',translate(_(u'In progress'),context=self.request))
+                return ('inProgress',translate(__(u'In progress'),context=self.request))
         return ()
 
 class AddForm(base.AddForm):
