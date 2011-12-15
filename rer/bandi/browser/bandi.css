@@ -64,12 +64,9 @@ dt.bandoState .bandoTitle{
 
 .bandoTitle .bandoStateClass {
     display:block;
-	width:46px;
-	height:11px;
-	text-indent: -9999em;
-    float: right;
-	margin-left: 0.5em;
-    margin-top: 0.3em;
+    padding-left:48px;
+	background-repeat:no-repeat;
+	background-position:left center;
 }
 .state-closed {
     background-image: url(++resource++rer.bandi.images/bando_closed.png);
