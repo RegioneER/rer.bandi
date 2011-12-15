@@ -41,26 +41,6 @@
 }
 
 /*** etichette bandi ***/
-/*dt.bandoState {
-    display: inline;
-    color: #FFF;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    padding: 0.2em 0;
-}
-
-dt.bandoState .bandoTitle{
-    margin-left: 5.5em;	
-}
-
-.bandoClosed {
-    background-image: url(++resource++rer.bandi.images/bando_chiuso.png);
-}
-.bandoOpen {
-    background-image: url(++resource++rer.bandi.images/bando_aperto.png);
-}*/
-
-/*** etichette bandi ***/
 
 .bandoTitle .bandoStateClass {
     display:block;
