@@ -49,7 +49,7 @@ msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, co
 
 #: ./browser/collection.py:34
 msgid "In progress"
-msgstr "In svolgimento"
+msgstr "In corso"
 
 #: ./portlets/collection.py:42
 msgid "Limit"
