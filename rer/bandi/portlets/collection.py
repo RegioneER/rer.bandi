@@ -182,14 +182,18 @@ class Renderer(base.Renderer):
     def getBandoState(self,bando):
         """
         """
-        if not bando.scadenza_bando.isPast():
-            return ('open',translate(__(u'Open'),context=self.request))
-        else:
-            if bando.chiusura_procedimento_bando.isPast():
-                return ('closed',translate(__(u'Closed'),context=self.request))
+        scadenza_bando=bando.scadenza_bando
+        chiusura_procedimento_bando=bando.chiusura_procedimento_bando
+        state=('open',translate(_(u'Open'),context=self.request))
+        if scadenza_bando and scadenza_bando.isPast():
+            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                state= ('closed',translate(_(u'Closed'),context=self.request))
             else:
-                return ('inProgress',translate(__(u'In progress'),context=self.request))
-        return ()
+                state= ('inProgress',translate(_(u'In progress'),context=self.request))
+        else:
+            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                state= ('closed',translate(_(u'Closed'),context=self.request))
+        return state
 
 class AddForm(base.AddForm):
     """Portlet add form.
