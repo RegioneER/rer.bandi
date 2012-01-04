@@ -116,3 +116,9 @@ dl.bandoItem {
 .labelTB {
     font-weight: bold;
 }
+
+.portletBandi .bandoDescription,
+.portletBandi .bandoType,
+.portletBandi .bandoDates{
+	margin-left:70px;
+}
