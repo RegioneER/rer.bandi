@@ -1,10 +1,11 @@
 Changelog
 =========
 
-1.0.7 (2012-??-??)
+1.0.7 (2012-01-05)
 ------------------
 
 - fix controllo sulle date [andrea]
+- sistemati stili [andrea]
 
 1.0.6 (2011-12-19)
 ------------------
