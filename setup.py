@@ -5,7 +5,7 @@ This module contains the tool of rer.bandi
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.7'
+version = '1.0.8'
 
 tests_require = ['zope.testing']
 
