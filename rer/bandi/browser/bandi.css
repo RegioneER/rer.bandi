@@ -74,6 +74,10 @@ a.bandoTitle {
 	text-align: center;
 }
 
+.searchResults .bandoTitle .bandoStateClass {
+	margin-top: 3px;
+}
+
 h3.bandoTitle{
 	margin-top:3px
 }
@@ -102,7 +106,8 @@ dt.bandoTitle {
     clear: both;
 }
 
-dd.bandoDetail {
+dd.bandoDetail,
+dl.searchResults dd.bandoDetail {
     margin: 0 0 0 70px;
     clear:none;
 }

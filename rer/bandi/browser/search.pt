@@ -105,17 +105,23 @@
                            result_type result/portal_type;
                            item_icon python:plone_view.getIcon(result);
                            url python:'%s?searchterm=%s'%(test(result_type in use_view_action, result_url+'/view', result_url+'/'), searchterm);">
-            <dt tal:define="item_wf_state_class string:state-${result/review_state};"
-                tal:attributes="class python:'contenttype-' + normalizeString(result.portal_type)">
-              <img tal:replace="structure item_icon/html_tag" />
-               <a
-                 href="#" 
-                 tal:attributes="href url;
-                                 class string:$item_wf_state_class"
-                 tal:content="result/pretty_title_or_id" />
-            </dt>
-            
-            <dd>
+            <dt tal:define="stato_bando python:view.getBandoState(result);
+		    	            item_wf_state_class string:state-${result/review_state};"
+			    tal:attributes="class python:'bandoTitle contenttype-' + normalizeString(result.portal_type)">
+			    <span tal:condition="stato_bando"
+				      tal:define="stato_class python:stato_bando[0];
+					              stato_str python:stato_bando[1]"
+	                  tal:attributes="class string:state-${stato_class} bandoStateClass"
+	                  i18n:domain="rer.bandi"
+	                  tal:content="stato_str">
+	                    stato
+	                  </span>
+	            <a class="bandoTitle"
+	               tal:attributes="href url;
+	              		           class string:$item_wf_state_class"
+		     	   tal:content="result/pretty_title_or_id" />
+          	</dt>
+            <dd class="bandoDetail">
                 <span tal:replace="python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
                     Cropped description
                 </span>
@@ -174,7 +180,9 @@
             </span>
 
             <div class="bandoDates"
-			     tal:condition="python:result.effective.Date() != '1000/01/01' or result.scadenza_bando">
+            	 i18n:domain="rer.bandi"
+            	 tal:define="scadenza_bando result/scadenza_bando"
+			     tal:condition="python:result.effective.Date() != '1000/01/01' or scadenza_bando">
                 <tal:pubblicazione condition="python:result.effective.Date() != '1000/01/01'">
                     Pubblicato il: 
                     <span tal:content="python:here.toLocalizedTime(result.EffectiveDate)" />
@@ -183,10 +191,15 @@
                       tal:condition="python:result.effective.Date() != '1000/01/01' and result.scadenza_bando">
                         |
                       </span>
-                <tal:scadenza_bando condition="result/scadenza_bando">
-                    Scadenza termini partecipazione: 
-                    <span tal:content="python:here.toLocalizedTime(result.scadenza_bando, long_format=True)" />
-                </tal:scadenza_bando>
+                <p tal:condition="scadenza_bando">
+                   <span tal:omit-tag="" i18n:translate="bando_scadenza_partecipazione">
+                   	Deadline participation terms
+                   </span>: 
+                    <span tal:condition="python:scadenza_bando.Time() == '00:00:00'"
+                    	  tal:replace="python:here.toLocalizedTime(result.scadenza_bando, long_format=False)" />
+                    <span tal:condition="python:scadenza_bando.Time() != '00:00:00'"
+                    	  tal:replace="python:here.toLocalizedTime(result.scadenza_bando, long_format=True)" />
+                </p>
             </div>
             </dd>
 

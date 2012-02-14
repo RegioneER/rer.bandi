@@ -3,7 +3,8 @@
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-
+from zope.i18n import translate
+from rer.bandi import bandiMessageFactory as _
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
@@ -42,4 +43,20 @@ class SearchBandi(BrowserView):
             if stato=="conclusi":
                 self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'max'}
         return pc(**self.request.form)
+    
+    def getBandoState(self,bando):
+        """
+        """
+        scadenza_bando=bando.scadenza_bando
+        chiusura_procedimento_bando=bando.chiusura_procedimento_bando
+        state=('open',translate(_(u'Open'),context=self.request))
+        if scadenza_bando and scadenza_bando.isPast():
+            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                state= ('closed',translate(_(u'Closed'),context=self.request))
+            else:
+                state= ('inProgress',translate(_(u'In progress'),context=self.request))
+        else:
+            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                state= ('closed',translate(_(u'Closed'),context=self.request))
+        return state
         

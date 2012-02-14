@@ -14,7 +14,6 @@ except ImportError:
 class ICollectionBandiView(Interface):
     pass
 
-
 class CollectionBandiView(BrowserView):
     implements(ICollectionBandiView)
 
