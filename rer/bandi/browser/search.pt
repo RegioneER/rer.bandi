@@ -175,25 +175,19 @@
 
             <div class="bandoDates"
             	 i18n:domain="rer.bandi"
-            	 tal:define="scadenza_bando result/scadenza_bando"
-			     tal:condition="python:result.effective.Date() != '1000/01/01' or scadenza_bando">
+                   tal:condition="python:result.portal_type=='Bando' and (result.effective.Date() != '1000/01/01' or result.scadenza_bando)">
                 <tal:pubblicazione condition="python:result.effective.Date() != '1000/01/01'">
-                    Pubblicato il: 
+                    <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>: 
                     <span tal:content="python:here.toLocalizedTime(result.EffectiveDate)" />
                 </tal:pubblicazione>
-                <span tal:omit-tag=""
+                <span class="labelTB"
                       tal:condition="python:result.effective.Date() != '1000/01/01' and result.scadenza_bando">
                         |
                       </span>
-                <p tal:condition="scadenza_bando">
-                   <span tal:omit-tag="" i18n:translate="bando_scadenza_partecipazione">
-                   	Deadline participation terms
-                   </span>: 
-                    <span tal:condition="python:scadenza_bando.Time() == '00:00:00'"
-                    	  tal:replace="python:here.toLocalizedTime(result.scadenza_bando, long_format=False)" />
-                    <span tal:condition="python:scadenza_bando.Time() != '00:00:00'"
-                    	  tal:replace="python:here.toLocalizedTime(result.scadenza_bando, long_format=True)" />
-                </p>
+                <tal:scadenza_bando condition="result/scadenza_bando">
+                    <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>: 
+                    <span tal:content="python:here.toLocalizedTime(result.scadenza_bando, long_format=True)" />
+                </tal:scadenza_bando>
             </div>
             </dd>
 
