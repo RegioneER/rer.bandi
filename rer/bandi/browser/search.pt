@@ -63,8 +63,9 @@
 
 
     <h1 class="documentFirstHeading">
-        <span i18n:translate="heading_search_results">
-            Search results
+        <span i18n:domain="rer.bandi"
+        	  i18n:translate="heading_search_results">
+            Announcements search results
         </span>
         <span class="discreet">
         &mdash;
@@ -84,13 +85,6 @@
              Subscribe to an always-updated feed of these search terms</a>
     </p>
 
-    <!--div class="searchTerms">
-    	<ul>
-	    	<li tal:repeat="term request/form/keys">
-	    	   	<span tal:content="python:'%s: %s' %(term,request.form[term])"></span>
-	    	</li>
-    	</ul>
-    </div-->
     <div tal:condition="not: results">
         <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
     </div>

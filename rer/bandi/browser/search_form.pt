@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="rer.bandi">
 
     <metal:head fill-slot="top_slot"
                 tal:define="dummy python:request.set('disable_border',1)" />
@@ -13,12 +13,11 @@
 
 <div metal:fill-slot="main">
 
-    <h1 class="documentFirstHeading">Ricerca Bandi</h1>
+    <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
     
-	<p class="searchBandiDescription">
-		Questa maschera di ricerca permette di trovare i bandi nel sito che soddisfano uno o più criteri di ricerca 
+	<p class="searchBandiDescription" i18n:translate="bandi_search_help">
+		This search mask allows to find announcements in the site that satisfy one or more search criteria.
 	</p>
-	
     <form action="search_bandi"
           class="enableAutoFocus"
           method="get"
@@ -27,12 +26,12 @@
           tal:define="DateTime python:modules['DateTime'].DateTime">
         
             <div class="field">
-                <label for="SearchableText">Ricerca testuale </label>
+                <label for="SearchableText" i18n:translate="bandi_search_text_label">Search text</label>
 
-                <div class="formHelp">
-                    Per una semplice ricerca di testo inserisci qui i termini desiderati.
-					Possono essere cercate più parole contemporaneamente combinandole con gli operatori AND e OR.
-					Il testo inserito in questo campo verrà cercato nei tre campi di testo dei bandi  
+                <div class="formHelp" i18n:translate="bandi_search_text_help">
+					For a simple text search, enter your search term here.
+					Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>.
+					The text in this field will be matched with Announcements' title, description and text.
                 </div>
 
                 <input type="text"
@@ -44,27 +43,28 @@
 
             <div class="field">
 
-              <label>Stato:</label>
+              <label i18n:translate="bandi_search_state_label">State</label>
               
-			  <div class="formHelp" i18n:translate="">
-                Cerca i bandi aperti (non sono scaduti i termini per la partecipazione), 
-				in corso (sono scaduti i termini di partecipazione e il procedimento non è ancora chiuso) o conclusi (il procedimento è chiuso)
-                </div>
+			  <div class="formHelp" i18n:translate="bandi_search_state_help">
+				Search announcements <strong>open</strong> (with participation terms not expired),
+				<strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or
+				<strong>closed</strong> (the procedure is closed).
+              </div>
               
-			  <select name="stato_bandi" id="stato_bandi">
-                <option value="" selected="selected">Tutti</option>
-                <option value="aperti">Aperti</option>
-                <option value="in_corso">In corso</option>
-                <option value="conclusi">Conclusi</option>
+			  <select name="stato_bandi" id="stato_bandi" i18n:domain="rer.bandi">
+                <option value="" selected="selected" i18n:translate="bandi_search_state_all">All</option>
+                <option value="open" i18n:translate="bandi_search_state_open">Open</option>
+                <option value="inProgress" i18n:translate="bandi_search_state_inprogress">In progress</option>
+                <option value="closed" i18n:translate="bandi_search_state_closed">Closed</option>
               </select>
             </div>
 
 
             <div class="field">
-                <label for="tipologia">Tipologia</label>
+                <label for="tipologia" i18n:translate="bandi_search_type_label">Type</label>
 
-                <div class="formHelp" i18n:translate="">
-                Seleziona le tipologie di bandi
+                <div class="formHelp" i18n:translate="bandi_search_type_help">
+                Select an annonuncement type.
                 </div>
 
                 <tal:items repeat="t_tipo view/terms_tipologia">
@@ -83,10 +83,10 @@
 
 
             <div class="field">
-                <label for="destinatari">Destinatari</label>
+                <label for="destinatari" i18n:translate="bandi_search_recipients_label">Recipients</label>
 
-                <div class="formHelp" i18n:translate="">
-                Seleziona i destinatari dei bandi
+                <div class="formHelp" i18n:translate="bandi_search_recipients_help">
+                Select announcements recipients.
                 </div>
 
                 <tal:items repeat="t_dest view/terms_destinatari">
@@ -103,7 +103,7 @@
             </div>
 
 
-            <div class="field">
+            <div class="field" i18n:domain="plone">
                 <label for="Subject" i18n:translate="label_categories">Categories</label>
 
                 <div class="formHelp" i18n:translate="help_search_categories">
