@@ -35,12 +35,12 @@ class SearchBandi(BrowserView):
         stato = self.request.form.get('stato_bandi','')
         if stato:
             now=DateTime()
-            if stato=="aperti":
+            if stato=="open":
                 self.request.form['getScadenza_bando']={'query':now,'range':'min'}
-            if stato=="in_corso":
+            if stato=="inProgress":
                 self.request.form['getScadenza_bando']={'query':now,'range':'max'}
                 self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'min'}
-            if stato=="conclusi":
+            if stato=="closed":
                 self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'max'}
         return pc(**self.request.form)
     
