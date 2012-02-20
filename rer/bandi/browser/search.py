@@ -44,6 +44,31 @@ class SearchBandi(BrowserView):
                 self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'max'}
         return pc(**self.request.form)
     
+    
+#    def searchBandi(self):
+#        """
+#        return a list of bandi
+#        """
+#        pc=getToolByName(self.context,'portal_catalog')
+#        stato = self.request.form.get('stato_bandi','')
+#        if stato:
+#            now=DateTime()
+#            if stato=="open":
+#                self.request.form['getScadenza_bando']={'query':now,'range':'min'}
+#                aq=pc.makeAdvancedQuery(self.request.form)
+#            if stato=="inProgress":
+#                self.request.form['getScadenza_bando']={'query':now,'range':'max'}
+#                request_copy=self.request.form.copy()
+#                self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'min'}
+#                request_copy['getChiusura_procedimento_bando']=None
+#                query1=pc.makeAdvancedQuery(self.request.form)
+#                query2=  pc.makeAdvancedQuery(request_copy)
+#                aq=Or(query1,query2)
+#            if stato=="closed":
+#                aq=pc.makeAdvancedQuery(self.request.form)
+#                self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'max'}
+#        return pc.evalAdvancedQuery(aq)
+    
     def getBandoState(self,bando):
         """
         """
