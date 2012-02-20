@@ -11,3 +11,9 @@ def getChiusura_procedimento_bando(object, **kw):
     if object.getChiusura_procedimento_bando():
         return object.getChiusura_procedimento_bando()
     return DateTime("2100/12/31")
+
+@indexer(IBando)
+def getScadenza_bando(object, **kw):
+    if object.getScadenza_bando():
+        return object.getScadenza_bando()
+    return DateTime("2100/12/31")

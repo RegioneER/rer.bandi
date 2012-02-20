@@ -56,5 +56,6 @@
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
+  <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
 
 </configure>
