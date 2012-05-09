@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFEditions.setuphandlers import DEFAULT_POLICIES
 import logging
 logger = logging.getLogger('rer.bandi')
 

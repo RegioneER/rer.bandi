@@ -14,6 +14,9 @@ def getChiusura_procedimento_bando(object, **kw):
 
 @indexer(IBando)
 def getScadenza_bando(object, **kw):
-    if object.getScadenza_bando():
+    if not object.getScadenza_bando():
+        return DateTime('2100/12/31')
+    elif object.getScadenza_bando().Time() =='00:00:00':
+        return object.getScadenza_bando()+1
+    else:
         return object.getScadenza_bando()
-    return DateTime("2100/12/31")
