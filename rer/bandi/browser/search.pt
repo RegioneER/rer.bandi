@@ -29,7 +29,11 @@
                  desc_ellipsis site_properties/ellipsis;
                  searchterm request/SearchableText|nothing;
                  use_view_action site_properties/typesUseViewActionInListings|python:();
-                 test python:lambda cond, a, b: [b,a][cond]">
+                 test python:lambda cond, a, b: [b,a][cond];
+                 here_url context/@@plone_context_state/object_url;
+                 normalizeString nocall:context/@@plone/normalizeString;
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 syntool context/portal_syndication;>
 
     <form id="searchform" 
           action="search"

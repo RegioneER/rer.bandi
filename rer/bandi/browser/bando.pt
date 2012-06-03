@@ -76,17 +76,20 @@
 		                  </td>
 		                </tr>
 		            </table>
-				</div>
+				      </div>
 				
-                <p tal:condition="python: not here.getText() and is_editable"
+              <tal:text define="bando_text here/getText">
+                <p tal:condition="not:bando_text"
                     i18n:translate="no_body_text"
                     i18n:domain="plone"
                     class="discreet">
                     This item does not have any body text, click the edit tab to change it.
                 </p>
-                <div tal:replace="structure context/getText">
+                <div tal:condition="bando_text"
+                     tal:replace="structure bando_text">
                     Body text
                 </div>
+              </tal:text>
 
                 <hr />
                 <div tal:content="structure context/riferimenti_bando">

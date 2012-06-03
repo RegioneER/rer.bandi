@@ -11,15 +11,13 @@
     <metal:fill fill-slot="main">
       <metal:main_macro define-macro="main"
             tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '_');
-            base_macros here/base/macros;
-            view_template python:'%s_view' % portal_type;
-            view_macros python:path('here/%s/macros|nothing' % view_template);
-            header_macro view_macros/header | header_macro | base_macros/header;
-            body_macro view_macros/body | body_macro | base_macros/body;
-            folderlisting_macro view_macros/folderlisting | folderlisting | base_macros/folderlisting;
-            footer_macro view_macros/footer | footer_macro | base_macros/footer">
-
-        <metal:use_header use-macro="header_macro" />
+            view_template python:'%s_view' % portal_type;">
+        
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+        <h1 class="documentFirstHeading" tal:content="here/Title"> 
+                Title
+        </h1>
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
         
         <div class="contextualbody">
             <div class="documentDescription rer-contextual-description">
@@ -110,25 +108,25 @@
 		            </div>
             	</div>
 				
-				
-                <p tal:condition="python: not here.getText() and is_editable"
+				      <tal:text define="bando_text here/getText">
+                <p tal:condition="not:bando_text"
                     i18n:translate="no_body_text"
                     i18n:domain="plone"
                     class="discreet">
                     This item does not have any body text, click the edit tab to change it.
                 </p>
-                <div tal:replace="structure context/getText">
+                <div tal:condition="bando_text"
+                     tal:replace="structure bando_text">
                     Body text
                 </div>
-
+              </tal:text>
                 <hr />
                 <div tal:content="structure context/riferimenti_bando">
                     Riferimenti bando
                 </div>
             </div>
         <div class="visualClear"></div>
-        <metal:use_footer use-macro="footer_macro" />
-
+        <div tal:replace="structure provider:plone.belowcontentbody" />
       </metal:main_macro>
     </metal:fill>
   </body>
