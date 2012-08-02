@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.10 (2012-05-??)
+2.0.0 (unreleased)
 ------------------
 
 - fix Plone4 compatibility [andrea]

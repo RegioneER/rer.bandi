@@ -25,7 +25,7 @@
                     Description
                 </metal:field>
             </div>
-            <div class="rer-contextual-text rer-contextual-text-right">
+            <div class="rer-contextual-text">
             	<div class="bandiColumnRight">
 				    <table class="vertical listing tableRight">
                         <tr>
