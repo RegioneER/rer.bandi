@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.0.2 (unreleased)
+2.0.2 (2012-08-03)
 ------------------
 
-- Nothing changed yet.
+- fixed import in search.pt [andrea]
 
 
 2.0.1 (2012-08-03)
