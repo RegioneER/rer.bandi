@@ -103,7 +103,7 @@
             </div>
 
 
-            <div class="field" i18n:domain="plone">
+            <div class="field">
                 <label for="Subject" i18n:translate="label_categories">Categories</label>
 
                 <div class="formHelp" i18n:translate="help_search_categories">

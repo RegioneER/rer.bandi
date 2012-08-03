@@ -33,38 +33,7 @@
                  here_url context/@@plone_context_state/object_url;
                  normalizeString nocall:context/@@plone/normalizeString;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                 syntool context/portal_syndication;>
-
-    <form id="searchform" 
-          action="search"
-          class="searchPage">
-        <div>
-        <input class="searchPage"
-               name="SearchableText"
-               type="text"
-               size="25"
-               title="Search Site"
-               i18n:attributes="title title_search_title;"
-               tal:attributes="value request/SearchableText|nothing;"
-               />
-        <input class="searchPage searchButton"
-               type="submit"
-               value="Search"
-               i18n:attributes="value label_search;"/>
-        </div>
-
-        <p class="discreet"
-           i18n:translate="search_results_advanced">
-        Did you not find what you were looking for? Try the
-        <span i18n:name="advanced_search">
-        <a href=""
-           i18n:translate="search_results_advanced_link"
-           tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/search_form?SearchableText=${request/SearchableText|python:''}">Advanced Search</a>
-        </span>
-        to refine your search.
-        </p>
-    </form>
-
+                 syntool context/portal_syndication;">
 
     <h1 class="documentFirstHeading">
         <span i18n:domain="rer.bandi"
