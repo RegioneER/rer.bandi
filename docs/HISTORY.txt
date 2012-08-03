@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.0.1 (unreleased)
+2.0.1 (2012-08-03)
 ------------------
 
-- Nothing changed yet.
+- fixed css [andrea]
 
 
 2.0.0 (2012-08-03)
