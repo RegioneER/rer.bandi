@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.0.3 (unreleased)
+2.0.3 (2012-10-15)
 ------------------
 
-- Nothing changed yet.
+- fix translation in search_bandi_form [andrea]
 
 
 2.0.2 (2012-08-03)

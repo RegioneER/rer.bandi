@@ -103,10 +103,10 @@
             </div>
 
 
-            <div class="field">
-                <label for="Subject" i18n:translate="label_categories">Categories</label>
+            <div class="field" i18n:domain="plone">
+                <label for="Subject" i18n:translate="label_tags">Categories</label>
 
-                <div class="formHelp" i18n:translate="help_search_categories">
+                <div class="formHelp" i18n:translate="help_search_tags">
                 Return items matching some or all of these Categories.
                 Multiple words may be found by pressing <strong>Ctrl</strong>
                 (or <strong>Apple</strong> key on Mac) while clicking the

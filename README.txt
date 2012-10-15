@@ -1,41 +1,66 @@
-Introduzione
+Introduction
 ============
 
-Prodotto per i Bandi regionali
+rer.bandi is a product for announcements.
+It is a folderish content (like rer.folderish_content) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
 
 
-Configurazione vocabolario destinatari
---------------------------------------
+Composition
+===========
 
-Il prodotto cerca l'elenco dei possibili destinatari in una property:
+Folder deepening
+-----------------
+Like rer.folderish_content, it has a special folder type called "Folder Deepening" that allows to manage some extra infos or attachment that should be shown in the announcement's view.
+
+Topic criterias
+----------------
+There are some new topic criterias that allows to set topic queries for announcements.
+
+Announcements search
+---------------------
+There is a search form (http://yoursite/search_bandi_form) for quick searches.
+
+Announcement state information
+------------------------------
+In the search results and in the two new topic views, there are also some infos about the announcement, like his state (open, closed or in progress).
+
+Announcements portlet
+---------------------
+There is also a portlet that show announcement infos from a topic (this portlet extends base collection portlet)
+
+
+Configurations
+==============
+An announcement has two fields for set the announcement type and recipients.
+
+Recipients vocabulary
+---------------------
+
+This information is taken from a property in portal_properties:
 
     portal_properties.rer_bandi_settings.destinatari_bandi
 
-Questa viene interpretata come campo multilinea.
+If the property is empty, the item use a default list of values:
 
-In assenza di questo oggetto o property, viene usato l'elenco di default:
-
-    Cittadini
-    Imprese
-    Enti locali
-    Associazioni
-    Altro
+* Cittadini
+* Imprese
+* Enti locali
+* Associazioni
+* Altro
 
 
+Types vocabulary
+----------------
 
-Configurazione vocabolario tipologie
-------------------------------------
-
-Il prodotto si aspetta un variabile d'ambiente di nome ``PLONE_RER_BANDI_VOCAB``.
-E' possibile specificarla nel buildout::
+To handle this vocabulary, we need an enviroment variable called ``PLONE_RER_BANDI_VOCAB``.
+We need to set it into buildout:
 
     [instance]
     ...
     environment-vars =
         PLONE_RER_BANDI_VOCAB ${buildout:directory}/var/rer_bandi_vocab.xml
 
-Questa va fornita come percorso ad un file XML contenente i bandi; se il file non esiste la procedura
-genera un file predefinito::
+This variable set the path for an xml file that contains a list of announcement types; if the file doesn't exist, it will be automatically generated with some default values:
 
     <?xml version='1.0' encoding='utf-8'?>
     <vocab-list>
@@ -46,6 +71,26 @@ genera un file predefinito::
       </vocabulary>
     </vocab-list>
 
-Ricerca bandi
--------------
-Per cercare i bandi, basta richiamare la vista "search_bandi_form" da qualunque zona del sito.
+Dependencies
+============
+
+This product has been tested on Plone 3.3.5 and Plone 4.2
+
+Credits
+=======
+
+Developed with the support of `Regione Emilia Romagna`__;
+
+Regione Emilia Romagna supports the `PloneGov initiative`__.
+
+__ http://www.regione.emilia-romagna.it/
+__ http://www.plonegov.it/
+
+Authors
+=======
+
+This product was developed by RedTurtle Technology team.
+
+.. image:: http://www.redturtle.net/redturtle_banner.png
+   :alt: RedTurtle Technology Site
+   :target: http://www.redturtle.net/
