@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="rer.bandi">
+       
+  <!-- Upgrade steps -->
+  <gs:upgradeStep
+        title="Upgrade rer.bandi 2.1.0"
+        description="rer.bandi upgrade step"
+        source="1.0.9"
+        destination="2"
+        handler=".upgrades.to_2"
+        profile="rer.bandi:default" />
+       
+</configure>

@@ -102,6 +102,32 @@
                 </tal:items>
             </div>
 
+            <div class="field">
+                <label for="Subject" i18n:translate="bandi_search_authority_label">Authorities</label>
+
+                <div class="formHelp" i18n:translate="help_search_authorities">
+                Return items matching some or all of these authorities.
+                Multiple words may be found by pressing <strong>Ctrl</strong>
+                (or <strong>Apple</strong> key on Mac) while clicking the
+                keywords.
+                </div>
+
+                <select name="getEnte_bando:list"
+                        id="getEnte_bando"
+                        size="7"
+                        multiple="multiple"
+                        tal:define="usedEnti python:here.portal_catalog.uniqueValuesFor('getEnte_bando');"
+                        >
+                    <option value="#"
+                            tal:repeat="ente usedEnti"
+                            tal:content="ente"
+                            tal:attributes="value ente"
+                            i18n:domain="plone-metadata"
+                            i18n:translate=""
+                            >dummy</option>
+                </select>
+                <br />
+            </div>
 
             <div class="field" i18n:domain="plone">
                 <label for="Subject" i18n:translate="label_tags">Categories</label>

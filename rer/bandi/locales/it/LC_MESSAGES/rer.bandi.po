@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-02-15 20:31+0000\n"
+"POT-Creation-Date: 2012-10-23 12:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgid "Cartella Approfondimento"
 msgstr ""
 
 #: ./browser/collection.py:33
-#: ./browser/search.py:55
+#: ./browser/search.py:56
 msgid "Closed"
 msgstr "Chiuso"
 
@@ -49,7 +49,7 @@ msgid "If enabled, a more... link will appear in the footer of the portlet, link
 msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
 #: ./browser/collection.py:35
-#: ./browser/search.py:57
+#: ./browser/search.py:58
 msgid "In progress"
 msgstr "In corso"
 
@@ -58,7 +58,7 @@ msgid "Limit"
 msgstr "Limite"
 
 #: ./browser/collection.py:30
-#: ./browser/search.py:52
+#: ./browser/search.py:53
 msgid "Open"
 msgstr "Aperto"
 
@@ -93,9 +93,15 @@ msgstr ""
 
 #. Default: "Published on"
 #: ./browser/collection.pt:83
+#: ./browser/search.pt:154
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
+
+#. Default: "Authorities"
+#: ./browser/search_form.pt:106
+msgid "bandi_search_authority_label"
+msgstr "Enti"
 
 #. Default: "This search mask allows to find announcements in the site that satisfy one or more search criteria."
 #: ./browser/search_form.pt:18
@@ -168,30 +174,30 @@ msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
 #. Default: "Closing process"
-#: ./browser/bando-right.pt:70
-#: ./browser/bando.pt:71
+#: ./browser/bando-right.pt:78
+#: ./browser/bando.pt:81
 msgid "bando_chiusura_procedimento"
 msgstr "Chiusura procedimento"
 
 #. Default: "Publication date"
-#: ./browser/bando-right.pt:53
-#: ./browser/bando.pt:54
+#: ./browser/bando-right.pt:61
+#: ./browser/bando.pt:64
 msgid "bando_pub_date"
 msgstr "Data di pubblicazione"
 
 #. Default: "Deadline participation terms"
-#: ./browser/bando-right.pt:62
-#: ./browser/bando.pt:63
+#: ./browser/bando-right.pt:70
+#: ./browser/bando.pt:73
 #: ./browser/collection.pt:91
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
-#: ./content/bando.py:58
+#: ./content/bando.py:67
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./content/bando.py:57
+#: ./content/bando.py:66
 msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
@@ -205,39 +211,56 @@ msgid "destinatari_help"
 msgstr ""
 
 #. Default: "Recipients"
-#: ./browser/bando-right.pt:41
+#: ./browser/bando-right.pt:39
 #: ./browser/bando.pt:42
 #: ./content/bando.py:35
 msgid "destinatari_label"
 msgstr "Destinatari"
 
+#. Default: "Select some authorities."
+#: ./content/bando.py:46
+msgid "ente_help"
+msgstr "Selezione degli enti per questo bando."
+
+#. Default: "Authority"
+#: ./browser/bando-right.pt:50
+#: ./browser/bando.pt:53
+#: ./content/bando.py:44
+msgid "ente_label"
+msgstr "Ente"
+
 #. Default: "Announcements search results"
-#: ./browser/search.pt:66
+#: ./browser/search.pt:40
 msgid "heading_search_results"
 msgstr "Risultati della ricerca bandi"
 
+#. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
+#: ./browser/search_form.pt:108
+msgid "help_search_authorities"
+msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
+
 #. Default: "Search"
-#: ./browser/search_form.pt:141
+#: ./browser/search_form.pt:167
 msgid "label_search"
 msgstr "Cerca"
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
-#: ./content/bando.py:71
+#: ./content/bando.py:80
 msgid "riferimenti_bando_help"
 msgstr "indicare la struttura di riferimento e il responsabile del procedimento"
 
 #. Default: "References"
-#: ./content/bando.py:70
+#: ./content/bando.py:79
 msgid "riferimenti_bando_label"
 msgstr "Riferimenti"
 
 #. Default: "Deadline to participate in the announcement"
-#: ./content/bando.py:47
+#: ./content/bando.py:56
 msgid "scadenza_bando_help"
 msgstr "Scadenza dei termini per partecipare al bando"
 
 #. Default: "Expiration date and time"
-#: ./content/bando.py:46
+#: ./content/bando.py:55
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
@@ -246,7 +269,7 @@ msgid "tipologia_bando_help"
 msgstr ""
 
 #. Default: "Announcement type"
-#: ./browser/bando-right.pt:34
+#: ./browser/bando-right.pt:32
 #: ./browser/bando.pt:35
 #: ./browser/collection.pt:77
 msgid "tipologia_bando_label"

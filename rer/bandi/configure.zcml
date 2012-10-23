@@ -34,6 +34,7 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include file="upgrades.zcml" />
   
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
@@ -44,6 +45,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   
+  <genericsetup:importStep
+      name="rer.bandi"
+      title="RER: Bandi configuration"
+      description="Configures bandi properties"
+      handler="rer.bandi.setuphandlers.import_various"
+      />
   <!-- -*- extra stuff goes here -*- -->
 
   <utility

@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.0.4 (unreleased)
+2.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add ente_bando field and index [andrea]
 
 
 2.0.3 (2012-10-15)

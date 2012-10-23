@@ -1,6 +1,6 @@
 
 from zope.interface import implements
-
+from Products.CMFCore.utils import getToolByName
 from Products.Archetypes import atapi
 from Products.ATContentTypes.content import folder
 from Products.ATContentTypes.content import document
@@ -18,10 +18,10 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
     atapi.StringField(
         'tipologia_bando',
         storage=atapi.AnnotationStorage(),
-        vocabulary_factory = 'rer.bandi.tipologia.vocabulary',
+        vocabulary_factory='rer.bandi.tipologia.vocabulary',
         widget=atapi.SelectionWidget(
             label=_('tipologia_bando_label', default=u"Announcement type"),
-            description=_('tipologia_bando_help',default=''),
+            description=_('tipologia_bando_help', default=''),
         ),
         required=True,
     ),
@@ -30,21 +30,30 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
     atapi.LinesField(
         'destinatari',
         storage=atapi.AnnotationStorage(),
-        vocabulary_factory = 'rer.bandi.destinatari.vocabulary',
+        vocabulary_factory='rer.bandi.destinatari.vocabulary',
         widget=atapi.MultiSelectionWidget(
-            label=_('destinatari_label',default=u"Recipients"),
-            description=_('destinatari_help',default=''),
+            label=_('destinatari_label', default=u"Recipients"),
+            description=_('destinatari_help', default=''),
             format='checkbox',
         ),
     ),
 
+    atapi.LinesField(name='ente_bando',
+                     default_method="getDefaultEnte",
+                     widget=atapi.KeywordWidget(
+                     label=_(u'ente_label',
+                                default=u'Authority'),
+                        description=_(u'ente_help',
+                                      default=u'Select some authorities.'),
+                       ),
+            ),
 
     atapi.DateTimeField(
         'scadenza_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_('scadenza_bando_label',default=u"Expiration date and time"),
-            description=_('scadenza_bando_help',default=u"Deadline to participate in the announcement"),
+            label=_('scadenza_bando_label', default=u"Expiration date and time"),
+            description=_('scadenza_bando_help', default=u"Deadline to participate in the announcement"),
         ),
         validators=('isValidDate'),
     ),
@@ -54,9 +63,9 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'chiusura_procedimento_bando',
         storage=atapi.AnnotationStorage(),
         widget=atapi.CalendarWidget(
-            label=_('chiusura_procedimento_bando_label',default=u"Closing date procedure"),
-            description=_('chiusura_procedimento_bando_help',default=u''),
-            show_hm = False,
+            label=_('chiusura_procedimento_bando_label', default=u"Closing date procedure"),
+            description=_('chiusura_procedimento_bando_help', default=u''),
+            show_hm=False,
         ),
         validators=('isValidDate'),
     ),
@@ -67,8 +76,8 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         storage=atapi.AnnotationStorage(),
         searchable=True,
         widget=atapi.RichWidget(
-            label=_('riferimenti_bando_label',default=u"References"),
-            description=_('riferimenti_bando_help',default=u""),
+            label=_('riferimenti_bando_label', default=u"References"),
+            description=_('riferimenti_bando_help', default=u""),
         ),
     ),
 
@@ -87,10 +96,7 @@ schemata.finalizeATCTSchema(
     moveDiscussion=False
 )
 
-#BandoSchema.changeSchemataForField('subject', 'default')
-#BandoSchema.changeSchemataForField('relatedItems', 'default')
 BandoSchema['relatedItems'].widget.visible = {'view': 'visible', 'edit': 'visible'}
-
 
 
 class Bando(folder.ATFolder):
@@ -114,6 +120,14 @@ class Bando(folder.ATFolder):
 
     riferimenti_bando = atapi.ATFieldProperty('riferimenti_bando')
 
+    def getDefaultEnte(self):
+        """
+        return a default value for Ente
+        """
+        portal_properties = getToolByName(self, 'portal_properties')
+        rer_bandi_settings = getattr(portal_properties, 'rer_bandi_settings', None)
+        if rer_bandi_settings:
+            return rer_bandi_settings.getProperty('default_ente', '')
+        return ''
 
 atapi.registerType(Bando, PROJECTNAME)
-

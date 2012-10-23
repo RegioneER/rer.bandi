@@ -46,7 +46,17 @@
                             </ul>
                           </td>
                         </tr>
-        
+                        <tr tal:condition="context/getEnte_bando|nothing">
+                          <th i18n:translate="ente_label">Authority</th>
+                          <td>
+                            <ul>
+                              <li tal:repeat="ente context/getEnte_bando"
+                                  tal:content="ente">
+                                  Authority
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
                         <tr tal:condition="context/getEffectiveDate">
                           <th i18n:translate="bando_pub_date">Publication date</th>
                           <td>
