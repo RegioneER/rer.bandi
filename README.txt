@@ -71,6 +71,16 @@ This variable set the path for an xml file that contains a list of announcement 
       </vocabulary>
     </vocab-list>
 
+Authority Default value
+-----------------------
+
+A default authority value can be set for announcements. This information is taken from a property in portal_properties:
+
+    portal_properties.rer_bandi_settings.default_ente
+
+If the property is empty, the default value isn't set.
+
+
 Dependencies
 ============
 

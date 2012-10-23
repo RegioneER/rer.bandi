@@ -56,4 +56,4 @@ def addPropertySheet(portal):
     if not rer_bandi_settings.hasProperty('destinatari_bandi'):
         rer_bandi_settings.manage_addProperty(id='destinatari_bandi', value=DEST, type='lines')
     if not rer_bandi_settings.hasProperty('default_ente'):
-        rer_bandi_settings.manage_addProperty(id='default_ente', value="", type='text')
+        rer_bandi_settings.manage_addProperty(id='default_ente', value="", type='string')

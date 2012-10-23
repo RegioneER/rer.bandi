@@ -23,6 +23,16 @@ class SearchBandiForm(BrowserView):
         voc_destinatari = getUtility(IVocabularyFactory, name='rer.bandi.destinatari.vocabulary')(self.context)
         self.terms_destinatari = list(voc_destinatari)
 
+    def getDefaultEnte(self):
+        """
+        return the default ente
+        """
+        portal_properties = getToolByName(self, 'portal_properties')
+        rer_bandi_settings = getattr(portal_properties, 'rer_bandi_settings', None)
+        if rer_bandi_settings:
+            return rer_bandi_settings.getProperty('default_ente', '')
+        return ''
+
 class SearchBandi(BrowserView):
     """
     A view for search bandi results

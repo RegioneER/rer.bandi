@@ -102,7 +102,8 @@
                 </tal:items>
             </div>
 
-            <div class="field">
+            <div class="field"
+                 tal:define="default_ente view/getDefaultEnte">
                 <label for="Subject" i18n:translate="bandi_search_authority_label">Authorities</label>
 
                 <div class="formHelp" i18n:translate="help_search_authorities">
@@ -118,13 +119,18 @@
                         multiple="multiple"
                         tal:define="usedEnti python:here.portal_catalog.uniqueValuesFor('getEnte_bando');"
                         >
-                    <option value="#"
-                            tal:repeat="ente usedEnti"
-                            tal:content="ente"
-                            tal:attributes="value ente"
-                            i18n:domain="plone-metadata"
-                            i18n:translate=""
-                            >dummy</option>
+                    <option tal:condition="default_ente"
+                            tal:content="default_ente"
+                            tal:attributes="value default_ente" />
+                    <tal:other_enti repeat="ente usedEnti">
+                      <option value="#"
+                              tal:content="ente"
+                              tal:condition="python: ente != default_ente"
+                              tal:attributes="value ente"
+                              i18n:domain="plone-metadata"
+                              i18n:translate=""
+                              >dummy</option>
+                    </tal:other_enti>
                 </select>
                 <br />
             </div>
