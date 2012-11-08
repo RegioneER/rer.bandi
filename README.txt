@@ -2,15 +2,15 @@ Introduction
 ============
 
 rer.bandi is a product for announcements.
-It is a folderish content (like rer.folderish_content) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
-
+It's a folderish content (like `rer.structured_content <pypi.python.org/pypi/rer.structured_content>`_
+) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
 
 Composition
 ===========
 
 Folder deepening
 -----------------
-Like rer.folderish_content, it has a special folder type called "Folder Deepening" that allows to manage some extra infos or attachment that should be shown in the announcement's view.
+Like in **rer.structured_content**, it has a special folder type called "*Folder Deepening*" that allows to manage some extra infos or attachment that should be shown in the announcement's view.
 
 Topic criterias
 ----------------
@@ -53,23 +53,23 @@ Types vocabulary
 ----------------
 
 To handle this vocabulary, we need an enviroment variable called ``PLONE_RER_BANDI_VOCAB``.
-We need to set it into buildout:
+We need to set it into buildout::
 
-    [instance]
-    ...
-    environment-vars =
-        PLONE_RER_BANDI_VOCAB ${buildout:directory}/var/rer_bandi_vocab.xml
+  [instance]
+  ...
+  environment-vars =
+      PLONE_RER_BANDI_VOCAB ${buildout:directory}/var/rer_bandi_vocab.xml
 
-This variable set the path for an xml file that contains a list of announcement types; if the file doesn't exist, it will be automatically generated with some default values:
+This variable set the path for an xml file that contains a list of announcement types; if the file doesn't exist, it will be automatically generated with some default values::
 
-    <?xml version='1.0' encoding='utf-8'?>
-    <vocab-list>
-      <vocabulary name="rer.bandi.tipologia.vocabulary">
-        <term token="beni_servizi">Acquisizione beni e servizi</term>
-        <term token="agevolazioni">Agevolazioni, finanziamenti, contributi</term>
-        <term token="altro">Altro</term>
-      </vocabulary>
-    </vocab-list>
+  <?xml version='1.0' encoding='utf-8'?>
+  <vocab-list>
+    <vocabulary name="rer.bandi.tipologia.vocabulary">
+      <term token="beni_servizi">Acquisizione beni e servizi</term>
+      <term token="agevolazioni">Agevolazioni, finanziamenti, contributi</term>
+      <term token="altro">Altro</term>
+    </vocabulary>
+  </vocab-list>
 
 Authority Default value
 -----------------------

@@ -11,20 +11,24 @@ tests_require = ['zope.testing']
 
 setup(name='rer.bandi',
       version=version,
-      description="A product for bandi",
+      description="A product for announcements management",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        'Framework :: Plone',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
+        "Programming Language :: Python",
+        "Framework :: Plone",
+        "Framework :: Plone :: 3.3",
+        "Framework :: Plone :: 4.0",
+        "Framework :: Plone :: 4.2",
+        "Development Status :: 5 - Production/Stable",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
         ],
-      keywords='',
+      keywords='rer bandi announcements',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.it',
-      url='https://rersvn.ente.regione.emr.it/svn/plone/prodotti/rer.bandi/',
+      url='http://plone.org/products/rer.bandi',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['rer', ],
