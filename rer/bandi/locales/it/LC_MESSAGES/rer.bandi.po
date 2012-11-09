@@ -220,7 +220,7 @@ msgstr "Destinatari"
 #. Default: "Select some authorities."
 #: ./content/bando.py:46
 msgid "ente_help"
-msgstr "Selezione degli enti per questo bando."
+msgstr "Selezionare l'ente proponente del bando."
 
 #. Default: "Authority"
 #: ./browser/bando-right.pt:50

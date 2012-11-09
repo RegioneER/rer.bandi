@@ -20,7 +20,7 @@
         <div tal:replace="structure provider:plone.belowcontenttitle" />
         
         <div class="contextualbody">
-            <div class="documentDescription rer-contextual-description">
+            <div class="documentDescription rer-contextual-description" tal:condition="here/Description">
                 <metal:field use-macro="python:here.widget('description', mode='view')">
                     Description
                 </metal:field>
