@@ -4,92 +4,90 @@ Changelog
 2.1.0 (unreleased)
 ------------------
 
-- Add ente_bando field and index [andrea]
+- Add ente_bando field and index [micecchi]
 
 
 2.0.3 (2012-10-15)
 ------------------
 
-- fix translation in search_bandi_form [andrea]
+- fix translation in search_bandi_form [micecchi]
 
 
 2.0.2 (2012-08-03)
 ------------------
 
-- fixed import in search.pt [andrea]
+- fixed import in search.pt [micecchi]
 
 
 2.0.1 (2012-08-03)
 ------------------
 
-- fixed css [andrea]
+- fixed css [micecchi]
 
 
 2.0.0 (2012-08-03)
 ------------------
 
-- fix Plone 4 compatibility [andrea]
+- fix Plone 4 compatibility [micecchi]
 
 1.0.9 (2012-02-22)
 ------------------
 
-- aggiunte icone stato nella ricerca bandi [andrea]
+- added status icon in bandi search [micecchi]
 
 1.0.8 (2012-01-16)
 ------------------
 
-- aggiunto batching nella vista cercatore [andrea]
+- added batching in topic view [micecchi]
 
 1.0.7 (2012-01-05)
 ------------------
 
-- fix controllo sulle date [andrea]
-- sistemati stili [andrea]
+- fix date contol [micecchi]
+- fix css styles [micecchi]
 
 1.0.6 (2011-12-19)
 ------------------
 
-- fix css per jacopo (#254) [andrea]
+- fix css styles [micecchi]
 
 1.0.5 (2011-12-19)
 ------------------
 
-- fix css interlinea (#261) [nekorin]
-- Plone 4.1 compatibility [andrea]
-- added locales [andrea]
-- added icons for bando states [andrea]
-- modificato template portlet [nekorin]
+- fix css interline (#261) [nekorin]
+- Plone 4.1 compatibility [micecchi]
+- added locales [micecchi]
+- added icons for bando states [micecchi]
+- modified portlet template [nekorin]
 
 1.0.4 (2011-11-02)
 ------------------
 
-- fix reinstal controls and log [andrea]
+- fix reinstall controls and log [micecchi]
 
 1.0.3 (2011-06-14)
 ------------------
 
-- fix permessi [andrea]
+- fix permissions [micecchi]
 
 1.0.2 (2011-06-13)
 ------------------
 
-- sistemato template del bando [andrea]
+- fix bando template [micecchi]
 
 1.0.1 (2011-05-31)
 ------------------
 
-- modifiche varie ai template per #126 #127 e #128 [andrea]
-- destinatari da PropertySheetVocabulary [mmariani]
-- sistemato l'indice per i destinatari (con indexer), in modo tale che i suoi figli non lo ereditino [andrea]
+- some edit to templates [micecchi]
+- destinatari from PropertySheetVocabulary [mmariani]
+- fixed destinatari index (with indexer), in modo tale che i suoi figli non lo ereditino [micecchi]
 
 1.0.0 (2011-04-15)
 ------------------
 
-- release iniziale da specifiche: https://support.redturtle.it/clienti/rer-regione-emilia-romagna/attivita-rer/119/
-  [mmariani]
-- AT Bando e AT Bando Folder Deepening [mmariani]
-- vocabulary tipologie da file esterno XML [mmariani]
-- portlet per le collection di bandi [mmariani]
-- 2 viste per le collection di bandi [mmariani]
-- form di ricerca [mmariani]
+- created AT Bando and AT Bando Folder Deepening [mmariani]
+- vocabulary tipologie from external XML file [mmariani]
+- portlet for bandi [mmariani]
+- 2 new views for topics [mmariani]
+- search form [mmariani]
 

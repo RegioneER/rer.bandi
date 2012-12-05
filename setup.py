@@ -35,7 +35,6 @@ setup(name='rer.bandi',
       include_package_data=True,
       zip_safe=False,
       install_requires=['setuptools',
-                        # -*- Extra requirements: -*-
                         'lxml',
                         ],
       tests_require=tests_require,
