@@ -2,11 +2,17 @@ Introduction
 ============
 
 rer.bandi is a product for announcements.
-It's a folderish content (like `rer.structured_content <pypi.python.org/pypi/rer.structured_content>`_
-) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
+It's a folderish content (like `rer.structured_content <pypi.python.org/pypi/rer.structured_content>`_) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
 
 Composition
 ===========
+
+Different layouts
+-----------------
+There are two allowed views for an announcement:
+
+* default view, with basic infos on the right (like events) and extra infos (folder deepenings) in the middle.
+* alternative view that moves extra infos slot below basic infos.
 
 Folder deepening
 -----------------
@@ -76,7 +82,7 @@ Authority Default value
 
 A default authority value can be set for announcements. This information is taken from a property in portal_properties:
 
-    portal_properties.rer_bandi_settings.default_ente
+**portal_properties -> rer_bandi_settings -> default_ente**
 
 If the property is empty, the default value isn't set.
 
