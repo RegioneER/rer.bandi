@@ -86,7 +86,7 @@ Changelog
 
 - some edit to templates [micecchi]
 - destinatari from PropertySheetVocabulary [mmariani]
-- fixed destinatari index (with indexer), in modo tale che i suoi figli non lo ereditino [micecchi]
+- fixed destinatari index (with indexer) [micecchi]
 
 1.0.0 (2011-04-15)
 ------------------
