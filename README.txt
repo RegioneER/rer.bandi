@@ -2,7 +2,10 @@ Introduction
 ============
 
 rer.bandi is a product for announcements.
-It's a folderish content (like `rer.structured_content <pypi.python.org/pypi/rer.structured_content>`_) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
+
+It is a folderish content (like `rer.structured_content`__) and it allows to set some infos about the announcement like the deadline to participate or the closing date.
+
+__ http://pypi.python.org/pypi/rer.structured_content
 
 Composition
 ===========
@@ -15,15 +18,15 @@ There are two allowed views for an announcement:
 * alternative view that moves extra infos slot below basic infos.
 
 Folder deepening
------------------
+----------------
 Like in **rer.structured_content**, it has a special folder type called "*Folder Deepening*" that allows to manage some extra infos or attachment that should be shown in the announcement's view.
 
 Topic criterias
-----------------
+---------------
 There are some new topic criterias that allows to set topic queries for announcements.
 
 Announcements search
----------------------
+--------------------
 There is a search form (http://yoursite/search_bandi_form) for quick searches.
 
 Announcement state information
