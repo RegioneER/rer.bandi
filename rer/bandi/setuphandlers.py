@@ -10,8 +10,8 @@ def import_various(context):
         return
 
     portal = context.getSite()
-    addKeyToCatalog(context, portal)
-    addPropertySheet(context, portal)
+    addKeyToCatalog(portal)
+    addPropertySheet(portal)
 
 
 def addKeyToCatalog(portal):
