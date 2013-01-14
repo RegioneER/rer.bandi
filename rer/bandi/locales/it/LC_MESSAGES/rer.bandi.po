@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-23 12:25+0000\n"
+"POT-Creation-Date: 2013-01-10 16:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,17 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:209
+#: ./portlets/collection.py:206
 msgid "Add Bandi Portlet"
 msgstr "Aggiungi Portlet Bandi"
+
+#: ./portlets/collection.py:52
+msgid "Alternative link to other"
+msgstr "Link alternativo per 'altro'"
+
+#: ./portlets/collection.py:48
+msgid "Alternative text to show in 'other' link."
+msgstr "Testo alternativo da mostrare nel link ad 'altro'"
 
 #. Default: "Bando"
 #: ./profiles/default/types/Bando.xml
@@ -32,57 +40,65 @@ msgid "Cartella Approfondimento"
 msgstr ""
 
 #: ./browser/collection.py:33
-#: ./browser/search.py:56
+#: ./browser/search.py:66
 msgid "Closed"
 msgstr "Chiuso"
 
-#: ./portlets/collection.py:228
+#: ./portlets/collection.py:225
 msgid "Edit Bandi Portlet"
 msgstr "Modifica Portlet Bandi"
 
-#: ./portlets/collection.py:32
+#: ./portlets/collection.py:31
 msgid "Find the collection which provides the items to list"
 msgstr "Trova una collezione chee mostrerà gli elementi selezionati"
 
-#: ./portlets/collection.py:43
+#: ./portlets/collection.py:42
 msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
 msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
 #: ./browser/collection.py:35
-#: ./browser/search.py:58
+#: ./browser/search.py:68
 msgid "In progress"
 msgstr "In corso"
 
-#: ./portlets/collection.py:37
+#: ./portlets/collection.py:36
 msgid "Limit"
 msgstr "Limite"
 
 #: ./browser/collection.py:30
-#: ./browser/search.py:53
+#: ./browser/search.py:63
 msgid "Open"
 msgstr "Aperto"
 
-#: ./portlets/collection.py:27
+#: ./portlets/collection.py:47
+msgid "Other text"
+msgstr "Testo per 'altro'"
+
+#: ./portlets/collection.py:26
 msgid "Portlet header"
 msgstr "Titolo portlet"
 
-#: ./portlets/collection.py:42
+#: ./portlets/collection.py:53
+msgid "Select a different link to 'other'."
+msgstr "Selezione un link differente per 'altro'."
+
+#: ./portlets/collection.py:41
 msgid "Show more... link"
 msgstr "Link altro..."
 
-#: ./portlets/collection.py:38
+#: ./portlets/collection.py:37
 msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
 msgstr "Specifica il numero massimo di elementi da mostrare nella portlet. Lascialo vuoto per mostrarli tutti."
 
-#: ./portlets/collection.py:31
+#: ./portlets/collection.py:30
 msgid "Target collection"
 msgstr "Collezione di riferimento"
 
-#: ./portlets/collection.py:210
+#: ./portlets/collection.py:207
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
-#: ./portlets/collection.py:28
+#: ./portlets/collection.py:27
 msgid "Title of the rendered portlet"
 msgstr "Titolo della portlet."
 
@@ -99,7 +115,7 @@ msgid "bandi_published_on"
 msgstr "Pubblicato il"
 
 #. Default: "Authorities"
-#: ./browser/search_form.pt:106
+#: ./browser/search_form.pt:107
 msgid "bandi_search_authority_label"
 msgstr "Enti"
 
@@ -235,12 +251,12 @@ msgid "heading_search_results"
 msgstr "Risultati della ricerca bandi"
 
 #. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
-#: ./browser/search_form.pt:108
+#: ./browser/search_form.pt:109
 msgid "help_search_authorities"
 msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
 
 #. Default: "Search"
-#: ./browser/search_form.pt:167
+#: ./browser/search_form.pt:173
 msgid "label_search"
 msgstr "Cerca"
 

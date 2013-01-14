@@ -6,8 +6,7 @@ from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.memoize.instance import memoize
-from plone.portlet.collection import PloneMessageFactory as _
-from rer.bandi import bandiMessageFactory as __
+from rer.bandi import bandiMessageFactory as _
 from plone.portlets.interfaces import IPortletDataProvider
 from rer.bandi.interfaces import IBando
 from zope import schema
@@ -31,7 +30,7 @@ class IBandoCollectionPortlet(IPortletDataProvider):
     target_collection = schema.Choice(title=_(u"Target collection"),
                                   description=_(u"Find the collection which provides the items to list"),
                                   required=True,
-                                  source=SearchableTextSourceBinder({'object_provides' : IATTopic.__identifier__},
+                                  source=SearchableTextSourceBinder({'object_provides': IATTopic.__identifier__},
                                                                     default_query='path:'))
 
     limit = schema.Int(title=_(u"Limit"),
@@ -45,16 +44,16 @@ class IBandoCollectionPortlet(IPortletDataProvider):
                        required=True,
                        default=True)
 
-    show_more_text = schema.TextLine(title=u"Testo 'altro'",
-                                     description=u"Testo da visualizzare nel link 'altro'",
+    show_more_text = schema.TextLine(title=_(u"Other text"),
+                                     description=_(u"Alternative text to show in 'other' link."),
                                      required=True,
                                      default=u'Altro\u2026')
 
-    show_more_path = schema.Choice(title=u"'altro' oggetto",
-                                   description=u"Destinazione del link 'altro', se diversa",
+    show_more_path = schema.Choice(title=_(u"Alternative link to other"),
+                                   description=_(u"Select a different link to 'other'."),
                                    required=False,
-                                   source=SearchableTextSourceBinder({'object_provides' : IATContentType.__identifier__},
-                                                                      default_query='path:'))
+                                   source=SearchableTextSourceBinder({'sort_on': 'getObjPositionInParent'},
+                                                                     default_query='path:'))
 
     show_description = schema.Bool(title=u'Mostra descrizione', required=True, default=False)
 
@@ -63,8 +62,6 @@ class IBandoCollectionPortlet(IPortletDataProvider):
     show_effective = schema.Bool(title=u'Mostra data di pubblicazione', required=True, default=False)
 
     show_scadenza_bando = schema.Bool(title=u'Mostra data di scadenza', required=True, default=False)
-
-
 
 
 class Assignment(base.Assignment):
@@ -77,7 +74,7 @@ class Assignment(base.Assignment):
     implements(IBandoCollectionPortlet)
 
     header = u""
-    target_collection=None
+    target_collection = None
     limit = None
     show_more = True
 
@@ -179,21 +176,26 @@ class Renderer(base.Renderer):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         return portal_state.portal()
 
-    def getBandoState(self,bando):
+    def getBandoState(self, bando):
         """
+        Return correct bando state
         """
-        scadenza_bando=bando.scadenza_bando
-        chiusura_procedimento_bando=bando.chiusura_procedimento_bando
-        state=('open',translate(__(u'Open'),context=self.request))
-        if scadenza_bando and scadenza_bando.isPast():
-            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(__(u'Closed'),context=self.request))
+        scadenza_bando = bando.scadenza_bando
+        chiusura_procedimento_bando = bando.chiusura_procedimento_bando
+        state = ('open', translate(_(u'Open'), context=self.request))
+        if scadenza_bando:
+            if scadenza_bando.isPast():
+                if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                    state = ('closed', translate(_(u'Closed'), context=self.request))
+                else:
+                    state = ('inProgress', translate(_(u'In progress'), context=self.request))
             else:
-                state= ('inProgress',translate(__(u'In progress'),context=self.request))
+                state = ('inProgress', translate(_(u'In progress'), context=self.request))
         else:
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(__(u'Closed'),context=self.request))
+                state = ('closed', translate(_(u'Closed'), context=self.request))
         return state
+
 
 class AddForm(base.AddForm):
     """Portlet add form.

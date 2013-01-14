@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-from DateTime import DateTime
 from Products.Five import BrowserView
 from rer.bandi import bandiMessageFactory as _
 from zope.component import getUtility
@@ -11,8 +9,10 @@ try:
 except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
 
+
 class ICollectionBandiView(Interface):
     pass
+
 
 class CollectionBandiView(BrowserView):
     implements(ICollectionBandiView)
@@ -22,18 +22,21 @@ class CollectionBandiView(BrowserView):
         self.request = request
         self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
 
-    def getBandoState(self,bando):
+    def getBandoState(self, bando):
         """
         """
-        scadenza_bando=bando.scadenza_bando
-        chiusura_procedimento_bando=bando.chiusura_procedimento_bando
-        state=('open',translate(_(u'Open'),context=self.request))
-        if scadenza_bando and scadenza_bando.isPast():
-            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(_(u'Closed'),context=self.request))
+        scadenza_bando = bando.scadenza_bando
+        chiusura_procedimento_bando = bando.chiusura_procedimento_bando
+        state = ('open', translate(_(u'Open'), context=self.request))
+        if scadenza_bando:
+            if scadenza_bando.isPast():
+                if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                    state = ('closed', translate(_(u'Closed'), context=self.request))
+                else:
+                    state = ('inProgress', translate(_(u'In progress'), context=self.request))
             else:
-                state= ('inProgress',translate(_(u'In progress'),context=self.request))
+                state = ('inProgress', translate(_(u'In progress'), context=self.request))
         else:
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(_(u'Closed'),context=self.request))
+                state = ('closed', translate(_(u'Closed'), context=self.request))
         return state
