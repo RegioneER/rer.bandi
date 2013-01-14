@@ -24,16 +24,14 @@ class CollectionBandiView(BrowserView):
 
     def getBandoState(self, bando):
         """
+        return corretc bando state
         """
         scadenza_bando = bando.scadenza_bando
         chiusura_procedimento_bando = bando.chiusura_procedimento_bando
         state = ('open', translate(_(u'Open'), context=self.request))
-        if scadenza_bando:
-            if scadenza_bando.isPast():
-                if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                    state = ('closed', translate(_(u'Closed'), context=self.request))
-                else:
-                    state = ('inProgress', translate(_(u'In progress'), context=self.request))
+        if scadenza_bando and scadenza_bando.isPast():
+            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+                state = ('closed', translate(_(u'Closed'), context=self.request))
             else:
                 state = ('inProgress', translate(_(u'In progress'), context=self.request))
         else:
