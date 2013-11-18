@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-10 16:55+0000\n"
+"POT-Creation-Date: 2013-11-18 17:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:206
+#: ./portlets/collection.py:208
 msgid "Add Bandi Portlet"
 msgstr ""
 
@@ -37,12 +37,13 @@ msgstr ""
 msgid "Cartella Approfondimento"
 msgstr ""
 
-#: ./browser/collection.py:33
-#: ./browser/search.py:66
+#: ./browser/collection.py:53
+#: ./browser/search.py:75
+#: ./portlets/collection.py:188
 msgid "Closed"
 msgstr ""
 
-#: ./portlets/collection.py:225
+#: ./portlets/collection.py:227
 msgid "Edit Bandi Portlet"
 msgstr ""
 
@@ -54,8 +55,9 @@ msgstr ""
 msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
 msgstr ""
 
-#: ./browser/collection.py:35
-#: ./browser/search.py:68
+#: ./browser/collection.py:55
+#: ./browser/search.py:77
+#: ./portlets/collection.py:190
 msgid "In progress"
 msgstr ""
 
@@ -63,8 +65,9 @@ msgstr ""
 msgid "Limit"
 msgstr ""
 
-#: ./browser/collection.py:30
-#: ./browser/search.py:63
+#: ./browser/collection.py:50
+#: ./browser/search.py:72
+#: ./portlets/collection.py:185
 msgid "Open"
 msgstr ""
 
@@ -92,7 +95,7 @@ msgstr ""
 msgid "Target collection"
 msgstr ""
 
-#: ./portlets/collection.py:207
+#: ./portlets/collection.py:209
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr ""
 
@@ -105,8 +108,7 @@ msgid "Una cartella per i documenti usati dal bando."
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:83
-#: ./browser/search.pt:154
+#: ./browser/collection.pt:84
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr ""
@@ -186,6 +188,16 @@ msgstr ""
 msgid "bandi_search_type_label"
 msgstr ""
 
+#. Default: "Select where to search bandi."
+#: ./browser/search_form.pt:169
+msgid "bandi_searchtype_help"
+msgstr ""
+
+#. Default: "Search type"
+#: ./browser/search_form.pt:167
+msgid "bandi_searchtype_label"
+msgstr ""
+
 #. Default: "Closing process"
 #: ./browser/bando-right.pt:78
 #: ./browser/bando.pt:81
@@ -201,7 +213,7 @@ msgstr ""
 #. Default: "Deadline participation terms"
 #: ./browser/bando-right.pt:70
 #: ./browser/bando.pt:73
-#: ./browser/collection.pt:91
+#: ./browser/collection.pt:92
 msgid "bando_scadenza_partecipazione"
 msgstr ""
 
@@ -215,7 +227,7 @@ msgid "chiusura_procedimento_bando_label"
 msgstr ""
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:101
+#: ./browser/collection.pt:102
 msgid "description_no_items_in_folder"
 msgstr ""
 
@@ -242,18 +254,13 @@ msgstr ""
 msgid "ente_label"
 msgstr ""
 
-#. Default: "Announcements search results"
-#: ./browser/search.pt:40
-msgid "heading_search_results"
-msgstr ""
-
 #. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
 #: ./browser/search_form.pt:109
 msgid "help_search_authorities"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/search_form.pt:173
+#: ./browser/search_form.pt:193
 msgid "label_search"
 msgstr ""
 

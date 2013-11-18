@@ -46,6 +46,7 @@ class SearchBandi(BrowserView):
         pc = getToolByName(self.context, 'portal_catalog')
         stato = self.request.form.get('stato_bandi', '')
         search_type = self.request.form.get('search_type', '')
+        SearchableText = self.request.form.get('SearchableText', '')
         query = self.request.form.copy()
         if stato:
             now = DateTime()
@@ -59,7 +60,8 @@ class SearchBandi(BrowserView):
                 query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'max'}
         if search_type == 'solr':
             query['use_solr'] = True
-
+        if not SearchableText:
+            del query['SearchableText']
         return pc(**query)
 
     def getBandoState(self, bando):

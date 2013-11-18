@@ -164,9 +164,9 @@
             </div>
 
             <div class="field">
-                <label for="search_type" i18n:translate="bandi_search_type_label">Search type</label>
+                <label for="search_type" i18n:translate="bandi_searchtype_label">Search type</label>
 
-                <div class="formHelp" i18n:translate="bandi_search_type_help">
+                <div class="formHelp" i18n:translate="bandi_searchtype_help">
                 Select where to search bandi.
                 </div>
                 <input class="radio"

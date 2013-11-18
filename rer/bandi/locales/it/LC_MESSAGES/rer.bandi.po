@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-10 16:55+0000\n"
+"POT-Creation-Date: 2013-11-18 17:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:206
+#: ./portlets/collection.py:208
 msgid "Add Bandi Portlet"
 msgstr "Aggiungi Portlet Bandi"
 
@@ -39,12 +39,13 @@ msgstr ""
 msgid "Cartella Approfondimento"
 msgstr ""
 
-#: ./browser/collection.py:33
-#: ./browser/search.py:66
+#: ./browser/collection.py:53
+#: ./browser/search.py:75
+#: ./portlets/collection.py:188
 msgid "Closed"
 msgstr "Chiuso"
 
-#: ./portlets/collection.py:225
+#: ./portlets/collection.py:227
 msgid "Edit Bandi Portlet"
 msgstr "Modifica Portlet Bandi"
 
@@ -56,8 +57,9 @@ msgstr "Trova una collezione chee mostrerà gli elementi selezionati"
 msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
 msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
-#: ./browser/collection.py:35
-#: ./browser/search.py:68
+#: ./browser/collection.py:55
+#: ./browser/search.py:77
+#: ./portlets/collection.py:190
 msgid "In progress"
 msgstr "In corso"
 
@@ -65,8 +67,9 @@ msgstr "In corso"
 msgid "Limit"
 msgstr "Limite"
 
-#: ./browser/collection.py:30
-#: ./browser/search.py:63
+#: ./browser/collection.py:50
+#: ./browser/search.py:72
+#: ./portlets/collection.py:185
 msgid "Open"
 msgstr "Aperto"
 
@@ -94,7 +97,7 @@ msgstr "Specifica il numero massimo di elementi da mostrare nella portlet. Lasci
 msgid "Target collection"
 msgstr "Collezione di riferimento"
 
-#: ./portlets/collection.py:207
+#: ./portlets/collection.py:209
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
@@ -108,8 +111,7 @@ msgid "Una cartella per i documenti usati dal bando."
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:83
-#: ./browser/search.pt:154
+#: ./browser/collection.pt:84
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
@@ -189,6 +191,16 @@ msgstr "Seleziona una tipologia di bando."
 msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
+#. Default: "Select where to search bandi."
+#: ./browser/search_form.pt:169
+msgid "bandi_searchtype_help"
+msgstr "Seleziona dove effettuare la ricerca per bandi."
+
+#. Default: "Search type"
+#: ./browser/search_form.pt:167
+msgid "bandi_searchtype_label"
+msgstr "Tipologia di ricerca"
+
 #. Default: "Closing process"
 #: ./browser/bando-right.pt:78
 #: ./browser/bando.pt:81
@@ -204,7 +216,7 @@ msgstr "Data di pubblicazione"
 #. Default: "Deadline participation terms"
 #: ./browser/bando-right.pt:70
 #: ./browser/bando.pt:73
-#: ./browser/collection.pt:91
+#: ./browser/collection.pt:92
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
@@ -218,7 +230,7 @@ msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:101
+#: ./browser/collection.pt:102
 msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi."
 
@@ -245,18 +257,13 @@ msgstr "Selezionare l'ente proponente del bando."
 msgid "ente_label"
 msgstr "Ente"
 
-#. Default: "Announcements search results"
-#: ./browser/search.pt:40
-msgid "heading_search_results"
-msgstr "Risultati della ricerca bandi"
-
 #. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
 #: ./browser/search_form.pt:109
 msgid "help_search_authorities"
 msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
 
 #. Default: "Search"
-#: ./browser/search_form.pt:173
+#: ./browser/search_form.pt:193
 msgid "label_search"
 msgstr "Cerca"
 
