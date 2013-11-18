@@ -12,6 +12,7 @@ except ImportError:
 
 from zope.component import getUtility
 
+
 class SearchBandiForm(BrowserView):
     def __init__(self, context, request):
         self.context = context
@@ -33,6 +34,7 @@ class SearchBandiForm(BrowserView):
             return rer_bandi_settings.getProperty('default_ente', '')
         return ''
 
+
 class SearchBandi(BrowserView):
     """
     A view for search bandi results
@@ -41,33 +43,47 @@ class SearchBandi(BrowserView):
         """
         return a list of bandi
         """
-        pc=getToolByName(self.context,'portal_catalog')
-        stato = self.request.form.get('stato_bandi','')
+        pc = getToolByName(self.context, 'portal_catalog')
+        stato = self.request.form.get('stato_bandi', '')
+        search_type = self.request.form.get('search_type', '')
+        query = self.request.form.copy()
         if stato:
-            now=DateTime()
-            if stato=="open":
-                self.request.form['getScadenza_bando']={'query':now,'range':'min'}
-                self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'min'}
-            if stato=="inProgress":
-                self.request.form['getScadenza_bando']={'query':now,'range':'max'}
-                self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'min'}
-            if stato=="closed":
-                self.request.form['getChiusura_procedimento_bando']={'query':now,'range':'max'}
-        return pc(**self.request.form)
+            now = DateTime()
+            if stato == "open":
+                query['getScadenza_bando'] = {'query': now, 'range': 'min'}
+                query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'min'}
+            if stato == "inProgress":
+                query['getScadenza_bando'] = {'query': now, 'range': 'max'}
+                query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'min'}
+            if stato == "closed":
+                query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'max'}
+        if search_type == 'solr':
+            query['use_solr'] = True
 
-    def getBandoState(self,bando):
+        return pc(**query)
+
+    def getBandoState(self, bando):
         """
         """
-        scadenza_bando=bando.scadenza_bando
-        chiusura_procedimento_bando=bando.chiusura_procedimento_bando
-        state=('open',translate(_(u'Open'),context=self.request))
+        scadenza_bando = bando.getScadenza_bando
+        chiusura_procedimento_bando = bando.getChiusura_procedimento_bando
+        state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(_(u'Closed'),context=self.request))
+                state = ('closed', translate(_(u'Closed'), context=self.request))
             else:
-                state= ('inProgress',translate(_(u'In progress'),context=self.request))
+                state = ('inProgress', translate(_(u'In progress'), context=self.request))
         else:
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state= ('closed',translate(_(u'Closed'),context=self.request))
+                state = ('closed', translate(_(u'Closed'), context=self.request))
         return state
-        
+
+    def isValidDeadline(self, date):
+        """
+        """
+        if not date:
+            return False
+        if date.Date() == '2100/12/31':
+            #a default date for bandi that don't have a defined deadline
+            return False
+        return True

@@ -11,5 +11,12 @@
         destination="2"
         handler=".upgrades.to_2"
         profile="rer.bandi:default" />
-       
+  
+  <gs:upgradeStep
+        title="Upgrade rer.bandi 2.2.0"
+        description="rer.bandi upgrade step"
+        source="2"
+        destination="2200"
+        handler=".upgrades.migrate_to_2200"
+        profile="rer.bandi:default" />
 </configure>

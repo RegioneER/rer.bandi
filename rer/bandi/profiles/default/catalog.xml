@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
- <column value="chiusura_procedimento_bando"/>
- <column value="destinatari"/>
- <column value="scadenza_bando"/>
- <column value="tipologia_bando"/>
+ <column value="getChiusura_procedimento_bando"/>
+ <column value="getDestinatariBando"/>
+ <column value="getScadenza_bando"/>
+ <column value="getTipologia_bando"/>
 </object>

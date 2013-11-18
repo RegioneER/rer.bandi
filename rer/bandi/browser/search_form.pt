@@ -163,6 +163,26 @@
                 <br />
             </div>
 
+            <div class="field">
+                <label for="search_type" i18n:translate="bandi_search_type_label">Search type</label>
+
+                <div class="formHelp" i18n:translate="bandi_search_type_help">
+                Select where to search bandi.
+                </div>
+                <input class="radio"
+                       name="search_type"
+                       value="plone"
+                       id="plone"/>
+                <label for="plone">On this site</label>
+                <br />
+                <input class="radio"
+                       name="search_type"
+                       value="solr"
+                       id="solr"/>
+                <label for="solr">On all sites</label>
+                <br />
+            </div>
+
             <input type="hidden" name="portal_type" value="Bando" />
             <input type="hidden" name="sort_on" value="effective" />
             <input type="hidden" name="sort_order" value="reverse" />

@@ -45,6 +45,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   
+  <genericsetup:registerProfile
+      name="migrate_to_2200"
+      title="Migrate to version 2.2.0"
+      directory="profiles/migrate_to_2200"
+      description="RER:Bandi migrate to version 2.2.0 (2200)"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <genericsetup:importStep
       name="rer.bandi"
       title="RER: Bandi configuration"

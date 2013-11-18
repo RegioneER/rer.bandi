@@ -180,8 +180,8 @@ class Renderer(base.Renderer):
         """
         return corretc bando state
         """
-        scadenza_bando = bando.scadenza_bando
-        chiusura_procedimento_bando = bando.chiusura_procedimento_bando
+        scadenza_bando = bando.getScadenza_bando
+        chiusura_procedimento_bando = bando.getChiusura_procedimento_bando
         state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():

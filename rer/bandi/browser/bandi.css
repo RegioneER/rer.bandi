@@ -78,16 +78,16 @@ h3.bandoTitle{
 	margin-top:3px
 }
 
-.state-closed {
+dt.bandoTitle .state-closed {
     background-image: url(++resource++rer.bandi.images/bando_closed.png);
     color: #700;
 }
-.state-open {
+dt.bandoTitle .state-open {
     background-image: url(++resource++rer.bandi.images/bando_open.png);
     color: #255a01;
 }
 
-.state-inProgress {
+dt.bandoTitle .state-inProgress {
     background-image: url(++resource++rer.bandi.images/bando_inprogress.png);
     color: #9c6f02;
 }

@@ -25,3 +25,19 @@ def to_2(context):
     portal = context.portal_url.getPortalObject()
     addKeyToCatalog(portal)
     addPropertySheet(portal)
+
+
+def migrate_to_2200(context):
+    PROFILE_ID = 'profile-rer.bandi:migrate_to_2200'
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
+    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    logger.info("Reindexing catalog indexes")
+    catalog = getToolByName(context, 'portal_catalog')
+    bandi = catalog(portal_type="Bando")
+    for bando in bandi:
+        bando.getObject().reindexObject(idxs=["getChiusura_procedimento_bando",
+                                            "getDestinatariBando",
+                                            "getScadenza_bando",
+                                            "getTipologia_bando"])
+    logger.info("Migrated to 2.2.0")
