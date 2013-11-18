@@ -169,18 +169,10 @@
                 <div class="formHelp" i18n:translate="bandi_searchtype_help">
                 Select where to search bandi.
                 </div>
-                <input class="radio"
-                       name="search_type"
-                       value="plone"
-                       id="plone"/>
-                <label for="plone">On this site</label>
-                <br />
-                <input class="radio"
-                       name="search_type"
-                       value="solr"
-                       id="solr"/>
-                <label for="solr">On all sites</label>
-                <br />
+                <select name="search_type" id="search_type" i18n:domain="rer.bandi">
+                  <option value="plone" selected="selected" i18n:translate="">On this site</option>
+                  <option value="solr" i18n:translate="">On all sites</option>
+                </select>
             </div>
 
             <input type="hidden" name="portal_type" value="Bando" />
