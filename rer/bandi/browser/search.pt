@@ -149,13 +149,13 @@
 
             <div class="bandoDates"
             	 i18n:domain="rer.bandi"
-                   tal:condition="python:result.portal_type=='Bando' and (result.effective.Date() != '1000/01/01' or result.getScadenza_bando)">
-                <tal:pubblicazione condition="python:result.effective.Date() != '1000/01/01'">
+                   tal:condition="python:result.portal_type=='Bando' and (result.effective.year() != 1000 or result.getScadenza_bando)">
+                <tal:pubblicazione condition="python:result.effective.year() != 1000">
                     <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>: 
                     <span tal:content="python:here.toLocalizedTime(result.effective)" />
                 </tal:pubblicazione>
                 <span class="labelTB"
-                      tal:condition="python:result.effective.Date() != '1000/01/01' and result.getScadenza_bando">
+                      tal:condition="python:result.effective.year() != 1000 and result.getScadenza_bando">
                         |
                       </span>
                 <tal:scadenza_bando 

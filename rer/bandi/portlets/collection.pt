@@ -39,15 +39,15 @@
                 tal:content="obj/Description" />
 		  <p class="bandoType"
 		     tal:condition="view/data/show_tipologia_bando"
-             tal:content="python: view.voc_tipologia.getTermByToken(obj.tipologia_bando).title" />
+             tal:content="python: view.voc_tipologia.getTermByToken(obj.getTipologia_bando).title" />
 			 
-		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.EffectiveDate!='None' or obj.getScadenza_bando)">
-                <tal:pubblicazione condition="python:view.data.show_effective and obj.EffectiveDate!='None'">
+		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.effective!='None' or obj.getScadenza_bando)">
+                <tal:pubblicazione condition="python:view.data.show_effective and obj.effective!='None'">
                     <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
-                    <span tal:content="python:here.toLocalizedTime(obj.EffectiveDate)" />
+                    <span tal:content="python:here.toLocalizedTime(obj.effective)" />
                 </tal:pubblicazione>
                 <span tal:omit-tag=""
-                      tal:condition="python:(view.data.show_effective and view.data.show_scadenza_bando) and (obj.EffectiveDate!='None' and obj.getScadenza_bando)">
+                      tal:condition="python:(view.data.show_effective and view.data.show_scadenza_bando) and (obj.effective!='None' and obj.getScadenza_bando)">
                         |
                 </span>
                 <tal:scadenza_bando condition="python:view.data.show_scadenza_bando and obj.getScadenza_bando">
