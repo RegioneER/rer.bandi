@@ -60,7 +60,7 @@ class SearchBandi(BrowserView):
                 query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'max'}
         if search_type == 'solr':
             query['use_solr'] = True
-        if not SearchableText:
+        if "SearchableText" in self.request.form and not SearchableText:
             del query['SearchableText']
         return pc(**query)
 
