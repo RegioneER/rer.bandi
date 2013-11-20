@@ -158,8 +158,8 @@
                       tal:condition="python:result.effective.year() != 1000 and result.getScadenza_bando">
                         |
                       </span>
-                <tal:scadenza_bando 
-                    tal:define="valid_scadenza python:view.isValidDeadline(result.getScadenza_bando)"condition="valid_scadenza">
+                <tal:scadenza_bando define="valid_scadenza python:view.isValidDeadline(result.getScadenza_bando)"
+                                    condition="valid_scadenza">
                     <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>: 
                     <span tal:content="python:here.toLocalizedTime(result.getScadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>

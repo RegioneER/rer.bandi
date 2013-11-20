@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-11-18 17:01+0000\n"
+"POT-Creation-Date: 2013-11-20 13:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,6 +67,14 @@ msgstr "In corso"
 msgid "Limit"
 msgstr "Limite"
 
+#: ./browser/search_form.pt:174
+msgid "On all sites"
+msgstr "In tutti i portali"
+
+#: ./browser/search_form.pt:173
+msgid "On this site"
+msgstr "Solo in questo portale"
+
 #: ./browser/collection.py:50
 #: ./browser/search.py:72
 #: ./portlets/collection.py:185
@@ -112,6 +120,7 @@ msgstr ""
 
 #. Default: "Published on"
 #: ./browser/collection.pt:84
+#: ./browser/search.pt:154
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
@@ -257,13 +266,18 @@ msgstr "Selezionare l'ente proponente del bando."
 msgid "ente_label"
 msgstr "Ente"
 
+#. Default: "Announcements search results"
+#: ./browser/search.pt:40
+msgid "heading_search_results"
+msgstr "Risultati ricerca bandi"
+
 #. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
 #: ./browser/search_form.pt:109
 msgid "help_search_authorities"
 msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
 
 #. Default: "Search"
-#: ./browser/search_form.pt:193
+#: ./browser/search_form.pt:185
 msgid "label_search"
 msgstr "Cerca"
 
