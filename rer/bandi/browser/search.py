@@ -99,13 +99,11 @@ class SearchBandiForm(BrowserView):
         if portal_type:
             faceted = getattr(results, 'facet_counts')
             if faceted:
-                terms = faceted.get('facet_fields').keys()
-                logger.debug('terms info: %s' % terms)
-                return tuple(sorted(terms))
+                terms = faceted.get('facet_fields')
         else:
             terms = getattr(results, 'terms', {})
-            logger.debug('terms info: %s' % terms)
-            return tuple(terms.get(index, {}).keys())
+        logger.debug('terms info: %s' % terms)
+        return tuple(sorted(terms.get(index, {}).keys()))
 
     def getDefaultEnte(self):
         """

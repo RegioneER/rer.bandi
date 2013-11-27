@@ -150,7 +150,7 @@
                         size="7"
                         multiple="multiple"
                         tal:define="contentSubjects here/Subject;
-                                    usedSubjects python:python:view.getUniqueValuesForIndex('Subject');"
+                                    usedSubjects python:view.getUniqueValuesForIndex('Subject');"
                         >
                     <option value="#"
                             tal:repeat="subject usedSubjects"
