@@ -76,11 +76,17 @@ class SearchBandiForm(BrowserView):
         connection = manager.getConnection()
         if connection is None:
             raise SolrInactiveException
-        response = connection.doPost(
-            connection.solrBase + '/terms',
-            urlencode({'terms.fl': index, 'terms.limit': -1}, doseq=True),
-            connection.formheaders
-        )
+        if not portal_type:
+            response = connection.doPost(
+                connection.solrBase + '/terms',
+                urlencode({'terms.fl': index, 'terms.limit': -1}, doseq=True),
+                connection.formheaders)
+        else:
+            response = connection.doPost(
+                connection.solrBase + '/select',
+                urlencode({'portal_type': portal_type, 'facet': 'on', 'facet.field': index},
+                          doseq=True),
+                connection.formheaders)
         results = SolrResponse(response)
         response.close()
         manager.setTimeout(None)
@@ -90,9 +96,16 @@ class SearchBandiForm(BrowserView):
             logger.info(
                 'slow query: %d/%d ms for uniqueValuesFor (%r)',
                 results.responseHeader['QTime'], elapsed, index)
-        terms = getattr(results, 'terms', {})
-        logger.debug('terms info: %s' % terms)
-        return tuple(terms.get(index, {}).keys())
+        if portal_type:
+            faceted = getattr(results, 'facet_counts')
+            if faceted:
+                terms = faceted.get('facet_felds').keys()
+                logger.debug('terms info: %s' % terms)
+                return tuple(sorted(terms))
+        else:
+            terms = getattr(results, 'terms', {})
+            logger.debug('terms info: %s' % terms)
+            return tuple(terms.get(index, {}).keys())
 
     def getDefaultEnte(self):
         """
