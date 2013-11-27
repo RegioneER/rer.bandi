@@ -6,6 +6,8 @@ from Products.Five.browser import BrowserView
 from zope.i18n import translate
 
 from rer.bandi import bandiMessageFactory as _
+from rer.bandi import logger
+
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
@@ -20,7 +22,7 @@ except ImportError:
     HAS_SOLR = False
 
 try:
-    from collective.solr_collection.solr import solrUniqueValuesFor
+    from collective.solr_collection.solr import solrUniqueValuesFor as basesolrUniqueValuesFor
     HAS_SOLR_COLLECTION = True
 except ImportError:
     HAS_SOLR_COLLECTION = False
@@ -54,7 +56,43 @@ class SearchBandiForm(BrowserView):
             pc = getToolByName(self, 'portal_catalog')
             return pc.uniqueValuesFor(index)
         else:
-            return solrUniqueValuesFor(index)
+            return self.solrUniqueValuesFor(index, "Bando")
+
+    def solrUniqueValuesFor(index, portal_type=""):
+        """
+        * http://wiki.apache.org/solr/TermsComponent
+        """
+        from time import time
+        from collective.solr.interfaces import ISolrConnectionManager
+        from collective.solr.exceptions import SolrInactiveException
+        from urllib import urlencode
+        from collective.solr.parser import SolrResponse
+        start = time()
+        config = queryUtility(ISolrConnectionConfig)
+        # search = queryUtility(ISearch)
+        manager = getUtility(ISolrConnectionManager)
+        # manager = search.getManager()
+        manager.setSearchTimeout()
+        connection = manager.getConnection()
+        if connection is None:
+            raise SolrInactiveException
+        response = connection.doPost(
+            connection.solrBase + '/terms',
+            urlencode({'terms.fl': index, 'terms.limit': -1}, doseq=True),
+            connection.formheaders
+        )
+        results = SolrResponse(response)
+        response.close()
+        manager.setTimeout(None)
+        elapsed = (time() - start) * 1000
+        slow = config.slow_query_threshold
+        if slow and elapsed >= slow:
+            logger.info(
+                'slow query: %d/%d ms for uniqueValuesFor (%r)',
+                results.responseHeader['QTime'], elapsed, index)
+        terms = getattr(results, 'terms', {})
+        logger.debug('terms info: %s' % terms)
+        return tuple(terms.get(index, {}).keys())
 
     def getDefaultEnte(self):
         """
