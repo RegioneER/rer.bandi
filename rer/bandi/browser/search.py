@@ -58,7 +58,7 @@ class SearchBandiForm(BrowserView):
         else:
             return self.solrUniqueValuesFor(index, "Bando")
 
-    def solrUniqueValuesFor(index, portal_type=""):
+    def solrUniqueValuesFor(self, index, portal_type=""):
         """
         * http://wiki.apache.org/solr/TermsComponent
         """
