@@ -22,7 +22,7 @@ except ImportError:
     HAS_SOLR = False
 
 try:
-    from collective.solr_collection.solr import solrUniqueValuesFor as basesolrUniqueValuesFor
+    from collective.solr_collection.solr import solrUniqueValuesFor
     HAS_SOLR_COLLECTION = True
 except ImportError:
     HAS_SOLR_COLLECTION = False
@@ -51,59 +51,13 @@ class SearchBandiForm(BrowserView):
 
     def getUniqueValuesForIndex(self, index):
         """
+        get uniqueValuesFor a given index
         """
         if not self.solr_enabled or not HAS_SOLR_COLLECTION:
             pc = getToolByName(self, 'portal_catalog')
             return pc.uniqueValuesFor(index)
         else:
-            return self.solrUniqueValuesFor(index, "Bando")
-
-    def solrUniqueValuesFor(self, index, portal_type=""):
-        """
-        * http://wiki.apache.org/solr/TermsComponent
-        """
-        from time import time
-        from collective.solr.interfaces import ISolrConnectionManager
-        from collective.solr.exceptions import SolrInactiveException
-        from urllib import urlencode
-        from collective.solr.parser import SolrResponse
-        start = time()
-        config = queryUtility(ISolrConnectionConfig)
-        # search = queryUtility(ISearch)
-        manager = getUtility(ISolrConnectionManager)
-        # manager = search.getManager()
-        manager.setSearchTimeout()
-        connection = manager.getConnection()
-        if connection is None:
-            raise SolrInactiveException
-        if not portal_type:
-            response = connection.doPost(
-                connection.solrBase + '/terms',
-                urlencode({'terms.fl': index, 'terms.limit': -1}, doseq=True),
-                connection.formheaders)
-        else:
-            response = connection.doPost(
-                connection.solrBase + '/select',
-                urlencode({'portal_type': portal_type, 'facet': 'on', 'facet.field': index},
-                          doseq=True),
-                connection.formheaders)
-        results = SolrResponse(response)
-        response.close()
-        manager.setTimeout(None)
-        elapsed = (time() - start) * 1000
-        slow = config.slow_query_threshold
-        if slow and elapsed >= slow:
-            logger.info(
-                'slow query: %d/%d ms for uniqueValuesFor (%r)',
-                results.responseHeader['QTime'], elapsed, index)
-        if portal_type:
-            faceted = getattr(results, 'facet_counts')
-            if faceted:
-                terms = faceted.get('facet_fields')
-        else:
-            terms = getattr(results, 'terms', {})
-        logger.debug('terms info: %s' % terms)
-        return tuple(sorted(terms.get(index, {}).keys()))
+            return solrUniqueValuesFor(index, portal_type="Bando")
 
     def getDefaultEnte(self):
         """
