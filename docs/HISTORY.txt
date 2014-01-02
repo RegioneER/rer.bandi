@@ -1,14 +1,14 @@
 Changelog
 =========
 
-2.1.4 (unreleased)
+2.2.0 (unreleased)
 ------------------
 
 - Fixed bando state styles [cekk]
 - Fixed metadata names in catalog [cekk]
 - Fixed views with new metadata names [cekk]
 - Added support for solr in bandi_search [cekk]
-
+- Added versioning support [cekk]
 
 2.1.3 (2013-01-14)
 ------------------
