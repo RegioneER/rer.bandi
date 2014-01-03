@@ -10,7 +10,7 @@
         tal:define="here_url context/@@plone_context_state/object_url">
         <link rel="alternate" title="RSS 1.0" type="application/rss+xml"
               tal:condition="request/SearchableText|nothing"
-              tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}"/>
+              tal:attributes="href string:$here_url/search_rss?${view/rss_query}"/>
     </metal:block>
 
     <metal:block fill-slot="top_slot"
@@ -55,7 +55,7 @@
         <a href=""
            class="link-feed"
            i18n:translate="title_rss_feed"
-           tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}">
+           tal:attributes="href string:$here_url/search_rss?${view/rss_query}">
              Subscribe to an always-updated feed of these search terms</a>
     </p>
 

@@ -6,8 +6,7 @@ from Products.Five.browser import BrowserView
 from zope.i18n import translate
 
 from rer.bandi import bandiMessageFactory as _
-from rer.bandi import logger
-
+from urllib2 import quote
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
@@ -80,7 +79,6 @@ class SearchBandi(BrowserView):
         """
         pc = getToolByName(self.context, 'portal_catalog')
         stato = self.request.form.get('stato_bandi', '')
-        search_type = self.request.form.get('search_type', '')
         SearchableText = self.request.form.get('SearchableText', '')
         query = self.request.form.copy()
         if stato:
@@ -93,11 +91,28 @@ class SearchBandi(BrowserView):
                 query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'min'}
             if stato == "closed":
                 query['getChiusura_procedimento_bando'] = {'query': now, 'range': 'max'}
-        if search_type == 'solr':
-            query['use_solr'] = True
         if "SearchableText" in self.request.form and not SearchableText:
             del query['SearchableText']
         return pc(**query)
+
+    @property
+    def rss_query(self):
+        """
+        set rss query with the right date
+        """
+        query = self.request.QUERY_STRING
+        stato = self.request.form.get('stato_bandi', '')
+        if stato:
+            now = DateTime().ISO()
+            if stato == "open":
+                query = query + "&amp;getScadenza_bando.query:record:date=%s&getScadenza_bando.range:record=min" % quote(now)
+                query = query + "&amp;getChiusura_procedimento_bando.query:record:date=%s&getChiusura_procedimento_bando.range:record=min" % quote(now)
+            if stato == "inProgress":
+                query = query + "&amp;getScadenza_bando.query:record:date=%s&getScadenza_bando.range:record=max" % quote(now)
+                query = query + "&amp;getChiusura_procedimento_bando.query:record:date=%s&getChiusura_procedimento_bando.range:record=min" % quote(now)
+            if stato == "closed":
+                query = query + "&amp;getChiusura_procedimento_bando.query:record:date=%s&getChiusura_procedimento_bando.range:record=max" % quote(now)
+        return query
 
     def getBandoState(self, bando):
         """

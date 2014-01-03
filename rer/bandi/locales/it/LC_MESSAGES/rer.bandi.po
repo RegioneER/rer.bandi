@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-11-20 13:24+0000\n"
+"POT-Creation-Date: 2014-01-03 13:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgid "Cartella Approfondimento"
 msgstr ""
 
 #: ./browser/collection.py:53
-#: ./browser/search.py:75
+#: ./browser/search.py:125
 #: ./portlets/collection.py:188
 msgid "Closed"
 msgstr "Chiuso"
@@ -58,7 +58,7 @@ msgid "If enabled, a more... link will appear in the footer of the portlet, link
 msgstr "Se abilitato, un link ad altro... apparirà nel footer della portlet, con un link alla collezione selezionata."
 
 #: ./browser/collection.py:55
-#: ./browser/search.py:77
+#: ./browser/search.py:127
 #: ./portlets/collection.py:190
 msgid "In progress"
 msgstr "In corso"
@@ -67,16 +67,8 @@ msgstr "In corso"
 msgid "Limit"
 msgstr "Limite"
 
-#: ./browser/search_form.pt:174
-msgid "On all sites"
-msgstr "In tutti i portali"
-
-#: ./browser/search_form.pt:173
-msgid "On this site"
-msgstr "Solo in questo portale"
-
 #: ./browser/collection.py:50
-#: ./browser/search.py:72
+#: ./browser/search.py:122
 #: ./portlets/collection.py:185
 msgid "Open"
 msgstr "Aperto"
@@ -126,89 +118,99 @@ msgid "bandi_published_on"
 msgstr "Pubblicato il"
 
 #. Default: "Authorities"
-#: ./browser/search_form.pt:107
+#: ./browser/search_form.pt:111
 msgid "bandi_search_authority_label"
 msgstr "Enti"
 
 #. Default: "This search mask allows to find announcements in the site that satisfy one or more search criteria."
-#: ./browser/search_form.pt:18
+#: ./browser/search_form.pt:22
 msgid "bandi_search_help"
 msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che soddisfano uno o più criteri di ricerca."
 
 #. Default: "Announcements Search"
-#: ./browser/search_form.pt:16
+#: ./browser/search_form.pt:20
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
 
 #. Default: "Select announcements recipients."
-#: ./browser/search_form.pt:88
+#: ./browser/search_form.pt:92
 msgid "bandi_search_recipients_help"
 msgstr "Seleziona i destinatari dei bandi."
 
 #. Default: "Recipients"
-#: ./browser/search_form.pt:86
+#: ./browser/search_form.pt:90
 msgid "bandi_search_recipients_label"
 msgstr "Destinatari"
 
 #. Default: "All"
-#: ./browser/search_form.pt:55
+#: ./browser/search_form.pt:59
 msgid "bandi_search_state_all"
 msgstr "Tutti"
 
 #. Default: "Closed"
-#: ./browser/search_form.pt:58
+#: ./browser/search_form.pt:62
 msgid "bandi_search_state_closed"
 msgstr "Chiusi"
 
 #. Default: "Search announcements <strong>open</strong> (with participation terms not expired), <strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or <strong>closed</strong> (the procedure is closed)."
-#: ./browser/search_form.pt:48
+#: ./browser/search_form.pt:52
 msgid "bandi_search_state_help"
 msgstr "Cerca i bandi <strong>aperti</strong> (non sono scaduti i termini per la partecipazione), <strong>in corso</strong> (sono scaduti i termini di partecipazione e il procedimento non è ancora chiuso) o <strong>chiusi</strong> (il procedimento è chiuso)."
 
 #. Default: "In progress"
-#: ./browser/search_form.pt:57
+#: ./browser/search_form.pt:61
 msgid "bandi_search_state_inprogress"
 msgstr "In corso"
 
 #. Default: "State"
-#: ./browser/search_form.pt:46
+#: ./browser/search_form.pt:50
 msgid "bandi_search_state_label"
 msgstr "Stato"
 
 #. Default: "Open"
-#: ./browser/search_form.pt:56
+#: ./browser/search_form.pt:60
 msgid "bandi_search_state_open"
 msgstr "Aperti"
 
 #. Default: "For a simple text search, enter your search term here. Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>. The text in this field will be matched with Announcements' title, description and text."
-#: ./browser/search_form.pt:31
+#: ./browser/search_form.pt:35
 msgid "bandi_search_text_help"
 msgstr "Per una semplice ricerca di testo inserisci qui i termini desiderati. Possono essere cercate più parole contemporaneamente combinandole con gli operatori <strong>AND</strong> e <strong>OR</strong>. Il testo inserito in questo campo verrà cercato nel titolo, descrizione e testo dei bandi."
 
 #. Default: "Search text"
-#: ./browser/search_form.pt:29
+#: ./browser/search_form.pt:33
 msgid "bandi_search_text_label"
 msgstr "Ricerca testuale"
 
 #. Default: "Select an annonuncement type."
-#: ./browser/search_form.pt:66
+#: ./browser/search_form.pt:70
 msgid "bandi_search_type_help"
 msgstr "Seleziona una tipologia di bando."
 
 #. Default: "Type"
-#: ./browser/search_form.pt:64
+#: ./browser/search_form.pt:68
 msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
-#. Default: "Select where to search bandi."
-#: ./browser/search_form.pt:169
-msgid "bandi_searchtype_help"
-msgstr "Seleziona dove effettuare la ricerca per bandi."
+#. Default: "Select where to search."
+#: ./browser/search_form.pt:182
+msgid "bandi_searchsites_help"
+msgstr "Seleziona i portali dove effettuare la ricerca."
 
-#. Default: "Search type"
-#: ./browser/search_form.pt:167
-msgid "bandi_searchtype_label"
-msgstr "Tipologia di ricerca"
+#. Default: "Available sites"
+#: ./browser/search_form.pt:181
+msgid "bandi_searchsites_label"
+msgstr "Portali disponibili"
+
+#. Default: "If checked, the search will be made on a selected list of ER Sites. If not checked, the search will be made only on this site."
+#: ./browser/search_form.pt:174
+msgid "bandi_use_solr_help"
+msgstr "Se selezionato, la ricerca verrà effettuata in una serie di portali ER. Se non selezionato, la ricerca verrà effettuata solamente in questo portale."
+
+#. Default: "Multisite search"
+#: ./browser/search_form.pt:173
+msgid "bandi_use_solr_label"
+msgstr "Ricerca multisito"
 
 #. Default: "Closing process"
 #: ./browser/bando-right.pt:78
@@ -272,12 +274,12 @@ msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
 #. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
-#: ./browser/search_form.pt:109
+#: ./browser/search_form.pt:113
 msgid "help_search_authorities"
 msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
 
 #. Default: "Search"
-#: ./browser/search_form.pt:185
+#: ./browser/search_form.pt:201
 msgid "label_search"
 msgstr "Cerca"
 

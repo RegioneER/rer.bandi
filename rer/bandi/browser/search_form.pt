@@ -10,7 +10,11 @@
                 tal:define="dummy python:request.set('disable_border',1)" />
     <metal:block fill-slot="column_one_slot" />
     <metal:block fill-slot="column_two_slot" />
-
+    <metal:javascript_head_slot fill-slot="javascript_head_slot">
+        <script type="text/javascript"
+            tal:attributes="src string:${context/portal_url}/++resource++searchbandi.js">
+        </script>
+    </metal:javascript_head_slot>
 <div metal:fill-slot="main">
 
     <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
@@ -165,15 +169,26 @@
 
             <div class="field"
                 tal:condition="view/isSolrEnabled">
-                <label for="search_type" i18n:translate="bandi_searchtype_label">Search type</label>
-
-                <div class="formHelp" i18n:translate="bandi_searchtype_help">
-                Select where to search bandi.
+                <input name="use_solr:boolean" id="use_solr" type="checkbox"/>
+                <label for="use_solr" i18n:translate="bandi_use_solr_label">Multisite search</label>
+                <div class="formHelp" i18n:translate="bandi_use_solr_help">
+                  If checked, the search will be made on a selected list of ER Sites. If not checked, the search will be made only on this site.
                 </div>
-                <select name="search_type" id="search_type" i18n:domain="rer.bandi">
-                  <option value="plone" selected="selected" i18n:translate="">On this site</option>
-                  <option value="solr" i18n:translate="">On all sites</option>
-                </select>
+
+                <div class="siteSelection"
+                     tal:define="sites python:view.getUniqueValuesForIndex('ploneSite');"
+                     tal:condition="sites">
+                  <label for="ploneSite" i18n:translate="bandi_searchsites_label">Available sites</label>
+                  <div class="formHelp" i18n:translate="bandi_searchsites_help">
+                  Select where to search.
+                  </div>
+                  <select name="ploneSite"
+                          id="ploneSite"
+                          i18n:domain="rer.bandi"
+                          multiple="multiple">
+                    <option tal:repeat="site sites" tal:content="site" />
+                  </select>
+                </div>
             </div>
 
             <input type="hidden" name="portal_type" value="Bando" />

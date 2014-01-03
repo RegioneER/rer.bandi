@@ -99,6 +99,11 @@
     file="bandi.css"
     />
 
+  <browser:resource
+    name="searchbandi.js"
+    file="searchbandi.js"
+    />
+
   <browser:page
     name="plone_context_state"
     for="rer.bandi.interfaces.IBando"
