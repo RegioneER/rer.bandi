@@ -12,7 +12,7 @@ tests_require = ['zope.testing']
 setup(name='rer.bandi',
       version=version,
       description="A product for announcements management",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
