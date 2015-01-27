@@ -3,7 +3,7 @@
 
  <stylesheet title=""
     id="++resource++bandi.css"
-    media="screen" rel="stylesheet" rendering="import"
+    media="screen" rel="stylesheet" rendering="link"
     cacheable="True" compression="safe" cookable="True"
     enabled="1" expression=""/>
 	
