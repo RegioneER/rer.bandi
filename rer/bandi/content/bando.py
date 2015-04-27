@@ -105,20 +105,8 @@ class Bando(folder.ATFolder):
     meta_type = "Bando"
     schema = BandoSchema
 
-    title = atapi.ATFieldProperty('title')
-    description = atapi.ATFieldProperty('description')
 
     # -*- Your ATSchema to Python Property Bridges Here ... -*-
-
-    tipologia_bando = atapi.ATFieldProperty('tipologia_bando')
-
-    destinatari = atapi.ATFieldProperty('destinatari')
-
-    scadenza_bando = atapi.ATFieldProperty('scadenza_bando')
-
-    chiusura_procedimento_bando = atapi.ATFieldProperty('chiusura_procedimento_bando')
-
-    riferimenti_bando = atapi.ATFieldProperty('riferimenti_bando')
 
     def getDefaultEnte(self):
         """
