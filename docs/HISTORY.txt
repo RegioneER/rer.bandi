@@ -9,6 +9,7 @@ Changelog
 - Fixed views with new metadata names [cekk]
 - Added support for solr in bandi_search [cekk]
 - Added versioning support [cekk]
+- Removed ATFieldProperty [fdelia]
 
 2.1.3 (2013-01-14)
 ------------------
