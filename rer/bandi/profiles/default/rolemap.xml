@@ -6,14 +6,17 @@
       <role name="Contributor" />
 	  <role name="Manager" />
 	  <role name="Owner" />
+      <role name="Site Administrator" />
     </permission>
     <permission name="rer.bandi: Add Bando" acquire="False">
       <role name="Contributor" />
 	  <role name="Manager" />
+      <role name="Site Administrator" />
     </permission>
     <permission name="rer.bandi: Add Bandi Portlet" acquire="False">
       <role name="Manager" />
 	  <role name="Contributor" />
+      <role name="Site Administrator" />
     </permission>
   </permissions>
 </rolemap>
