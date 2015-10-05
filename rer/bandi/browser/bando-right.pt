@@ -12,13 +12,13 @@
       <metal:main_macro define-macro="main"
             tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '_');
             view_template python:'%s_view' % portal_type;">
-        
+
         <div tal:replace="structure provider:plone.abovecontenttitle" />
-        <h1 class="documentFirstHeading" tal:content="here/Title"> 
+        <h1 class="documentFirstHeading" tal:content="here/Title">
                 Title
         </h1>
         <div tal:replace="structure provider:plone.belowcontenttitle" />
-        
+
         <div class="contextualbody">
             <div class="documentDescription rer-contextual-description" tal:condition="here/Description">
                 <metal:field use-macro="python:here.widget('description', mode='view')">
@@ -30,11 +30,11 @@
 				    <table class="vertical listing tableRight">
                         <tr>
                           <th i18n:translate="tipologia_bando_label">Announcement type</th>
-                          <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
+                          <td tal:content="python:view.voc_tipologia.getTermByToken(context.getTipologia_bando()).title">
                             Tipologia bando
                           </td>
                         </tr>
-        
+
                         <tr tal:condition="context/getDestinatari|nothing">
                           <th i18n:translate="destinatari_label">Recipients</th>
                           <td>
@@ -65,7 +65,7 @@
                             </tal:pubblicazione>
                           </td>
                         </tr>
-        
+
                         <tr tal:condition="context/getScadenza_bando|nothing">
                           <th i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</th>
                           <td>
@@ -83,7 +83,7 @@
                           </td>
                         </tr>
                     </table>
-            		
+
 					<div class="rer-contextual-portlets">
 		                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
 		                              condition="foldeeps">
@@ -108,7 +108,7 @@
 		                                          tal:content="string:(${obj/filesize})">1Mb</span>
 		                                    <div class="description"
 		                                         tal:condition="obj/description"
-		                                         tal:content="obj/description">description</div> 
+		                                         tal:content="obj/description">description</div>
 		                                  </li>
 		                                </ul>
 		                            </dd>
@@ -117,7 +117,7 @@
 		                  </tal:foldeeps>
 		            </div>
             	</div>
-				
+
 				      <tal:text define="bando_text here/getText">
                 <p tal:condition="not:bando_text"
                     i18n:translate="no_body_text"
@@ -131,7 +131,7 @@
                 </div>
               </tal:text>
                 <hr />
-                <div tal:content="structure context/riferimenti_bando">
+                <div tal:content="structure context/getRiferimenti_bando">
                     Riferimenti bando
                 </div>
             </div>
