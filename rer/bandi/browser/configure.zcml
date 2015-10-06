@@ -88,6 +88,38 @@
     action="@@collection_bandi_tipologia_view"
     />
 
+
+ <!-- Viste per le nuove collezioni -->
+
+  <browser:page
+    for="plone.app.collection.interfaces.ICollection"
+    name="collection_bandi_view"
+    class=".collection.CollectionBandiView"
+    template="collection.pt"
+    permission="zope2.View"
+    />
+  <browser:menuItem
+    for="plone.app.collection.interfaces.ICollection"
+    menu="plone_displayviews"
+    title="Bandi con scadenza"
+    action="@@collection_bandi_view"
+    />
+
+   <browser:page
+    for="plone.app.collection.interfaces.ICollection"
+    name="collection_bandi_tipologia_view"
+    class=".collection.CollectionBandiView"
+    template="collection.pt"
+    permission="zope2.View"
+    />
+  <browser:menuItem
+    for="plone.app.collection.interfaces.ICollection"
+    menu="plone_displayviews"
+    title="Bandi con tipologia e scadenza"
+    action="@@collection_bandi_tipologia_view"
+    />
+
+
    <!--DIRECTORY REGISTRATION-->
   <browser:resourceDirectory
         name="rer.bandi.images"
