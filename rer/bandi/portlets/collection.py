@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from Products.ATContentTypes.interface import IATTopic, IATContentType
+from plone.app.collection.interfaces import ICollection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
@@ -19,7 +20,12 @@ try:
 except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
 
+
+COLLECTION_TYPES_LIST = [IATTopic.__identifier__, ICollection.__identifier__]
+
+
 class IBandoCollectionPortlet(IPortletDataProvider):
+
     """A portlet which renders the results of a collection object.
     """
 
@@ -28,43 +34,55 @@ class IBandoCollectionPortlet(IPortletDataProvider):
                              required=True)
 
     target_collection = schema.Choice(title=_(u"Target collection"),
-                                  description=_(u"Find the collection which provides the items to list"),
-                                  required=True,
-                                  source=SearchableTextSourceBinder({'object_provides': IATTopic.__identifier__},
-                                                                    default_query='path:'))
+                                      description=_(
+                                          u"Find the collection which provides the items to list"),
+                                      required=True,
+                                      source=SearchableTextSourceBinder(
+        {
+            'object_provides': COLLECTION_TYPES_LIST
+        },
+        default_query='path:'
+    ))
 
     limit = schema.Int(title=_(u"Limit"),
                        description=_(u"Specify the maximum number of items to show in the portlet. "
-                                       "Leave this blank to show all items."),
+                                     "Leave this blank to show all items."),
                        required=False)
 
     show_more = schema.Bool(title=_(u"Show more... link"),
-                       description=_(u"If enabled, a more... link will appear in the footer of the portlet, "
-                                      "linking to the underlying Collection."),
-                       required=True,
-                       default=True)
+                            description=_(u"If enabled, a more... link will appear in the footer of the portlet, "
+                                          "linking to the underlying Collection."),
+                            required=True,
+                            default=True)
 
     show_more_text = schema.TextLine(title=_(u"Other text"),
-                                     description=_(u"Alternative text to show in 'other' link."),
+                                     description=_(
+                                         u"Alternative text to show in 'other' link."),
                                      required=True,
                                      default=u'Altro\u2026')
 
     show_more_path = schema.Choice(title=_(u"Alternative link to other"),
-                                   description=_(u"Select a different link to 'other'."),
+                                   description=_(
+                                       u"Select a different link to 'other'."),
                                    required=False,
                                    source=SearchableTextSourceBinder({'sort_on': 'getObjPositionInParent'},
                                                                      default_query='path:'))
 
-    show_description = schema.Bool(title=u'Mostra descrizione', required=True, default=False)
+    show_description = schema.Bool(
+        title=u'Mostra descrizione', required=True, default=False)
 
-    show_tipologia_bando = schema.Bool(title=u'Mostra tipologia bando', required=True, default=False)
+    show_tipologia_bando = schema.Bool(
+        title=u'Mostra tipologia bando', required=True, default=False)
 
-    show_effective = schema.Bool(title=u'Mostra data di pubblicazione', required=True, default=False)
+    show_effective = schema.Bool(
+        title=u'Mostra data di pubblicazione', required=True, default=False)
 
-    show_scadenza_bando = schema.Bool(title=u'Mostra data di scadenza', required=True, default=False)
+    show_scadenza_bando = schema.Bool(
+        title=u'Mostra data di scadenza', required=True, default=False)
 
 
 class Assignment(base.Assignment):
+
     """
     Portlet assignment.
     This is what is actually managed through the portlets UI and associated
@@ -91,7 +109,6 @@ class Assignment(base.Assignment):
         self.show_effective = show_effective
         self.show_scadenza_bando = show_scadenza_bando
 
-
     @property
     def title(self):
         """This property is used to give the title of the portlet in the
@@ -100,8 +117,8 @@ class Assignment(base.Assignment):
         return self.header
 
 
-
 class Renderer(base.Renderer):
+
     """Portlet renderer.
 
     This is registered in configure.zcml. The referenced page template is
@@ -113,7 +130,8 @@ class Renderer(base.Renderer):
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
-        self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+        self.voc_tipologia = getUtility(
+            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
 
     # Cached version - needs a proper cache key
     # @ram.cache(render_cachekey)
@@ -145,12 +163,12 @@ class Renderer(base.Renderer):
 
         return self.collection_url()
 
-
     def results(self):
         results = []
         collection = self.collection()
         if collection is not None:
-            results = collection.queryCatalog(object_provides=IBando.__identifier__)
+            results = collection.queryCatalog(
+                object_provides=IBando.__identifier__)
             if self.data.limit and self.data.limit > 0:
                 results = results[:self.data.limit]
         return results
@@ -173,7 +191,8 @@ class Renderer(base.Renderer):
         return portal.restrictedTraverse(collection_path, default=None)
 
     def portal(self):
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
         return portal_state.portal()
 
     def getBandoState(self, bando):
@@ -185,16 +204,20 @@ class Renderer(base.Renderer):
         state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state = ('closed', translate(_(u'Closed'), context=self.request))
+                state = (
+                    'closed', translate(_(u'Closed'), context=self.request))
             else:
-                state = ('inProgress', translate(_(u'In progress'), context=self.request))
+                state = (
+                    'inProgress', translate(_(u'In progress'), context=self.request))
         else:
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state = ('closed', translate(_(u'Closed'), context=self.request))
+                state = (
+                    'closed', translate(_(u'Closed'), context=self.request))
         return state
 
 
 class AddForm(base.AddForm):
+
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells
@@ -206,14 +229,15 @@ class AddForm(base.AddForm):
     form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
     label = _(u"Add Bandi Portlet")
-    description = _(u"This portlet display a listing of bandi from a Collection.")
+    description = _(
+        u"This portlet display a listing of bandi from a Collection.")
 
     def create(self, data):
         return Assignment(**data)
 
 
-
 class EditForm(base.EditForm):
+
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
@@ -225,6 +249,5 @@ class EditForm(base.EditForm):
     form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
     label = _(u"Edit Bandi Portlet")
-    description = _(u"This portlet display a listing of bandi from a Collection.")
-
-
+    description = _(
+        u"This portlet display a listing of bandi from a Collection.")

@@ -71,6 +71,16 @@
     component=".vocabularies.DestinatariVocabularyFactory"
     />
 
+  <utility
+    name="rer.bandi.collection.tipologiabando"
+    component=".vocabularies.TipologiaBandoVocabularyFactory"
+    />
+
+  <utility
+    name="rer.bandi.collection.destinatariobando"
+    component=".vocabularies.DestinatariBandoVocabularyFactory"
+    />
+
   <!-- indexer per i destinatari -->
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
