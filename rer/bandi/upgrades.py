@@ -10,7 +10,8 @@ def upgrade(upgrade_product, version):
     """ Decorator for updating the QuickInstaller of a upgrade """
     def wrap_func(fn):
         def wrap_func_args(context, *args):
-            p = getToolByName(context, 'portal_quickinstaller').get(upgrade_product)
+            p = getToolByName(context, 'portal_quickinstaller').get(
+                upgrade_product)
             setattr(p, 'installedversion', version)
             return fn(context, *args)
         return wrap_func_args
@@ -37,7 +38,15 @@ def migrate_to_2200(context):
     bandi = catalog(portal_type="Bando")
     for bando in bandi:
         bando.getObject().reindexObject(idxs=["getChiusura_procedimento_bando",
-                                            "getDestinatariBando",
-                                            "getScadenza_bando",
-                                            "getTipologia_bando"])
+                                              "getDestinatariBando",
+                                              "getScadenza_bando",
+                                              "getTipologia_bando"])
+    import pdb
+    pdb.set_trace()
+
+    setup_tool.runImportStepFromProfile(
+        'profile-rer.bandi:default', 'plone.app.registry')
+    setup_tool.runImportStepFromProfile(
+        'profile-rer.bandi:default', 'typeinfo')
+
     logger.info("Migrated to 2.2.0")
