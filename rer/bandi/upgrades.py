@@ -41,8 +41,6 @@ def migrate_to_2200(context):
                                               "getDestinatariBando",
                                               "getScadenza_bando",
                                               "getTipologia_bando"])
-    import pdb
-    pdb.set_trace()
 
     setup_tool.runImportStepFromProfile(
         'profile-rer.bandi:default', 'plone.app.registry')
