@@ -30,7 +30,7 @@ DestinatariVocabularyFactory = PropertySheetVocabulary(sheet_name='rer_bandi_set
                                                        ])
 
 
-class DestinatariBandoVocabulary(KeywordsVocabulary):
+class CatalogDestinatariBandoVocabulary(KeywordsVocabulary):
 
     """
         Vocabulary factory listing all catalog keywords
@@ -40,10 +40,10 @@ class DestinatariBandoVocabulary(KeywordsVocabulary):
     keyword_index = 'getDestinatariBando'
 
 
-DestinatariBandoVocabularyFactory = DestinatariBandoVocabulary()
+CatalogDestinatariBandoVocabularyFactory = CatalogDestinatariBandoVocabulary()
 
 
-class TipologiaBandoVocabulary(KeywordsVocabulary):
+class CatalogTipologiaBandoVocabulary(KeywordsVocabulary):
 
     """
         Vocabulary factory listing all catalog keywords
@@ -53,4 +53,4 @@ class TipologiaBandoVocabulary(KeywordsVocabulary):
     keyword_index = 'getTipologia_bando'
 
 
-TipologiaBandoVocabularyFactory = TipologiaBandoVocabulary()
+CatalogTipologiaBandoVocabularyFactory = CatalogTipologiaBandoVocabulary()

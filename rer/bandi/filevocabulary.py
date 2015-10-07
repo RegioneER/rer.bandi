@@ -9,7 +9,7 @@ try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
-    
+
 from zope.interface.declarations import implements
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
@@ -83,5 +83,3 @@ class XMLFileVocabulary(object):
         xmlbytes = lxml.etree.tostring(root, xml_declaration=True, encoding='utf-8', pretty_print=True)
 
         return xmlbytes
-
-

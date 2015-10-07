@@ -5,7 +5,7 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="rer.bandi">
-    
+
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
   <i18n:registerTranslations
@@ -35,7 +35,7 @@
   <include package=".content" />
   <include package=".portlets" />
   <include file="upgrades.zcml" />
-  
+
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
       name="default"
@@ -44,7 +44,7 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-  
+
   <genericsetup:registerProfile
       name="migrate_to_2200"
       title="Migrate to version 2.2.0"
@@ -73,12 +73,12 @@
 
   <utility
     name="rer.bandi.collection.tipologiabando"
-    component=".vocabularies.TipologiaBandoVocabularyFactory"
+    component=".vocabularies.CatalogTipologiaBandoVocabularyFactory"
     />
 
   <utility
     name="rer.bandi.collection.destinatariobando"
-    component=".vocabularies.DestinatariBandoVocabularyFactory"
+    component=".vocabularies.CatalogDestinatariBandoVocabularyFactory"
     />
 
   <!-- indexer per i destinatari -->
