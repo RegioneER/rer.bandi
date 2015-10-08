@@ -66,8 +66,8 @@
                             stato
                           </span>
                     <a class="bandoTitleLink" tal:attributes="href item/getURL;
-                                       title item/title"
-                       tal:content="item/title" />
+                                                              title item/Title"
+                       tal:content="item/Title" />
                   </dt>
                   <dd class="bandoDetail">
                     <div tal:content="item/Description" />
