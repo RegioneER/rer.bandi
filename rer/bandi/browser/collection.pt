@@ -81,14 +81,14 @@
                            tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1000/01/01' or valid_scadenza)">
                         <tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
                             <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>: 
-                            <span tal:content="python:here.toLocalizedTime(item.EffectiveDate)" />
+                            <span tal:content="python:here.toLocalizedTime(item.EffectiveDate(), long_format=1)" />
                         </tal:pubblicazione>
                         <span class="labelTB"
                               tal:condition="python:item.effective.Date() != '1000/01/01' and valid_scadenza">
                                 |
                               </span>
                         <tal:scadenza_bando condition="valid_scadenza">
-                            <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>: 
+                            <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                             <span tal:content="python:here.toLocalizedTime(item.getScadenza_bando, long_format=True)" />
                         </tal:scadenza_bando>
                     </div>
