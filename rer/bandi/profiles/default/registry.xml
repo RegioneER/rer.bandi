@@ -33,7 +33,7 @@
         <element>plone.app.querystring.operation.selection.any</element>
     	<element>plone.app.querystring.operation.selection.all</element>
     </value>
-     <value key="vocabulary">rer.bandi.collection.destinatariobando</value>
+     <value key="vocabulary">rer.bandi.destinatari.vocabulary</value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
 
@@ -48,7 +48,7 @@
     	<element>plone.app.querystring.operation.selection.any</element>
     	<element>plone.app.querystring.operation.selection.all</element>
     </value>
-    <value key="vocabulary">rer.bandi.collection.tipologiabando</value>
+    <value key="vocabulary">rer.bandi.tipologia.vocabulary</value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
 
