@@ -61,7 +61,7 @@
     for="Products.ATContentTypes.interface.IATTopic"
     name="collection_bandi_view"
     class=".collection.CollectionBandiView"
-    template="collection.pt"
+    template="topic.pt"
     permission="zope2.View"
     />
   <browser:menuItem
@@ -78,7 +78,7 @@
     for="Products.ATContentTypes.interface.IATTopic"
     name="collection_bandi_tipologia_view"
     class=".collection.CollectionBandiView"
-    template="collection.pt"
+    template="topic.pt"
     permission="zope2.View"
     />
   <browser:menuItem
