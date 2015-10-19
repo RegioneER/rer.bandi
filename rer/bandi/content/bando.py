@@ -75,6 +75,7 @@ BandoSchema = folder.ATFolderSchema.copy() + document.ATDocumentSchema.copy() + 
         'riferimenti_bando',
         storage=atapi.AnnotationStorage(),
         searchable=True,
+        default_output_type='text/x-html-safe',
         widget=atapi.RichWidget(
             label=_('riferimenti_bando_label', default=u"References"),
             description=_('riferimenti_bando_help', default=u""),
