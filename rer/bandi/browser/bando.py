@@ -2,6 +2,7 @@
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from plone.app.layout.icons.interfaces import IContentIcon
 from rer.bandi.interfaces import IBandoFolderDeepening
 
 try:
@@ -74,7 +75,7 @@ class BandoView(BrowserView):
                     else:
                          obj_size=obj_file.getSize()
                     dictfields['filesize']= self.getSizeString(obj_size)
-                icon = ploneview.getIcon(obj)
+                icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
                 dictfields['icon'] = icon.html_tag()
                 values.append(dictfields)
 
