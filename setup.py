@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 version = '2.2.1.dev0'
 
-tests_require = ['zope.testing']
+tests_require = ['zope.testing', 'Products.PloneTestCase']
 
 setup(name='rer.bandi',
       version=version,
