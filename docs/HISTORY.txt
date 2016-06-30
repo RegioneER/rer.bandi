@@ -4,7 +4,9 @@ Changelog
 2.2.1 (unreleased)
 ------------------
 
-- Fixed icons rendering for anonymous users [daniele]
+- Fix icons rendering for anonymous users [daniele]
+- Fix effective date print in portlet, when effective date isn't set
+  [cekk] 
 
 
 2.2.0 (2015-12-03)
@@ -124,4 +126,3 @@ Changelog
 - portlet for bandi [mmariani]
 - 2 new views for topics [mmariani]
 - search form [mmariani]
-

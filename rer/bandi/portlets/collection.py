@@ -215,6 +215,10 @@ class Renderer(base.Renderer):
                     'closed', translate(_(u'Closed'), context=self.request))
         return state
 
+    def has_effective_date(self, bando):
+        effective_date = bando.effective.Date()
+        return effective_date != 'None' and effective_date != "1000/01/01"
+
 
 class AddForm(base.AddForm):
 
