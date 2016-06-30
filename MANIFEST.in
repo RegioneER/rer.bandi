@@ -1,3 +1,5 @@
 recursive-include docs *
 recursive-include rer *
 global-exclude *pyc
+include *.py
+include buildout.cfg
