@@ -42,16 +42,16 @@
              tal:content="python: view.voc_tipologia.getTermByToken(obj.getTipologia_bando).title" />
 
 		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.effective!='None' or obj.getScadenza_bando)"
-           tal:define="has_effective_date python:view.has_effective_date(obj)">
+           tal:define="has_effective_date python:view.has_effective_date(obj);
+                       valid_scadenza python:view.isValidDeadline(obj.getScadenza_bando)">
                 <tal:pubblicazione condition="python:view.data.show_effective and has_effective_date">
                     <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(obj.effective)" />
                 </tal:pubblicazione>
                 <span tal:omit-tag=""
                       tal:condition="python:(view.data.show_effective and view.data.show_scadenza_bando) and (has_effective_date and obj.getScadenza_bando)">
-                        |
                 </span>
-                <tal:scadenza_bando condition="python:view.data.show_scadenza_bando and obj.getScadenza_bando">
+                <tal:scadenza_bando condition="valid_scadenza">
                     <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                     <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>

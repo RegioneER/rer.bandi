@@ -173,6 +173,16 @@ class Renderer(base.Renderer):
                 results = results[:self.data.limit]
         return results
 
+    def isValidDeadline(self, date):
+        """
+        """
+        if not date:
+            return False
+        if date.Date() == '2100/12/31':
+            #a default date for bandi that don't have a defined deadline
+            return False
+        return True
+
     @memoize
     def collection(self):
         """ get the collection the portlet is pointing to"""
