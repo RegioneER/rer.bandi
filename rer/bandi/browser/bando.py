@@ -41,27 +41,23 @@ class BandoView(BrowserView):
                                    ))
         return values
 
-    def retrieveContentsOfFolderDeepening(self,path_dfolder):
+    def retrieveContentsOfFolderDeepening(self, path_dfolder):
         """Retrieves all objects contained in Folder Deppening
         """
-        path = {'query':path_dfolder,'depth':1}
-
         values = []
         objs = self.context.portal_catalog(
-              path = path,
-              sort_on = 'getObjPositionInParent'
+            path={'query': path_dfolder, 'depth': 1},
+            sort_on='getObjPositionInParent'
         )
-
         pp = getToolByName(self.context, 'portal_properties')
         typesUseViewActionInListings = pp.site_properties.typesUseViewActionInListings
-
-        ploneview = getMultiAdapter((self.context, self.request), name="plone")
-
+        # ploneview = getMultiAdapter((self.context, self.request), name="plone")
         for obj in objs:
             if not obj.getPath()== path_dfolder and not obj.exclude_from_nav:
                 dictfields=dict(title=obj.Title,
                                 description=obj.Description,
                                 url=obj.getURL(),
+                                path=obj.getPath(),
                                 )
                 if obj.Type=='Link':
                     dictfields['url']=obj.getRemoteUrl
@@ -77,6 +73,7 @@ class BandoView(BrowserView):
                     dictfields['filesize']= self.getSizeString(obj_size)
                 icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
                 dictfields['icon'] = icon.html_tag()
+                dictfields['type'] = obj.Type
                 values.append(dictfields)
 
         return values
