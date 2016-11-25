@@ -4,7 +4,7 @@
     float: right;
 }
 
-#content .rer-contextual-portlets a {
+body.portaltype-bando #content .rer-contextual-portlets a {
     background: none;
     padding:1px 0 1px 1px;
 }
