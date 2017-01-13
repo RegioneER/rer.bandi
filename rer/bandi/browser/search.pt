@@ -33,8 +33,7 @@
                  test python:lambda cond, a, b: [b,a][cond];
                  normalizeString nocall:context/@@plone/normalizeString;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                 here_url context/@@plone_context_state/object_url;
-                 syntool context/portal_syndication;">
+                 here_url context/@@plone_context_state/object_url;">
 
     <h1 class="documentFirstHeading">
         <span i18n:domain="rer.bandi"
@@ -44,14 +43,14 @@
         <span class="discreet">
         &mdash;
         <span i18n:translate="batch_x_items_matching_your_criteria"
-        ><span i18n:name="number" 
-        tal:omit-tag="" 
+        ><span i18n:name="number"
+        tal:omit-tag=""
         tal:content="python:len(results)">234</span> items matching your search terms</span>
       </span>
     </h1>
 
     <p class="discreet"
-       tal:condition="syntool/isSiteSyndicationAllowed">
+       tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
         <a href=""
            class="link-feed"
            i18n:translate="title_rss_feed"
@@ -133,9 +132,9 @@
                                Category
                             </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
                         </span>
-                </span>    
+                </span>
 
-                <span class="relevance" 
+                <span class="relevance"
                       tal:condition="result/data_record_normalized_score_">
                     &mdash;
                     <tal:relevance i18n:translate="label_relevance_percentage">
@@ -151,7 +150,7 @@
             	 i18n:domain="rer.bandi"
                    tal:condition="python:result.portal_type=='Bando' and (result.effective.year() != 1000 or result.getScadenza_bando)">
                 <tal:pubblicazione condition="python:result.effective.year() != 1000">
-                    <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>: 
+                    <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(result.effective)" />
                 </tal:pubblicazione>
                 <span class="labelTB"
@@ -160,7 +159,7 @@
                       </span>
                 <tal:scadenza_bando define="valid_scadenza python:view.isValidDeadline(result.getScadenza_bando)"
                                     condition="valid_scadenza">
-                    <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>: 
+                    <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                     <span tal:content="python:here.toLocalizedTime(result.getScadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>
             </div>
@@ -169,7 +168,7 @@
         </tal:entry>
         </tal:results>
         </dl>
-         
+
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
     </div>
@@ -177,4 +176,3 @@
 </div>
 </body>
 </html>
-
