@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.2.2 (unreleased)
+2.2.2 (2017-01-18)
 ------------------
 
-- Nothing changed yet.
+- Fixed issue about expiration date not set [daniele] 
 
 
 2.2.1 (2016-06-30)
