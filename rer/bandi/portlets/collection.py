@@ -179,9 +179,14 @@ class Renderer(base.Renderer):
         if not date:
             return False
         if date.Date() == '2100/12/31':
-            #a default date for bandi that don't have a defined deadline
+           #a default date for bandi that don't have a defined deadline
             return False
         return True
+
+    def isTipologiaValid(self, tipologia_bando):
+        """
+        """
+        return tipologia_bando in [x.title for x in self.voc_tipologia._terms]
 
     @memoize
     def collection(self):

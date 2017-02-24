@@ -1,10 +1,10 @@
 Changelog
 =========
 
-2.2.4 (unreleased)
+2.2.4 (2017-02-24)
 ------------------
 
-- Nothing changed yet.
+- Improved check on tipologia bando [daniele]
 
 
 2.2.3 (2017-01-18)
