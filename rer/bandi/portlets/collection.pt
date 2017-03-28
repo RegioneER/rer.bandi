@@ -3,7 +3,8 @@
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
-                getIcon nocall:plone_view/getIcon;">
+                getIcon nocall:plone_view/getIcon;
+                show_tipologia_bando view/data/show_tipologia_bando">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -38,7 +39,7 @@
 		        tal:condition="python:view.data.show_description and obj.Description"
                 tal:content="obj/Description" />
 		  <p class="bandoType"
-		     tal:condition="view/data/show_tipologia_bando and view.isTipologiaValid(obj.getTipologia_bando)"
+		     tal:condition="python:show_tipologia_bando and view.isTipologiaValid(obj.getTipologia_bando)"
              tal:content="python: view.voc_tipologia.getTermByToken(obj.getTipologia_bando).title" />
 
 		  <div class="bandoDates" tal:condition="python:(view.data.show_effective or view.data.show_scadenza_bando) and (obj.effective!='None' or obj.getScadenza_bando)"

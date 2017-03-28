@@ -186,7 +186,7 @@ class Renderer(base.Renderer):
     def isTipologiaValid(self, tipologia_bando):
         """
         """
-        return tipologia_bando in [x.title for x in self.voc_tipologia._terms]
+        return tipologia_bando in [x.value for x in self.voc_tipologia._terms]
 
     @memoize
     def collection(self):
