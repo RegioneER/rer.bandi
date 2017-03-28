@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.5 (unreleased)
+2.2.5 (2017-03-28)
 ------------------
 
 - Fix condition check in the portlet to show or not tipologia_bando
