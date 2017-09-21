@@ -1,38 +1,33 @@
 <?xml version="1.0"?>
-<object name="bando" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="bandoFolderDeepening" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Bando</property>
+ <property name="title" i18n:translate="">BandoFolderDeepening</property>
  <property name="description" i18n:translate=""></property>
- <property name="icon_expr">string:${folder_url}/browser/image/bando.png</property>
- <property name="factory">bando</property>
- <property name="add_view_expr">string:${folder_url}/++add++bando</property>
+ <property name="icon_expr">string:${portal_url}/document_icon.png</property>
+ <property name="factory">bandoFolderDeepening</property>
+ <property name="add_view_expr">string:${folder_url}/++add++bandofolderdeepening</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
- <property name="global_allow">True</property>
- <property name="filter_content_types">True</property>
- <property name="allowed_content_types">
-  <element value="Image"/>
-  <element value="File"/>
-  <element value="Link"/>
-  <element value="Folder"/>
-  <element value="bandofolderdeepening" />
- </property>
+ <property name="global_allow">False</property>
+ <property name="filter_content_types">False</property>
+ <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>
- <property name="default_view">bando_view</property>
+ <property name="default_view">folder_listing</property>
  <property name="view_methods">
-  <element value="bando_view" />
-  <element value="bando_right_view" />
+  <element value="folder_summary_view"/>
+  <element value="folder_tabular_view"/>
+  <element value="atct_album_view"/>
+  <element value="folder_listing"/>
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">rer.bandi.content.bando.Bando</property>
+ <property name="klass">rer.bandi.content.bandofolderdeepening.BandoFolderDeepening</property>
  <property name="behaviors">
   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
   <element value="plone.app.content.interfaces.INameFromTitle"/>
-  <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
-  <element value="plone.versioning"/>
+  <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
  </property>
- <property name="schema">rer.bandi.interfaces.bandoSchema.IBandoSchema</property>
+ <property name="schema">rer.bandi.interfaces.bandofolderdeepeningschema.IBandoFolderDeepeningSchema</property>
  <property name="model_source"></property>
  <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>

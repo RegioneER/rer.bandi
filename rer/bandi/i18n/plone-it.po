@@ -54,3 +54,8 @@ msgstr "Tipologia del bando"
 #: /profiles/default/portal_atct.xml
 msgid "Announcement: type"
 msgstr "Bando: tipologia"
+
+#. Default: "Text Document"
+#: /profiles/default/portal_atct.xml
+msgid "Text Document"
+msgstr "Testo del documento"

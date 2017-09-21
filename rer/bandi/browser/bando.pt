@@ -20,10 +20,9 @@
 		<div tal:replace="structure provider:plone.belowcontenttitle" />
 
 		<div class="contextualbody">
-            <div class="documentDescription rer-contextual-description" tal:condition="here/Description">
-                <metal:field use-macro="python:here.widget('description', mode='view')">
-                    Description
-                </metal:field>
+            <div class="documentDescription rer-contextual-description" tal:condition="here/Description" 
+                      tal:content="here/Description">
+                      Description
             </div>
 
 			<div tal:replace="structure provider:plone.abovecontentbody" />
@@ -33,12 +32,12 @@
 					<table class="vertical listing tableRight">
 		                <tr>
 		                  <th i18n:translate="tipologia_bando_label">Announcement type</th>
-		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.getTipologia_bando()).title">
+		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
 		                    Tipologia bando
 		                  </td>
 		                </tr>
 
-		                <tr tal:condition="context/getDestinatari|nothing">
+		                <tr tal:condition="context/destinatari|nothing">
 		                  <th i18n:translate="destinatari_label">Recipients</th>
 		                  <td>
 		                    <ul>
@@ -49,38 +48,38 @@
 		                    </ul>
 		                  </td>
 		                </tr>
-		                <tr tal:condition="context/getEnte_bando|nothing">
+		                <tr tal:condition="context/ente_bando|nothing">
                       <th i18n:translate="ente_label">Authority</th>
                       <td>
                         <ul>
-                          <li tal:repeat="ente context/getEnte_bando"
+                          <li tal:repeat="ente context/ente_bando"
                               tal:content="ente">
                               Authority
                           </li>
                         </ul>
                       </td>
                     </tr>
-		                <tr tal:condition="context/getEffectiveDate">
+		                <tr tal:condition="view/getEffectiveDate">
 		                  <th i18n:translate="bando_pub_date">Publication date</th>
 		                  <td>
-		                    <tal:pubblicazione content="python:here.toLocalizedTime(context.EffectiveDate())">
-		                      data di pubblicazione
+		                    <tal:pubblicazione content="view/getEffectiveDate">  
+                          data di pubblicazione
 		                    </tal:pubblicazione>
 		                  </td>
 		                </tr>
 
-		                <tr tal:condition="context/getScadenza_bando|nothing">
+		                <tr tal:condition="context/scadenza_bando|nothing">
 		                  <th i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</th>
 		                  <td>
-		                    <div tal:replace="python:here.toLocalizedTime(context.getScadenza_bando(), long_format=True)">
+		                    <div tal:replace="view/getDeadLinePartecipationDate">
 		                      chiusura procedimento
 		                    </div>
 		                  </td>
 		                </tr>
-		                <tr tal:condition="context/getChiusura_procedimento_bando|nothing">
+		                <tr tal:condition="context/chiusura_procedimento_bando|nothing">
 		                  <th i18n:translate="bando_chiusura_procedimento">Closing process</th>
 		                  <td>
-		                    <div tal:replace="python:here.toLocalizedTime(context.getChiusura_procedimento_bando())">
+		                    <div tal:replace="view/getAnnouncementCloseDate">
 		                      scadenza bando
 		                    </div>
 		                  </td>
@@ -88,7 +87,7 @@
 		            </table>
 				      </div>
 
-              <tal:text define="bando_text here/getText">
+              <tal:text define="bando_text here/text">
                 <p tal:condition="not:bando_text"
                     i18n:translate="no_body_text"
                     i18n:domain="plone"
@@ -96,13 +95,13 @@
                     This item does not have any body text, click the edit tab to change it.
                 </p>
                 <div tal:condition="bando_text"
-                     tal:replace="structure bando_text">
+                     tal:replace="structure bando_text/output">
                     Body text
                 </div>
               </tal:text>
 
                 <hr />
-                <div tal:content="structure context/getRiferimenti_bando">
+                <div tal:condition="context/riferimenti_bando" tal:content="structure context/riferimenti_bando/output">
                     Riferimenti bando
                 </div>
             </div>
@@ -124,7 +123,7 @@
                                     tal:condition="objs">
                                   <li class="navTreeItem visualNoMarker"
                                       tal:repeat="obj objs">
-                                    <img tal:replace="structure obj/icon" />
+                                    <!-- <img tal:replace="structure obj/icon" /> -->
                                     <a tal:attributes="href obj/url"
                                        tal:content="obj/title">title</a>
                                     <span tal:condition="obj/filesize|nothing"

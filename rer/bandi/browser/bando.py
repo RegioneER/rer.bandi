@@ -4,6 +4,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from plone.app.layout.icons.interfaces import IContentIcon
 from rer.bandi.interfaces import IBandoFolderDeepening
+from datetime import datetime
+from DateTime import DateTime
 
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
@@ -24,7 +26,6 @@ class BandoView(BrowserView):
         self.context = context
         self.request = request
         self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
-
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document
@@ -50,8 +51,7 @@ class BandoView(BrowserView):
             sort_on='getObjPositionInParent'
         )
         pp = getToolByName(self.context, 'portal_properties')
-        typesUseViewActionInListings = pp.site_properties.typesUseViewActionInListings
-        # ploneview = getMultiAdapter((self.context, self.request), name="plone")
+
         for obj in objs:
             if not obj.getPath()== path_dfolder and not obj.exclude_from_nav:
                 dictfields=dict(title=obj.Title,
@@ -61,8 +61,6 @@ class BandoView(BrowserView):
                                 )
                 if obj.Type=='Link':
                     dictfields['url']=obj.getRemoteUrl
-                if obj.Type in typesUseViewActionInListings and not obj.Type=='File':
-                    dictfields['url']=obj.getURL() + "/view"
                 if obj.Type=='File':
                     dictfields['url']=obj.getURL() + "/at_download/file"
                     obj_file=obj.getObject().getFile()
@@ -71,8 +69,11 @@ class BandoView(BrowserView):
                     else:
                          obj_size=obj_file.getSize()
                     dictfields['filesize']= self.getSizeString(obj_size)
-                icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
-                dictfields['icon'] = icon.html_tag()
+                else:
+                    dictfields['url']=obj.getURL() + "/view"
+
+                # icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
+                # dictfields['icon'] = icon.html_tag()
                 dictfields['type'] = obj.Type
                 values.append(dictfields)
 
@@ -99,7 +100,7 @@ class BandoView(BrowserView):
         Return the values of destinatari vocabulary
         """
         dest_utility = getUtility(IVocabularyFactory, 'rer.bandi.destinatari.vocabulary')
-        destinatari = self.context.getDestinatari()
+        destinatari = self.context.destinatari
         if not dest_utility:
             return destinatari
         dest_values = []
@@ -111,3 +112,36 @@ class BandoView(BrowserView):
                 dest_title = dest
             dest_values.append(dest_title)
         return dest_values
+
+    def getEffectiveDate(self):
+        """
+        Return effectiveDate
+        """
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        #da sistemare meglio questa parte
+        #restituisce la prima data possibile quando questa non è presente
+        time = self.context.effective()
+
+        #controllo che EffectiveDate torni il valore stringa None, se cosi significa che non e stata settata la data di pubblicazione
+        #se cosi allora torna None
+        if self.context.EffectiveDate() == "None":
+            return None
+        else:
+            return plone.toLocalizedTime(time)
+
+
+    def getDeadLinePartecipationDate(self):
+        """
+        Return deadline partecipation date
+        """
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        time = self.context.scadenza_bando
+        return plone.toLocalizedTime(time, long_format=True)
+
+    def getAnnouncementCloseDate(self):
+        """
+        Return Annoucement close date
+        """
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        time = self.context.chiusura_procedimento_bando
+        return time.strftime('%m/%d/%Y')

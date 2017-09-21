@@ -31,8 +31,8 @@
              </div>
 		  <h3 class="bandoTitle">
                     <a class="bandoTitleLink" tal:attributes="href obj/getURL;
-                                       title obj/pretty_title_or_id"
-                       tal:content="obj/pretty_title_or_id" />
+                                       title obj/Title"
+                       tal:content="obj/Title" />
 	      </h3>
 
 		  <p class="bandoDescription"
