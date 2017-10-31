@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
+from Products.ATContentTypes.interface import IATTopic, IATContentType
+from plone.app.collection.interfaces import ICollection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.portlets.portlets import base
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.memoize.instance import memoize
 from rer.bandi import bandiMessageFactory as _
-from plone.portlet.collection.collection import ICollectionPortlet
+from plone.portlets.interfaces import IPortletDataProvider
+from rer.bandi.interfaces import IBando
 from zope import schema
 from zope.component import getMultiAdapter, getUtility
-from plone.app.portlets.browser import formhelper
+from zope.formlib import form
 from zope.i18n import translate
 from plone.app.vocabularies.catalog import CatalogSource
 from zope.interface import implements
@@ -17,9 +21,32 @@ except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
 
 
-class IBandoCollectionPortlet(ICollectionPortlet):
+class IBandoCollectionPortlet(IPortletDataProvider):
+
     """A portlet which renders the results of a collection object.
     """
+
+    header = schema.TextLine(title=_(u"Portlet header"),
+                             description=_(u"Title of the rendered portlet"),
+                             required=True)
+
+    target_collection = schema.Choice(
+                    title=_(u"Target collection"),
+                    description=_(u"Find the collection which provides the items to list"),
+                    required=True,
+                    source=CatalogSource(portal_type=('Topic', 'Collection')),
+                    )
+
+    limit = schema.Int(title=_(u"Limit"),
+                       description=_(u"Specify the maximum number of items to show in the portlet. "
+                                     "Leave this blank to show all items."),
+                       required=False)
+
+    show_more = schema.Bool(title=_(u"Show more... link"),
+                            description=_(u"If enabled, a more... link will appear in the footer of the portlet, "
+                                          "linking to the underlying Collection."),
+                            required=True,
+                            default=True)
 
     show_more_text = schema.TextLine(title=_(u"Other text"),
                                      description=_(
@@ -61,13 +88,9 @@ class Assignment(base.Assignment):
     limit = None
     show_more = True
 
-    # parametri da ripulire
     def __init__(self, header=u"", target_collection=None, limit=None, show_more=True, show_more_text=None, show_more_path=None,
-                 show_description=False, show_tipologia_bando=False, show_effective=False, show_scadenza_bando=False,
-                 uid=None, thumb_scale=None, random=False, show_dates=False, exclude_context=True, no_icons=False, no_thumbs=False):
-
-
-        # lista di data, che viene passata all'instanza dell'assignment
+                 show_description=False, show_tipologia_bando=False, show_effective=False, show_scadenza_bando=False):
+        #lista di data, che viene passata all'instanza dell'assignment
         self.header = header
         self.target_collection = target_collection
         self.limit = limit
@@ -78,14 +101,6 @@ class Assignment(base.Assignment):
         self.show_tipologia_bando = show_tipologia_bando
         self.show_effective = show_effective
         self.show_scadenza_bando = show_scadenza_bando
-
-        self.uid = uid
-        self.thumb_scale = thumb_scale
-        self.random = random
-        self.show_dates = show_dates
-        self.exclude_context = exclude_context
-        self.no_icons = no_icons
-        self.no_thumbs = no_thumbs
 
     @property
     def title(self):
@@ -143,24 +158,23 @@ class Renderer(base.Renderer):
 
         return self.collection_url()
 
-    # controllare bene questa funzione
+    #controllare bene questa funzione
     def results(self):
         results = []
-        resultList = []
-        # la collection su cui vogliamo costrire la portlet ?
+        #la collection su cui vogliamo costrire la portlet ?
         collection = self.collection()
         if collection is not None:
-            # tornano tutti gli oggetti della mia collezione
+            #tornano tutti gli oggetti della mia collezione
             results = collection.queryCatalog()
 
             resultList = list(results)
             for el in list(results):
 
-                # controllo che gli elementi all interno della lista siano dei bandi
+                #controllo che gli elementi all interno della lista siano dei bandi
                 if not el.ContentTypeClass() == "contenttype-bando":
                     resultList.pop()
 
-            # se è settato un limite e se il limite è maggiore di zero
+            #se è settato un limite e se il limite è maggiore di zero
             if self.data.limit and self.data.limit > 0:
                 resultList = resultList[:self.data.limit]
 
@@ -198,8 +212,7 @@ class Renderer(base.Renderer):
 
         # portal = self.portal()
         # return portal.restrictedTraverse(collection_path, default=None)
-        # collectionUID = self.data.target_collection
-        collectionUID = self.data.uid
+        collectionUID = self.data.target_collection
         if not collectionUID:
             return ""
 
@@ -232,14 +245,11 @@ class Renderer(base.Renderer):
         return state
 
     def has_effective_date(self, bando):
-        if bando.EffectiveDate() == 'None':
-            return False
-        else:
-            effective_date = bando.effective.Date()
-            return effective_date != 'None' and effective_date != "1000/01/01"
+        effective_date = bando.effective.Date()
+        return effective_date != 'None' and effective_date != "1000/01/01"
 
 
-class AddForm(formhelper.AddForm):
+class AddForm(base.AddForm):
 
     """Portlet add form.
 
@@ -247,6 +257,10 @@ class AddForm(formhelper.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
+    #dice a formlib quali campi mostrare
+    # form_fields = form.Fields(IBandoCollectionPortlet)
+    # form_fields['target_collection'].custom_widget = UberSelectionWidget
+    # form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
     schema = IBandoCollectionPortlet
 
@@ -258,13 +272,18 @@ class AddForm(formhelper.AddForm):
         return Assignment(**data)
 
 
-class EditForm(formhelper.EditForm):
+class EditForm(base.EditForm):
 
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
+
+    #dice a formlib quali campi mostrare
+    # form_fields = form.Fields(IBandoCollectionPortlet)
+    # form_fields['target_collection'].custom_widget = UberSelectionWidget
+    # form_fields['show_more_path'].custom_widget = UberSelectionWidget
 
     schema = IBandoCollectionPortlet
 

@@ -55,40 +55,6 @@
     permission="zope2.View"
     />
 
-
-
-  <browser:page
-    for="Products.ATContentTypes.interface.IATTopic"
-    name="collection_bandi_view"
-    class=".collection.CollectionBandiView"
-    template="topic.pt"
-    permission="zope2.View"
-    />
-  <browser:menuItem
-    for="Products.ATContentTypes.interface.IATTopic"
-    menu="plone_displayviews"
-    title="Bandi con scadenza"
-    action="@@collection_bandi_view"
-    />
-
-
-
-  <!-- NB: il template fa un controllo sul nome della vista -->
-  <browser:page
-    for="Products.ATContentTypes.interface.IATTopic"
-    name="collection_bandi_tipologia_view"
-    class=".collection.CollectionBandiView"
-    template="topic.pt"
-    permission="zope2.View"
-    />
-  <browser:menuItem
-    for="Products.ATContentTypes.interface.IATTopic"
-    menu="plone_displayviews"
-    title="Bandi con tipologia e scadenza"
-    action="@@collection_bandi_tipologia_view"
-    />
-
-
  <!-- Viste per le nuove collezioni -->
 
   <browser:page

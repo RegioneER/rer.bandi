@@ -75,21 +75,15 @@
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
 
-  <!-- setting delle proprità dei bandi -->
-    <!-- per eliminare le proprità dal registro -->
-    <!-- <records interface="rer.bandi.interfaces.settings.IBandoSettings" remove="True" /> -->
-    <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
+  <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
 
-    <!-- rimuovo le vecchie voci all'interno del registry per i bandi -->
-    <!-- <record name="rer.bandi.rer_bandi_setting_default_ente" remove="true" />
-    <record name="rer.bandi.rer_bandi_setting_destinatari_bandi" remove="true" /> -->
-  
+
   <!-- faccio un bundle con le risorse css -->
   <records prefix="plone.bundles/bandi" interface='Products.CMFPlone.interfaces.IBundleRegistry'>
     <value key="csscompilation">++resource++bandi.css</value>
   </records>
 
-  
+
 
 
 </registry>

@@ -1,10 +1,18 @@
 Changelog
 =========
 
-2.2.6 (unreleased)
+3.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Drop AT support and add Dx contents [eikichi18]
+- Substituited formlib portlets with z3c.form portlets [eikichi18]
+- Fix check pubblication date [eikichi18]
+- Removed old i18n traductions [eikichi18]
+- Add uninstall profile [eikichi18]
+- Delete all Topic's references [eikichi18]
+- Update README [eikichi18]
+- Update classifiers in setup.py [eikichi18]
+- Update traduction [eikichi18]
 
 
 2.2.5 (2017-03-28)
@@ -22,7 +30,7 @@ Changelog
 2.2.3 (2017-01-18)
 ------------------
 
-- Fixed issue about expiration date not set [daniele] 
+- Fixed issue about expiration date not set [daniele]
 
 
 2.2.2 (2017-01-13)

@@ -8,9 +8,6 @@
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
-  <i18n:registerTranslations
-        zcml:condition="have plone-41"
-        directory="locales-plone" />
 
   <!-- Load these here as permissions are used by .browser and .portlets -->
 
@@ -42,6 +39,14 @@
       title="RER: Bandi"
       directory="profiles/default"
       description=""
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="rer.bandi uninstall"
+      directory="profiles/uninstall"
+      description="Uninstalls the rer.bandi package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

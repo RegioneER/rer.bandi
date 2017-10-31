@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <repositorytool>
-    <policymap>
+    <policymap purge="true">
         <type name="Bando">
             <policy name="at_edit_autoversion"/>
             <policy name="version_on_revert"/>

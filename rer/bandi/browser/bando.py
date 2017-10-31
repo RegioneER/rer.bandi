@@ -15,6 +15,7 @@ except ImportError:
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
 
+
 class IBandoView(Interface):
     pass
 
@@ -144,4 +145,4 @@ class BandoView(BrowserView):
         """
         plone = getMultiAdapter((self.context, self.request), name="plone")
         time = self.context.chiusura_procedimento_bando
-        return time.strftime('%m/%d/%Y')
+        return time.strftime('%d/%m/%Y')

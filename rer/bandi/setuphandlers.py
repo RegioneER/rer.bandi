@@ -18,7 +18,7 @@ def import_various(context):
 
 
 def addKeyToCatalog(portal):
-    #inizializzazione degli indici
+    # inizializzazione degli indici
 
     setup_tool = portal.portal_setup
     setup_tool.runImportStepFromProfile('profile-rer.bandi:default', 'catalog')
@@ -45,13 +45,14 @@ def addKeyToCatalog(portal):
         logger.info('Indexing new indexes %s.' % ', '.join(indexables))
         catalog.manage_reindexIndex(ids=indexables)
 
+
 def addDefaultValueToRegistry():
-    
+
     DEST = ('Cittadini|Cittadini',
-          'Imprese|Imprese',
-          'Enti locali|Enti locali',
-          'Associazioni|Associazioni',
-          'Altro|Altro')
+            'Imprese|Imprese',
+            'Enti locali|Enti locali',
+            'Associazioni|Associazioni',
+            'Altro|Altro')
 
     registry = getUtility(IRegistry)
     registry['rer.bandi.interfaces.settings.IBandoSettings.default_destinatari'] = DEST

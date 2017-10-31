@@ -5,7 +5,7 @@ This module contains the tool of rer.bandi
 import os
 from setuptools import setup, find_packages
 
-version = '2.2.6.dev0'
+version = '3.0.0.dev0'
 
 tests_require = ['zope.testing', 'Products.PloneTestCase']
 
@@ -19,10 +19,8 @@ setup(name='rer.bandi',
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Plone",
-        "Framework :: Plone :: 3.3",
-        "Framework :: Plone :: 4.0",
-        "Framework :: Plone :: 4.2",
-        "Development Status :: 5 - Production/Stable",
+        "Framework :: Plone :: 5.0",
+        "Framework :: Plone :: 5.1",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         ],
       keywords='rer bandi announcements',

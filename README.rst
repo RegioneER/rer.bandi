@@ -93,7 +93,7 @@ If the property is empty, the default value isn't set.
 Dependencies
 ============
 
-This product has been tested on Plone 3.3.5 and Plone 4.2
+This product has been tested on Plone 5 and Plone 5.1
 
 Credits
 =======
