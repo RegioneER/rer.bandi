@@ -19,7 +19,9 @@ from plone import api
 
 
 def getDefaultEnte():
-    default_ente = api.portal.get_registry_record('rer.bandi.interfaces.settings.IBandoSettings.default_ente')
+    default_ente = api.portal.get_registry_record(
+        'rer.bandi.interfaces.settings.IBandoSettings.default_ente'
+    )
     if default_ente:
         return default_ente
     else:
@@ -37,7 +39,6 @@ class IBandoSchema(model.Schema):
         required=True
     )
 
-    #senza value_type mi dava la scelta multipla, ma prendeva soltanto la prima voce
     directives.widget(destinatari=CheckBoxFieldWidget)
     destinatari = schema.List(
         title=_('destinatari_label', default=u"Recipients"),
@@ -46,10 +47,10 @@ class IBandoSchema(model.Schema):
         value_type=schema.Choice(vocabulary='rer.bandi.destinatari.vocabulary')
     )
 
-    #da sistemare questi attributi
+    # da sistemare questi attributi
     ente_bando = schema.Tuple(
-        title=_(u'ente_label',default=u'Authority'),
-        description=_(u'ente_help',default=u'Select some authorities.'),
+        title=_(u'ente_label', default=u'Authority'),
+        description=_(u'ente_help', default=u'Select some authorities.'),
         required=False,
         defaultFactory=getDefaultEnte,
         value_type=schema.TextLine(),
@@ -58,17 +59,22 @@ class IBandoSchema(model.Schema):
 
     scadenza_bando = schema.Datetime(
         title=_('scadenza_bando_label', default=u"Expiration date and time"),
-        description=_('scadenza_bando_help', default=u"Deadline to participate in the announcement"),
+        description=_(
+            'scadenza_bando_help',
+            default=u"Deadline to participate in the announcement"
+        ),
         required=False
     )
 
     chiusura_procedimento_bando = schema.Date(
-        title=_('chiusura_procedimento_bando_label', default=u"Closing date procedure"),
+        title=_(
+            'chiusura_procedimento_bando_label',
+            default=u"Closing date procedure"
+        ),
         description=_('chiusura_procedimento_bando_help', default=u''),
         required=False
     )
 
-     
     riferimenti_bando = RichText(
         title=_('riferimenti_bando_label', default=u"References"),
         description=_('riferimenti_bando_help', default=u""),

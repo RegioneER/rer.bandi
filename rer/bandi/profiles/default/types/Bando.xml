@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<object name="bando" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="Bando" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Bando</property>
  <property name="description" i18n:translate=""></property>
  <property name="icon_expr">string:${folder_url}/browser/image/bando.png</property>
- <property name="factory">bando</property>
- <property name="add_view_expr">string:${folder_url}/++add++bando</property>
+ <property name="factory">Bando</property>
+ <property name="add_view_expr">string:${folder_url}/++add++Bando</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">True</property>
@@ -15,7 +15,7 @@
   <element value="File"/>
   <element value="Link"/>
   <element value="Folder"/>
-  <element value="bandofolderdeepening" />
+  <element value="Bandofolderdeepening" />
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">bando_view</property>
