@@ -46,6 +46,7 @@ class BandoView(BrowserView):
     def retrieveContentsOfFolderDeepening(self, path_dfolder):
         """Retrieves all objects contained in Folder Deppening
         """
+
         values = []
         objs = self.context.portal_catalog(
             path={'query': path_dfolder, 'depth': 1},
@@ -63,12 +64,14 @@ class BandoView(BrowserView):
                 if obj.Type=='Link':
                     dictfields['url']=obj.getRemoteUrl
                 if obj.Type=='File':
-                    dictfields['url']=obj.getURL() + "/at_download/file"
-                    obj_file=obj.getObject().getFile()
-                    if obj_file.meta_type=='ATBlob':
-                        obj_size=obj_file.get_size()
-                    else:
-                         obj_size=obj_file.getSize()
+                    dictfields['url']=obj.getURL() + "/download/file"
+                    # obj_file=obj.getObject().getFile()
+                    obj_file=obj.getObject().file
+                    # if obj_file.meta_type=='ATBlob':
+                    #     obj_size=obj_file.get_size()
+                    # else:
+                    #      obj_size=obj_file.getSize()
+                    obj_size = obj_file.size
                     dictfields['filesize']= self.getSizeString(obj_size)
                 else:
                     dictfields['url']=obj.getURL() + "/view"
