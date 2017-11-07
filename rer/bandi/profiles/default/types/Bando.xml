@@ -15,7 +15,7 @@
   <element value="File"/>
   <element value="Link"/>
   <element value="Folder"/>
-  <element value="BandoFolderDeepening" />
+  <element value="Bando Folder Deepening" />
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">bando_view</property>

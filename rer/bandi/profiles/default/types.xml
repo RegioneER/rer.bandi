@@ -8,5 +8,5 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <object name="Bando" meta_type="Dexterity FTI"/>
-  <object name="BandoFolderDeepening" meta_type="Dexterity FTI"/>
+  <object name="Bando Folder Deepening" meta_type="Dexterity FTI"/>
 </object>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<object name="BandoFolderDeepening" meta_type="Dexterity FTI" i18n:domain="plone"
+<object name="Bando Folder Deepening" meta_type="Dexterity FTI" i18n:domain="plone"
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">BandoFolderDeepening</property>
+ <property name="title" i18n:translate="">Cartella Approfondimento</property>
  <property name="description" i18n:translate=""></property>
- <property name="factory">BandoFolderDeepening</property>
- <property name="add_view_expr">string:${folder_url}/++add++BandoFolderDeepening</property>
+ <property name="factory">Bando Folder Deepening</property>
+ <property name="add_view_expr">string:${folder_url}/++add++Bando Folder Deepening</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">False</property>
