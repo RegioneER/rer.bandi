@@ -9,4 +9,5 @@
 <object name="portal_types" meta_type="Plone Types Tool">
   <object name="Bando" meta_type="Dexterity FTI"/>
   <object name="Bando Folder Deepening" meta_type="Dexterity FTI"/>
+  <object name="Collection" meta_type="Factory-based Type Information with dynamic views"/>
 </object>

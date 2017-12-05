@@ -73,7 +73,7 @@
                       <div class="bandoType"
                            tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
                         <span tal:omit-tag=""
-						      i18n:translate="tipologia_bando_label">Announcement type</span>: <span tal:content="python:view.getTipologiaTitle(item.getTipologia_bando)" />
+						      i18n:translate="tipologia_bando_label">Announcement type</span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
                       </div>
                       <div class="bandoDates"
                            tal:define="valid_scadenza python:view.isValidDeadline(item.getScadenza_bando)"
