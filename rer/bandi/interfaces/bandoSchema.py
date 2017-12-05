@@ -1,21 +1,13 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from plone.app.textfield import RichText
 from plone.autoform import directives
-from plone.namedfile import field as namedfile
 from plone.supermodel import model
-from plone.supermodel.directives import fieldset
-from Products.CMFCore.utils import getToolByName
 from rer.bandi import bandiMessageFactory as _
-
-from z3c.form.browser.radio import RadioFieldWidget
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from z3c.form.browser.textlines import TextLinesFieldWidget
-
+from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
-
-from plone import api
+from plone.directives import form
 
 
 def getDefaultEnte():
@@ -78,5 +70,12 @@ class IBandoSchema(model.Schema):
     riferimenti_bando = RichText(
         title=_('riferimenti_bando_label', default=u"References"),
         description=_('riferimenti_bando_help', default=u""),
+        required=False
+    )
+
+    form.order_after(testo_bando='IDublinCore.description')
+    testo_bando = RichText(
+        title=_('testo_bando_label', default=u"Testo"),
+        description=_('testo_bando_description', default=u"Testo del bando."),
         required=False
     )
