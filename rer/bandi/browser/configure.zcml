@@ -51,40 +51,42 @@
     for="*"
     name="search_bandi"
     template="search.pt"
-	class=".search.SearchBandi"
+	  class=".search.SearchBandi"
     permission="zope2.View"
     />
 
  <!-- Viste per le nuove collezioni -->
 
   <browser:page
-    for="plone.app.collection.interfaces.ICollection"
+    for="*"
     name="collection_bandi_view"
     class=".collection.CollectionBandiView"
     template="collection.pt"
     permission="zope2.View"
     />
-  <browser:menuItem
-    for="plone.app.collection.interfaces.ICollection"
-    menu="plone_displayviews"
-    title="Bandi con scadenza"
-    action="@@collection_bandi_view"
-    />
 
-   <browser:page
-    for="plone.app.collection.interfaces.ICollection"
-    name="collection_bandi_tipologia_view"
-    class=".collection.CollectionBandiView"
-    template="collection.pt"
-    permission="zope2.View"
-    />
-  <browser:menuItem
-    for="plone.app.collection.interfaces.ICollection"
-    menu="plone_displayviews"
-    title="Bandi con tipologia e scadenza"
-    action="@@collection_bandi_tipologia_view"
-    />
+  <browser:page
+   for="*"
+   name="collection_bandi_tipologia_view"
+   class=".collection.CollectionBandiView"
+   template="collection.pt"
+   permission="zope2.View"
+   />
 
+  <browser:menuItems
+    for="plone.app.collection.interfaces.ICollection"
+    menu="plone_displayviews">
+
+    <browser:menuItem
+      title="Bandi con scadenza"
+      action="collection_bandi_view"
+      />
+
+    <browser:menuItem
+      title="Bandi con tipologia e scadenza"
+      action="collection_bandi_tipologia_view"
+      />
+  </browser:menuItems>
 
    <!--DIRECTORY REGISTRATION-->
   <browser:resourceDirectory

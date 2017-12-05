@@ -20,7 +20,7 @@
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <div class="contextualbody">
-            <div class="documentDescription rer-contextual-description" tal:condition="here/Description" 
+            <div class="documentDescription rer-contextual-description" tal:condition="here/Description"
                       tal:content="here/Description">
                       Description
             </div>
@@ -117,7 +117,7 @@
 		            </div>
             	</div>
 
-				      <tal:text define="bando_text here/getText">
+				      <tal:text define="bando_text here/testo_bando">
                 <p tal:condition="not:bando_text"
                     i18n:translate="no_body_text"
                     i18n:domain="plone"
@@ -125,7 +125,7 @@
                     This item does not have any body text, click the edit tab to change it.
                 </p>
                 <div tal:condition="bando_text"
-                     tal:replace="structure bando_text">
+                     tal:replace="structure bando_text/output">
                     Body text
                 </div>
               </tal:text>

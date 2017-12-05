@@ -24,10 +24,10 @@
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
                  use_navigation_root request/use_navigation_root | python:True;
                  results view/searchBandi;
-                 Batch python:modules['Products.CMFPlone'].Batch;
+                 Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
-                 desc_length site_properties/search_results_description_length;
-                 desc_ellipsis site_properties/ellipsis;
+                 desc_length python: view.getSearchResultsDescriptionLength();
+                 desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
                  use_view_action site_properties/typesUseViewActionInListings|python:();
                  test python:lambda cond, a, b: [b,a][cond];
@@ -70,7 +70,6 @@
         <tal:entry define="isAnon context/@@plone_portal_state/anonymous;
 		                   result_url result/getURL;
                            result_type result/portal_type;
-                           item_icon python:plone_view.getIcon(result);
                            url python:'%s?searchterm=%s'%(test(result_type in use_view_action, result_url+'/view', result_url+'/'), searchterm);">
             <dt tal:define="stato_bando python:view.getBandoState(result);
 		    	            item_wf_state_class string:state-${result/review_state};"

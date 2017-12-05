@@ -2,7 +2,6 @@ from zope.interface import Interface
 from zope import schema
 
 
-#bisogna fare delle traduzioni che non sono state ancora fatte
 class IBandoSettings(Interface):
     """
     Settings used for announcements default value
@@ -18,5 +17,6 @@ class IBandoSettings(Interface):
     default_destinatari = schema.Tuple(
         title=u"default_destinatari_bandi",
         required=False,
+        value_type=schema.TextLine(),
         missing_value=None
     )
