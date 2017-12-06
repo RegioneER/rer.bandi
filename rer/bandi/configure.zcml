@@ -31,6 +31,7 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include package=".interfaces" />
   <include file="upgrades.zcml" />
 
   <!-- Register the installation GenericSetup extension profile -->
@@ -74,6 +75,11 @@
   <utility
     name="rer.bandi.destinatari.vocabulary"
     component=".vocabularies.DestinatariVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.enti.vocabulary"
+    component=".vocabularies.EnteVocabulary"
     />
 
   <!-- indexer per i destinatari -->

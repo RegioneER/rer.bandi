@@ -5,6 +5,7 @@ from plone.autoform import directives
 from plone.supermodel import model
 from rer.bandi import bandiMessageFactory as _
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from plone.directives import form
@@ -39,7 +40,8 @@ class IBandoSchema(model.Schema):
         value_type=schema.Choice(vocabulary='rer.bandi.destinatari.vocabulary')
     )
 
-    # da sistemare questi attributi
+    directives.widget('ente_bando', AjaxSelectFieldWidget,
+                      vocabulary='rer.bandi.enti.vocabulary')
     ente_bando = schema.Tuple(
         title=_(u'ente_label', default=u'Authority'),
         description=_(u'ente_help', default=u'Select some authorities.'),

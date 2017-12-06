@@ -84,6 +84,13 @@
 		                    </div>
 		                  </td>
 		                </tr>
+                </table>
+                <table class="vertical listing tableRight" tal:define="foldeeps view/retrieveFolderDeepening" tal:condition="foldeeps">
+                    <tr>
+                      <td>
+                        <a href="#foldeeps" i18n:translate="bando_anchor_foldeeps">Cartelle di Approfondimento</a>
+                      </td>
+                    </tr>
 		            </table>
 				      </div>
 
@@ -106,38 +113,40 @@
                 </div>
             </div>
             <div class="visualClear"></div>
-            <div class="rer-contextual-portlets">
-                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
-                              condition="foldeeps">
-                    <tal:foldeep repeat="foldeep foldeeps">
-                        <dl class="portlet portletNavigationTree">
-                            <dt class="portletHeader">
-                                <span tal:content="foldeep/title">
-                                    header
-                                </span>
-                            </dt>
-                            <dd class="portletItem lastItem"
-                                tal:define="folder_path foldeep/path">
-                                <ul class="navTree navTreeLevel0"
-                                    tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
-                                    tal:condition="objs">
-                                  <li class="navTreeItem visualNoMarker"
-                                      tal:repeat="obj objs">
-                                    <!-- <img tal:replace="structure obj/icon" /> -->
-                                    <a tal:attributes="href obj/url"
-                                       tal:content="obj/title">title</a>
-                                    <span tal:condition="obj/filesize|nothing"
-                                          tal:content="string:(${obj/filesize})">1Mb</span>
-                                    <div class="description"
-                                         tal:condition="obj/description"
-                                         tal:content="obj/description">description</div>
-                                  </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                    </tal:foldeep>
-                </tal:foldeeps>
-            </div>
+            <section id="foldeeps">
+              <div class="rer-contextual-portlets">
+                  <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
+                                condition="foldeeps">
+                      <tal:foldeep repeat="foldeep foldeeps">
+                          <dl class="portlet portletNavigationTree">
+                              <dt class="portletHeader">
+                                  <span tal:content="foldeep/title">
+                                      header
+                                  </span>
+                              </dt>
+                              <dd class="portletItem lastItem"
+                                  tal:define="folder_path foldeep/path">
+                                  <ul class="navTree navTreeLevel0"
+                                      tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
+                                      tal:condition="objs">
+                                    <li class="navTreeItem visualNoMarker"
+                                        tal:repeat="obj objs">
+                                      <!-- <img tal:replace="structure obj/icon" /> -->
+                                      <a tal:attributes="href obj/url"
+                                         tal:content="obj/title">title</a>
+                                      <span tal:condition="obj/filesize|nothing"
+                                            tal:content="string:(${obj/filesize})">1Mb</span>
+                                      <div class="description"
+                                           tal:condition="obj/description"
+                                           tal:content="obj/description">description</div>
+                                    </li>
+                                  </ul>
+                              </dd>
+                          </dl>
+                      </tal:foldeep>
+                  </tal:foldeeps>
+              </div>
+            </section>
         <div class="visualClear"></div>
         <div tal:replace="structure provider:plone.belowcontentbody" />
         </div>

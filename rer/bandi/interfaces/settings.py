@@ -1,5 +1,6 @@
 from zope.interface import Interface
 from zope import schema
+from plone.app.registry.browser import controlpanel
 
 
 class IBandoSettings(Interface):
@@ -20,3 +21,14 @@ class IBandoSettings(Interface):
         value_type=schema.TextLine(),
         missing_value=None
     )
+
+
+class BandiSettings(controlpanel.RegistryEditForm):
+    schema = IBandoSettings
+    id = 'BandiSettings'
+    label = u"Impostazioni per i bandi"
+
+
+class BandiSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+
+    form = BandiSettings
