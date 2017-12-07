@@ -49,6 +49,11 @@
       </span>
     </h1>
 
+    <!-- tasto per tornare al form di ricerca -->
+    <form action="portal_url/@@search_bandi_form">
+      <button type="submit">Nuova Ricerca</button>
+    </form>
+
     <p class="discreet"
        tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
         <a href=""

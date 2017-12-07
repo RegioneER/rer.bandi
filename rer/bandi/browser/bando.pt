@@ -88,7 +88,7 @@
                 <table class="vertical listing tableRight" tal:define="foldeeps view/retrieveFolderDeepening" tal:condition="foldeeps">
                     <tr>
                       <td>
-                        <a href="#foldeeps" i18n:translate="bando_anchor_foldeeps">Cartelle di Approfondimento</a>
+                        <a href="#foldeeps" i18n:translate="bando_anchor_foldeeps">Consulta gli approfondimenti</a>
                       </td>
                     </tr>
 		            </table>

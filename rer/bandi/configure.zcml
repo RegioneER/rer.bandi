@@ -32,6 +32,7 @@
   <include package=".content" />
   <include package=".portlets" />
   <include package=".interfaces" />
+  <include package=".tiles" />
   <include file="upgrades.zcml" />
 
   <!-- Register the installation GenericSetup extension profile -->

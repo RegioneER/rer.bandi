@@ -26,14 +26,16 @@ class BandoView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+        self.voc_tipologia = getUtility(
+            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document
         """
         struct_doc = self.context
         values = []
-        dfolders = struct_doc.getFolderContents(contentFilter={'object_provides': IBandoFolderDeepening.__identifier__})
+        dfolders = struct_doc.getFolderContents(
+            contentFilter={'object_provides': IBandoFolderDeepening.__identifier__})
         for df in dfolders:
             if not df.exclude_from_nav:
                 values.append(dict(title=df.Title,
@@ -55,26 +57,26 @@ class BandoView(BrowserView):
         pp = getToolByName(self.context, 'portal_properties')
 
         for obj in objs:
-            if not obj.getPath()== path_dfolder and not obj.exclude_from_nav:
-                dictfields=dict(title=obj.Title,
-                                description=obj.Description,
-                                url=obj.getURL(),
-                                path=obj.getPath(),
-                                )
-                if obj.Type=='Link':
-                    dictfields['url']=obj.getRemoteUrl
-                if obj.Type=='File':
-                    dictfields['url']=obj.getURL() + "/download/file"
+            if not obj.getPath() == path_dfolder and not obj.exclude_from_nav:
+                dictfields = dict(title=obj.Title,
+                                  description=obj.Description,
+                                  url=obj.getURL(),
+                                  path=obj.getPath(),
+                                  )
+                if obj.Type == 'Link':
+                    dictfields['url'] = obj.getRemoteUrl
+                if obj.Type == 'File':
+                    dictfields['url'] = obj.getURL() + "/download/file"
                     # obj_file=obj.getObject().getFile()
-                    obj_file=obj.getObject().file
+                    obj_file = obj.getObject().file
                     # if obj_file.meta_type=='ATBlob':
                     #     obj_size=obj_file.get_size()
                     # else:
                     #      obj_size=obj_file.getSize()
                     obj_size = obj_file.size
-                    dictfields['filesize']= self.getSizeString(obj_size)
+                    dictfields['filesize'] = self.getSizeString(obj_size)
                 else:
-                    dictfields['url']=obj.getURL() + "/view"
+                    dictfields['url'] = obj.getURL() + "/view"
 
                 # icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
                 # dictfields['icon'] = icon.html_tag()
@@ -83,10 +85,10 @@ class BandoView(BrowserView):
 
         return values
 
-    def getSizeString(self,size):
-        const = {'kB':1024,
-                 'MB':1024*1024,
-                 'GB':1024*1024*1024}
+    def getSizeString(self, size):
+        const = {'kB': 1024,
+                 'MB': 1024 * 1024,
+                 'GB': 1024 * 1024 * 1024}
         order = ('GB', 'MB', 'kB')
         smaller = order[-1]
         if not size:
@@ -95,15 +97,16 @@ class BandoView(BrowserView):
         if size < const[smaller]:
             return '1 %s' % smaller
         for c in order:
-            if size/const[c] > 0:
+            if size / const[c] > 0:
                 break
-        return '%.2f %s' % (float(size/float(const[c])), c)
+        return '%.2f %s' % (float(size / float(const[c])), c)
 
     def getDestinatariNames(self):
         """
         Return the values of destinatari vocabulary
         """
-        dest_utility = getUtility(IVocabularyFactory, 'rer.bandi.destinatari.vocabulary')
+        dest_utility = getUtility(
+            IVocabularyFactory, 'rer.bandi.destinatari.vocabulary')
         destinatari = self.context.destinatari
         if not dest_utility:
             return destinatari
@@ -122,17 +125,16 @@ class BandoView(BrowserView):
         Return effectiveDate
         """
         plone = getMultiAdapter((self.context, self.request), name="plone")
-        #da sistemare meglio questa parte
-        #restituisce la prima data possibile quando questa non è presente
+        # da sistemare meglio questa parte
+        # restituisce la prima data possibile quando questa non è presente
         time = self.context.effective()
 
-        #controllo che EffectiveDate torni il valore stringa None, se cosi significa che non e stata settata la data di pubblicazione
-        #se cosi allora torna None
+        # controllo che EffectiveDate torni il valore stringa None, se cosi significa che non e stata settata la data di pubblicazione
+        # se cosi allora torna None
         if self.context.EffectiveDate() == "None":
             return None
         else:
             return plone.toLocalizedTime(time)
-
 
     def getDeadLinePartecipationDate(self):
         """
