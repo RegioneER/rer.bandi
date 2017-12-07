@@ -167,4 +167,6 @@ class SearchBandi(BrowserView):
         return True
 
     def getSearchResultsDescriptionLength(self):
-        return api.portal.get_registry_record('plone.search_results_description_length')
+        length = api.portal.get_registry_record(
+            'plone.search_results_description_length')
+        return length

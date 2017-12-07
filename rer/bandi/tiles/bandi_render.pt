@@ -45,7 +45,7 @@
                                      is_present python:show_bando_type in classes;
                                      type python: helper_view.voc_tipologia();"
                 		     tal:condition="is_present"
-                             tal:content="python: type.getTermByToken(obj.getTipologia_bando).title" />
+                             tal:content="type" />
 
                      <div class="bandoDates" tal:condition="python:(is_show_effective_visible or is_show_scadenza_bando_visible) and (obj.effective!='None' or obj.getScadenza_bando)"
                           tal:define="show_effective string:effective;

@@ -26,7 +26,7 @@
                  results view/searchBandi;
                  Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
-                 desc_length python: view.getSearchResultsDescriptionLength();
+                 desc_length python: str(view.getSearchResultsDescriptionLength());
                  desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
                  use_view_action site_properties/typesUseViewActionInListings|python:();

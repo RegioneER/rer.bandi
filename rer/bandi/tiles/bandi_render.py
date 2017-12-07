@@ -39,10 +39,13 @@ class HelpersView(BrowserView):
 
         return state
 
-    def voc_tipologia(self):
-        return getUtility(
+    def voc_tipologia(self, obj):
+        typo = getUtility(
             IVocabularyFactory, name='rer.bandi.tipologia.vocabulary'
         )(self.context)
+
+        if getattr(obj, 'portal_type', None) == 'Bando':
+            return typo.getTermByToken(obj.getTipologia_bando).title
 
     def has_effective_date(self, bando):
         if bando.EffectiveDate() == 'None':
