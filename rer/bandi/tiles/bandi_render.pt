@@ -43,7 +43,7 @@
                       <p class="bandoType"
                          tal:define="show_bando_type string:tipologia_bando;
                                      is_present python:show_bando_type in classes;
-                                     type python: helper_view.voc_tipologia();"
+                                     type python: helper_view.voc_tipologia(obj);"
                 		     tal:condition="is_present"
                              tal:content="type" />
 
