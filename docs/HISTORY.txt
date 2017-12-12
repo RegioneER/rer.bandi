@@ -13,6 +13,7 @@ Changelog
 - Update README [eikichi18]
 - Update classifiers in setup.py [eikichi18]
 - Update traduction [eikichi18]
+- Fix bando-right template [nzambello]
 
 
 2.2.5 (2017-03-28)
