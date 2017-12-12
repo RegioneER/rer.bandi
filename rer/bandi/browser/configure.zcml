@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="rer.bandi">
 
@@ -89,15 +90,17 @@
   </browser:menuItems>
 
    <!--DIRECTORY REGISTRATION-->
-  <browser:resourceDirectory
-        name="rer.bandi.images"
-        directory="images"
-        />
+  <plone:static
+      name="rer.bandi.images"
+      type="plone"
+      directory="images"
+      />
 
-  <browser:resource
-    name="bandi.css"
-    file="bandi.css"
-    />
+  <plone:static
+      name="rer.bandi.styles"
+      type="plone"
+      directory="css"
+      />
 
   <browser:resource
     name="searchbandi.js"
