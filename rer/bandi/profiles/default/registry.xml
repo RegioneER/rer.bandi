@@ -77,9 +77,20 @@
 
   <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
 
+  <records prefix="plone.resources/rer-bandi"
+           interface="Products.CMFPlone.interfaces.IResourceRegistry">
+      <value key="css">
+          <element>++resource++bandi.css</element>
+      </value>
+  </records>
 
   <!-- faccio un bundle con le risorse css -->
-  <records prefix="plone.bundles/bandi" interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+  <records prefix="plone.bundles/rer-bandi-bundle"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="enabled">True</value>
+    <value key="resources" purge="false">
+      <element>rer-bandi</element>
+    </value>
     <value key="csscompilation">++resource++bandi.css</value>
   </records>
 

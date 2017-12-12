@@ -1,3 +1,12 @@
+body#visual-portal-wrapper.pat-plone .outer-wrapper .contenttype-bando:after {
+    content: 'cacca';
+    background-image: url('++resource++rer.bandi/images/bando_icon.svg');
+}
+
+.visualClear {
+    clear: both;
+}
+
 .rer-contextual-portlets-right {
     width: 17em;
     margin-left: 1em;
