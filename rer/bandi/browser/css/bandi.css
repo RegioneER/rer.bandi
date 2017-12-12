@@ -1,6 +1,9 @@
-body#visual-portal-wrapper.pat-plone .outer-wrapper .contenttype-bando:after {
-    content: 'cacca';
-    background-image: url('++resource++rer.bandi/images/bando_icon.svg');
+body#visual-portal-wrapper.pat-plone #edit-bar #edit-zone .contenttype-bando:after {
+    content: '';
+    background-image: url('/++plone++rer.bandi.images/bando_icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1em;
 }
 
 .visualClear {

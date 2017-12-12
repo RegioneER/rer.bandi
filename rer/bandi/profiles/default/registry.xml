@@ -80,7 +80,7 @@
   <records prefix="plone.resources/rer-bandi"
            interface="Products.CMFPlone.interfaces.IResourceRegistry">
       <value key="css">
-          <element>++resource++bandi.css</element>
+          <element>++plone++rer.bandi.styles/bandi.css</element>
       </value>
   </records>
 
@@ -91,10 +91,8 @@
     <value key="resources" purge="false">
       <element>rer-bandi</element>
     </value>
-    <value key="csscompilation">++resource++bandi.css</value>
+    <value key="csscompilation">++plone++rer.bandi.styles/bandi.css</value>
+    <value key="last_compilation">2017-11-26 00:00:00</value>
   </records>
-
-
-
 
 </registry>
