@@ -2,6 +2,7 @@
 *.egg-info
 *.graffle
 *.kate-swp
+*.mo
 *.py?
 *.pyc
 *~
