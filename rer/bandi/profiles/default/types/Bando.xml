@@ -27,13 +27,16 @@
  <property name="add_permission">cmf.AddPortalContent</property>
  <property name="klass">rer.bandi.content.bando.Bando</property>
  <property name="behaviors">
-  <element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>
-  <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-  <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
-  <element value="plone.app.dexterity.behaviors.id.IShortName"/>
-  <element value="plone.app.relationfield.behavior.IRelatedItems"/>
-  <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
-  <element value="plone.app.content.interfaces.INameFromTitle"/>
+   <element value="plone.app.content.interfaces.INameFromTitle"/>
+   <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
+   <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
+   <element value="plone.app.dexterity.behaviors.id.IShortName"/>
+   <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
+   <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
+   <element value="plone.app.relationfield.behavior.IRelatedItems"/>
+   <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
+   <element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>
+   <element value="plone.app.lockingbehavior.behaviors.ILocking" />
   <element value="plone.versioning"/>
  </property>
  <property name="schema">rer.bandi.interfaces.bandoSchema.IBandoSchema</property>

@@ -7,6 +7,24 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <!-- custom Add form per bandi -->
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".bando.AddView"
+    name="Bando"
+    />
+
+  <!-- custom Edit form per bandi -->
+  <browser:page
+    for="rer.bandi.interfaces.bando.IBando"
+    name="edit"
+    class=".bando.EditView"
+    permission="zope2.View"
+    />
+
   <browser:page
     name="bando_view"
     template="bando.pt"

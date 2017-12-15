@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from plone.app.layout.icons.interfaces import IContentIcon
+from plone.dexterity.browser import add, edit
 from rer.bandi.interfaces import IBandoFolderDeepening
-from datetime import datetime
-from DateTime import DateTime
-
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
@@ -14,6 +10,49 @@ except ImportError:
 
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
+from z3c.form import field
+
+
+class AddForm(add.DefaultAddForm):
+
+    def updateWidgets(self):
+        add.DefaultAddForm.updateWidgets(self)
+
+        for group in self.groups:
+            if group.label == 'Settings':
+
+                manager = field.Fields(group.fields)
+                group.fields = manager.select(
+                    'IShortName.id',
+                    'IAllowDiscussion.allow_discussion',
+                    'IExcludeFromNavigation.exclude_from_nav',
+                    'ITableOfContents.table_of_contents'
+                )
+
+
+class AddView(add.DefaultAddView):
+    form = AddForm
+
+
+class EditForm(edit.DefaultEditForm):
+
+    def updateWidgets(self):
+        edit.DefaultEditForm.updateWidgets(self)
+
+        for group in self.groups:
+            if group.label == 'Settings':
+
+                manager = field.Fields(group.fields)
+                group.fields = manager.select(
+                    'IShortName.id',
+                    'IAllowDiscussion.allow_discussion',
+                    'IExcludeFromNavigation.exclude_from_nav',
+                    'ITableOfContents.table_of_contents'
+                )
+
+
+class EditView(edit.DefaultEditView):
+    form = EditForm
 
 
 class IBandoView(Interface):

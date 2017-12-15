@@ -117,13 +117,7 @@
                             </div>
                         </div>
 
-                        <tal:text define="bando_text here/testo_bando">
-                            <p tal:condition="not:bando_text"
-                                i18n:translate="no_body_text"
-                                i18n:domain="plone"
-                                class="discreet">
-                                This item does not have any body text, click the edit tab to change it.
-                            </p>
+                        <tal:text define="bando_text here/text">
                             <div tal:condition="bando_text"
                                 tal:replace="structure bando_text/output">
                                 Body text

@@ -26,7 +26,7 @@
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getDestinatariBando">
-    <value key="title" i18n:translate="destinatari_label">Destinatari bando</value>
+    <value key="title" i18n:translate="destinatari_label">Recipients</value>
     <value key="description">Announcement recipients</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
@@ -41,7 +41,7 @@
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getTipologia_bando">
-    <value key="title" i18n:translate="tipologia_bando_label">Tipologia bando</value>
+    <value key="title" i18n:translate="tipologia_bando_label">Announcement type</value>
     <value key="description">Announcement type</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
@@ -56,7 +56,7 @@
 
    <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getScadenza_bando">
-    <value key="title" i18n:translate="scadenza_bando_label">Scadenza_bando</value>
+    <value key="title" i18n:translate="scadenza_bando_label">Expiration date and time</value>
     <value key="description">Closing date of the announcements</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
