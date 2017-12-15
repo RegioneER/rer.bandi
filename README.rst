@@ -85,6 +85,11 @@ A default authority value can be set for announcements. This information is take
 
 If the property is empty, the default value isn't set.
 
+Tile
+----
+
+In order to use layout bandi for tile is necessary have installed collective.tiles.collection product.
+
 
 Dependencies
 ============

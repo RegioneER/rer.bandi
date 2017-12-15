@@ -6,15 +6,24 @@ Changelog
 
 - Drop AT support and add Dx contents [eikichi18]
 - Substituited formlib portlets with z3c.form portlets [eikichi18]
-- Fix check pubblication date [eikichi18]
+- Fixed check pubblication date [eikichi18]
 - Removed old i18n traductions [eikichi18]
-- Add uninstall profile [eikichi18]
+- Added uninstall profile [eikichi18]
 - Delete all Topic's references [eikichi18]
 - Update README [eikichi18]
 - Update classifiers in setup.py [eikichi18]
 - Update traduction [eikichi18]
-- Fix bando-right template [nzambello]
-
+- Fixed bando-right template [nzambello]
+- field text moved under field description in add and edit Bando [eikichi18]
+- "ente" field of type category and add default value "Regione Emilia-Romagna" [eikichi18]
+- added RelatedItems behavior to bandi [eikichi18]
+- added Settings fieldset behaviors to bandi [eikichi18]
+- created control panel for bandi settings [eikichi18]
+- fixed default view for bandi [eikichi18]
+- fixed search_bandi_form view [eikichi18]
+- fixed collections view [eikichi18]
+- added layout bandi for tile [eikichi18]
+- added new traduction [eikichi18]
 
 2.2.5 (2017-03-28)
 ------------------
