@@ -1,12 +1,26 @@
+body#visual-portal-wrapper.pat-plone #edit-bar #edit-zone .contenttype-bando:after {
+    content: '';
+    background-image: url('/++plone++rer.bandi.images/bando_icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1em;
+}
+
+.visualClear {
+    clear: both;
+}
+
 .rer-contextual-portlets-right {
     width: 17em;
     margin-left: 1em;
     float: right;
 }
 
+body.portaltype-bando #content .rer-contextual-text a,
 body.portaltype-bando #content .rer-contextual-portlets a {
     background: none;
     padding:1px 0 1px 1px;
+    text-decoration: underline;
 }
 
 .rer-contextual-description {
@@ -80,18 +94,18 @@ h3.bandoTitle{
 
 dt.bandoTitle .state-closed,
 .bandoInfos .state-closed {
-    background-image: url(++resource++rer.bandi.images/bando_closed.png);
+    background-image: url(++plone++rer.bandi.images/bando_closed.png);
     color: #700;
 }
 dt.bandoTitle .state-open,
 .bandoInfos .state-open {
-    background-image: url(++resource++rer.bandi.images/bando_open.png);
+    background-image: url(++plone++rer.bandi.images/bando_open.png);
     color: #255a01;
 }
 
 dt.bandoTitle .state-inProgress,
 .bandoInfos .state-inProgress {
-    background-image: url(++resource++rer.bandi.images/bando_inprogress.png);
+    background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
     color: #9c6f02;
 }
 

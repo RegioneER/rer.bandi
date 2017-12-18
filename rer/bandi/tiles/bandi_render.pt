@@ -1,10 +1,8 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
-      metal:use-macro="here/main_template/macros/master"
-      i18n:domain="rer.bandi">
+<html
+  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n" lang="en" metal:use-macro="here/main_template/macros/master" i18n:domain="rer.bandi">
   <body>
     <metal:macro define-macro="collection-tile-macro"
         tal:define="helper_view nocall:context/@@bandi_tile_helper;
@@ -55,15 +53,19 @@
                                       has_effective_date python:helper_view.has_effective_date(obj);
                                       valid_scadenza python:helper_view.isValidDeadline(obj.getScadenza_bando)">
                          <tal:pubblicazione condition="python:is_show_effective_visible and has_effective_date">
-                             <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
-                             <span tal:content="python:here.toLocalizedTime(obj.effective)" />
+                             <div class="bando-data-pubblicazione">
+                                 <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
+                                 <span tal:content="python:here.toLocalizedTime(obj.effective)" />
+                             </div>
                          </tal:pubblicazione>
                          <span tal:omit-tag=""
                                tal:condition="python:(is_show_effective_visible and is_show_scadenza_bando_visible) and (has_effective_date and obj.getScadenza_bando)">
                          </span>
                          <tal:scadenza_bando condition="valid_scadenza">
-                             <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
-                             <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
+                              <div class="bando-data-scadenza">
+                                 <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
+                                 <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
+                             </div>
                          </tal:scadenza_bando>
                      </div>
                 </div>
@@ -77,8 +79,15 @@
                 <span tal:condition="show_more_label">${show_more_label}</span>
               </a>
             </div>
-          </div>
-
+          </tal:results>
+        </div>
+        <div class="showMore" tal:condition="view/data/show_more">
+          <a href="${collection/absolute_url}" tal:define="show_more_label view/data/show_more_label|nothing">
+            <span tal:condition="not:show_more_label" i18n:translate="more_url">More&hellip;</span>
+            <span tal:condition="show_more_label">${show_more_label}</span>
+          </a>
+        </div>
+      </div>
     </metal:macro>
   </body>
 </html>
