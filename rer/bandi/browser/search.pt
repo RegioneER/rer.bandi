@@ -29,7 +29,7 @@
                  desc_length python: str(view.getSearchResultsDescriptionLength());
                  desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
-                 use_view_action site_properties/typesUseViewActionInListings|python:();
+                 use_view_action python:view.getTypesUseViewActionInListings();
                  test python:lambda cond, a, b: [b,a][cond];
                  normalizeString nocall:context/@@plone/normalizeString;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
@@ -98,7 +98,7 @@
                 </span>
 
             <span class="documentByLine"
-                  tal:condition="python:not isAnon or site_properties.allowAnonymousViewAbout">
+                  tal:condition="python:not isAnon or view.getAllowAnonymousViewAbout()">
                 <span class="documentAuthor"
                     i18n:translate="label_by_author">
                 by

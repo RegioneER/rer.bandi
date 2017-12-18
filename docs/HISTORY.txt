@@ -24,6 +24,7 @@ Changelog
 - fixed collections view [eikichi18]
 - added layout bandi for tile [eikichi18]
 - added new traduction [eikichi18]
+- fixed search_bandi view for plone 5 [eikichi18]
 
 2.2.5 (2017-03-28)
 ------------------

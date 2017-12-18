@@ -170,3 +170,14 @@ class SearchBandi(BrowserView):
         length = api.portal.get_registry_record(
             'plone.search_results_description_length')
         return length
+
+    def getAllowAnonymousViewAbout(self):
+        return api.portal.get_registry_record(
+            'plone.allow_anon_views_about'
+        )
+
+    def getTypesUseViewActionInListings(self):
+
+        return api.portal.get_registry_record(
+            'plone.types_use_view_action_in_listings'
+        )
