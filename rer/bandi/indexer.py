@@ -75,7 +75,7 @@ def SearchableTextBandi(obj):
 
     for string in li:
         for word in string.split():
-            if word not in text:
+            if word.decode() not in text:
                 text.append(word)
 
-    return ' '.join(text)
+    return ' '.join(text).decode('utf-8')
