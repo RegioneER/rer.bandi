@@ -67,4 +67,15 @@ def SearchableTextBandi(obj):
     pt = getToolByName(api.portal.get(), 'portal_transforms')
     stream = pt.convertTo('text/plain', obj.text.output, mimetype='text/html')
 
-    return ' '.join([obj.Title(), obj.Description(), stream.getData().strip()])
+    text = []
+    li = []
+    li.append(obj.Title())
+    li.append(obj.Description())
+    li.append(stream.getData().strip())
+
+    for string in li:
+        for word in string.split():
+            if word not in text:
+                text.append(word)
+
+    return ' '.join(text)
