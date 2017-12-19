@@ -89,5 +89,6 @@
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
   <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
   <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
+  <adapter name="SearchableText" factory=".indexer.SearchableTextBandi" />
 
 </configure>
