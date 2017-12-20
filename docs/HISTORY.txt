@@ -25,6 +25,8 @@ Changelog
 - added layout bandi for tile [eikichi18]
 - added new traduction [eikichi18]
 - fixed search_bandi view for plone 5 [eikichi18]
+- fixed SearchableText index for Bandi [eikichi18]
+- added script for SearchableText reindex for bandi [eikichi18]
 
 2.2.5 (2017-03-28)
 ------------------

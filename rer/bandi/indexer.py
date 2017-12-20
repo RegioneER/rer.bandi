@@ -72,15 +72,12 @@ def SearchableTextBandi(obj):
     li.append(obj.Description())
     li.append(stream.getData().strip())
 
-    try:
-        for string in li:
-            for word in string.split():
-                if word not in text:
-                    if isinstance(word, unicode):
-                        text.append(word.encode('utf-8'))
-                    else:
-                        text.append(word)
-    except Exception as err:
-        pass
+    for string in li:
+        for word in string.split():
+            if word not in text:
+                if isinstance(word, unicode):
+                    text.append(word.encode('utf-8'))
+                else:
+                    text.append(word)
 
     return ' '.join(text)
