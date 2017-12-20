@@ -63,7 +63,6 @@ def getTipologia_bando(object, **kw):
 
 @indexer(IBando)
 def SearchableTextBandi(obj):
-
     pt = getToolByName(api.portal.get(), 'portal_transforms')
     stream = pt.convertTo('text/plain', obj.text.output, mimetype='text/html')
 
@@ -73,9 +72,15 @@ def SearchableTextBandi(obj):
     li.append(obj.Description())
     li.append(stream.getData().strip())
 
-    for string in li:
-        for word in string.split():
-            if word.decode('utf-8') not in text:
-                text.append(word)
+    try:
+        for string in li:
+            for word in string.split():
+                if word not in text:
+                    if isinstance(word, unicode):
+                        text.append(word.encode('utf-8'))
+                    else:
+                        text.append(word)
+    except Exception as err:
+        pass
 
     return ' '.join(text)
