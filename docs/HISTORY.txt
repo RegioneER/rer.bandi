@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.0 (unreleased)
+3.0.0 (2017-12-21)
 ------------------
 
 - Drop AT support and add Dx contents [eikichi18]
