@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-12-15 14:01+0000\n"
+"POT-Creation-Date: 2017-12-21 10:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,9 +73,9 @@ msgid "bandi_layout"
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:82
+#: ./browser/collection.pt:81
 #: ./browser/search.pt:157
-#: ./portlets/collection.pt:47
+#: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
 
@@ -194,7 +194,7 @@ msgstr "Data di pubblicazione"
 #. Default: "Deadline participation terms"
 #: ./browser/bando-right.pt:69
 #: ./browser/bando.pt:72
-#: ./browser/collection.pt:90
+#: ./browser/collection.pt:89
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
@@ -223,7 +223,7 @@ msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:100
+#: ./browser/collection.pt:99
 msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi."
 
@@ -286,9 +286,14 @@ msgid "label_search"
 msgstr "Cerca"
 
 #. Default: "More…"
-#: ./tiles/bandi_render.pt:75
+#: ./tiles/bandi_render.pt:77
 msgid "more_url"
 msgstr ""
+
+#. Default: "Published on"
+#: ./tiles/bandi_render.pt:61
+msgid "published_on_bandi"
+msgstr "Pubblicato il"
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
 #: ./interfaces/bandoSchema.py:30
@@ -311,8 +316,13 @@ msgstr "Scadenza dei termini per partecipare al bando"
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
+#. Default: "Deadline participation terms"
+#: ./tiles/bandi_render.pt:67
+msgid "scadenza_partecipazione_bando"
+msgstr "Scadenza termini partecipazione"
+
 #. Default: "No results found"
-#: ./tiles/bandi_render.pt:17
+#: ./tiles/bandi_render.pt:20
 msgid "tiles_collection_noresults"
 msgstr "Non sono stati trovati bandi"
 
@@ -323,7 +333,7 @@ msgstr ""
 #. Default: "Announcement type"
 #: ./browser/bando-right.pt:31
 #: ./browser/bando.pt:34
-#: ./browser/collection.pt:75
+#: ./browser/collection.pt:74
 msgid "tipologia_bando_label"
 msgstr "Tipologia di bando"
 
@@ -331,3 +341,4 @@ msgstr "Tipologia di bando"
 #: ./browser/search.pt:59
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
+
