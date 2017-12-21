@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-12-21 10:00+0000\n"
+"POT-Creation-Date: 2017-12-21 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,10 +29,22 @@ msgstr ""
 msgid "Bandi Settings"
 msgstr ""
 
+#: ./browser/configure.zcml:102
+msgid "Bandi con scadenza"
+msgstr ""
+
+#: ./browser/configure.zcml:107
+msgid "Bandi con tipologia e scadenza"
+msgstr ""
+
 #: ./browser/collection.py:55
 #: ./browser/search.py:147
 #: ./portlets/collection.py:223
 msgid "Closed"
+msgstr ""
+
+#: ./browser/configure.zcml:42
+msgid "Default"
 msgstr ""
 
 #: ./portlets/collection.py:271
@@ -53,6 +65,14 @@ msgstr ""
 msgid "Internal link"
 msgstr ""
 
+#: ./configure.zcml:61
+msgid "Migrate to version 2.2.0"
+msgstr ""
+
+#: ./browser/configure.zcml:58
+msgid "Mostra altre informazioni a destra"
+msgstr ""
+
 #: ./browser/collection.py:51
 #: ./browser/search.py:143
 #: ./portlets/collection.py:219
@@ -63,8 +83,28 @@ msgstr ""
 msgid "Other text"
 msgstr ""
 
+#: ./configure.zcml:45
+msgid "RER: Bandi"
+msgstr ""
+
+#: ./configure.zcml:61
+msgid "RER:Bandi migrate to version 2.2.0 (2200)"
+msgstr ""
+
+#: ./browser/configure.zcml:58
+msgid "Sulla destra"
+msgstr ""
+
 #: ./portlets/collection.py:254
 msgid "This portlet display a listing of bandi from a Collection."
+msgstr ""
+
+#: ./configure.zcml:53
+msgid "Uninstalls the rer.bandi package"
+msgstr ""
+
+#: ./browser/configure.zcml:42
+msgid "Vista predefinita, altre informazioni sotto"
 msgstr ""
 
 #. Default: "Layout Bandi"
@@ -290,8 +330,8 @@ msgstr ""
 msgid "more_url"
 msgstr ""
 
-#: ./tiles/bandi_render.pt:61
-msgid "published_on_bandi"
+#: ./configure.zcml:53
+msgid "rer.bandi uninstall"
 msgstr ""
 
 #: ./interfaces/bandoSchema.py:30
@@ -314,10 +354,6 @@ msgstr ""
 msgid "scadenza_bando_label"
 msgstr ""
 
-#: ./tiles/bandi_render.pt:67
-msgid "scadenza_partecipazione_bando"
-msgstr ""
-
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:20
 msgid "tiles_collection_noresults"
@@ -338,4 +374,3 @@ msgstr ""
 #: ./browser/search.pt:59
 msgid "title_rss_feed"
 msgstr ""
-

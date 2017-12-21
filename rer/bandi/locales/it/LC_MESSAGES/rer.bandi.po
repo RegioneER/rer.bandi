@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-12-21 10:00+0000\n"
+"POT-Creation-Date: 2017-12-21 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,11 +29,23 @@ msgstr "Testo alternativo da mostrare nel link ad 'altro'"
 msgid "Bandi Settings"
 msgstr "Impostazioni Bandi"
 
+#: ./browser/configure.zcml:102
+msgid "Bandi con scadenza"
+msgstr ""
+
+#: ./browser/configure.zcml:107
+msgid "Bandi con tipologia e scadenza"
+msgstr ""
+
 #: ./browser/collection.py:55
 #: ./browser/search.py:147
 #: ./portlets/collection.py:223
 msgid "Closed"
 msgstr "Chiuso"
+
+#: ./browser/configure.zcml:42
+msgid "Default"
+msgstr ""
 
 #: ./portlets/collection.py:271
 msgid "Edit Bandi Portlet"
@@ -53,6 +65,14 @@ msgstr "Inserisci un link interno. Questo campo sovrascriverà il campo link est
 msgid "Internal link"
 msgstr "Link interno."
 
+#: ./configure.zcml:61
+msgid "Migrate to version 2.2.0"
+msgstr ""
+
+#: ./browser/configure.zcml:58
+msgid "Mostra altre informazioni a destra"
+msgstr ""
+
 #: ./browser/collection.py:51
 #: ./browser/search.py:143
 #: ./portlets/collection.py:219
@@ -63,9 +83,29 @@ msgstr "Aperto"
 msgid "Other text"
 msgstr "Testo per 'altro'"
 
+#: ./configure.zcml:45
+msgid "RER: Bandi"
+msgstr ""
+
+#: ./configure.zcml:61
+msgid "RER:Bandi migrate to version 2.2.0 (2200)"
+msgstr ""
+
+#: ./browser/configure.zcml:58
+msgid "Sulla destra"
+msgstr ""
+
 #: ./portlets/collection.py:254
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
+
+#: ./configure.zcml:53
+msgid "Uninstalls the rer.bandi package"
+msgstr ""
+
+#: ./browser/configure.zcml:42
+msgid "Vista predefinita, altre informazioni sotto"
+msgstr ""
 
 #. Default: "Layout Bandi"
 #: ./tiles/bandi_render.py:74
@@ -290,10 +330,9 @@ msgstr "Cerca"
 msgid "more_url"
 msgstr ""
 
-#. Default: "Published on"
-#: ./tiles/bandi_render.pt:61
-msgid "published_on_bandi"
-msgstr "Pubblicato il"
+#: ./configure.zcml:53
+msgid "rer.bandi uninstall"
+msgstr ""
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
 #: ./interfaces/bandoSchema.py:30
@@ -316,11 +355,6 @@ msgstr "Scadenza dei termini per partecipare al bando"
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
-#. Default: "Deadline participation terms"
-#: ./tiles/bandi_render.pt:67
-msgid "scadenza_partecipazione_bando"
-msgstr "Scadenza termini partecipazione"
-
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:20
 msgid "tiles_collection_noresults"
@@ -341,4 +375,3 @@ msgstr "Tipologia di bando"
 #: ./browser/search.pt:59
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
-

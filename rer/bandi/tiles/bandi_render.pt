@@ -58,13 +58,13 @@
                                       valid_scadenza python:helper_view.isValidDeadline(obj.getScadenza_bando)">
                          <tal:pubblicazione condition="python:is_show_effective_visible and has_effective_date">
                              <div class="bando-data-pubblicazione">
-                                 <span  class="labelTB" i18n:translate="published_on_bandi">Pubblicato il</span>:
+                                 <span  class="labelTB">Pubblicato il</span>:
                                  <span tal:content="python:here.toLocalizedTime(obj.effective)" />
                              </div>
                          </tal:pubblicazione>
                          <tal:scadenza_bando condition="python: valid_scadenza and is_show_scadenza_bando_visible">
                               <div class="bando-data-scadenza">
-                                 <span  class="labelTB" i18n:translate="scadenza_partecipazione_bando">Scadenza termini partecipazione</span>:
+                                 <span  class="labelTB">Scadenza termini partecipazione</span>:
                                  <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
                              </div>
                          </tal:scadenza_bando>
