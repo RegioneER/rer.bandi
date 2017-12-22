@@ -140,29 +140,29 @@ dt.bandoTitle,
     .state-open,
     .state-inProgress,
     .state-closed {
-        float: none;
+        // float: none;
         padding: 10px 0 5px;
-        color: #666;
-        font-weight: 600;
-        border-top: 5px solid;
+        // color: #666;
+        // font-weight: 600;
+        // border-top: 5px solid;
     }
 
     .state-open {
-        // background-image: url(++plone++rer.bandi.images/bando_open.png);
-        // color: #255a01;
-        border-color: #27af0f;
+        background-image: url(++plone++rer.bandi.images/bando_open.png);
+        color: #255a01;
+        // border-color: #27af0f;
     }
 
     .state-inProgress {
-        // background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
-        // color: #9c6f02;
-        border-color: #e5c001;
+        background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
+        color: #9c6f02;
+        // border-color: #e5c001;
     }
 
     .state-closed {
-        // background-image: url(++plone++rer.bandi.images/bando_closed.png);
-        // color: #700;
-        border-color: #c00;
+        background-image: url(++plone++rer.bandi.images/bando_closed.png);
+        color: #700;
+        // border-color: #c00;
     }
 }
 
