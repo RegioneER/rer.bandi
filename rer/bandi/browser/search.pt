@@ -49,19 +49,21 @@
       </span>
     </h1>
 
-    <!-- tasto per tornare al form di ricerca -->
-    <form action="portal_url/@@search_bandi_form">
-      <button type="submit">Nuova Ricerca</button>
-    </form>
+    <div class="solr-search-actions">
+        <!-- tasto per tornare al form di ricerca -->
+        <form action="portal_url/@@search_bandi_form" class="solr-search-button">
+          <button type="submit">Nuova Ricerca</button>
+        </form>
 
-    <p class="discreet"
-       tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
-        <a href=""
-           class="link-feed"
-           i18n:translate="title_rss_feed"
-           tal:attributes="href string:$here_url/search_rss?${view/rss_query}">
-             Subscribe to an always-updated feed of these search terms</a>
-    </p>
+        <p class="discreet"
+           tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
+            <a href=""
+               class="link-feed"
+               i18n:translate="title_rss_feed"
+               tal:attributes="href string:$here_url/search_rss?${view/rss_query}">
+                 Subscribe to an always-updated feed of these search terms</a>
+        </p>
+    </div>
 
     <div tal:condition="not: results">
         <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
@@ -70,7 +72,7 @@
     <div tal:condition="results"
           tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
 
-        <dl class="searchResults">
+        <dl class="searchResults solr-search-results">
         <tal:results repeat="result batch">
         <tal:entry define="isAnon context/@@plone_portal_state/anonymous;
 		                   result_url result/getURL;

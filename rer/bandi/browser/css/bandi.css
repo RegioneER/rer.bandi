@@ -84,6 +84,9 @@ dt.bandoTitle,
       position: absolute;
       top: 15px;
       left: 0; }
+  .searchResults dt.bandoTitle .bandoStateClass, .searchResults
+  .bandoInfos .bandoStateClass {
+    float: left; }
   dt.bandoTitle .state-open,
   dt.bandoTitle .state-inProgress,
   dt.bandoTitle .state-closed,
@@ -138,5 +141,17 @@ p.bandoType {
 
 .collectionTile.no-description .bandoDescription {
   display: none; }
+
+.solr-search-actions > p {
+  margin-top: 15px;
+  margin-bottom: 0; }
+
+.solr-search-actions a,
+.solr-search-results a {
+  border-bottom: 1px solid transparent; }
+  .solr-search-actions a:hover, .solr-search-actions a:focus,
+  .solr-search-results a:hover,
+  .solr-search-results a:focus {
+    border-bottom-color: inherit; }
 
 /*# sourceMappingURL=bandi.css.map */
