@@ -1,10 +1,9 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    xmlns="http://namespaces.zope.org/genericsetup"
     i18n_domain="rer.bandi">
        
   <!-- Upgrade steps -->
-  <gs:upgradeStep
+  <upgradeStep
         title="Upgrade rer.bandi 2.1.0"
         description="rer.bandi upgrade step"
         source="1.0.9"
@@ -12,11 +11,20 @@
         handler=".upgrades.to_2"
         profile="rer.bandi:default" />
   
-  <gs:upgradeStep
+  <upgradeStep
         title="Upgrade rer.bandi 2.2.0"
         description="rer.bandi upgrade step"
         source="2"
         destination="2200"
         handler=".upgrades.migrate_to_2200"
         profile="rer.bandi:default" />
+
+  <upgradeStep
+        title="Upgrade rer.bandi 3.0.0"
+        description="rer.bandi upgrade step (AT to DX)"
+        source="2200"
+        destination="3000"
+        handler=".upgrades.migrate_to_3000"
+        profile="rer.bandi:default" />
+
 </configure>

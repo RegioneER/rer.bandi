@@ -5,3 +5,6 @@ from plone.dexterity.content import Container
 
 class Bando(Container):
     implements(IBando)
+
+    # BBB
+    isReferenceable = True

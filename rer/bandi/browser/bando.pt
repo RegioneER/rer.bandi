@@ -32,7 +32,7 @@
 					<table class="vertical listing tableRight">
 		                <tr>
 		                  <th i18n:translate="tipologia_bando_label">Announcement type</th>
-		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
+		                  <td tal:content="view/titleTipologiaBando">
 		                    Tipologia bando
 		                  </td>
 		                </tr>

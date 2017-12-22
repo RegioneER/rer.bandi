@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import logging
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from plone.app.layout.icons.interfaces import IContentIcon
@@ -14,7 +14,7 @@ except ImportError:
 
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
-
+logger = logging.getLogger('rer.bandi')
 
 class IBandoView(Interface):
     pass
@@ -27,6 +27,15 @@ class BandoView(BrowserView):
         self.context = context
         self.request = request
         self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+
+    def titleTipologiaBando(self):
+        try:
+            term = self.voc_tipologia.getTermByToken(self.context.tipologia_bando)
+            return term.title
+        except LookupError:
+            logger.error('tipologia_bando %s not found in vocabulary', self.context.tipologia_bando)
+            return self.context.tipologia_bando
+
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document
@@ -64,14 +73,19 @@ class BandoView(BrowserView):
                 if obj.Type=='Link':
                     dictfields['url']=obj.getRemoteUrl
                 if obj.Type=='File':
-                    dictfields['url']=obj.getURL() + "/download/file"
-                    # obj_file=obj.getObject().getFile()
-                    obj_file=obj.getObject().file
-                    # if obj_file.meta_type=='ATBlob':
-                    #     obj_size=obj_file.get_size()
-                    # else:
-                    #      obj_size=obj_file.getSize()
-                    obj_size = obj_file.size
+                    _obj = obj.getObject()
+                    if hasattr(_obj, 'file'):
+                        # DX
+                        dictfields['url']=obj.getURL() + "/download/file"
+                        obj_size=_obj.file.size
+                    else:
+                        # AT
+                        dictfields['url']=obj.getURL() + "/at_download/file"
+                        obj_file=_obj.getFile()
+                        if obj_file.meta_type=='ATBlob':
+                            obj_size=obj_file.get_size()
+                        else:
+                            obj_size=obj_file.getSize()
                     dictfields['filesize']= self.getSizeString(obj_size)
                 else:
                     dictfields['url']=obj.getURL() + "/view"
