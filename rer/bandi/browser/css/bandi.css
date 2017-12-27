@@ -59,6 +59,9 @@ a.bandoTitle {
   border-bottom: 1px solid #cccccc;
   text-decoration: none; }
 
+a.bandoTitleLink {
+  border-bottom: 1px solid; }
+
 .bandoInfos .bandoStateClass {
   margin-top: 4px; }
 .bandoTitle .bandoStateClass {
@@ -147,10 +150,6 @@ p.bandoType {
 
 .solr-search-actions a,
 .solr-search-results a {
-  border-bottom: 1px solid transparent; }
-  .solr-search-actions a:hover, .solr-search-actions a:focus,
-  .solr-search-results a:hover,
-  .solr-search-results a:focus {
-    border-bottom-color: inherit; }
+  border-bottom: 1px solid; }
 
 /*# sourceMappingURL=bandi.css.map */

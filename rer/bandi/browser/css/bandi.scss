@@ -95,6 +95,10 @@ a.bandoTitle {
     text-decoration: none;
 }
 
+a.bandoTitleLink {
+    border-bottom: 1px solid;
+}
+
 .bandoStateClass {
     .bandoInfos & {
         margin-top: 4px;
@@ -220,11 +224,6 @@ p.bandoType {
 .solr-search-actions,
 .solr-search-results {
     a {
-        border-bottom: 1px solid transparent;
-
-        &:hover,
-        &:focus {
-            border-bottom-color: inherit;
-        }
+        border-bottom: 1px solid;
     }
 }
