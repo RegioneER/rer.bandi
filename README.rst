@@ -96,6 +96,8 @@ Dependencies
 
 This product has been tested on Plone 5 and Plone 5.1
 
+For Plone 4 (and Archetypes), use 2.x branch/versions
+
 Credits
 =======
 
