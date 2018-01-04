@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
 from rer.bandi import logger
-from rer.bandi.setuphandlers import addKeyToCatalog, addPropertySheet
+from rer.bandi.setuphandlers import addKeyToCatalog
 
 default_profile = 'profile-rer.bandi:default'
 
@@ -25,7 +25,6 @@ def to_2(context):
     logger.info('Upgrading rer.bandi to version 2.1.0')
     portal = context.portal_url.getPortalObject()
     addKeyToCatalog(portal)
-    addPropertySheet(portal)
 
 
 def migrate_to_2200(context):

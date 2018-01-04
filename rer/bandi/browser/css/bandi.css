@@ -1,0 +1,155 @@
+body#visual-portal-wrapper.pat-plone #edit-bar #edit-zone .contenttype-bando:after {
+  content: "";
+  background-image: url("/++plone++rer.bandi.images/bando_icon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1em; }
+
+.visualClear {
+  clear: both; }
+
+.rer-contextual-portlets-right {
+  width: 17em;
+  margin-left: 1em;
+  float: right; }
+
+body.portaltype-bando #content .rer-contextual-text a,
+body.portaltype-bando #content .rer-contextual-portlets a {
+  background: none;
+  padding: 1px 0 1px 1px;
+  text-decoration: underline; }
+
+.rer-contextual-description {
+  margin-bottom: 10px; }
+
+.contextualbody .navTreeItem li {
+  list-style-type: none; }
+
+.rer-contextual-portlets ul {
+  margin: 0.5em 0 0 0.5em; }
+
+.contextualbody .navTreeItem a, dd.portletItem .contextualbody .navTreeItem a {
+  display: inline; }
+
+.tableRight {
+  width: 100%; }
+
+.bandiColumnRight {
+  width: 40%;
+  float: right;
+  margin-left: 1em; }
+
+/*** etichette bandi ***/
+.bandoInfos .bandoStateClass,
+.bandoTitle .bandoStateClass {
+  background-position: 5px 0;
+  background-repeat: no-repeat;
+  display: block;
+  float: left;
+  font-size: 0.8em;
+  font-weight: normal;
+  margin-right: 1em;
+  padding-top: 5px;
+  text-transform: uppercase;
+  width: 57px;
+  min-width: 57px;
+  text-align: center; }
+
+a.bandoTitle {
+  border-bottom: 1px solid #cccccc;
+  text-decoration: none; }
+
+a.bandoTitleLink {
+  border-bottom: 1px solid; }
+
+.bandoInfos .bandoStateClass {
+  margin-top: 4px; }
+.bandoTitle .bandoStateClass {
+  font-size: 70%;
+  margin-bottom: 0;
+  margin-top: 7px;
+  text-align: center; }
+  .searchResults .bandoTitle .bandoStateClass {
+    margin-top: 3px; }
+
+h3.bandoTitle {
+  margin-top: 0; }
+
+dt.bandoTitle,
+.bandoInfos {
+  position: relative;
+  padding: 15px 0; }
+  .tileContent dt.bandoTitle, .tileContent
+  .bandoInfos {
+    padding-left: 75px; }
+    .tileContent dt.bandoTitle .bandoStateClass, .tileContent
+    .bandoInfos .bandoStateClass {
+      position: absolute;
+      top: 15px;
+      left: 0; }
+  .searchResults dt.bandoTitle .bandoStateClass, .searchResults
+  .bandoInfos .bandoStateClass {
+    float: left; }
+  dt.bandoTitle .state-open,
+  dt.bandoTitle .state-inProgress,
+  dt.bandoTitle .state-closed,
+  .bandoInfos .state-open,
+  .bandoInfos .state-inProgress,
+  .bandoInfos .state-closed {
+    padding: 10px 0 5px; }
+  dt.bandoTitle .state-open,
+  .bandoInfos .state-open {
+    background-image: url(++plone++rer.bandi.images/bando_open.png);
+    color: #255a01; }
+  dt.bandoTitle .state-inProgress,
+  .bandoInfos .state-inProgress {
+    background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
+    color: #9c6f02; }
+  dt.bandoTitle .state-closed,
+  .bandoInfos .state-closed {
+    background-image: url(++plone++rer.bandi.images/bando_closed.png);
+    color: #700; }
+
+dt.bandoTitle {
+  font-size: 120%;
+  font-weight: normal;
+  margin-top: 2em; }
+
+.bandoDetail {
+  clear: both; }
+
+dd.bandoDetail,
+dl.searchResults dd.bandoDetail {
+  margin: 0 0 0 70px;
+  clear: none; }
+
+dl.bandoItem {
+  border-bottom: 1px dashed #ccc;
+  padding: 0.5em 0 0.7em;
+  margin: 0.5em 0; }
+
+.labelTB {
+  font-weight: bold; }
+
+p.bandoType {
+  color: #666;
+  font-size: 0.9em;
+  font-style: italic;
+  margin: 0; }
+
+.siteSelection {
+  margin-left: 2em;
+  margin-top: 1em; }
+
+.collectionTile.no-description .bandoDescription {
+  display: none; }
+
+.solr-search-actions > p {
+  margin-top: 15px;
+  margin-bottom: 0; }
+
+.solr-search-actions a,
+.solr-search-results a {
+  border-bottom: 1px solid; }
+
+/*# sourceMappingURL=bandi.css.map */

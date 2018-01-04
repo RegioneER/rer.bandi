@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-10-05 11:20+0000\n"
+"POT-Creation-Date: 2017-12-21 11:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,99 +17,104 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:208
+#: ./portlets/collection.py:253
 msgid "Add Bandi Portlet"
 msgstr ""
 
-#: ./portlets/collection.py:52
-msgid "Alternative link to other"
-msgstr ""
-
-#: ./portlets/collection.py:48
+#: ./portlets/collection.py:25
 msgid "Alternative text to show in 'other' link."
 msgstr ""
 
-#: ./profiles/default/types/Bando.xml
-msgid "Bando"
+#: ./profiles/default/controlpanel.xml
+msgid "Bandi Settings"
 msgstr ""
 
-#: ./profiles/default/types/Bando_Folder_Deepening.xml
-msgid "Cartella Approfondimento"
+#: ./browser/configure.zcml:102
+msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/collection.py:53
-#: ./browser/search.py:125
-#: ./portlets/collection.py:188
-msgid "Closed"
-msgstr ""
-
-#: ./portlets/collection.py:227
-msgid "Edit Bandi Portlet"
-msgstr ""
-
-#: ./portlets/collection.py:31
-msgid "Find the collection which provides the items to list"
-msgstr ""
-
-#: ./portlets/collection.py:42
-msgid "If enabled, a more... link will appear in the footer of the portlet, linking to the underlying Collection."
+#: ./browser/configure.zcml:107
+msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
 #: ./browser/collection.py:55
-#: ./browser/search.py:127
-#: ./portlets/collection.py:190
+#: ./browser/search.py:147
+#: ./portlets/collection.py:223
+msgid "Closed"
+msgstr ""
+
+#: ./browser/configure.zcml:42
+msgid "Default"
+msgstr ""
+
+#: ./portlets/collection.py:271
+msgid "Edit Bandi Portlet"
+msgstr ""
+
+#: ./browser/collection.py:58
+#: ./browser/search.py:150
+#: ./portlets/collection.py:226
 msgid "In progress"
 msgstr ""
 
-#: ./portlets/collection.py:36
-msgid "Limit"
+#: ./portlets/collection.py:32
+msgid "Insert an internal link. This field override external link field"
 msgstr ""
 
-#: ./browser/collection.py:50
-#: ./browser/search.py:122
-#: ./portlets/collection.py:185
+#: ./portlets/collection.py:31
+msgid "Internal link"
+msgstr ""
+
+#: ./configure.zcml:61
+msgid "Migrate to version 2.2.0"
+msgstr ""
+
+#: ./browser/configure.zcml:58
+msgid "Mostra altre informazioni a destra"
+msgstr ""
+
+#: ./browser/collection.py:51
+#: ./browser/search.py:143
+#: ./portlets/collection.py:219
 msgid "Open"
 msgstr ""
 
-#: ./portlets/collection.py:47
+#: ./portlets/collection.py:24
 msgid "Other text"
 msgstr ""
 
-#: ./portlets/collection.py:26
-msgid "Portlet header"
+#: ./configure.zcml:45
+msgid "RER: Bandi"
 msgstr ""
 
-#: ./portlets/collection.py:53
-msgid "Select a different link to 'other'."
+#: ./configure.zcml:61
+msgid "RER:Bandi migrate to version 2.2.0 (2200)"
 msgstr ""
 
-#: ./portlets/collection.py:41
-msgid "Show more... link"
+#: ./browser/configure.zcml:58
+msgid "Sulla destra"
 msgstr ""
 
-#: ./portlets/collection.py:37
-msgid "Specify the maximum number of items to show in the portlet. Leave this blank to show all items."
-msgstr ""
-
-#: ./portlets/collection.py:30
-msgid "Target collection"
-msgstr ""
-
-#: ./portlets/collection.py:209
+#: ./portlets/collection.py:254
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr ""
 
-#: ./portlets/collection.py:27
-msgid "Title of the rendered portlet"
+#: ./configure.zcml:53
+msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
-#: ./profiles/default/types/Bando_Folder_Deepening.xml
-msgid "Una cartella per i documenti usati dal bando."
+#: ./browser/configure.zcml:42
+msgid "Vista predefinita, altre informazioni sotto"
+msgstr ""
+
+#. Default: "Layout Bandi"
+#: ./tiles/bandi_render.py:74
+msgid "bandi_layout"
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:84
-#: ./browser/search.pt:154
+#: ./browser/collection.pt:81
+#: ./browser/search.pt:157
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr ""
@@ -209,68 +214,89 @@ msgstr ""
 msgid "bandi_use_solr_label"
 msgstr ""
 
+#. Default: "Consulta gli approfondimenti"
+#: ./browser/bando.pt:91
+msgid "bando_anchor_foldeeps"
+msgstr ""
+
 #. Default: "Closing process"
-#: ./browser/bando-right.pt:78
-#: ./browser/bando.pt:81
+#: ./browser/bando-right.pt:77
+#: ./browser/bando.pt:80
 msgid "bando_chiusura_procedimento"
 msgstr ""
 
 #. Default: "Publication date"
-#: ./browser/bando-right.pt:61
-#: ./browser/bando.pt:64
+#: ./browser/bando-right.pt:60
+#: ./browser/bando.pt:63
 msgid "bando_pub_date"
 msgstr ""
 
 #. Default: "Deadline participation terms"
-#: ./browser/bando-right.pt:70
-#: ./browser/bando.pt:73
-#: ./browser/collection.pt:92
+#: ./browser/bando-right.pt:69
+#: ./browser/bando.pt:72
+#: ./browser/collection.pt:89
 msgid "bando_scadenza_partecipazione"
 msgstr ""
 
-#: ./content/bando.py:67
+#. Default: "${number} items matching your search terms"
+#: ./browser/search.pt:46
+msgid "batch_x_items_matching_your_criteria"
+msgstr ""
+
+#. Default: "last modified"
+#: ./browser/search.pt:117
+msgid "box_last_modified"
+msgstr ""
+
+#. Default: "Chiusura procedimento bando"
+#: ./profiles/default/registry.xml
+msgid "chiusura_procedimento_bando"
+msgstr ""
+
+#: ./interfaces/bandoSchema.py:40
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./content/bando.py:66
+#: ./interfaces/bandoSchema.py:36
 msgid "chiusura_procedimento_bando_label"
 msgstr ""
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:102
+#: ./browser/collection.pt:99
 msgid "description_no_items_in_folder"
 msgstr ""
 
-#: ./content/bando.py:36
+#. Default: "No results were found."
+#: ./browser/search.pt:67
+msgid "description_no_results_found"
+msgstr ""
+
+#: ./interfaces/bandoSchema.py:70
 msgid "destinatari_help"
 msgstr ""
 
 #. Default: "Recipients"
-#: ./browser/bando-right.pt:39
-#: ./browser/bando.pt:42
-#: ./content/bando.py:35
+#: ./browser/bando-right.pt:38
+#: ./browser/bando.pt:41
+#: ./interfaces/bandoSchema.py:69
 msgid "destinatari_label"
 msgstr ""
 
 #. Default: "Select some authorities."
-#: ./content/bando.py:46
+#: ./interfaces/bandoSchema.py:59
 msgid "ente_help"
 msgstr ""
 
 #. Default: "Authority"
-#: ./browser/bando-right.pt:50
-#: ./browser/bando.pt:53
-#: ./content/bando.py:44
+#: ./browser/bando-right.pt:49
+#: ./browser/bando.pt:52
+#: ./interfaces/bandoSchema.py:58
 msgid "ente_label"
 msgstr ""
 
-#: ./profiles/default/registry.xml
-msgid "getChiusura_procedimento_bando"
-msgstr ""
-
 #. Default: "Announcements search results"
-#: ./browser/search.pt:40
+#: ./browser/search.pt:39
 msgid "heading_search_results"
 msgstr ""
 
@@ -279,38 +305,72 @@ msgstr ""
 msgid "help_search_authorities"
 msgstr ""
 
+#. Default: "by ${author}"
+#: ./browser/search.pt:105
+msgid "label_by_author"
+msgstr ""
+
+#. Default: "filed under:"
+#: ./browser/search.pt:129
+msgid "label_filed_under"
+msgstr ""
+
+#. Default: "Relevance: ${percentage}%"
+#: ./browser/search.pt:146
+msgid "label_relevance_percentage"
+msgstr ""
+
 #. Default: "Search"
 #: ./browser/search_form.pt:201
 msgid "label_search"
 msgstr ""
 
-#: ./content/bando.py:80
+#. Default: "More…"
+#: ./tiles/bandi_render.pt:77
+msgid "more_url"
+msgstr ""
+
+#: ./configure.zcml:53
+msgid "rer.bandi uninstall"
+msgstr ""
+
+#: ./interfaces/bandoSchema.py:30
 msgid "riferimenti_bando_help"
 msgstr ""
 
 #. Default: "References"
-#: ./content/bando.py:79
+#: ./interfaces/bandoSchema.py:29
 msgid "riferimenti_bando_label"
 msgstr ""
 
 #. Default: "Deadline to participate in the announcement"
-#: ./content/bando.py:56
+#: ./interfaces/bandoSchema.py:47
 msgid "scadenza_bando_help"
 msgstr ""
 
 #. Default: "Expiration date and time"
-#: ./content/bando.py:55
+#: ./interfaces/bandoSchema.py:46
+#: ./profiles/default/registry.xml
 msgid "scadenza_bando_label"
 msgstr ""
 
-#: ./content/bando.py:24
+#. Default: "No results found"
+#: ./tiles/bandi_render.pt:20
+msgid "tiles_collection_noresults"
+msgstr ""
+
+#: ./interfaces/bandoSchema.py:79
 msgid "tipologia_bando_help"
 msgstr ""
 
 #. Default: "Announcement type"
-#: ./browser/bando-right.pt:32
-#: ./browser/bando.pt:35
-#: ./browser/collection.pt:77
+#: ./browser/bando-right.pt:31
+#: ./browser/bando.pt:34
+#: ./browser/collection.pt:74
 msgid "tipologia_bando_label"
 msgstr ""
 
+#. Default: "Subscribe to an always-updated feed of these search terms"
+#: ./browser/search.pt:59
+msgid "title_rss_feed"
+msgstr ""

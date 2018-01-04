@@ -8,9 +8,6 @@
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
-  <i18n:registerTranslations
-        zcml:condition="have plone-41"
-        directory="locales-plone" />
 
   <!-- Load these here as permissions are used by .browser and .portlets -->
 
@@ -34,6 +31,8 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include package=".interfaces" />
+  <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
   <include file="upgrades.zcml" />
 
   <!-- Register the installation GenericSetup extension profile -->
@@ -42,6 +41,14 @@
       title="RER: Bandi"
       directory="profiles/default"
       description=""
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="rer.bandi uninstall"
+      directory="profiles/uninstall"
+      description="Uninstalls the rer.bandi package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
@@ -60,7 +67,7 @@
       handler="rer.bandi.setuphandlers.import_various"
       />
   <!-- -*- extra stuff goes here -*- -->
-
+  <!-- registro i vocabolari -->
   <utility
     name="rer.bandi.tipologia.vocabulary"
     component=".vocabularies.TipologiaBandoVocabularyFactory"
@@ -68,12 +75,20 @@
 
   <utility
     name="rer.bandi.destinatari.vocabulary"
-    component=".vocabularies.DestinatariVocabularyFactory"
+    component=".vocabularies.DestinatariVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.enti.vocabulary"
+    component=".vocabularies.EnteVocabulary"
     />
 
   <!-- indexer per i destinatari -->
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
+  <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
+  <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
+  <adapter name="SearchableText" factory=".indexer.SearchableTextBandi" />
 
 </configure>

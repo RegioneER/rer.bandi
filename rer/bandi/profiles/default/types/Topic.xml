@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<object name="Topic"
-   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="view_methods" purge="False">
-  <element value="collection_bandi_view"/>
-  <element value="collection_bandi_tipologia_view"/>
- </property>
-</object>

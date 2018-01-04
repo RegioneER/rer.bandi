@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+ <index name="getChiusura_procedimento_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getChiusura_procedimento_bando"/>
+ </index>
+ <column value="getChiusura_procedimento_bando" remove="True"/>
+ <index name="getDestinatariBando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getDestinatariBando"/>
+ </index>
+ <column value="getDestinatariBando" remove="True"/>
+ <index name="getScadenza_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getScadenza_bando"/>
+ </index>
+ <column value="getScadenza_bando" remove="True"/>
+ <index name="getTipologia_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getTipologia_bando"/>
+ </index>
+ <column value="getTipologia_bando" remove="True"/>
+</object>

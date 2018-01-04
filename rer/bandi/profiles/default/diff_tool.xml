@@ -2,7 +2,7 @@
 <object>
  <difftypes>
   <type portal_type="Bando">
-   <field name="any" difftype="Compound Diff for AT types"/>
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
   </type>
  </difftypes>
 </object>

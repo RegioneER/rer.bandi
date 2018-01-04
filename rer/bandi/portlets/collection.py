@@ -1,59 +1,25 @@
 # -*- coding: utf-8 -*-
-
-from Products.ATContentTypes.interface import IATTopic, IATContentType
-from plone.app.collection.interfaces import ICollection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from plone.app.portlets.portlets import base
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.memoize.instance import memoize
 from rer.bandi import bandiMessageFactory as _
-from plone.portlets.interfaces import IPortletDataProvider
-from rer.bandi.interfaces import IBando
+from plone.portlet.collection.collection import ICollectionPortlet
 from zope import schema
 from zope.component import getMultiAdapter, getUtility
-from zope.formlib import form
+from plone.app.portlets.browser import formhelper
 from zope.i18n import translate
+from plone.app.vocabularies.catalog import CatalogSource
 from zope.interface import implements
+from plone import api
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
 
 
-COLLECTION_TYPES_LIST = [IATTopic.__identifier__, ICollection.__identifier__]
-
-
-class IBandoCollectionPortlet(IPortletDataProvider):
-
+class IBandoCollectionPortlet(ICollectionPortlet):
     """A portlet which renders the results of a collection object.
     """
-
-    header = schema.TextLine(title=_(u"Portlet header"),
-                             description=_(u"Title of the rendered portlet"),
-                             required=True)
-
-    target_collection = schema.Choice(title=_(u"Target collection"),
-                                      description=_(
-                                          u"Find the collection which provides the items to list"),
-                                      required=True,
-                                      source=SearchableTextSourceBinder(
-        {
-            'object_provides': COLLECTION_TYPES_LIST
-        },
-        default_query='path:'
-    ))
-
-    limit = schema.Int(title=_(u"Limit"),
-                       description=_(u"Specify the maximum number of items to show in the portlet. "
-                                     "Leave this blank to show all items."),
-                       required=False)
-
-    show_more = schema.Bool(title=_(u"Show more... link"),
-                            description=_(u"If enabled, a more... link will appear in the footer of the portlet, "
-                                          "linking to the underlying Collection."),
-                            required=True,
-                            default=True)
 
     show_more_text = schema.TextLine(title=_(u"Other text"),
                                      description=_(
@@ -61,12 +27,11 @@ class IBandoCollectionPortlet(IPortletDataProvider):
                                      required=True,
                                      default=u'Altro\u2026')
 
-    show_more_path = schema.Choice(title=_(u"Alternative link to other"),
-                                   description=_(
-                                       u"Select a different link to 'other'."),
-                                   required=False,
-                                   source=SearchableTextSourceBinder({'sort_on': 'getObjPositionInParent'},
-                                                                     default_query='path:'))
+    show_more_path = schema.Choice(
+                            title=_(u"Internal link"),
+                            description=_(u"Insert an internal link. This field override external link field"),
+                            required=False,
+                            source=CatalogSource())
 
     show_description = schema.Bool(
         title=u'Mostra descrizione', required=True, default=False)
@@ -96,8 +61,13 @@ class Assignment(base.Assignment):
     limit = None
     show_more = True
 
+    # parametri da ripulire
     def __init__(self, header=u"", target_collection=None, limit=None, show_more=True, show_more_text=None, show_more_path=None,
-                 show_description=False, show_tipologia_bando=False, show_effective=False, show_scadenza_bando=False):
+                 show_description=False, show_tipologia_bando=False, show_effective=False, show_scadenza_bando=False,
+                 uid=None, thumb_scale=None, random=False, show_dates=False, exclude_context=True, no_icons=False, no_thumbs=False):
+
+
+        # lista di data, che viene passata all'instanza dell'assignment
         self.header = header
         self.target_collection = target_collection
         self.limit = limit
@@ -108,6 +78,14 @@ class Assignment(base.Assignment):
         self.show_tipologia_bando = show_tipologia_bando
         self.show_effective = show_effective
         self.show_scadenza_bando = show_scadenza_bando
+
+        self.uid = uid
+        self.thumb_scale = thumb_scale
+        self.random = random
+        self.show_dates = show_dates
+        self.exclude_context = exclude_context
+        self.no_icons = no_icons
+        self.no_thumbs = no_thumbs
 
     @property
     def title(self):
@@ -145,6 +123,7 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
+        #se la lista di risultati è maggiore di zero allora si puo mostrare la portlet
         return len(self.results())
 
     def collection_url(self):
@@ -152,6 +131,7 @@ class Renderer(base.Renderer):
         if collection is None:
             return None
         else:
+            #torna una lista di url
             return collection.absolute_url()
 
     def more_target_url(self):
@@ -163,15 +143,29 @@ class Renderer(base.Renderer):
 
         return self.collection_url()
 
+    # controllare bene questa funzione
     def results(self):
         results = []
+        resultList = []
+        # la collection su cui vogliamo costrire la portlet ?
         collection = self.collection()
         if collection is not None:
-            results = collection.queryCatalog(
-                object_provides=IBando.__identifier__)
+            # tornano tutti gli oggetti della mia collezione
+            results = collection.queryCatalog()
+
+            resultList = list(results)
+            for el in list(results):
+
+                # controllo che gli elementi all interno della lista siano dei bandi
+                if not el.ContentTypeClass() == "contenttype-bando":
+                    resultList.pop()
+
+            # se è settato un limite e se il limite è maggiore di zero
             if self.data.limit and self.data.limit > 0:
-                results = results[:self.data.limit]
-        return results
+                resultList = resultList[:self.data.limit]
+
+        #ottengo tutti i bandi che devo mostrare nella collection
+        return resultList
 
     def isValidDeadline(self, date):
         """
@@ -192,18 +186,24 @@ class Renderer(base.Renderer):
     def collection(self):
         """ get the collection the portlet is pointing to"""
 
-        collection_path = self.data.target_collection
-        if not collection_path:
-            return None
+        # collection_path = self.data.target_collection
+        # if not collection_path:
+        #     return None
 
-        if collection_path.startswith('/'):
-            collection_path = collection_path[1:]
+        # if collection_path.startswith('/'):
+        #     collection_path = collection_path[1:]
 
-        if not collection_path:
-            return None
+        # if not collection_path:
+        #     return None
 
-        portal = self.portal()
-        return portal.restrictedTraverse(collection_path, default=None)
+        # portal = self.portal()
+        # return portal.restrictedTraverse(collection_path, default=None)
+        # collectionUID = self.data.target_collection
+        collectionUID = self.data.uid
+        if not collectionUID:
+            return ""
+
+        return api.content.get(UID=collectionUID)
 
     def portal(self):
         portal_state = getMultiAdapter(
@@ -228,14 +228,18 @@ class Renderer(base.Renderer):
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
                 state = (
                     'closed', translate(_(u'Closed'), context=self.request))
+
         return state
 
     def has_effective_date(self, bando):
-        effective_date = bando.effective.Date()
-        return effective_date != 'None' and effective_date != "1000/01/01"
+        if bando.EffectiveDate() == 'None':
+            return False
+        else:
+            effective_date = bando.effective.Date()
+            return effective_date != 'None' and effective_date != "1000/01/01"
 
 
-class AddForm(base.AddForm):
+class AddForm(formhelper.AddForm):
 
     """Portlet add form.
 
@@ -243,19 +247,18 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(IBandoCollectionPortlet)
-    form_fields['target_collection'].custom_widget = UberSelectionWidget
-    form_fields['show_more_path'].custom_widget = UberSelectionWidget
+
+    schema = IBandoCollectionPortlet
 
     label = _(u"Add Bandi Portlet")
     description = _(
-        u"This portlet display a listing of bandi from a Collection.")
+         u"This portlet display a listing of bandi from a Collection.")
 
     def create(self, data):
         return Assignment(**data)
 
 
-class EditForm(base.EditForm):
+class EditForm(formhelper.EditForm):
 
     """Portlet edit form.
 
@@ -263,10 +266,8 @@ class EditForm(base.EditForm):
     zope.formlib which fields to display.
     """
 
-    form_fields = form.Fields(IBandoCollectionPortlet)
-    form_fields['target_collection'].custom_widget = UberSelectionWidget
-    form_fields['show_more_path'].custom_widget = UberSelectionWidget
+    schema = IBandoCollectionPortlet
 
     label = _(u"Edit Bandi Portlet")
     description = _(
-        u"This portlet display a listing of bandi from a Collection.")
+         u"This portlet display a listing of bandi from a Collection.")

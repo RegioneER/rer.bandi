@@ -3,7 +3,6 @@
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
-                getIcon nocall:plone_view/getIcon;
                 show_tipologia_bando view/data/show_tipologia_bando">
 
     <dt class="portletHeader">
@@ -16,8 +15,7 @@
 
     <tal:events tal:repeat="obj view/results">
     <dd class="portletItem bandoItem"
-        tal:define="oddrow repeat/obj/odd;
-                    item_icon python:getIcon(obj);"
+        tal:define="oddrow repeat/obj/odd;"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <div class="bandoInfos"
              tal:define="stato_bando python:view.getBandoState(obj)">
@@ -25,14 +23,13 @@
                   tal:define="stato_class python:stato_bando[0];
                               stato_str python:stato_bando[1]"
                   tal:attributes="class string:state-${stato_class} bandoStateClass"
-                  i18n:domain="rer.bandi"
                   tal:content="stato_str">
                     stato
              </div>
 		  <h3 class="bandoTitle">
                     <a class="bandoTitleLink" tal:attributes="href obj/getURL;
-                                       title obj/pretty_title_or_id"
-                       tal:content="obj/pretty_title_or_id" />
+                                       title obj/Title"
+                       tal:content="obj/Title" />
 	      </h3>
 
 		  <p class="bandoDescription"
