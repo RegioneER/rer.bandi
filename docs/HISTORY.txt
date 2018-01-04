@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.2 (unreleased)
+3.0.2 (2018-01-04)
 ------------------
 
 - Add purge="False" to versioning profiles. This avoid override other content-types settings
