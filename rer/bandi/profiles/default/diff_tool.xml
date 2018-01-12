@@ -4,5 +4,8 @@
   <type portal_type="Bando">
    <field name="any" difftype="Compound Diff for Dexterity types"/>
   </type>
+  <type portal_type="Bando Folder Deepening">
+   <field name="any" difftype="Compound Diff for Dexterity types"/>
+  </type>
  </difftypes>
 </object>
