@@ -50,8 +50,9 @@
                                 more_url more_url|request/more_url|string:folder_contents;
                                 use_view_action site_properties/typesUseViewActionInListings|python:();
                                 over_limit python: limit_display and len(batch) > limit_display;
-								isAnon context/@@plone_portal_state/anonymous;
-                                show_about python:not isAnon or site_properties.allowAnonymousViewAbout;">
+								                isAnon context/@@plone_portal_state/anonymous;
+                                allowAnonymousViewAbout python:context.portal_registry['plone.allow_anon_views_about'];
+                                show_about python:not isAnon or allowAnonymousViewAbout;">
             <tal:listing condition="batch">
                 <dl tal:repeat="item batch">
                   <dt class="bandoTitle"

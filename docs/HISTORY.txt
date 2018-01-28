@@ -6,6 +6,8 @@ Changelog
 
 - Add versioning to folder deepenings.
   [eikichi18]
+- Fix collection view for anonymous
+  [cekk]
 
 
 3.0.2 (2018-01-04)
