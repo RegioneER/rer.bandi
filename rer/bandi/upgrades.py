@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.CMFCore.utils import getToolByName
+from plone import api
 from rer.bandi import logger
 from rer.bandi.setuphandlers import addKeyToCatalog
 
@@ -47,3 +48,9 @@ def migrate_to_2200(context):
         'profile-rer.bandi:default', 'typeinfo')
 
     logger.info("Migrated to 2.2.0")
+
+
+def migrate_to_2300(context):
+    setup_tool = api.portal.get_tool('portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
+    logger.info('Add sortable collection criteria')

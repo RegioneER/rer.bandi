@@ -30,17 +30,10 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <div metal:define-macro="text-field-view"
-             id="parent-fieldname-text" class="stx"
-             tal:define="kss_class python:getKssClasses('text',
-                         templateId=templateId, macro='text-field-view');
-                         has_text exists:context/aq_base/getText;
-                         text python:has_text and here.getText() or ''"
+        <div class="document-text"
+             tal:define="text context/text|nothing"
              tal:condition="text"
-             tal:attributes="class python:test(here.Format() in ('text/structured',
-                                                   'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
-            <div metal:define-slot="inside" tal:replace="structure text">The body</div>
-        </div>
+             tal:content="structure text/output" />
 
         <metal:listingmacro define-macro="listing">
             <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;

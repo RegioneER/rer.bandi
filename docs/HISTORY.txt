@@ -4,8 +4,12 @@ Changelog
 3.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Enable topic sorting criteria
+  [cekk]
+- Show text in collection view
+  [cekk]
+- Fix indexer for getScadenza_bando. Now don't add 1 day if the hour is set to 00:00
+  [cekk]
 
 3.0.3 (2018-01-28)
 ------------------
