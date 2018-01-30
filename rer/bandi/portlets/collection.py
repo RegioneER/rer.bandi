@@ -205,6 +205,19 @@ class Renderer(base.Renderer):
 
         return api.content.get(UID=collectionUID)
 
+    def getScadenzaDate(self, brain):
+        date = brain.getScadenza_bando
+        long_format = True
+        if brain.getScadenza_bando.Time() == '00:00:00':
+            # indexer add 1 day to this date, to make a bando ends at midnight
+            # of the day-after, if time is not provided
+            date = date -1
+            long_format = False
+        return api.portal.get_localized_time(
+            datetime=date,
+            long_format=long_format
+        )
+
     def portal(self):
         portal_state = getMultiAdapter(
             (self.context, self.request), name=u'plone_portal_state')
@@ -236,7 +249,7 @@ class Renderer(base.Renderer):
             return False
         else:
             effective_date = bando.effective.Date()
-            return effective_date != 'None' and effective_date != "1000/01/01"
+            return effective_date != 'None' and effective_date != "1969/12/31"
 
 
 class AddForm(formhelper.AddForm):

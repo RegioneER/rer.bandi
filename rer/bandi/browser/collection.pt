@@ -66,22 +66,23 @@
                       <div class="bandoType"
                            tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
                         <span tal:omit-tag=""
-						      i18n:translate="tipologia_bando_label">Announcement type</span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
+						                  i18n:translate="tipologia_bando_label">Announcement type
+                        </span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
                       </div>
                       <div class="bandoDates"
                            tal:define="valid_scadenza python:view.isValidDeadline(item.getScadenza_bando)"
-                           tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1000/01/01' or valid_scadenza)">
-                        <tal:pubblicazione condition="python:item.effective.Date() != '1000/01/01'">
+                           tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1969/12/31' or valid_scadenza)">
+                        <tal:pubblicazione condition="python:item.effective.Date() != '1969/12/31'">
                             <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                             <span tal:content="python:here.toLocalizedTime(item.EffectiveDate(), long_format=1)" />
                         </tal:pubblicazione>
                         <span class="labelTB"
-                              tal:condition="python:item.effective.Date() != '1000/01/01' and valid_scadenza">
+                              tal:condition="python:item.effective.Date() != '1969/12/31' and valid_scadenza">
                                 |
                               </span>
                         <tal:scadenza_bando condition="valid_scadenza">
                             <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
-                            <span tal:content="python:here.toLocalizedTime(item.getScadenza_bando, long_format=True)" />
+                            <span tal:content="python:view.getScadenzaDate(item)" />
                         </tal:scadenza_bando>
                     </div>
                   </dd>

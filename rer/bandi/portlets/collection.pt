@@ -51,7 +51,7 @@
                 </span>
                 <tal:scadenza_bando condition="valid_scadenza">
                     <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
-                    <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
+                    <span tal:content="python:view.getScadenzaDate(obj.getScadenza_bando)" />
                 </tal:scadenza_bando>
             </div>
         </div>

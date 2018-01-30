@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="rer.bandi">
 
   <include package="plone.app.contentmenu" />
@@ -77,7 +78,7 @@
  <!-- Viste per le nuove collezioni -->
 
   <browser:page
-    for="*"
+    for="plone.app.contenttypes.interfaces.ICollection"
     name="collection_bandi_view"
     class=".collection.CollectionBandiView"
     template="collection.pt"
@@ -85,7 +86,7 @@
     />
 
   <browser:page
-   for="*"
+   for="plone.app.contenttypes.interfaces.ICollection"
    name="collection_bandi_tipologia_view"
    class=".collection.CollectionBandiView"
    template="collection.pt"
@@ -93,17 +94,19 @@
    />
 
   <browser:menuItems
-    for="plone.app.collection.interfaces.ICollection"
+    for="plone.app.contenttypes.interfaces.ICollection"
     menu="plone_displayviews">
 
     <browser:menuItem
       title="Bandi con scadenza"
       action="collection_bandi_view"
+      i18n:translate="title"
       />
 
     <browser:menuItem
       title="Bandi con tipologia e scadenza"
       action="collection_bandi_tipologia_view"
+      i18n:translate="title"
       />
   </browser:menuItems>
 

@@ -35,18 +35,14 @@ def getChiusura_procedimento_bando(object, **kw):
 
 @indexer(IBando)
 def getScadenza_bando(object, **kw):
-
     datetime_scadenza_bando = getattr(object, 'scadenza_bando', None)
-    if datetime_scadenza_bando:
-        return DateTime(datetime_scadenza_bando)
-    else:
+    if not datetime_scadenza_bando:
         return DateTime('2100/12/31')
-
-    # old problems with dates, that should be fixed in p5 with datetime and no timezones
-    # if zope_dt_scadenza_bando.Time() == '00:00:00':
-    #     return zope_dt_scadenza_bando + 1
-    # else:
-    #     return zope_dt_scadenza_bando
+    zope_dt_scadenza_bando = DateTime(datetime_scadenza_bando)
+    if zope_dt_scadenza_bando.Time() == '00:00:00':
+        return zope_dt_scadenza_bando + 1
+    else:
+        return zope_dt_scadenza_bando
 
 
 @indexer(IBando)

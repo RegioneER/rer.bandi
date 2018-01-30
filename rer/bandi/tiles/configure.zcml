@@ -12,11 +12,4 @@
         template="bandi_render.pt"
     />
 
-    <browser:page
-        name="bandi_tile_helper"
-        class=".bandi_render.HelpersView"
-        permission="zope2.View"
-        for="*"
-        />
-
 </configure>
