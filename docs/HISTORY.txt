@@ -10,6 +10,7 @@ Changelog
   [cekk]
 - Fix collection view names
   [cekk]
+- Fix templates and styles [nzambello]
 
 3.0.4 (2018-01-29)
 ------------------
