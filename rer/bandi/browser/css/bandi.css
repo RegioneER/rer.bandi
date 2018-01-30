@@ -152,4 +152,17 @@ p.bandoType {
 .solr-search-results a {
   border-bottom: 1px solid; }
 
+.bandi-collection .tile-wrapper {
+  padding: 20px 0;
+  position: relative; }
+.bandi-collection .showMore {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding: 10px 0; }
+.bandi-collection .showMore a {
+  border-bottom: 1px solid; }
+.bandi-collection ul.tileContent {
+  padding-left: 0; }
+
 /*# sourceMappingURL=bandi.css.map */

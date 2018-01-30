@@ -227,3 +227,25 @@ p.bandoType {
         border-bottom: 1px solid;
     }
 }
+
+.bandi-collection {
+    .tile-wrapper {
+        padding: 20px 0;
+        position: relative;
+    }
+
+    .showMore {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        padding: 10px 0;
+    }
+
+    .showMore a {
+        border-bottom: 1px solid;
+    }
+
+    ul.tileContent {
+        padding-left: 0;
+    }
+}

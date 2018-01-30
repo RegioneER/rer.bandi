@@ -112,13 +112,13 @@
                   <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
                                 condition="foldeeps">
                       <tal:foldeep repeat="foldeep foldeeps">
-                          <dl class="portlet portletNavigationTree">
-                              <dt class="portletHeader">
+                          <div class="portlet portletNavigationTree">
+                              <div class="portletHeader">
                                   <span tal:content="foldeep/title">
                                       header
                                   </span>
-                              </dt>
-                              <dd class="portletItem lastItem"
+                              </div>
+                              <div class="portletItem lastItem"
                                   tal:define="folder_path foldeep/path">
                                   <ul class="navTree navTreeLevel0"
                                       tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
@@ -135,8 +135,8 @@
                                            tal:content="obj/description">description</div>
                                     </li>
                                   </ul>
-                              </dd>
-                          </dl>
+                              </div>
+                          </div>
                       </tal:foldeep>
                   </tal:foldeeps>
               </div>

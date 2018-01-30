@@ -211,7 +211,7 @@ class Renderer(base.Renderer):
         if brain.getScadenza_bando.Time() == '00:00:00':
             # indexer add 1 day to this date, to make a bando ends at midnight
             # of the day-after, if time is not provided
-            date = date -1
+            date = date - 1
             long_format = False
         return api.portal.get_localized_time(
             datetime=date,

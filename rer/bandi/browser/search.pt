@@ -72,13 +72,13 @@
     <div tal:condition="results"
           tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
 
-        <dl class="searchResults solr-search-results">
+        <div class="searchResults solr-search-results">
         <tal:results repeat="result batch">
         <tal:entry define="isAnon context/@@plone_portal_state/anonymous;
 		                   result_url result/getURL;
                            result_type result/portal_type;
                            url python:'%s?searchterm=%s'%(test(result_type in use_view_action, result_url+'/view', result_url+'/'), searchterm);">
-            <dt tal:define="stato_bando python:view.getBandoState(result);
+            <div tal:define="stato_bando python:view.getBandoState(result);
 		    	            item_wf_state_class string:state-${result/review_state};"
 			    tal:attributes="class python:'bandoTitle contenttype-' + normalizeString(result.portal_type)">
 			    <span tal:condition="stato_bando"
@@ -93,8 +93,8 @@
 	               tal:attributes="href url;
 	              		           class string:$item_wf_state_class"
 		     	   tal:content="result/pretty_title_or_id" />
-          	</dt>
-            <dd class="bandoDetail">
+          	</div>
+            <div class="bandoDetail">
                 <span tal:replace="python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
                     Cropped description
                 </span>
@@ -169,11 +169,11 @@
                     <span tal:content="python:here.toLocalizedTime(result.getScadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>
             </div>
-            </dd>
+        </div>
 
         </tal:entry>
         </tal:results>
-        </dl>
+        </div>
 
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
