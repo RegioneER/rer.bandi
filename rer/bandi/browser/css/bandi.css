@@ -131,6 +131,12 @@ dl.bandoItem {
 .labelTB {
   font-weight: bold; }
 
+.bandoDates {
+  display: flex;
+  flex-wrap: wrap; }
+  .bandoDates .colspacer {
+    padding: 0 10px; }
+
 p.bandoType {
   color: #666;
   font-size: 0.9em;

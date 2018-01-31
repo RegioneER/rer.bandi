@@ -64,6 +64,7 @@
                         </div>
                       </tal:pubblicazione>
                       <tal:scadenza_bando condition="python: valid_scadenza and is_show_scadenza_bando_visible">
+                        <span class="labelTB colspacer"> | </span>
                         <div class="bando-data-scadenza">
                           <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
                           <span tal:content="python:helper_view.getScadenzaDate(obj)" />

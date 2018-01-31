@@ -196,6 +196,15 @@ dl.bandoItem {
     font-weight: bold;
 }
 
+.bandoDates {
+    display: flex;
+    flex-wrap: wrap;
+
+    .colspacer {
+        padding: 0 10px;
+    }
+}
+
 p.bandoType {
     color: #666;
     font-size: 0.9em;
