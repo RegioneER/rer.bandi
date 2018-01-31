@@ -88,11 +88,11 @@
                                     condition="foldeeps">
                                     <tal:foldeep repeat="foldeep foldeeps">
                                         <div class="portlet portletNavigationTree">
-                                            <div class="portletHeader">
+                                            <h2 class="portletHeader">
                                                 <span tal:content="foldeep/title">
                                                     header
                                                 </span>
-                                            </div>
+                                            </h2>
                                             <div class="portletItem lastItem"
                                                 tal:define="folder_path foldeep/path">
                                                 <ul class="navTree navTreeLevel0"

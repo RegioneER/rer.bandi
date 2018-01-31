@@ -48,7 +48,7 @@
                                 show_about python:not isAnon or allowAnonymousViewAbout;">
             <tal:listing condition="batch">
                 <div tal:repeat="item batch">
-                  <div class="bandoTitle"
+                  <h2 class="bandoTitle"
 				      tal:define="stato_bando python:view.getBandoState(item)">
 				    <span tal:condition="stato_bando"
 					      tal:define="stato_class python:stato_bando[0];
@@ -60,7 +60,7 @@
                     <a class="bandoTitleLink" tal:attributes="href item/getURL;
                                                               title item/Title"
                        tal:content="item/Title" />
-                  </div>
+                  </h2>
                   <div class="bandoDetail">
                     <div tal:content="item/Description" />
                       <div class="bandoType"

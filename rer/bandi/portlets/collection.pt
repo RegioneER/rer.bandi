@@ -5,13 +5,13 @@
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
                 show_tipologia_bando view/data/show_tipologia_bando">
 
-    <div class="portletHeader">
+    <h2 class="portletHeader">
         <span class="portletTopLeft"></span>
         <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
             <span class="tile" tal:content="view/data/header" />
         </a>
         <span class="portletTopRight"></span>
-    </div>
+    </h2>
 
     <tal:events tal:repeat="obj view/results">
     <div class="portletItem bandoItem"
