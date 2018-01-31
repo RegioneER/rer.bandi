@@ -46,8 +46,9 @@
                     <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(obj.effective)" />
                 </tal:pubblicazione>
-                <span tal:omit-tag=""
+                <span class="labelTB colspacer" tal:omit-tag=""
                       tal:condition="python:(view.data.show_effective and view.data.show_scadenza_bando) and (has_effective_date and obj.getScadenza_bando)">
+                      |
                 </span>
                 <tal:scadenza_bando condition="valid_scadenza">
                     <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:

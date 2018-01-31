@@ -159,7 +159,7 @@
                     <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(result.effective)" />
                 </tal:pubblicazione>
-                <span class="labelTB"
+                <span class="labelTB colspacer"
                       tal:condition="python:result.effective.year() != 1000 and result.getScadenza_bando">
                         |
                       </span>
