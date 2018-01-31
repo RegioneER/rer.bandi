@@ -73,7 +73,8 @@ a.bandoTitleLink {
     margin-top: 3px; }
 
 h3.bandoTitle {
-  margin-top: 0; }
+  margin-top: 0;
+  padding: 0; }
 
 .bandoTitle,
 .bandoInfos {
