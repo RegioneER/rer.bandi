@@ -121,7 +121,7 @@ h3.bandoTitle {
     padding: 0;
 }
 
-.bandoTitle,
+dt.bandoTitle,
 .bandoInfos {
     position: relative;
     padding: 15px 0;
@@ -171,7 +171,7 @@ h3.bandoTitle {
     }
 }
 
-.bandoTitle {
+dt.bandoTitle {
     font-size: 120%;
     font-weight: normal;
     margin-top: 2em;
@@ -181,13 +181,13 @@ h3.bandoTitle {
     clear: both;
 }
 
-.bandoDetail,
-.searchResults .bandoDetail {
+dd.bandoDetail,
+dl.searchResults dd.bandoDetail {
     margin: 0 0 0 70px;
     clear: none;
 }
 
-.bandoItem {
+dl.bandoItem {
     border-bottom: 1px dashed #ccc;
     padding: 0.5em 0 0.7em;
     margin: 0.5em 0;

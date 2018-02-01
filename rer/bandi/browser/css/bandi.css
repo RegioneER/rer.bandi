@@ -76,42 +76,42 @@ h3.bandoTitle {
   margin-top: 0;
   padding: 0; }
 
-.bandoTitle,
+dt.bandoTitle,
 .bandoInfos {
   position: relative;
   padding: 15px 0; }
-  .tileContent .bandoTitle, .tileContent
+  .tileContent dt.bandoTitle, .tileContent
   .bandoInfos {
     padding-left: 75px; }
-    .tileContent .bandoTitle .bandoStateClass, .tileContent
+    .tileContent dt.bandoTitle .bandoStateClass, .tileContent
     .bandoInfos .bandoStateClass {
       position: absolute;
       top: 2em;
       left: 0; }
-  .searchResults .bandoTitle .bandoStateClass, .searchResults
+  .searchResults dt.bandoTitle .bandoStateClass, .searchResults
   .bandoInfos .bandoStateClass {
     float: left; }
-  .bandoTitle .state-open,
-  .bandoTitle .state-inProgress,
-  .bandoTitle .state-closed,
+  dt.bandoTitle .state-open,
+  dt.bandoTitle .state-inProgress,
+  dt.bandoTitle .state-closed,
   .bandoInfos .state-open,
   .bandoInfos .state-inProgress,
   .bandoInfos .state-closed {
     padding: 10px 0 5px; }
-  .bandoTitle .state-open,
+  dt.bandoTitle .state-open,
   .bandoInfos .state-open {
     background-image: url(++plone++rer.bandi.images/bando_open.png);
     color: #255a01; }
-  .bandoTitle .state-inProgress,
+  dt.bandoTitle .state-inProgress,
   .bandoInfos .state-inProgress {
     background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
     color: #9c6f02; }
-  .bandoTitle .state-closed,
+  dt.bandoTitle .state-closed,
   .bandoInfos .state-closed {
     background-image: url(++plone++rer.bandi.images/bando_closed.png);
     color: #700; }
 
-.bandoTitle {
+dt.bandoTitle {
   font-size: 120%;
   font-weight: normal;
   margin-top: 2em; }
@@ -119,12 +119,12 @@ h3.bandoTitle {
 .bandoDetail {
   clear: both; }
 
-.bandoDetail,
-.searchResults .bandoDetail {
+dd.bandoDetail,
+dl.searchResults dd.bandoDetail {
   margin: 0 0 0 70px;
   clear: none; }
 
-.bandoItem {
+dl.bandoItem {
   border-bottom: 1px dashed #ccc;
   padding: 0.5em 0 0.7em;
   margin: 0.5em 0; }
