@@ -54,3 +54,9 @@ def migrate_to_2300(context):
     setup_tool = api.portal.get_tool('portal_setup')
     setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
     logger.info('Add sortable collection criteria')
+
+
+def migrate_to_2400(context):
+    setup_tool = api.portal.get_tool('portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
+    logger.info('Upgrading to 2400')

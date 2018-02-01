@@ -37,6 +37,7 @@
    <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
    <element value="plone.app.contenttypes.behaviors.tableofcontents.ITableOfContents"/>
    <element value="plone.app.lockingbehavior.behaviors.ILocking" />
+   <element value="Products.CMFPlone.interfaces.constrains.ISelectableConstrainTypes" />
   <element value="plone.versioning"/>
  </property>
  <property name="schema">rer.bandi.interfaces.bandoSchema.IBandoSchema</property>

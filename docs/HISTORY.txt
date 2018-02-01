@@ -3,7 +3,8 @@ Changelog
 
 3.0.5 (unreleased)
 ------------------
-
+- Added ISelectableConstrainTypes behavior
+  [daniele]
 - Fix scadenza dates in views and tiles
   [cekk]
 - Add menuitems entries
