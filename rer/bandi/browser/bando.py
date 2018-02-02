@@ -2,15 +2,16 @@
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from plone.dexterity.browser import add, edit
+from plone import api
 from rer.bandi.interfaces import IBandoFolderDeepening
+from zope.component import getMultiAdapter, getUtility
+from zope.interface import implements, Interface
+from z3c.form import field
+
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
 except ImportError:
     from zope.schema.interfaces import IVocabularyFactory
-
-from zope.component import getMultiAdapter, getUtility
-from zope.interface import implements, Interface
-from z3c.form import field
 
 
 class AddForm(add.DefaultAddForm):
@@ -179,9 +180,12 @@ class BandoView(BrowserView):
         """
         Return deadline partecipation date
         """
-        plone = getMultiAdapter((self.context, self.request), name="plone")
-        time = self.context.scadenza_bando
-        return plone.toLocalizedTime(time, long_format=True)
+        date = self.context.scadenza_bando
+        long_format = date.strftime('%H:%M:%S') != '00:00:00'
+        return api.portal.get_localized_time(
+            datetime=date,
+            long_format=long_format
+        )
 
     def getAnnouncementCloseDate(self):
         """
