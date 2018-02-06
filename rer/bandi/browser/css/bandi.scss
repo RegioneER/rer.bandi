@@ -118,7 +118,7 @@ a.bandoTitleLink {
 
 h3.bandoTitle {
     margin-top: 0;
-    padding: 0;
+    padding: 0 0 0 70px;
 }
 
 h2.bandoTitle,
@@ -175,6 +175,15 @@ h2.bandoTitle {
     font-size: 120%;
     font-weight: normal;
     margin-top: 2em;
+    display: inline-flex;
+
+    a {
+        border: 0;
+
+        span {
+            border-bottom: 1px solid;
+        }
+    }
 }
 
 .bandoDetail {
