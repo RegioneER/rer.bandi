@@ -111,15 +111,22 @@ h2.bandoTitle,
     background-image: url(++plone++rer.bandi.images/bando_closed.png);
     color: #700; }
 
-h2.bandoTitle {
-  font-size: 120%;
-  font-weight: normal;
-  margin-top: 2em;
-  display: inline-flex; }
-  h2.bandoTitle a {
-    border: 0; }
-    h2.bandoTitle a span {
-      border-bottom: 1px solid; }
+.bandi-collection .bando-item {
+  position: relative; }
+  .bandi-collection .bando-item h2.bandoTitle {
+    font-size: 120%;
+    font-weight: normal;
+    margin: 2em 0 0;
+    display: inline-flex; }
+    .bandi-collection .bando-item h2.bandoTitle a {
+      border: 0;
+      margin-left: 70px; }
+      .bandi-collection .bando-item h2.bandoTitle a span {
+        border-bottom: 1px solid; }
+    .bandi-collection .bando-item h2.bandoTitle .bandoStateClass {
+      position: absolute;
+      top: 15px;
+      left: 0; }
 
 .bandoDetail {
   clear: both; }

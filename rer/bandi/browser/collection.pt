@@ -47,45 +47,47 @@
                                 allowAnonymousViewAbout python:context.portal_registry['plone.allow_anon_views_about'];
                                 show_about python:not isAnon or allowAnonymousViewAbout;">
             <tal:listing condition="batch">
-                <div tal:repeat="item batch">
-                  <h2 class="bandoTitle"
-				      tal:define="stato_bando python:view.getBandoState(item)">
-				    <span tal:condition="stato_bando"
-					      tal:define="stato_class python:stato_bando[0];
-						              stato_str python:stato_bando[1]"
-                          tal:attributes="class string:state-${stato_class} bandoStateClass"
-                          tal:content="stato_str">
-                            stato
-                          </span>
-                    <a class="bandoTitleLink"
-                       tal:attributes="href item/getURL;
-                                       title item/Title">
-                        <span tal:content="item/Title"></span>
-                    </a>
-                  </h2>
-                  <div class="bandoDetail">
-                    <div tal:content="item/Description" />
-                      <div class="bandoType"
-                           tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
-                        <span tal:omit-tag=""
-						                  i18n:translate="tipologia_bando_label">Announcement type
-                        </span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
+                <div class="bandi-collection">
+                  <div tal:repeat="item batch" class="bando-item">
+                    <h2 class="bandoTitle"
+				        tal:define="stato_bando python:view.getBandoState(item)">
+				      <span tal:condition="stato_bando"
+				            tal:define="stato_class python:stato_bando[0];
+				                        stato_str python:stato_bando[1]"
+                            tal:attributes="class string:state-${stato_class} bandoStateClass"
+                            tal:content="stato_str">
+                              stato
+                            </span>
+                      <a class="bandoTitleLink"
+                         tal:attributes="href item/getURL;
+                                         title item/Title">
+                          <span tal:content="item/Title"></span>
+                      </a>
+                    </h2>
+                    <div class="bandoDetail">
+                      <div tal:content="item/Description" />
+                        <div class="bandoType"
+                             tal:condition="python:view.__name__=='collection_bandi_tipologia_view' and item.portal_type=='Bando'">
+                          <span tal:omit-tag=""
+				                i18n:translate="tipologia_bando_label">Announcement type
+                          </span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
+                        </div>
+                        <div class="bandoDates"
+                             tal:define="valid_scadenza python:view.isValidDeadline(item.getScadenza_bando)"
+                             tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1969/12/31' or valid_scadenza)">
+                          <tal:pubblicazione condition="python:item.effective.Date() != '1969/12/31'">
+                              <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
+                              <span tal:content="python:here.toLocalizedTime(item.EffectiveDate(), long_format=1)" />
+                          </tal:pubblicazione>
+                          <span class="labelTB colspacer"
+                                tal:condition="python:item.effective.Date() != '1969/12/31' and valid_scadenza">
+                                  |
+                                </span>
+                          <tal:scadenza_bando condition="valid_scadenza">
+                              <span class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
+                              <span tal:content="python:view.getScadenzaDate(item)" />
+                          </tal:scadenza_bando>
                       </div>
-                      <div class="bandoDates"
-                           tal:define="valid_scadenza python:view.isValidDeadline(item.getScadenza_bando)"
-                           tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1969/12/31' or valid_scadenza)">
-                        <tal:pubblicazione condition="python:item.effective.Date() != '1969/12/31'">
-                            <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
-                            <span tal:content="python:here.toLocalizedTime(item.EffectiveDate(), long_format=1)" />
-                        </tal:pubblicazione>
-                        <span class="labelTB colspacer"
-                              tal:condition="python:item.effective.Date() != '1969/12/31' and valid_scadenza">
-                                |
-                              </span>
-                        <tal:scadenza_bando condition="valid_scadenza">
-                            <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
-                            <span tal:content="python:view.getScadenzaDate(item)" />
-                        </tal:scadenza_bando>
                     </div>
                   </div>
                 </div>
