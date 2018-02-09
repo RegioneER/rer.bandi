@@ -4,7 +4,7 @@ Changelog
 3.0.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix css styles and templates for titles [nzambello]
 
 
 3.0.7 (2018-02-07)
