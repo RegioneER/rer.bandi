@@ -1,20 +1,20 @@
-<dl class="portlet portletCollection portletBandi"
+<div class="portlet portletCollection portletBandi"
     i18n:domain="rer.bandi"
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
                 show_tipologia_bando view/data/show_tipologia_bando">
 
-    <dt class="portletHeader">
+    <h2 class="portletHeader">
         <span class="portletTopLeft"></span>
         <a tal:attributes="href collection_url" tal:omit-tag="not:view/data/show_more">
             <span class="tile" tal:content="view/data/header" />
         </a>
         <span class="portletTopRight"></span>
-    </dt>
+    </h2>
 
     <tal:events tal:repeat="obj view/results">
-    <dd class="portletItem bandoItem"
+    <div class="portletItem bandoItem"
         tal:define="oddrow repeat/obj/odd;"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <div class="bandoInfos"
@@ -23,7 +23,6 @@
                   tal:define="stato_class python:stato_bando[0];
                               stato_str python:stato_bando[1]"
                   tal:attributes="class string:state-${stato_class} bandoStateClass"
-                  i18n:domain="rer.bandi"
                   tal:content="stato_str">
                     stato
              </div>
@@ -47,19 +46,20 @@
                     <span  class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(obj.effective)" />
                 </tal:pubblicazione>
-                <span tal:omit-tag=""
+                <span class="labelTB colspacer" tal:omit-tag=""
                       tal:condition="python:(view.data.show_effective and view.data.show_scadenza_bando) and (has_effective_date and obj.getScadenza_bando)">
+                      |
                 </span>
                 <tal:scadenza_bando condition="valid_scadenza">
                     <span  class="labelTB" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</span>:
-                    <span tal:content="python:toLocalizedTime(obj.getScadenza_bando, long_format=True)" />
+                    <span tal:content="python:view.getScadenzaDate(obj)" />
                 </tal:scadenza_bando>
             </div>
         </div>
-    </dd>
+    </div>
     </tal:events>
 
-    <dd class="portletFooter" tal:condition="view/data/show_more">
+    <div class="portletFooter" tal:condition="view/data/show_more">
         <span class="portletBottomLeft"></span>
         <span>
           <a class="arrowLink" tal:attributes="href view/more_target_url" tal:content="view/data/show_more_text">
@@ -67,6 +67,6 @@
           </a>
         </span>
         <span class="portletBottomRight"></span>
-    </dd>
+    </div>
 
-</dl>
+</div>

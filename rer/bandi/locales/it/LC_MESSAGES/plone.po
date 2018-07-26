@@ -1,0 +1,38 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2018-01-15 16:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+#: Custom bandi indexes
+msgid "getTipologia_bando"
+msgstr "Tipologia bando"
+
+#: Custom bandi indexes
+msgid "getChiusura_procedimento_bando"
+msgstr "Chiusura procedimento bando"
+
+#: Custom bandi indexes
+msgid "getEnte_bando"
+msgstr "Ente bando"
+
+#: Custom bandi indexes
+msgid "getDestinatariBando"
+msgstr "Destinatari bando"
+
+#: Custom bandi indexes
+msgid "getScadenza_bando"
+msgstr "Scadenza bando"

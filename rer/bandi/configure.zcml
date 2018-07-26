@@ -31,6 +31,8 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include package=".interfaces" />
+  <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
   <include file="upgrades.zcml" />
 
   <!-- Register the installation GenericSetup extension profile -->
@@ -76,11 +78,17 @@
     component=".vocabularies.DestinatariVocabulary"
     />
 
+  <utility
+    name="rer.bandi.enti.vocabulary"
+    component=".vocabularies.EnteVocabulary"
+    />
+
   <!-- indexer per i destinatari -->
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
   <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
   <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
+  <!-- <adapter name="SearchableText" factory=".indexer.SearchableTextBandi" /> -->
 
 </configure>

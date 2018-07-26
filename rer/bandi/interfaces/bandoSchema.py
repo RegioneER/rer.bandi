@@ -1,21 +1,14 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from plone.app.textfield import RichText
 from plone.autoform import directives
-from plone.namedfile import field as namedfile
 from plone.supermodel import model
-from plone.supermodel.directives import fieldset
-from Products.CMFCore.utils import getToolByName
 from rer.bandi import bandiMessageFactory as _
-
-from z3c.form.browser.radio import RadioFieldWidget
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from z3c.form.browser.textlines import TextLinesFieldWidget
-
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
-from zope.schema.vocabulary import SimpleTerm
-from zope.schema.vocabulary import SimpleVocabulary
-
-from plone import api
+from plone.directives import form
 
 
 def getDefaultEnte():
@@ -31,41 +24,14 @@ def getDefaultEnte():
 class IBandoSchema(model.Schema):
     """ A Dexterity schema for Annoucements """
 
-    directives.widget(tipologia_bando=RadioFieldWidget)
-    tipologia_bando = schema.Choice(
-        title=_('tipologia_bando_label', default=u"Announcement type"),
-        description=_('tipologia_bando_help', default=''),
-        vocabulary='rer.bandi.tipologia.vocabulary',
-        required=True
-    )
-
-    directives.widget(destinatari=CheckBoxFieldWidget)
-    destinatari = schema.List(
-        title=_('destinatari_label', default=u"Recipients"),
-        description=_('destinatari_help', default=''),
-        required=True,
-        value_type=schema.Choice(vocabulary='rer.bandi.destinatari.vocabulary')
-    )
-
-    # da sistemare questi attributi
-    ente_bando = schema.Tuple(
-        title=_(u'ente_label', default=u'Authority'),
-        description=_(u'ente_help', default=u'Select some authorities.'),
-        required=False,
-        defaultFactory=getDefaultEnte,
-        value_type=schema.TextLine(),
-        missing_value=None
-    )
-
-    scadenza_bando = schema.Datetime(
-        title=_('scadenza_bando_label', default=u"Expiration date and time"),
-        description=_(
-            'scadenza_bando_help',
-            default=u"Deadline to participate in the announcement"
-        ),
+    form.order_after(riferimenti_bando='IRichText.text')
+    riferimenti_bando = RichText(
+        title=_('riferimenti_bando_label', default=u"References"),
+        description=_('riferimenti_bando_help', default=u""),
         required=False
     )
 
+    form.order_after(chiusura_procedimento_bando='IRichText.text')
     chiusura_procedimento_bando = schema.Date(
         title=_(
             'chiusura_procedimento_bando_label',
@@ -75,8 +41,42 @@ class IBandoSchema(model.Schema):
         required=False
     )
 
-    riferimenti_bando = RichText(
-        title=_('riferimenti_bando_label', default=u"References"),
-        description=_('riferimenti_bando_help', default=u""),
+    form.order_after(scadenza_bando='IRichText.text')
+    scadenza_bando = schema.Datetime(
+        title=_('scadenza_bando_label', default=u"Expiration date and time"),
+        description=_(
+            'scadenza_bando_help',
+            default=u"Deadline to participate in the announcement"
+        ),
         required=False
+    )
+
+    form.order_after(ente_bando='IRichText.text')
+    directives.widget('ente_bando', AjaxSelectFieldWidget,
+                      vocabulary='rer.bandi.enti.vocabulary')
+    ente_bando = schema.Tuple(
+        title=_(u'ente_label', default=u'Authority'),
+        description=_(u'ente_help', default=u'Select some authorities.'),
+        required=False,
+        defaultFactory=getDefaultEnte,
+        value_type=schema.TextLine(),
+        missing_value=None
+    )
+
+    form.order_after(destinatari='IRichText.text')
+    directives.widget(destinatari=CheckBoxFieldWidget)
+    destinatari = schema.List(
+        title=_('destinatari_label', default=u"Recipients"),
+        description=_('destinatari_help', default=''),
+        required=True,
+        value_type=schema.Choice(vocabulary='rer.bandi.destinatari.vocabulary')
+    )
+
+    form.order_after(tipologia_bando='IRichText.text')
+    directives.widget(tipologia_bando=RadioFieldWidget)
+    tipologia_bando = schema.Choice(
+        title=_('tipologia_bando_label', default=u"Announcement type"),
+        description=_('tipologia_bando_help', default=''),
+        vocabulary='rer.bandi.tipologia.vocabulary',
+        required=True
     )

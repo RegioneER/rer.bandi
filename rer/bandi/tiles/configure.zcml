@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="rer.bandi">
+
+    <browser:page
+        name="bandi_renderer"
+        permission="zope2.View"
+        for="*"
+        class=".bandi_render.View"
+        layer="collective.tiles.collection.interfaces.ICollectiveTilesCollectionLayer"
+        template="bandi_render.pt"
+    />
+
+</configure>

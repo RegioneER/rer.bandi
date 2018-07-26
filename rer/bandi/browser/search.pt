@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="rer.bandi">
 <head>
     <metal:block metal:fill-slot="head_slot"
         tal:define="here_url context/@@plone_context_state/object_url">
@@ -24,12 +24,12 @@
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
                  use_navigation_root request/use_navigation_root | python:True;
                  results view/searchBandi;
-                 Batch python:modules['Products.CMFPlone'].Batch;
+                 Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
-                 desc_length site_properties/search_results_description_length;
-                 desc_ellipsis site_properties/ellipsis;
+                 desc_length python: str(view.getSearchResultsDescriptionLength());
+                 desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
-                 use_view_action site_properties/typesUseViewActionInListings|python:();
+                 use_view_action python:view.getTypesUseViewActionInListings();
                  test python:lambda cond, a, b: [b,a][cond];
                  normalizeString nocall:context/@@plone/normalizeString;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;
@@ -49,14 +49,21 @@
       </span>
     </h1>
 
-    <p class="discreet"
-       tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
-        <a href=""
-           class="link-feed"
-           i18n:translate="title_rss_feed"
-           tal:attributes="href string:$here_url/search_rss?${view/rss_query}">
-             Subscribe to an always-updated feed of these search terms</a>
-    </p>
+    <div class="solr-search-actions">
+        <!-- tasto per tornare al form di ricerca -->
+        <form action="portal_url/@@search_bandi_form" class="solr-search-button">
+          <button type="submit">Nuova Ricerca</button>
+        </form>
+
+        <p class="discreet"
+           tal:condition="context/portal_syndication/isSiteSyndicationAllowed|context/@@syndication-util/search_rss_enabled">
+            <a href=""
+               class="link-feed"
+               i18n:translate="title_rss_feed"
+               tal:attributes="href string:$here_url/search_rss?${view/rss_query}">
+                 Subscribe to an always-updated feed of these search terms</a>
+        </p>
+    </div>
 
     <div tal:condition="not: results">
         <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
@@ -65,15 +72,14 @@
     <div tal:condition="results"
           tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
 
-        <dl class="searchResults">
+        <div class="searchResults solr-search-results">
         <tal:results repeat="result batch">
         <tal:entry define="isAnon context/@@plone_portal_state/anonymous;
 		                   result_url result/getURL;
                            result_type result/portal_type;
-                           item_icon python:plone_view.getIcon(result);
                            url python:'%s?searchterm=%s'%(test(result_type in use_view_action, result_url+'/view', result_url+'/'), searchterm);">
-            <dt tal:define="stato_bando python:view.getBandoState(result);
-		    	            item_wf_state_class string:state-${result/review_state};"
+            <h2 tal:define="stato_bando python:view.getBandoState(result);
+		                 item_wf_state_class string:state-${result/review_state};"
 			    tal:attributes="class python:'bandoTitle contenttype-' + normalizeString(result.portal_type)">
 			    <span tal:condition="stato_bando"
 				      tal:define="stato_class python:stato_bando[0];
@@ -85,16 +91,17 @@
 	                  </span>
 	            <a class="bandoTitleLink"
 	               tal:attributes="href url;
-	              		           class string:$item_wf_state_class"
-		     	   tal:content="result/pretty_title_or_id" />
-          	</dt>
-            <dd class="bandoDetail">
+                                   class string:$item_wf_state_class">
+                    <span tal:content="result/pretty_title_or_id"></span>
+                </a>
+          	</h2>
+            <div class="bandoDetail">
                 <span tal:replace="python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
                     Cropped description
                 </span>
 
             <span class="documentByLine"
-                  tal:condition="python:not isAnon or site_properties.allowAnonymousViewAbout">
+                  tal:condition="python:not isAnon or view.getAllowAnonymousViewAbout()">
                 <span class="documentAuthor"
                     i18n:translate="label_by_author">
                 by
@@ -153,7 +160,7 @@
                     <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:
                     <span tal:content="python:here.toLocalizedTime(result.effective)" />
                 </tal:pubblicazione>
-                <span class="labelTB"
+                <span class="labelTB colspacer"
                       tal:condition="python:result.effective.year() != 1000 and result.getScadenza_bando">
                         |
                       </span>
@@ -163,11 +170,11 @@
                     <span tal:content="python:here.toLocalizedTime(result.getScadenza_bando, long_format=True)" />
                 </tal:scadenza_bando>
             </div>
-            </dd>
+        </div>
 
         </tal:entry>
         </tal:results>
-        </dl>
+        </div>
 
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 

@@ -2,6 +2,7 @@
 *.egg-info
 *.graffle
 *.kate-swp
+*.mo
 *.py?
 *.pyc
 *~
@@ -27,3 +28,4 @@ pip-selfcheck.json
 src/
 var/
 local/
+.sass-cache/

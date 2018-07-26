@@ -20,7 +20,7 @@
 		<div tal:replace="structure provider:plone.belowcontenttitle" />
 
 		<div class="contextualbody">
-            <div class="documentDescription rer-contextual-description" tal:condition="here/Description" 
+            <div class="documentDescription rer-contextual-description" tal:condition="here/Description"
                       tal:content="here/Description">
                       Description
             </div>
@@ -62,7 +62,7 @@
 		                <tr tal:condition="view/getEffectiveDate">
 		                  <th i18n:translate="bando_pub_date">Publication date</th>
 		                  <td>
-		                    <tal:pubblicazione content="view/getEffectiveDate">  
+		                    <tal:pubblicazione content="view/getEffectiveDate">
                           data di pubblicazione
 		                    </tal:pubblicazione>
 		                  </td>
@@ -84,16 +84,17 @@
 		                    </div>
 		                  </td>
 		                </tr>
+                </table>
+                <table class="vertical listing tableRight" tal:define="foldeeps view/retrieveFolderDeepening" tal:condition="foldeeps">
+                    <tr>
+                      <td>
+                        <a href="#foldeeps" i18n:translate="bando_anchor_foldeeps">Consulta gli approfondimenti</a>
+                      </td>
+                    </tr>
 		            </table>
 				      </div>
 
               <tal:text define="bando_text here/text">
-                <p tal:condition="not:bando_text"
-                    i18n:translate="no_body_text"
-                    i18n:domain="plone"
-                    class="discreet">
-                    This item does not have any body text, click the edit tab to change it.
-                </p>
                 <div tal:condition="bando_text"
                      tal:replace="structure bando_text/output">
                     Body text
@@ -106,38 +107,40 @@
                 </div>
             </div>
             <div class="visualClear"></div>
-            <div class="rer-contextual-portlets">
-                <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
-                              condition="foldeeps">
-                    <tal:foldeep repeat="foldeep foldeeps">
-                        <dl class="portlet portletNavigationTree">
-                            <dt class="portletHeader">
-                                <span tal:content="foldeep/title">
-                                    header
-                                </span>
-                            </dt>
-                            <dd class="portletItem lastItem"
-                                tal:define="folder_path foldeep/path">
-                                <ul class="navTree navTreeLevel0"
-                                    tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
-                                    tal:condition="objs">
-                                  <li class="navTreeItem visualNoMarker"
-                                      tal:repeat="obj objs">
-                                    <!-- <img tal:replace="structure obj/icon" /> -->
-                                    <a tal:attributes="href obj/url"
-                                       tal:content="obj/title">title</a>
-                                    <span tal:condition="obj/filesize|nothing"
-                                          tal:content="string:(${obj/filesize})">1Mb</span>
-                                    <div class="description"
-                                         tal:condition="obj/description"
-                                         tal:content="obj/description">description</div>
-                                  </li>
-                                </ul>
-                            </dd>
-                        </dl>
-                    </tal:foldeep>
-                </tal:foldeeps>
-            </div>
+            <section id="foldeeps">
+              <div class="rer-contextual-portlets">
+                  <tal:foldeeps define="foldeeps view/retrieveFolderDeepening"
+                                condition="foldeeps">
+                      <tal:foldeep repeat="foldeep foldeeps">
+                          <div class="portlet portletNavigationTree">
+                              <h2 class="portletHeader">
+                                  <span tal:content="foldeep/title">
+                                      header
+                                  </span>
+                              </h2>
+                              <div class="portletItem lastItem"
+                                  tal:define="folder_path foldeep/path">
+                                  <ul class="navTree navTreeLevel0"
+                                      tal:define="objs python: view.retrieveContentsOfFolderDeepening(folder_path)"
+                                      tal:condition="objs">
+                                    <li class="navTreeItem visualNoMarker"
+                                        tal:repeat="obj objs">
+                                      <!-- <img tal:replace="structure obj/icon" /> -->
+                                      <a tal:attributes="href obj/url"
+                                         tal:content="obj/title">title</a>
+                                      <span tal:condition="obj/filesize|nothing"
+                                            tal:content="string:(${obj/filesize})">1Mb</span>
+                                      <div class="description"
+                                           tal:condition="obj/description"
+                                           tal:content="obj/description">description</div>
+                                    </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </tal:foldeep>
+                  </tal:foldeeps>
+              </div>
+            </section>
         <div class="visualClear"></div>
         <div tal:replace="structure provider:plone.belowcontentbody" />
         </div>

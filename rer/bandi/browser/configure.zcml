@@ -1,11 +1,31 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="rer.bandi">
 
   <include package="plone.app.contentmenu" />
 
   <!-- -*- extra stuff goes here -*- -->
+
+  <!-- custom Add form per bandi -->
+  <adapter
+    for="Products.CMFCore.interfaces.IFolderish
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         plone.dexterity.interfaces.IDexterityFTI"
+    provides="zope.publisher.interfaces.browser.IBrowserPage"
+    factory=".bando.AddView"
+    name="Bando"
+    />
+
+  <!-- custom Edit form per bandi -->
+  <browser:page
+    for="rer.bandi.interfaces.bando.IBando"
+    name="edit"
+    class=".bando.EditView"
+    permission="zope2.View"
+    />
 
   <browser:page
     name="bando_view"
@@ -51,51 +71,57 @@
     for="*"
     name="search_bandi"
     template="search.pt"
-	class=".search.SearchBandi"
+	  class=".search.SearchBandi"
     permission="zope2.View"
     />
 
  <!-- Viste per le nuove collezioni -->
 
   <browser:page
-    for="plone.app.collection.interfaces.ICollection"
+    for="plone.app.contenttypes.interfaces.ICollection"
     name="collection_bandi_view"
     class=".collection.CollectionBandiView"
     template="collection.pt"
     permission="zope2.View"
     />
-  <browser:menuItem
-    for="plone.app.collection.interfaces.ICollection"
-    menu="plone_displayviews"
-    title="Bandi con scadenza"
-    action="@@collection_bandi_view"
-    />
 
-   <browser:page
-    for="plone.app.collection.interfaces.ICollection"
-    name="collection_bandi_tipologia_view"
-    class=".collection.CollectionBandiView"
-    template="collection.pt"
-    permission="zope2.View"
-    />
-  <browser:menuItem
-    for="plone.app.collection.interfaces.ICollection"
-    menu="plone_displayviews"
-    title="Bandi con tipologia e scadenza"
-    action="@@collection_bandi_tipologia_view"
-    />
+  <browser:page
+   for="plone.app.contenttypes.interfaces.ICollection"
+   name="collection_bandi_tipologia_view"
+   class=".collection.CollectionBandiView"
+   template="collection.pt"
+   permission="zope2.View"
+   />
 
+  <browser:menuItems
+    for="plone.app.contenttypes.interfaces.ICollection"
+    menu="plone_displayviews">
+
+    <browser:menuItem
+      title="Bandi con scadenza"
+      action="collection_bandi_view"
+      i18n:translate="title"
+      />
+
+    <browser:menuItem
+      title="Bandi con tipologia e scadenza"
+      action="collection_bandi_tipologia_view"
+      i18n:translate="title"
+      />
+  </browser:menuItems>
 
    <!--DIRECTORY REGISTRATION-->
-  <browser:resourceDirectory
-        name="rer.bandi.images"
-        directory="images"
-        />
+  <plone:static
+      name="rer.bandi.images"
+      type="plone"
+      directory="images"
+      />
 
-  <browser:resource
-    name="bandi.css"
-    file="bandi.css"
-    />
+  <plone:static
+      name="rer.bandi.styles"
+      type="plone"
+      directory="css"
+      />
 
   <browser:resource
     name="searchbandi.js"

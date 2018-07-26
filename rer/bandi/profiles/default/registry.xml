@@ -8,7 +8,7 @@
     <value key="title" i18n:translate="chiusura_procedimento_bando">Chiusura procedimento bando</value>
     <value key="description">Deadline to participate in the announcement</value>
     <value key="enabled">True</value>
-    <value key="sortable">False</value>
+    <value key="sortable">True</value>
     <value key="operations">
         <element>plone.app.querystring.operation.date.lessThan</element>
         <element>plone.app.querystring.operation.date.largerThan</element>
@@ -26,7 +26,7 @@
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getDestinatariBando">
-    <value key="title" i18n:translate="destinatari_label">Destinatari bando</value>
+    <value key="title" i18n:translate="destinatari_label">Recipients</value>
     <value key="description">Announcement recipients</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
@@ -41,7 +41,7 @@
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getTipologia_bando">
-    <value key="title" i18n:translate="tipologia_bando_label">Tipologia bando</value>
+    <value key="title" i18n:translate="tipologia_bando_label">Announcement type</value>
     <value key="description">Announcement type</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
@@ -56,10 +56,10 @@
 
    <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getScadenza_bando">
-    <value key="title" i18n:translate="scadenza_bando_label">Scadenza_bando</value>
+    <value key="title" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</value>
     <value key="description">Closing date of the announcements</value>
     <value key="enabled">True</value>
-    <value key="sortable">False</value>
+    <value key="sortable">True</value>
     <value key="operations">
         <element>plone.app.querystring.operation.date.lessThan</element>
         <element>plone.app.querystring.operation.date.largerThan</element>
@@ -77,13 +77,22 @@
 
   <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
 
-
-  <!-- faccio un bundle con le risorse css -->
-  <records prefix="plone.bundles/bandi" interface='Products.CMFPlone.interfaces.IBundleRegistry'>
-    <value key="csscompilation">++resource++bandi.css</value>
+  <records prefix="plone.resources/rer-bandi"
+           interface="Products.CMFPlone.interfaces.IResourceRegistry">
+      <value key="css">
+          <element>++plone++rer.bandi.styles/bandi.css</element>
+      </value>
   </records>
 
-
-
+  <!-- faccio un bundle con le risorse css -->
+  <records prefix="plone.bundles/rer-bandi-bundle"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="enabled">True</value>
+    <value key="resources" purge="false">
+      <element>rer-bandi</element>
+    </value>
+    <value key="csscompilation">++plone++rer.bandi.styles/bandi.css</value>
+    <value key="last_compilation">2017-11-26 00:00:00</value>
+  </records>
 
 </registry>

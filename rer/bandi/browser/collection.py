@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from plone import api
 from Products.Five import BrowserView
 from rer.bandi import bandiMessageFactory as _
 from zope.component import getUtility
@@ -20,7 +21,8 @@ class CollectionBandiView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.voc_tipologia = getUtility(IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+        self.voc_tipologia = getUtility(
+            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
 
     def getTipologiaTitle(self, key):
         """
@@ -37,9 +39,22 @@ class CollectionBandiView(BrowserView):
         if not date:
             return False
         if date.Date() == '2100/12/31':
-            #a default date for bandi that don't have a defined deadline
+            # a default date for bandi that don't have a defined deadline
             return False
         return True
+
+    def getScadenzaDate(self, brain):
+        date = brain.getScadenza_bando
+        long_format = True
+        if brain.getScadenza_bando.Time() == '00:00:00':
+            # indexer add 1 day to this date, to make a bando ends at midnight
+            # of the day-after, if time is not provided
+            date = date -1
+            long_format = False
+        return api.portal.get_localized_time(
+            datetime=date,
+            long_format=long_format
+        )
 
     def getBandoState(self, bando):
         """
@@ -50,10 +65,13 @@ class CollectionBandiView(BrowserView):
         state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state = ('closed', translate(_(u'Closed'), context=self.request))
+                state = ('closed', translate(
+                    _(u'Closed'), context=self.request))
             else:
-                state = ('inProgress', translate(_(u'In progress'), context=self.request))
+                state = ('inProgress', translate(
+                    _(u'In progress'), context=self.request))
         else:
             if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
-                state = ('closed', translate(_(u'Closed'), context=self.request))
+                state = ('closed', translate(
+                    _(u'Closed'), context=self.request))
         return state

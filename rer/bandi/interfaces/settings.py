@@ -1,8 +1,8 @@
 from zope.interface import Interface
 from zope import schema
+from plone.app.registry.browser import controlpanel
 
 
-#bisogna fare delle traduzioni che non sono state ancora fatte
 class IBandoSettings(Interface):
     """
     Settings used for announcements default value
@@ -18,5 +18,17 @@ class IBandoSettings(Interface):
     default_destinatari = schema.Tuple(
         title=u"default_destinatari_bandi",
         required=False,
+        value_type=schema.TextLine(),
         missing_value=None
     )
+
+
+class BandiSettings(controlpanel.RegistryEditForm):
+    schema = IBandoSettings
+    id = 'BandiSettings'
+    label = u"Impostazioni per i bandi"
+
+
+class BandiSettingsControlPanel(controlpanel.ControlPanelFormWrapper):
+
+    form = BandiSettings

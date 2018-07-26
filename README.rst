@@ -45,9 +45,7 @@ An announcement has two fields for set the announcement type and recipients.
 Recipients vocabulary
 ---------------------
 
-This information is taken from a property in portal_properties:
-
-    portal_properties.rer_bandi_settings.destinatari_bandi
+This information is taken from a property in control panel "Bandi Settings" (default_destinatari_bandi):
 
 If the property is empty, the item use a default list of values:
 
@@ -81,19 +79,24 @@ This variable set the path for an xml file that contains a list of announcement 
   </vocab-list>
 
 Authority Default value
------------------------
+----------------------
 
-A default authority value can be set for announcements. This information is taken from a property in portal_properties:
-
-**portal_properties -> rer_bandi_settings -> default_ente**
+A default authority value can be set for announcements. This information is taken from control panel "Bandi Settings" (default_ente).
 
 If the property is empty, the default value isn't set.
+
+Tile
+----
+
+In order to use layout bandi for tile is necessary have installed collective.tiles.collection product.
 
 
 Dependencies
 ============
 
 This product has been tested on Plone 5 and Plone 5.1
+
+For Plone 4 (and Archetypes), use 2.x branch/versions
 
 Credits
 =======
