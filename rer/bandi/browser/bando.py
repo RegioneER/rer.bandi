@@ -4,6 +4,7 @@ from Products.Five import BrowserView
 from plone.dexterity.browser import add, edit
 from plone import api
 from rer.bandi.interfaces import IBandoFolderDeepening
+from rer.bandi import logger
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
 from z3c.form import field
@@ -15,6 +16,7 @@ except ImportError:
 
 
 class AddForm(add.DefaultAddForm):
+
 
     def updateWidgets(self):
         add.DefaultAddForm.updateWidgets(self)
@@ -68,6 +70,14 @@ class BandoView(BrowserView):
         self.request = request
         self.voc_tipologia = getUtility(
             IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+
+    def titleTipologiaBando(self):
+        try:
+            term = self.voc_tipologia.getTermByToken(self.context.tipologia_bando)
+            return term.title
+        except LookupError:
+            logger.error('tipologia_bando %s not found in vocabulary', self.context.tipologia_bando)
+            return self.context.tipologia_bando
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document

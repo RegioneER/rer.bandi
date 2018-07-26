@@ -93,6 +93,15 @@
    permission="zope2.View"
    />
 
+  <!-- TODO: for siteroot -->
+  <browser:page
+   for="*"
+   name="bandi-dx-migration"
+   class=".migrator.DXMigratorView"
+   permission="cmf.ManagePortal"
+   />
+
+
   <browser:menuItems
     for="plone.app.contenttypes.interfaces.ICollection"
     menu="plone_displayviews">
