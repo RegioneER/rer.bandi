@@ -32,11 +32,12 @@ def getChiusura_procedimento_bando(object, **kw):
     if datetime_chiusura_procedimento_bando:
         return DateTime(datetime_chiusura_procedimento_bando)
 
-
 @indexer(IBando)
 def getScadenza_bando(object, **kw):
-    datetime_scadenza_bando = getattr(object, 'scadenza_bando', None)
-    if not datetime_scadenza_bando:
+    datetime_scadenza_bando = getattr(object, "scadenza_bando", None)
+    if datetime_scadenza_bando:
+        zope_dt_scadenza_bando = DateTime(datetime_scadenza_bando)
+    else:
         return DateTime('2100/12/31')
     zope_dt_scadenza_bando = DateTime(datetime_scadenza_bando)
     if zope_dt_scadenza_bando.Time() == '00:00:00':

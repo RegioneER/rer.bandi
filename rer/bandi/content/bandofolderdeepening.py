@@ -6,3 +6,5 @@ from Products.CMFPlone.interfaces import IHideFromBreadcrumbs
 
 class BandoFolderDeepening(Container):
     implements(IBandoFolderDeepening)
+    portal_type = 'Bando Folder Deepening'
+    meta_type = 'Bando Folder Deepening'

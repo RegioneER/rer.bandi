@@ -60,3 +60,147 @@ def migrate_to_2400(context):
     setup_tool = api.portal.get_tool('portal_setup')
     setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     logger.info('Upgrading to 2400')
+    # migrazione dei vocabolari
+
+    migrate_at_to_dx()
+
+#    catalog = getToolByName(context, 'portal_catalog')
+#    bandi = catalog(portal_type="Bando")
+#    for bando in bandi:
+#        logger.info('migrate bando %s', bando.getURL())
+#        obj = bando.getObject()
+#    # import pdb; pdb.set_trace()
+#    walker = CatalogWalker(portal, BandoMigrator)()
+#    # migrate(context, BandoMigrator)
+#    bandi = catalog(portal_type="Bando")
+#    for bando in bandi:
+#        logger.info('migrate bando %s', bando.getURL())
+#        obj = bando.getObject()
+#    logger.info("Migrated to 3.0.0")
+
+from plone.app.contenttypes.migration.migration import migrateCustomAT
+from Products.Archetypes.BaseUnit import BaseUnit
+from DateTime import DateTime
+
+def annotation_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
+    """
+    migrate title and description value
+    """
+    fieldkey = 'Archetypes.storage.AnnotationStorage-{}'.format(src_fieldname)
+    value = src_obj.__annotations__[fieldkey]
+    if isinstance(value, BaseUnit):
+        value = value.getRaw()
+    if isinstance(value, DateTime):
+        value = value.asdatetime()
+    setattr(dst_obj, dst_fieldname, value)
+
+def attribute_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
+    value = getattr(src_obj, src_fieldname)
+    if isinstance(value, BaseUnit):
+        value = value.getRaw()
+    setattr(dst_obj, dst_fieldname, value)
+
+
+def migrate_at_to_dx():
+    """
+    migrate links
+    """
+    fields_mapping = (
+        {
+            'AT_field_name': 'title',
+            'DX_field_name': 'title',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'description',
+            'DX_field_name': 'description',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'tipologia_bando',
+            'DX_field_name': 'tipologia_bando',
+        },
+        {
+            'AT_field_name': 'destinatari',
+            'DX_field_name': 'destinatari',
+        },
+        {
+            'AT_field_name': 'ente_bando',
+            'DX_field_name': 'ente_bando',
+        },
+        {
+            'AT_field_name': 'scadenza_bando',
+            'DX_field_name': 'scadenza_bando',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'chiusura_procedimento_bando',
+            'DX_field_name': 'chiusura_procedimento_bando',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'riferimenti_bando',
+            'DX_field_name': 'riferimenti_bando',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'text',
+            'DX_field_name': 'text',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'subject',
+            'DX_field_name': 'subjects',
+        },
+        {
+            'AT_field_name': 'allow_discussion',
+            'DX_field_name': 'allow_discussion',
+        },
+        {
+            'AT_field_name': 'contributors',
+            'DX_field_name': 'contributors',
+        },
+        {
+            'AT_field_name': 'creators',
+            'DX_field_name': 'creators',
+        },
+        {
+            'AT_field_name': 'effectiveDate',
+            'DX_field_name': 'effective',
+        },
+        {
+            'AT_field_name': 'expirationDate',
+            'DX_field_name': 'expires',
+        },
+        {
+            'AT_field_name': 'language',
+            'DX_field_name': 'language',
+        },
+        {
+            'AT_field_name': 'rights',
+            'DX_field_name': 'rights',
+        },
+    )
+    migrateCustomAT(
+        fields_mapping,
+        src_type='Bando',
+        dst_type='Bando'
+    )
+
+    fields_mapping = (
+        {
+            'AT_field_name': 'title',
+            'DX_field_name': 'title',
+            'field_migrator': annotation_migration,
+        },
+        {
+            'AT_field_name': 'description',
+            'DX_field_name': 'description',
+            'field_migrator': annotation_migration,
+        },
+    )
+    migrateCustomAT(
+        fields_mapping,
+        src_type='Bando Folder Deepening',
+        dst_type='Bando Folder Deepening'
+    )
