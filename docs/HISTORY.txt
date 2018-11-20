@@ -4,8 +4,8 @@ Changelog
 3.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix translations.
+  [cekk]
 
 3.0.8 (2018-02-26)
 ------------------

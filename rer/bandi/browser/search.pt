@@ -24,6 +24,7 @@
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
                  use_navigation_root request/use_navigation_root | python:True;
                  results view/searchBandi;
+                 len_results python:len(results);
                  Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
                  desc_length python: str(view.getSearchResultsDescriptionLength());
@@ -42,10 +43,24 @@
         </span>
         <span class="discreet">
         &mdash;
-        <span i18n:translate="batch_x_items_matching_your_criteria"
-        ><span i18n:name="number"
-        tal:omit-tag=""
-        tal:content="python:len(results)">234</span> items matching your search terms</span>
+        <span tal:condition="python:len_results != 1"
+              i18n:translate="batch_x_items_matching_your_criteria">
+            <span i18n:name="number"
+                  tal:omit-tag=""
+                  tal:content="len_results">
+                234
+            </span>
+            items matching your search terms
+        </span>
+        <span tal:condition="python:len_results == 1"
+              i18n:translate="batch_x_item_matching_your_criteria">
+            <span i18n:name="number"
+                  tal:omit-tag=""
+                  tal:content="len_results">
+                234
+            </span>
+            item matching your search terms
+        </span>
       </span>
     </h1>
 

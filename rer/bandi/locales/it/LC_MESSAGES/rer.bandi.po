@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-12-21 11:08+0000\n"
+"POT-Creation-Date: 2018-11-20 10:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:253
+#: ./portlets/collection.py:266
 msgid "Add Bandi Portlet"
 msgstr "Aggiungi Portlet Bandi"
 
@@ -29,31 +29,31 @@ msgstr "Testo alternativo da mostrare nel link ad 'altro'"
 msgid "Bandi Settings"
 msgstr "Impostazioni Bandi"
 
-#: ./browser/configure.zcml:102
+#: ./browser/configure.zcml:104
 msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/configure.zcml:107
+#: ./browser/configure.zcml:110
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
-#: ./browser/collection.py:55
+#: ./browser/collection.py:69
 #: ./browser/search.py:147
-#: ./portlets/collection.py:223
+#: ./portlets/collection.py:236
 msgid "Closed"
 msgstr "Chiuso"
 
-#: ./browser/configure.zcml:42
+#: ./browser/configure.zcml:43
 msgid "Default"
 msgstr ""
 
-#: ./portlets/collection.py:271
+#: ./portlets/collection.py:284
 msgid "Edit Bandi Portlet"
 msgstr "Modifica Portlet Bandi"
 
-#: ./browser/collection.py:58
+#: ./browser/collection.py:72
 #: ./browser/search.py:150
-#: ./portlets/collection.py:226
+#: ./portlets/collection.py:239
 msgid "In progress"
 msgstr "In corso"
 
@@ -69,13 +69,13 @@ msgstr "Link interno."
 msgid "Migrate to version 2.2.0"
 msgstr ""
 
-#: ./browser/configure.zcml:58
+#: ./browser/configure.zcml:59
 msgid "Mostra altre informazioni a destra"
 msgstr ""
 
-#: ./browser/collection.py:51
+#: ./browser/collection.py:65
 #: ./browser/search.py:143
-#: ./portlets/collection.py:219
+#: ./portlets/collection.py:232
 msgid "Open"
 msgstr "Aperto"
 
@@ -91,11 +91,11 @@ msgstr ""
 msgid "RER:Bandi migrate to version 2.2.0 (2200)"
 msgstr ""
 
-#: ./browser/configure.zcml:58
+#: ./browser/configure.zcml:59
 msgid "Sulla destra"
 msgstr ""
 
-#: ./portlets/collection.py:254
+#: ./portlets/collection.py:267
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
@@ -103,18 +103,18 @@ msgstr "Questa portlet mostra una lista di bandi da una collezione."
 msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
-#: ./browser/configure.zcml:42
+#: ./browser/configure.zcml:43
 msgid "Vista predefinita, altre informazioni sotto"
 msgstr ""
 
 #. Default: "Layout Bandi"
-#: ./tiles/bandi_render.py:74
+#: ./tiles/bandi_render.py:11
 msgid "bandi_layout"
 msgstr ""
 
 #. Default: "Published on"
-#: ./browser/collection.pt:81
-#: ./browser/search.pt:157
+#: ./browser/collection.pt:79
+#: ./browser/search.pt:175
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
@@ -234,17 +234,22 @@ msgstr "Data di pubblicazione"
 #. Default: "Deadline participation terms"
 #: ./browser/bando-right.pt:69
 #: ./browser/bando.pt:72
-#: ./browser/collection.pt:89
+#: ./browser/collection.pt:87
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
+#. Default: "${number} item matching your search terms"
+#: ./browser/search.pt:57
+msgid "batch_x_item_matching_your_criteria"
+msgstr "${number} elemento soddisfa i criteri specificati"
+
 #. Default: "${number} items matching your search terms"
-#: ./browser/search.pt:46
+#: ./browser/search.pt:48
 msgid "batch_x_items_matching_your_criteria"
-msgstr ""
+msgstr "${number} elementi soddisfano i criteri specificati"
 
 #. Default: "last modified"
-#: ./browser/search.pt:117
+#: ./browser/search.pt:135
 msgid "box_last_modified"
 msgstr ""
 
@@ -263,14 +268,14 @@ msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
 #. Default: "There are currently no items in this folder."
-#: ./browser/collection.pt:99
+#: ./browser/collection.pt:98
 msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi."
 
 #. Default: "No results were found."
-#: ./browser/search.pt:67
+#: ./browser/search.pt:84
 msgid "description_no_results_found"
-msgstr ""
+msgstr "Nessun risultato è stato trovato"
 
 #: ./interfaces/bandoSchema.py:70
 msgid "destinatari_help"
@@ -296,7 +301,7 @@ msgid "ente_label"
 msgstr "Ente"
 
 #. Default: "Announcements search results"
-#: ./browser/search.pt:39
+#: ./browser/search.pt:40
 msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
@@ -306,17 +311,17 @@ msgid "help_search_authorities"
 msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
 
 #. Default: "by ${author}"
-#: ./browser/search.pt:105
+#: ./browser/search.pt:123
 msgid "label_by_author"
 msgstr ""
 
 #. Default: "filed under:"
-#: ./browser/search.pt:129
+#: ./browser/search.pt:147
 msgid "label_filed_under"
 msgstr ""
 
 #. Default: "Relevance: ${percentage}%"
-#: ./browser/search.pt:146
+#: ./browser/search.pt:164
 msgid "label_relevance_percentage"
 msgstr ""
 
@@ -326,7 +331,7 @@ msgid "label_search"
 msgstr "Cerca"
 
 #. Default: "More…"
-#: ./tiles/bandi_render.pt:77
+#: ./tiles/bandi_render.pt:80
 msgid "more_url"
 msgstr ""
 
@@ -351,12 +356,11 @@ msgstr "Scadenza dei termini per partecipare al bando"
 
 #. Default: "Expiration date and time"
 #: ./interfaces/bandoSchema.py:46
-#: ./profiles/default/registry.xml
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
 #. Default: "No results found"
-#: ./tiles/bandi_render.pt:20
+#: ./tiles/bandi_render.pt:23
 msgid "tiles_collection_noresults"
 msgstr "Non sono stati trovati bandi"
 
@@ -367,11 +371,11 @@ msgstr ""
 #. Default: "Announcement type"
 #: ./browser/bando-right.pt:31
 #: ./browser/bando.pt:34
-#: ./browser/collection.pt:74
+#: ./browser/collection.pt:71
 msgid "tipologia_bando_label"
 msgstr "Tipologia di bando"
 
 #. Default: "Subscribe to an always-updated feed of these search terms"
-#: ./browser/search.pt:59
+#: ./browser/search.pt:75
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
