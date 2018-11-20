@@ -4,8 +4,8 @@ Changelog
 3.0.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Remove unused translations.
+  [cekk]
 
 3.0.9 (2018-11-20)
 ------------------

@@ -115,59 +115,6 @@
                     Cropped description
                 </span>
 
-            <span class="documentByLine"
-                  tal:condition="python:not isAnon or view.getAllowAnonymousViewAbout()">
-                <span class="documentAuthor"
-                    i18n:translate="label_by_author">
-                by
-                <a href="#"
-                   tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/author/${result/Creator}"
-                   tal:content="result/Creator"
-                   tal:omit-tag="not:result/Creator"
-                   i18n:name="author">
-                Bob Dobalina
-                </a>
-
-                </span>
-
-                <span class="documentModified">
-                  &mdash;
-                    <span i18n:translate="box_last_modified">
-                    last modified
-                    </span>
-                    <span tal:replace="python:toLocalizedTime(result.ModificationDate, long_format=1)">
-                    August 16, 2001 at 23:35:59
-                    </span>
-                </span>
-
-
-                <span tal:define="categories result/Subject|nothing"
-                      tal:condition="categories">
-                    &mdash;
-                    <tal:filedunder i18n:translate="label_filed_under">filed under:</tal:filedunder>
-                        <span tal:repeat="category categories">
-                            <a href=""
-                               class="link-category"
-                               rel="tag"
-                               tal:content="category"
-                               tal:attributes="href string:${context/@@plone_portal_state/navigation_root_url}/search?Subject%3Alist=${category}">
-                               Category
-                            </a><tal:separator condition="not: repeat/category/end">,</tal:separator>
-                        </span>
-                </span>
-
-                <span class="relevance"
-                      tal:condition="result/data_record_normalized_score_">
-                    &mdash;
-                    <tal:relevance i18n:translate="label_relevance_percentage">
-                    Relevance:
-                        <span tal:content="result/data_record_normalized_score_"
-                               tal:omit-tag=""
-                               i18n:name="percentage">23</span>%
-                    </tal:relevance>
-                </span>
-            </span>
-
             <div class="bandoDates"
             	 i18n:domain="rer.bandi"
                    tal:condition="python:result.portal_type=='Bando' and (result.effective.year() != 1000 or result.getScadenza_bando)">
