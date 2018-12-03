@@ -8,7 +8,7 @@ from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
-from plone.directives import form
+from plone.autoform import directives as form
 
 
 def getDefaultEnte():

@@ -4,8 +4,8 @@ Changelog
 3.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Removed plone.directives import.
+  [daniele]
 
 3.0.10 (2018-11-20)
 -------------------
