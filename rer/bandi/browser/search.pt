@@ -66,7 +66,7 @@
 
     <div class="solr-search-actions">
         <!-- tasto per tornare al form di ricerca -->
-        <form action="portal_url/@@search_bandi_form" class="solr-search-button">
+        <form action="${portal_url}/@@search_bandi_form" class="solr-search-button">
           <button type="submit">Nuova Ricerca</button>
         </form>
 
