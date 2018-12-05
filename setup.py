@@ -5,7 +5,7 @@ This module contains the tool of rer.bandi
 import os
 from setuptools import setup, find_packages
 
-version = '3.0.11.dev0'
+version = '3.0.11'
 
 tests_require = ['zope.testing', 'Products.PloneTestCase']
 
