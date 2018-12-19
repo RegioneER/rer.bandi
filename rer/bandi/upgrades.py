@@ -52,13 +52,16 @@ def migrate_to_2200(context):
 
 def migrate_to_2300(context):
     setup_tool = api.portal.get_tool('portal_setup')
+    ptypes = api.portal.get_tool('portal_types')
+    del ptypes['Bando']
+    del ptypes['Bando Folder Deepening']
+    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
     logger.info('Add sortable collection criteria')
 
 
 def migrate_to_2400(context):
     setup_tool = api.portal.get_tool('portal_setup')
-    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     logger.info('Upgrading to 2400')
     # migrazione dei vocabolari
 
@@ -80,6 +83,7 @@ def migrate_to_2400(context):
 
 from plone.app.contenttypes.migration.migration import migrateCustomAT
 from Products.Archetypes.BaseUnit import BaseUnit
+from plone.app.textfield.value import RichTextValue
 from DateTime import DateTime
 
 def annotation_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
@@ -89,9 +93,12 @@ def annotation_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
     fieldkey = 'Archetypes.storage.AnnotationStorage-{}'.format(src_fieldname)
     value = src_obj.__annotations__[fieldkey]
     if isinstance(value, BaseUnit):
-        value = value.getRaw()
+        if src_fieldname  in ('text', 'riferimenti_bando'):
+            value = RichTextValue(value.getRaw())
+        else:
+            value = value.getRaw()
     if isinstance(value, DateTime):
-        value = value.asdatetime()
+        value = value.asdatetime().replace(tzinfo=None)
     setattr(dst_obj, dst_fieldname, value)
 
 def attribute_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
@@ -166,11 +173,11 @@ def migrate_at_to_dx():
         },
         {
             'AT_field_name': 'effectiveDate',
-            'DX_field_name': 'effective',
+            'DX_field_name': 'effective_date',
         },
         {
             'AT_field_name': 'expirationDate',
-            'DX_field_name': 'expires',
+            'DX_field_name': 'expiration_date',
         },
         {
             'AT_field_name': 'language',

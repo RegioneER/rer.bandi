@@ -94,7 +94,7 @@
 		            </table>
 				      </div>
 
-              <tal:text define="bando_text here/text">
+              <tal:text define="bando_text context/text">
                 <div tal:condition="bando_text"
                      tal:replace="structure bando_text/output">
                     Body text
@@ -102,7 +102,9 @@
               </tal:text>
 
                 <hr />
-                <div tal:condition="context/riferimenti_bando" tal:content="structure context/riferimenti_bando/output">
+                <div tal:condition="context/riferimenti_bando" 
+                     tal:content="structure context/riferimenti_bando/output"
+                     tal:on-error="structure context/riferimenti_bando">
                     Riferimenti bando
                 </div>
             </div>
