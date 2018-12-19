@@ -4,7 +4,8 @@ Changelog
 3.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Plone5 migration for a-er
+  [lucabel]
 
 
 3.0.8 (2018-02-26)
