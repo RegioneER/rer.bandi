@@ -127,14 +127,18 @@
                                       tal:condition="objs">
                                     <li class="navTreeItem visualNoMarker"
                                         tal:repeat="obj objs">
-                                      <!-- <img tal:replace="structure obj/icon" /> -->
-                                      <a tal:attributes="href obj/url"
-                                         tal:content="obj/title">title</a>
-                                      <span tal:condition="obj/filesize|nothing"
-                                            tal:content="string:(${obj/filesize})">1Mb</span>
-                                      <div class="description"
-                                           tal:condition="obj/description"
-                                           tal:content="obj/description">description</div>
+				      <tal:icon tal:define="obj_type obj/type;
+                                                            obj_type_class python:('contenttype-' + view.normalizeString(obj_type));
+                                                            obj_icon python:view.MimeTypeIcon(obj['obj'])">
+				          <img tal:condition="python:obj['type'] == 'File'" width="16" height="16" tal:attributes="src obj_icon" />
+                                          <a tal:attributes="href obj/url; class obj_type_class"
+                                             tal:content="obj/title">title</a>
+                                          <span tal:condition="obj/filesize|nothing"
+                                                tal:content="string:(${obj/filesize})">1Mb</span>
+                                          <div class="description"
+                                               tal:condition="obj/description"
+                                               tal:content="obj/description">description</div>
+				      </tal:icon>
                                     </li>
                                   </ul>
                               </div>

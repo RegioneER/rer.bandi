@@ -94,7 +94,7 @@ def annotation_migration(src_obj, dst_obj, src_fieldname, dst_fieldname):
     value = src_obj.__annotations__[fieldkey]
     if isinstance(value, BaseUnit):
         if src_fieldname  in ('text', 'riferimenti_bando'):
-            value = RichTextValue(value.getRaw())
+            value = RichTextValue(value.getRaw().decode('utf-8'))
         else:
             value = value.getRaw()
     if isinstance(value, DateTime):

@@ -8,6 +8,11 @@ from rer.bandi import logger
 from zope.component import getMultiAdapter, getUtility
 from zope.interface import implements, Interface
 from z3c.form import field
+from Products.CMFCore.utils import getToolByName
+from Products.MimetypesRegistry.MimeTypeItem import guess_icon_path
+from zope.component import getMultiAdapter
+from Acquisition import aq_base
+import os
 
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
@@ -71,6 +76,38 @@ class BandoView(BrowserView):
         self.voc_tipologia = getUtility(
             IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
 
+
+    def normalizeString(self, text):
+        return self.plone_view.normalizeString(text)
+
+    @property
+    def plone_view(self):
+        if not getattr(self, '_plone_view', None):
+            self._plone_view = getMultiAdapter(
+                (self.context, self.request),
+                name=u'plone'
+            )
+        return self._plone_view
+
+    def MimeTypeIcon(self, item):
+        mimeicon = None
+        navroot = api.portal.get_navigation_root(self.context).absolute_url()
+        contenttype = aq_base(
+            getattr(item, 'mime_type', None),
+        )
+        if contenttype:
+            mtt = getToolByName(
+                item,
+                'mimetypes_registry',
+            )
+            ctype = mtt.lookup(contenttype)
+            mimeicon = os.path.join(
+                navroot,
+                guess_icon_path(ctype[0]),
+            )
+
+        return mimeicon
+
     def titleTipologiaBando(self):
         try:
             term = self.voc_tipologia.getTermByToken(self.context.tipologia_bando)
@@ -131,6 +168,7 @@ class BandoView(BrowserView):
                 # icon = getMultiAdapter((self.context, self.request, obj), IContentIcon)
                 # dictfields['icon'] = icon.html_tag()
                 dictfields['type'] = obj.Type
+                dictfields['obj'] = obj
                 values.append(dictfields)
 
         return values
