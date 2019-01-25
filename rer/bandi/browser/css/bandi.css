@@ -18,6 +18,9 @@ body.portaltype-bando #content .rer-contextual-portlets a {
   background: none;
   padding: 1px 0 1px 1px;
   text-decoration: underline; }
+body.portaltype-bando #content .rer-contextual-text .bandoInfos,
+body.portaltype-bando #content .rer-contextual-portlets .bandoInfos {
+  padding: 0; }
 
 .rer-contextual-description {
   margin-bottom: 10px; }
@@ -76,38 +79,32 @@ h3.bandoTitle {
   margin-top: 0;
   padding: 0 0 0 70px; }
 
-h2.bandoTitle,
-.bandoInfos {
+h2.bandoTitle, .bandoInfos {
   position: relative;
   padding: 15px 0; }
-  .tileContent h2.bandoTitle, .tileContent
-  .bandoInfos {
+  .tileContent h2.bandoTitle,
+  .tileContent .bandoInfos {
     padding-left: 75px; }
-    .tileContent h2.bandoTitle .bandoStateClass, .tileContent
-    .bandoInfos .bandoStateClass {
+    .tileContent h2.bandoTitle .bandoStateClass,
+    .tileContent .bandoInfos .bandoStateClass {
       position: absolute;
       top: 2em;
       left: 0; }
-  .searchResults h2.bandoTitle .bandoStateClass, .searchResults
-  .bandoInfos .bandoStateClass {
+  .searchResults h2.bandoTitle .bandoStateClass, .searchResults .bandoInfos .bandoStateClass {
     float: left; }
   h2.bandoTitle .state-open,
   h2.bandoTitle .state-inProgress,
-  h2.bandoTitle .state-closed,
-  .bandoInfos .state-open,
+  h2.bandoTitle .state-closed, .bandoInfos .state-open,
   .bandoInfos .state-inProgress,
   .bandoInfos .state-closed {
     padding: 10px 0 5px; }
-  h2.bandoTitle .state-open,
-  .bandoInfos .state-open {
+  h2.bandoTitle .state-open, .bandoInfos .state-open {
     background-image: url(++plone++rer.bandi.images/bando_open.png);
     color: #255a01; }
-  h2.bandoTitle .state-inProgress,
-  .bandoInfos .state-inProgress {
+  h2.bandoTitle .state-inProgress, .bandoInfos .state-inProgress {
     background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
     color: #9c6f02; }
-  h2.bandoTitle .state-closed,
-  .bandoInfos .state-closed {
+  h2.bandoTitle .state-closed, .bandoInfos .state-closed {
     background-image: url(++plone++rer.bandi.images/bando_closed.png);
     color: #700; }
 

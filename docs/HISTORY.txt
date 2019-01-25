@@ -4,7 +4,8 @@ Changelog
 3.0.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Added bando status info in item view
+  [nzambello]
 
 
 3.0.12 (2018-12-05)
