@@ -117,7 +117,8 @@
                             </div>
                         </div>
 
-                        <tal:text define="bando_text here/text">
+                        <tal:text define="bando_text here/text;
+                                          stato_bando view/getBandoState">
                             <div class="bandoInfos">
                                 <span tal:condition="stato_bando"
                                      tal:define="stato_class python:stato_bando[0];
