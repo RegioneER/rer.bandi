@@ -4,8 +4,8 @@ Changelog
 3.0.13 (unreleased)
 -------------------
 
-- Added bando status info in item view
-  [nzambello]
+- Added bando status info in item view [nzambello]
+- Fixed responsive layout [nzambello]
 
 
 3.0.12 (2018-12-05)
