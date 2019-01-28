@@ -3,3 +3,4 @@ recursive-include rer *
 global-exclude *pyc
 include *.py
 include buildout.cfg
+prune rer/bandi/browser/css/.sass-cache
