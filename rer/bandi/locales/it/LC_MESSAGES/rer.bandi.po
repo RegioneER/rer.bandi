@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-11-20 10:59+0000\n"
+"POT-Creation-Date: 2019-01-30 08:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,9 +37,9 @@ msgstr ""
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
+#: ./browser/bando.py:215
 #: ./browser/collection.py:69
-#: ./browser/search.py:147
-#: ./portlets/collection.py:236
+#: ./browser/search.py:173
 msgid "Closed"
 msgstr "Chiuso"
 
@@ -51,9 +51,9 @@ msgstr ""
 msgid "Edit Bandi Portlet"
 msgstr "Modifica Portlet Bandi"
 
+#: ./browser/bando.py:219
 #: ./browser/collection.py:72
-#: ./browser/search.py:150
-#: ./portlets/collection.py:239
+#: ./browser/search.py:178
 msgid "In progress"
 msgstr "In corso"
 
@@ -73,9 +73,9 @@ msgstr ""
 msgid "Mostra altre informazioni a destra"
 msgstr ""
 
+#: ./browser/bando.py:209
 #: ./browser/collection.py:65
-#: ./browser/search.py:143
-#: ./portlets/collection.py:232
+#: ./browser/search.py:165
 msgid "Open"
 msgstr "Aperto"
 
@@ -215,28 +215,34 @@ msgid "bandi_use_solr_label"
 msgstr "Ricerca multisito"
 
 #. Default: "Consulta gli approfondimenti"
-#: ./browser/bando.pt:91
+#: ./browser/bando.pt:104
 msgid "bando_anchor_foldeeps"
 msgstr ""
 
 #. Default: "Closing process"
-#: ./browser/bando-right.pt:77
-#: ./browser/bando.pt:80
+#: ./browser/bando-right.pt:91
+#: ./browser/bando.pt:93
 msgid "bando_chiusura_procedimento"
 msgstr "Chiusura procedimento"
 
 #. Default: "Publication date"
-#: ./browser/bando-right.pt:60
-#: ./browser/bando.pt:63
+#: ./browser/bando-right.pt:74
+#: ./browser/bando.pt:76
 msgid "bando_pub_date"
 msgstr "Data di pubblicazione"
 
 #. Default: "Deadline participation terms"
-#: ./browser/bando-right.pt:69
-#: ./browser/bando.pt:72
+#: ./browser/bando-right.pt:83
+#: ./browser/bando.pt:85
 #: ./browser/collection.pt:87
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
+
+#. Default: "Status"
+#: ./browser/bando-right.pt:32
+#: ./browser/bando.pt:35
+msgid "bando_status_label"
+msgstr "Stato"
 
 #. Default: "${number} item matching your search terms"
 #: ./browser/search.pt:57
@@ -277,8 +283,8 @@ msgid "destinatari_help"
 msgstr ""
 
 #. Default: "Recipients"
-#: ./browser/bando-right.pt:38
-#: ./browser/bando.pt:41
+#: ./browser/bando-right.pt:52
+#: ./browser/bando.pt:54
 #: ./interfaces/bandoSchema.py:69
 msgid "destinatari_label"
 msgstr "Destinatari"
@@ -289,8 +295,8 @@ msgid "ente_help"
 msgstr "Selezionare l'ente proponente del bando."
 
 #. Default: "Authority"
-#: ./browser/bando-right.pt:49
-#: ./browser/bando.pt:52
+#: ./browser/bando-right.pt:63
+#: ./browser/bando.pt:65
 #: ./interfaces/bandoSchema.py:58
 msgid "ente_label"
 msgstr "Ente"
@@ -349,8 +355,8 @@ msgid "tipologia_bando_help"
 msgstr ""
 
 #. Default: "Announcement type"
-#: ./browser/bando-right.pt:31
-#: ./browser/bando.pt:34
+#: ./browser/bando-right.pt:45
+#: ./browser/bando.pt:47
 #: ./browser/collection.pt:71
 msgid "tipologia_bando_label"
 msgstr "Tipologia di bando"
