@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.14 (unreleased)
+3.0.14 (2019-01-30)
 -------------------
 
 - Added translations for bando status [nzambello]
