@@ -33,6 +33,10 @@ body.portaltype-bando {
                 padding: 1px 0 1px 1px;
                 text-decoration: underline;
             }
+
+            .bandoInfos {
+                padding: 0;
+            }
         }
     }
 }
@@ -68,6 +72,12 @@ body.portaltype-bando {
     width: 40%;
     float: right;
     margin-left: 1em;
+
+    @media (max-width: 768px) {
+        width: auto;
+        float: none;
+        margin: 1rem 0 3rem;
+    }
 }
 
 /*** etichette bandi ***/
@@ -87,6 +97,13 @@ body.portaltype-bando {
         width: 57px;
         min-width: 57px;
         text-align: center;
+    }
+
+    table & {
+        .bandoStateClass {
+            width: auto;
+            text-align: center;
+        }
     }
 }
 

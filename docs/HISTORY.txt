@@ -1,11 +1,24 @@
 Changelog
 =========
 
-3.0.13 (unreleased)
+3.0.15 (unreleased)
 -------------------
 
 - Add IShortName behavior fo Folder Deepening.
   [cekk]
+
+
+3.0.14 (2019-01-30)
+-------------------
+
+- Added translations for bando status [nzambello]
+
+
+3.0.13 (2019-01-28)
+-------------------
+
+- Added bando status info in item view [nzambello]
+- Fixed responsive layout [nzambello]
 
 
 3.0.12 (2018-12-05)

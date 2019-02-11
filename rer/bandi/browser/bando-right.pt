@@ -27,6 +27,20 @@
                     <div class="rer-contextual-text">
                         <div class="bandiColumnRight">
                             <table class="vertical listing tableRight">
+                                <tr tal:define="stato_bando view/getBandoState"
+                                    tal:condition="stato_bando">
+                                    <th i18n:translate="bando_status_label">Status</th>
+                                    <td>
+                                        <div class="bandoInfos">
+                                            <span tal:define="stato_class python:stato_bando[0];
+                                                              stato_str python:stato_bando[1]"
+                                                  tal:attributes="class string:state-${stato_class} bandoStateClass">
+                                                ${stato_str}
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <th i18n:translate="tipologia_bando_label">Announcement type</th>
                                     <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">

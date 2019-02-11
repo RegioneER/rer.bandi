@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
+from plone import api
+from plone.dexterity.browser import add, edit
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from plone.dexterity.browser import add, edit
-from plone import api
+from rer.bandi import bandiMessageFactory as _
 from rer.bandi.interfaces import IBandoFolderDeepening
-from zope.component import getMultiAdapter, getUtility
-from zope.interface import implements, Interface
 from z3c.form import field
+from zope.component import getMultiAdapter, getUtility
+from zope.i18n import translate
+from zope.interface import Interface, implements
 
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
@@ -194,3 +197,31 @@ class BandoView(BrowserView):
         plone = getMultiAdapter((self.context, self.request), name="plone")
         time = self.context.chiusura_procedimento_bando
         return time.strftime('%d/%m/%Y')
+
+    def getBandoState(self):
+        """
+        return corretc bando state
+        """
+        scadenza_bando = getattr(self.context, 'scadenza_bando', None)
+        chiusura_procedimento_bando = getattr(
+            self.context, 'chiusura_procedimento_bando', None
+        )
+        state = ('open', translate(_(u'Open'), context=self.request))
+        if scadenza_bando and scadenza_bando < datetime.now():
+            if chiusura_procedimento_bando and (
+                chiusura_procedimento_bando < datetime.now().date()
+            ):
+                state = ('closed', translate(
+                    _(u'Closed'), context=self.request)
+                )
+            else:
+                state = ('inProgress', translate(
+                    _(u'In progress'), context=self.request)
+                )
+        elif chiusura_procedimento_bando and (
+            chiusura_procedimento_bando < datetime.now().date()
+        ):
+            state = ('closed', translate(
+                _(u'Closed'), context=self.request)
+            )
+        return state
