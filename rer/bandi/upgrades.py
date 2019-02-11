@@ -9,13 +9,17 @@ default_profile = 'profile-rer.bandi:default'
 
 def upgrade(upgrade_product, version):
     """ Decorator for updating the QuickInstaller of a upgrade """
+
     def wrap_func(fn):
         def wrap_func_args(context, *args):
             p = getToolByName(context, 'portal_quickinstaller').get(
-                upgrade_product)
+                upgrade_product
+            )
             setattr(p, 'installedversion', version)
             return fn(context, *args)
+
         return wrap_func_args
+
     return wrap_func
 
 
@@ -37,15 +41,19 @@ def migrate_to_2200(context):
     catalog = getToolByName(context, 'portal_catalog')
     bandi = catalog(portal_type="Bando")
     for bando in bandi:
-        bando.getObject().reindexObject(idxs=["getChiusura_procedimento_bando",
-                                              "getDestinatariBando",
-                                              "getScadenza_bando",
-                                              "getTipologia_bando"])
+        bando.getObject().reindexObject(
+            idxs=[
+                "getChiusura_procedimento_bando",
+                "getDestinatariBando",
+                "getScadenza_bando",
+                "getTipologia_bando",
+            ]
+        )
 
     setup_tool.runImportStepFromProfile(
-        'profile-rer.bandi:default', 'plone.app.registry')
-    setup_tool.runImportStepFromProfile(
-        'profile-rer.bandi:default', 'typeinfo')
+        'profile-rer.bandi:default', 'plone.app.registry'
+    )
+    setup_tool.runImportStepFromProfile('profile-rer.bandi:default', 'typeinfo')
 
     logger.info("Migrated to 2.2.0")
 
@@ -60,3 +68,9 @@ def migrate_to_2400(context):
     setup_tool = api.portal.get_tool('portal_setup')
     setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     logger.info('Upgrading to 2400')
+
+
+def migrate_to_2500(context):
+    setup_tool = api.portal.get_tool('portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
+    logger.info('Upgrading to 2500')
