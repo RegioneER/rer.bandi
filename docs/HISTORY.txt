@@ -1,7 +1,14 @@
 Changelog
 =========
 
-3.0.10 (unreleased)
+3.0.10 (2019/03/02)
+-------------------
+
+- change bando meta_type to allow bando to be pasted;
+  meta_type = 'Dexterity Item' is needed
+  [lucabel]
+
+3.0.9 (unreleased)
 ------------------
 
 - Plone5 migration for a-er
