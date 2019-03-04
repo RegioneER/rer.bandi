@@ -10,4 +10,4 @@ class Bando(Container):
     # BBB
     isReferenceable = True
     portal_type = 'Bando'
-    meta_type = 'Bando'
+    meta_type = 'Dexterity Item' # senza l'oggetto non è incollabile
