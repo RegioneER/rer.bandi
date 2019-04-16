@@ -9,16 +9,12 @@ from rer.bandi.interfaces import IBandoFolderDeepening
 from z3c.form import field
 from zope.component import getMultiAdapter, getUtility
 from zope.i18n import translate
-from zope.interface import Interface, implements
-
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    from zope.schema.interfaces import IVocabularyFactory
+from zope.interface import implementer
+from zope.interface import Interface
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class AddForm(add.DefaultAddForm):
-
     def updateWidgets(self):
         add.DefaultAddForm.updateWidgets(self)
 
@@ -30,7 +26,7 @@ class AddForm(add.DefaultAddForm):
                     'IShortName.id',
                     'IAllowDiscussion.allow_discussion',
                     'IExcludeFromNavigation.exclude_from_nav',
-                    'ITableOfContents.table_of_contents'
+                    'ITableOfContents.table_of_contents',
                 )
 
 
@@ -39,7 +35,6 @@ class AddView(add.DefaultAddView):
 
 
 class EditForm(edit.DefaultEditForm):
-
     def updateWidgets(self):
         edit.DefaultEditForm.updateWidgets(self)
 
@@ -51,7 +46,7 @@ class EditForm(edit.DefaultEditForm):
                     'IShortName.id',
                     'IAllowDiscussion.allow_discussion',
                     'IExcludeFromNavigation.exclude_from_nav',
-                    'ITableOfContents.table_of_contents'
+                    'ITableOfContents.table_of_contents',
                 )
 
 
@@ -63,14 +58,14 @@ class IBandoView(Interface):
     pass
 
 
+@implementer(IBandoView)
 class BandoView(BrowserView):
-    implements(IBandoView)
-
     def __init__(self, context, request):
         self.context = context
         self.request = request
         self.voc_tipologia = getUtility(
-            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary'
+        )(self.context)
 
     def retrieveFolderDeepening(self):
         """Retrieves all Folder Deppening objects contained in Structured Document
@@ -78,14 +73,20 @@ class BandoView(BrowserView):
         struct_doc = self.context
         values = []
         dfolders = struct_doc.getFolderContents(
-            contentFilter={'object_provides': IBandoFolderDeepening.__identifier__})
+            contentFilter={
+                'object_provides': IBandoFolderDeepening.__identifier__
+            }
+        )
         for df in dfolders:
             if not df.exclude_from_nav:
-                values.append(dict(title=df.Title,
-                                   description=df.Description,
-                                   url=df.getURL(),
-                                   path=df.getPath()
-                                   ))
+                values.append(
+                    dict(
+                        title=df.Title,
+                        description=df.Description,
+                        url=df.getURL(),
+                        path=df.getPath(),
+                    )
+                )
         return values
 
     def retrieveContentsOfFolderDeepening(self, path_dfolder):
@@ -95,17 +96,18 @@ class BandoView(BrowserView):
         values = []
         objs = self.context.portal_catalog(
             path={'query': path_dfolder, 'depth': 1},
-            sort_on='getObjPositionInParent'
+            sort_on='getObjPositionInParent',
         )
         pp = getToolByName(self.context, 'portal_properties')
 
         for obj in objs:
             if not obj.getPath() == path_dfolder and not obj.exclude_from_nav:
-                dictfields = dict(title=obj.Title,
-                                  description=obj.Description,
-                                  url=obj.getURL(),
-                                  path=obj.getPath(),
-                                  )
+                dictfields = dict(
+                    title=obj.Title,
+                    description=obj.Description,
+                    url=obj.getURL(),
+                    path=obj.getPath(),
+                )
                 if obj.Type == 'Link':
                     dictfields['url'] = obj.getRemoteUrl
                 if obj.Type == 'File':
@@ -129,9 +131,7 @@ class BandoView(BrowserView):
         return values
 
     def getSizeString(self, size):
-        const = {'kB': 1024,
-                 'MB': 1024 * 1024,
-                 'GB': 1024 * 1024 * 1024}
+        const = {'kB': 1024, 'MB': 1024 * 1024, 'GB': 1024 * 1024 * 1024}
         order = ('GB', 'MB', 'kB')
         smaller = order[-1]
         if not size:
@@ -149,7 +149,8 @@ class BandoView(BrowserView):
         Return the values of destinatari vocabulary
         """
         dest_utility = getUtility(
-            IVocabularyFactory, 'rer.bandi.destinatari.vocabulary')
+            IVocabularyFactory, 'rer.bandi.destinatari.vocabulary'
+        )
         destinatari = self.context.destinatari
         if not dest_utility:
             return destinatari
@@ -186,8 +187,7 @@ class BandoView(BrowserView):
         date = self.context.scadenza_bando
         long_format = date.strftime('%H:%M:%S') != '00:00:00'
         return api.portal.get_localized_time(
-            datetime=date,
-            long_format=long_format
+            datetime=date, long_format=long_format
         )
 
     def getAnnouncementCloseDate(self):
@@ -211,17 +211,17 @@ class BandoView(BrowserView):
             if chiusura_procedimento_bando and (
                 chiusura_procedimento_bando < datetime.now().date()
             ):
-                state = ('closed', translate(
-                    _(u'Closed'), context=self.request)
+                state = (
+                    'closed',
+                    translate(_(u'Closed'), context=self.request),
                 )
             else:
-                state = ('inProgress', translate(
-                    _(u'In progress'), context=self.request)
+                state = (
+                    'inProgress',
+                    translate(_(u'In progress'), context=self.request),
                 )
         elif chiusura_procedimento_bando and (
             chiusura_procedimento_bando < datetime.now().date()
         ):
-            state = ('closed', translate(
-                _(u'Closed'), context=self.request)
-            )
+            state = ('closed', translate(_(u'Closed'), context=self.request))
         return state

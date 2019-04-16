@@ -1,3 +1,3 @@
 # -*- extra stuff goes here -*-
-from bandofolderdeepening import IBandoFolderDeepening
-from bando import IBando
+from .bandofolderdeepening import IBandoFolderDeepening  # noqa
+from .bando import IBando  # noqa

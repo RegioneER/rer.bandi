@@ -3,7 +3,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
-      metal:use-macro="here/main_template/macros/master"
+      metal:use-macro="context/@@main_template/macros/master"
       i18n:domain="rer.bandi">
 <head>
     <metal:block metal:fill-slot="head_slot"
@@ -27,7 +27,7 @@
                  len_results python:len(results);
                  Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
-                 desc_length python: str(view.getSearchResultsDescriptionLength());
+                 desc_length python: view.getSearchResultsDescriptionLength();
                  desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
                  use_view_action python:view.getTypesUseViewActionInListings();

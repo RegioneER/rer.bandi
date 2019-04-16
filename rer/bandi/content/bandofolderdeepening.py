@@ -1,8 +1,9 @@
-from zope.interface import implements
-from rer.bandi.interfaces.bandofolderdeepening import IBandoFolderDeepening
+# -*- coding: utf-8 -*-
 from plone.dexterity.content import Container
-from Products.CMFPlone.interfaces import IHideFromBreadcrumbs
+from rer.bandi.interfaces.bandofolderdeepening import IBandoFolderDeepening
+from zope.interface import implementer
 
 
+@implementer(IBandoFolderDeepening)
 class BandoFolderDeepening(Container):
-    implements(IBandoFolderDeepening)
+    """ """

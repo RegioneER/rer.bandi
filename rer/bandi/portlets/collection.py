@@ -1,51 +1,57 @@
 # -*- coding: utf-8 -*-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone import api
+from plone.app.portlets.browser import formhelper
 from plone.app.portlets.portlets import base
+from plone.app.vocabularies.catalog import CatalogSource
 from plone.memoize.instance import memoize
-from rer.bandi import bandiMessageFactory as _
 from plone.portlet.collection.collection import ICollectionPortlet
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from rer.bandi import bandiMessageFactory as _
 from zope import schema
 from zope.component import getMultiAdapter, getUtility
-from plone.app.portlets.browser import formhelper
 from zope.i18n import translate
-from plone.app.vocabularies.catalog import CatalogSource
-from zope.interface import implements
-from plone import api
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    from zope.schema.interfaces import IVocabularyFactory
+from zope.interface import implementer
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class IBandoCollectionPortlet(ICollectionPortlet):
     """A portlet which renders the results of a collection object.
     """
 
-    show_more_text = schema.TextLine(title=_(u"Other text"),
-                                     description=_(
-                                         u"Alternative text to show in 'other' link."),
-                                     required=True,
-                                     default=u'Altro\u2026')
+    show_more_text = schema.TextLine(
+        title=_(u"Other text"),
+        description=_(u"Alternative text to show in 'other' link."),
+        required=True,
+        default=u'Altro\u2026',
+    )
 
     show_more_path = schema.Choice(
-                            title=_(u"Internal link"),
-                            description=_(u"Insert an internal link. This field override external link field"),
-                            required=False,
-                            source=CatalogSource())
+        title=_(u"Internal link"),
+        description=_(
+            u"Insert an internal link. This field override external link field"
+        ),
+        required=False,
+        source=CatalogSource(),
+    )
 
     show_description = schema.Bool(
-        title=u'Mostra descrizione', required=True, default=False)
+        title=u'Mostra descrizione', required=True, default=False
+    )
 
     show_tipologia_bando = schema.Bool(
-        title=u'Mostra tipologia bando', required=True, default=False)
+        title=u'Mostra tipologia bando', required=True, default=False
+    )
 
     show_effective = schema.Bool(
-        title=u'Mostra data di pubblicazione', required=True, default=False)
+        title=u'Mostra data di pubblicazione', required=True, default=False
+    )
 
     show_scadenza_bando = schema.Bool(
-        title=u'Mostra data di scadenza', required=True, default=False)
+        title=u'Mostra data di scadenza', required=True, default=False
+    )
 
 
+@implementer(IBandoCollectionPortlet)
 class Assignment(base.Assignment):
 
     """
@@ -54,18 +60,32 @@ class Assignment(base.Assignment):
     with columns.
     """
 
-    implements(IBandoCollectionPortlet)
-
     header = u""
     target_collection = None
     limit = None
     show_more = True
 
     # parametri da ripulire
-    def __init__(self, header=u"", target_collection=None, limit=None, show_more=True, show_more_text=None, show_more_path=None,
-                 show_description=False, show_tipologia_bando=False, show_effective=False, show_scadenza_bando=False,
-                 uid=None, thumb_scale=None, random=False, show_dates=False, exclude_context=True, no_icons=False, no_thumbs=False):
-
+    def __init__(
+        self,
+        header=u"",
+        target_collection=None,
+        limit=None,
+        show_more=True,
+        show_more_text=None,
+        show_more_path=None,
+        show_description=False,
+        show_tipologia_bando=False,
+        show_effective=False,
+        show_scadenza_bando=False,
+        uid=None,
+        thumb_scale=None,
+        random=False,
+        show_dates=False,
+        exclude_context=True,
+        no_icons=False,
+        no_thumbs=False,
+    ):
 
         # lista di data, che viene passata all'instanza dell'assignment
         self.header = header
@@ -109,7 +129,8 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         self.voc_tipologia = getUtility(
-            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary')(self.context)
+            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary'
+        )(self.context)
 
     # Cached version - needs a proper cache key
     # @ram.cache(render_cachekey)
@@ -123,7 +144,7 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        #se la lista di risultati è maggiore di zero allora si puo mostrare la portlet
+        # se la lista di risultati è maggiore di zero allora si puo mostrare la portlet
         return len(self.results())
 
     def collection_url(self):
@@ -131,7 +152,7 @@ class Renderer(base.Renderer):
         if collection is None:
             return None
         else:
-            #torna una lista di url
+            # torna una lista di url
             return collection.absolute_url()
 
     def more_target_url(self):
@@ -162,9 +183,9 @@ class Renderer(base.Renderer):
 
             # se è settato un limite e se il limite è maggiore di zero
             if self.data.limit and self.data.limit > 0:
-                resultList = resultList[:self.data.limit]
+                resultList = resultList[: self.data.limit]
 
-        #ottengo tutti i bandi che devo mostrare nella collection
+        # ottengo tutti i bandi che devo mostrare nella collection
         return resultList
 
     def isValidDeadline(self, date):
@@ -173,7 +194,7 @@ class Renderer(base.Renderer):
         if not date:
             return False
         if date.Date() == '2100/12/31':
-           #a default date for bandi that don't have a defined deadline
+            # a default date for bandi that don't have a defined deadline
             return False
         return True
 
@@ -214,13 +235,13 @@ class Renderer(base.Renderer):
             date = date - 1
             long_format = False
         return api.portal.get_localized_time(
-            datetime=date,
-            long_format=long_format
+            datetime=date, long_format=long_format
         )
 
     def portal(self):
         portal_state = getMultiAdapter(
-            (self.context, self.request), name=u'plone_portal_state')
+            (self.context, self.request), name=u'plone_portal_state'
+        )
         return portal_state.portal()
 
     def getBandoState(self, bando):
@@ -231,16 +252,28 @@ class Renderer(base.Renderer):
         chiusura_procedimento_bando = bando.getChiusura_procedimento_bando
         state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
-            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+            if (
+                chiusura_procedimento_bando
+                and chiusura_procedimento_bando.isPast()
+            ):
                 state = (
-                    'closed', translate(_(u'Closed'), context=self.request))
+                    'closed',
+                    translate(_(u'Closed'), context=self.request),
+                )
             else:
                 state = (
-                    'inProgress', translate(_(u'In progress'), context=self.request))
+                    'inProgress',
+                    translate(_(u'In progress'), context=self.request),
+                )
         else:
-            if chiusura_procedimento_bando and chiusura_procedimento_bando.isPast():
+            if (
+                chiusura_procedimento_bando
+                and chiusura_procedimento_bando.isPast()
+            ):
                 state = (
-                    'closed', translate(_(u'Closed'), context=self.request))
+                    'closed',
+                    translate(_(u'Closed'), context=self.request),
+                )
 
         return state
 
@@ -265,7 +298,8 @@ class AddForm(formhelper.AddForm):
 
     label = _(u"Add Bandi Portlet")
     description = _(
-         u"This portlet display a listing of bandi from a Collection.")
+        u"This portlet display a listing of bandi from a Collection."
+    )
 
     def create(self, data):
         return Assignment(**data)
@@ -283,4 +317,6 @@ class EditForm(formhelper.EditForm):
 
     label = _(u"Edit Bandi Portlet")
     description = _(
-         u"This portlet display a listing of bandi from a Collection.")
+        u"This portlet display a listing of bandi from a Collection."
+    )
+
