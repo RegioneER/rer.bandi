@@ -7,7 +7,7 @@ from zope.i18n import translate
 from plone import api
 
 from rer.bandi import bandiMessageFactory as _
-from urllib2 import quote
+from six.moves.urllib.parse import quote
 
 try:
     from zope.app.schema.vocabulary import IVocabularyFactory
