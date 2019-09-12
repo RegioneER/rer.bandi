@@ -1,5 +1,7 @@
 <registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
           i18n:domain="rer.bandi">
+	  
+  <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
 
   <!-- usa come criterio per creare la collection la data di chiusura -->
   <!-- aggiunge una serie di controlli che sono possibili da fare sulla data di chiusura procedimento bando -->
@@ -74,8 +76,6 @@
     </value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
-
-  <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
 
   <records prefix="plone.resources/rer-bandi"
            interface="Products.CMFPlone.interfaces.IResourceRegistry">
