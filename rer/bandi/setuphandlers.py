@@ -13,8 +13,8 @@ def import_various(context):
         return
 
     portal = context.getSite()
-    addKeyToCatalog(portal)
     addDefaultValueToRegistry()
+    addKeyToCatalog(portal)
 
 
 def addKeyToCatalog(portal):
