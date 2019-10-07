@@ -40,4 +40,12 @@
         destination="2500"
         handler=".upgrades.migrate_to_2500"
         profile="rer.bandi:default" />
+   <gs:upgradeStep
+        title="Upgrade rer.bandi 2501"
+        description="rer.bandi upgrade step"
+        source="2500"
+        destination="2501"
+        handler=".upgrades.migrate_to_2501"
+        profile="rer.bandi:default" />
+
 </configure>

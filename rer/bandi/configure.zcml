@@ -73,6 +73,11 @@
     />
 
   <utility
+    name="rer.bandi.tipologia.vocabulary_complete"
+    component=".vocabularies.TipologiaBandoCompleteVocabularyFactory"
+    />
+
+  <utility
     name="rer.bandi.destinatari.vocabulary"
     component=".vocabularies.DestinatariVocabulary"
     />

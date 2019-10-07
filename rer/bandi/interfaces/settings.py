@@ -1,6 +1,7 @@
 from zope.interface import Interface
 from zope import schema
 from plone.app.registry.browser import controlpanel
+from rer.bandi import bandiMessageFactory as _
 
 
 class IBandoSettings(Interface):
@@ -17,6 +18,14 @@ class IBandoSettings(Interface):
 
     default_destinatari = schema.Tuple(
         title=u"default_destinatari_bandi",
+        required=False,
+        value_type=schema.TextLine(),
+        missing_value=None
+    )
+
+    tipologie_bando = schema.Tuple(
+        title=_(u"Announcement types"),
+        description=_(u"These values will extend bandi.xml vocabulary on filesystem"),
         required=False,
         value_type=schema.TextLine(),
         missing_value=None

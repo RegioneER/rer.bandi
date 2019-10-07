@@ -77,6 +77,6 @@ class IBandoSchema(model.Schema):
     tipologia_bando = schema.Choice(
         title=_('tipologia_bando_label', default=u"Announcement type"),
         description=_('tipologia_bando_help', default=''),
-        vocabulary='rer.bandi.tipologia.vocabulary',
+        vocabulary='rer.bandi.tipologia.vocabulary_complete',
         required=True
     )

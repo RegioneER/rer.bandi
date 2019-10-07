@@ -74,3 +74,8 @@ def migrate_to_2500(context):
     setup_tool = api.portal.get_tool('portal_setup')
     setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     logger.info('Upgrading to 2500')
+
+def migrate_to_2501(context):
+    setup_tool = api.portal.get_tool('portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
+    logger.info('Upgrading to 2501')

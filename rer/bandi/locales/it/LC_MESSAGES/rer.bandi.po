@@ -365,3 +365,15 @@ msgstr "Tipologia di bando"
 #: ./browser/search.pt:75
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
+
+msgid "Announcement types"
+msgstr "Tipi di bando"
+
+msgid "These values will extend bandi.xml vocabulary on filesystem"
+msgstr "Questi valori estendono quelli del file bandi.xml su filesystem"
+
+msgid "default_ente"
+msgstr "Enti disponibili per la compilazione del bando"
+
+msgid "default_destinatari_bandi"
+msgstr "Destinatari disponibili per la compilazione del bando"
