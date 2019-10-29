@@ -45,8 +45,8 @@
                         </tr>
 		                <tr>
 		                  <th i18n:translate="tipologia_bando_label">Announcement type</th>
-		                  <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
-		                    Tipologia bando
+		                  <td>
+		                    ${context/tipologia_bando}
 		                  </td>
 		                </tr>
 
@@ -61,14 +61,21 @@
 		                    </ul>
 		                  </td>
 		                </tr>
-		                <tr tal:condition="context/ente_bando|nothing">
-                      <th i18n:translate="ente_label">Authority</th>
+		                <tr tal:define="finanziatori context/finanziatore"
+                        tal:condition="finanziatori">
+                      <th i18n:translate="finanziatore_label">Founded with European funds</th>
                       <td>
                         <ul>
-                          <li tal:repeat="ente context/ente_bando"
-                              tal:content="ente">
-                              Authority
-                          </li>
+                          <li tal:repeat="finanziatore finanziatori">${finanziatore}</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr tal:define="materie context/materia"
+                        tal:condition="materie">
+                      <th i18n:translate="materia_label">Topic</th>
+                      <td>
+                        <ul>
+                          <li tal:repeat="materia materie">${materia}</li>
                         </ul>
                       </td>
                     </tr>

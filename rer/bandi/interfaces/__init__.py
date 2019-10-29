@@ -1,3 +1,8 @@
 # -*- extra stuff goes here -*-
-from .bandofolderdeepening import IBandoFolderDeepening  # noqa
-from .bando import IBando  # noqa
+from rer.bandi.interfaces.bando import IBando
+from rer.bandi.interfaces.bandofolderdeepening import IBandoFolderDeepening
+from rer.bandi.interfaces.browserlayer import IRerBandiLayer
+
+IBando
+IBandoFolderDeepening
+IRerBandiLayer

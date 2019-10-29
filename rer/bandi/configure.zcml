@@ -30,7 +30,6 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
-  <include package=".interfaces" />
   <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
   <include file="upgrades.zcml" />
 
@@ -58,6 +57,13 @@
       description="RER:Bandi migrate to version 2.2.0 (2200)"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <genericsetup:registerProfile
+      name="migrate_to_3000"
+      title="Migrate to version 3.0.0"
+      directory="profiles/migrate_to_3000"
+      description="RER:Bandi migrate to version 3.0.0 (3000)"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
   <genericsetup:importStep
       name="rer.bandi"
@@ -65,21 +71,26 @@
       description="Configures bandi properties"
       handler="rer.bandi.setuphandlers.import_various"
       />
-  <!-- -*- extra stuff goes here -*- -->
+  
   <!-- registro i vocabolari -->
   <utility
-    name="rer.bandi.tipologia.vocabulary"
-    component=".vocabularies.TipologiaBandoVocabularyFactory"
+    name="rer.bandi.tipologie.vocabulary"
+    component=".vocabularies.TipologieBandoVocabulary"
     />
 
   <utility
     name="rer.bandi.destinatari.vocabulary"
-    component=".vocabularies.DestinatariVocabulary"
+    component=".vocabularies.DestinatariBandoVocabulary"
     />
 
   <utility
-    name="rer.bandi.enti.vocabulary"
-    component=".vocabularies.EnteVocabulary"
+    name="rer.bandi.finanziatori.vocabulary"
+    component=".vocabularies.FinanziatoriBandoVocabulary"
+    />
+  
+  <utility
+    name="rer.bandi.materie.vocabulary"
+    component=".vocabularies.MaterieBandoVocabulary"
     />
 
   <!-- indexer per i destinatari -->
@@ -88,6 +99,5 @@
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
   <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
   <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
-  <!-- <adapter name="SearchableText" factory=".indexer.SearchableTextBandi" /> -->
 
 </configure>

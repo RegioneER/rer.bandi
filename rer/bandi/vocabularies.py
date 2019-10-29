@@ -1,55 +1,103 @@
 # -*- coding: utf-8 -*-
-from plone import api
-from rer.bandi.filevocabulary import XMLFileVocabulary
-from six.moves import range
+from rer.bandi import bandiMessageFactory as _
+from z3c.form.interfaces import NOVALUE
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
+TIPOLOGIE_BANDO = [
+    'Agevolazioni, finanziamenti, contributi',
+    'Accreditamenti, albi, elenchi',
+    'Autorizzazioni di attività',
+    'Manifestazioni di interesse',
+]
 
-TipologiaBandoVocabularyFactory = XMLFileVocabulary(
-    envvar='PLONE_RER_BANDI_VOCAB',
-    vocabulary_name='rer.bandi.tipologia.vocabulary',
-    default_terms=[
-        ('beni_servizi', 'Acquisizione beni e servizi'),
-        ('agevolazioni', 'Agevolazioni, finanziamenti, contributi'),
-        ('altro', 'Altro'),
-    ],
-)
+DESTINATARI_BANDO = [
+    'Cittadini',
+    'Confidi',
+    'Cooperative',
+    'Enti del Terzo settore',
+    'Enti e laboratori di ricerca',
+    'Enti pubblici',
+    'Grandi imprese',
+    'Liberi professionisti',
+    'Micro imprese',
+    'Partenariato pubblico/privato',
+    'PMI',
+    'Scuole, università, enti di formazione',
+    'Soggetti accreditati',
+]
+
+FINANZIATORI_BANDO = ['FESR', 'FSE', 'FEASR', 'FEAMP']
+
+MATERIE_BANDO = [
+    'Agricoltura e sviluppo delle aree rurali',
+    'Ambiente',
+    'Beni immobili e mobili',
+    'Cultura',
+    'Diritti e sociale',
+    'Edilizia e rigenerazione urbana',
+    'Energia',
+    'Estero',
+    'Imprese e commercio',
+    'Innovazione e ICT',
+    'Istruzione e formazione',
+    'Lavoro',
+    'Mobilità e trasporti',
+    'Pesca',
+    'Ricerca',
+    'Riordino istituzionale',
+    'Sport',
+]
+
+
+class BandiBaseVocabularyFactory(object):
+    @property
+    def terms(self):
+        return [SimpleTerm(value=x, token=x, title=x) for x in self.vocab_name]
+
+    def __call__(self, context):
+        return SimpleVocabulary(self.terms)
 
 
 @implementer(IVocabularyFactory)
-class DestinatariVocabularyFactory(object):
-    def __call__(self, context):
-        values = api.portal.get_registry_record(
-            'rer.bandi.interfaces.settings.IBandoSettings.default_destinatari'
+class TipologieBandoVocabularyFactory(BandiBaseVocabularyFactory):
+
+    vocab_name = TIPOLOGIE_BANDO
+
+    @property
+    def terms(self):
+        terms = super(TipologieBandoVocabularyFactory, self).terms
+        terms.insert(
+            0,
+            SimpleTerm(
+                value=NOVALUE,
+                token=NOVALUE,
+                title=_('select_label', default=u'-- select a value --'),
+            ),
         )
-
-        l = []
-        for i in range(len(values)):
-            l.append(tuple(values[i].split('|')))
-
-        terms = [
-            SimpleTerm(value=pair[0], token=pair[0], title=pair[1])
-            for pair in l
-        ]
-        return SimpleVocabulary(terms)
-
-
-DestinatariVocabulary = DestinatariVocabularyFactory()
+        return terms
 
 
 @implementer(IVocabularyFactory)
-class EnteVocabularyFactory(object):
-    def __call__(self, context):
-        catalog = api.portal.get_tool('portal_catalog')
-        enti = list(catalog._catalog.uniqueValuesFor('getEnte_bando'))
+class DestinatariBandoVocabularyFactory(BandiBaseVocabularyFactory):
 
-        terms = [
-            SimpleTerm(value=ente, token=ente, title=ente) for ente in enti
-        ]
-
-        return SimpleVocabulary(terms)
+    vocab_name = DESTINATARI_BANDO
 
 
-EnteVocabulary = EnteVocabularyFactory()
+@implementer(IVocabularyFactory)
+class FinanziatoriBandoVocabularyFactory(BandiBaseVocabularyFactory):
+
+    vocab_name = FINANZIATORI_BANDO
+
+
+@implementer(IVocabularyFactory)
+class MaterieBandoVocabularyFactory(BandiBaseVocabularyFactory):
+
+    vocab_name = MATERIE_BANDO
+
+
+TipologieBandoVocabulary = TipologieBandoVocabularyFactory()
+DestinatariBandoVocabulary = DestinatariBandoVocabularyFactory()
+FinanziatoriBandoVocabulary = FinanziatoriBandoVocabularyFactory()
+MaterieBandoVocabulary = MaterieBandoVocabularyFactory()

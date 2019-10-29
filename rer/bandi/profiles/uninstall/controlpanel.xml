@@ -9,12 +9,6 @@
             title="Bandi Settings"
             action_id="rer_bandi"
             appId="rer.bandi"
-            category="Products"
-            condition_expr=""
-            url_expr="string:${portal_url}/@@bandi-settings"
-            visible="True"
-            i18n:attributes="title">
-                <permission>Manage portal</permission>
-        </configlet>
+            remove="True" />
 
 </object>
