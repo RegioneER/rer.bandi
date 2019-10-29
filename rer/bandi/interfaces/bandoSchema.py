@@ -64,22 +64,22 @@ class IBandoSchema(model.Schema):
         constraint=checkRequiredField,
     )
 
-    form.order_after(finanziatore='IRichText.text')
-    directives.widget(finanziatore=CheckBoxFieldWidget)
-    finanziatore = schema.List(
-        title=_('finanziatore_label', default=u'Founded with European funds'),
-        description=_('finanziatore_help', default=''),
+    form.order_after(finanziatori='IRichText.text')
+    directives.widget(finanziatori=CheckBoxFieldWidget)
+    finanziatori = schema.List(
+        title=_('finanziatori_label', default=u'Founded with European funds'),
+        description=_('finanziatori_help', default=''),
         required=True,
         value_type=schema.Choice(
             vocabulary='rer.bandi.finanziatori.vocabulary'
         ),
     )
 
-    form.order_after(materia='IRichText.text')
-    directives.widget(materia=CheckBoxFieldWidget)
-    materia = schema.List(
-        title=_('materia_label', default=u'Topic'),
-        description=_('materia_help', default=''),
+    form.order_after(materie='IRichText.text')
+    directives.widget(materie=CheckBoxFieldWidget)
+    materie = schema.List(
+        title=_('materie_label', default=u'Topic'),
+        description=_('materie_help', default=''),
         required=True,
         value_type=schema.Choice(vocabulary='rer.bandi.materie.vocabulary'),
     )

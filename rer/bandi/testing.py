@@ -18,8 +18,6 @@ class RerBandiLayer(PloneSandboxLayer):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
-        import plone.restapi
-        self.loadZCML(package=plone.restapi)
         self.loadZCML(package=rer.bandi)
 
     def setUpPloneSite(self, portal):
@@ -30,14 +28,12 @@ RER_BANDI_FIXTURE = RerBandiLayer()
 
 
 RER_BANDI_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(RER_BANDI_FIXTURE,),
-    name='RerBandiLayer:IntegrationTesting',
+    bases=(RER_BANDI_FIXTURE,), name='RerBandiLayer:IntegrationTesting'
 )
 
 
 RER_BANDI_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(RER_BANDI_FIXTURE,),
-    name='RerBandiLayer:FunctionalTesting',
+    bases=(RER_BANDI_FIXTURE,), name='RerBandiLayer:FunctionalTesting'
 )
 
 

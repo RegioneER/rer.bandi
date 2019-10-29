@@ -49,7 +49,7 @@
                                     </tr>
 
                                     <tr tal:condition="context/destinatari|nothing">
-                                    <th i18n:translate="destinatari_label">Recipients</th>
+                                    <th i18n:translate="destinatari_label">Who can apply</th>
                                     <td>
                                         <ul>
                                         <li tal:repeat="dest view/getDestinatariNames"
@@ -59,21 +59,21 @@
                                         </ul>
                                     </td>
                                     </tr>
-                                    <tr tal:define="finanziatori context/finanziatore"
+                                    <tr tal:define="finanziatori context/finanziatori"
                                     tal:condition="finanziatori">
-                                <th i18n:translate="finanziatore_label">Founded with European funds</th>
+                                <th i18n:translate="finanziatori_label">Founded with European funds</th>
                                 <td>
                                     <ul>
-                                    <li tal:repeat="finanziatore finanziatori">${finanziatore}</li>
+                                    <li tal:repeat="finanziatori finanziatori">${finanziatori}</li>
                                     </ul>
                                 </td>
                                 </tr>
-                                <tr tal:define="materie context/materia"
+                                <tr tal:define="materie context/materie"
                                     tal:condition="materie">
-                                <th i18n:translate="materia_label">Topic</th>
+                                <th i18n:translate="materie_label">Topic</th>
                                 <td>
                                     <ul>
-                                    <li tal:repeat="materia materie">${materia}</li>
+                                    <li tal:repeat="materie materie">${materie}</li>
                                     </ul>
                                 </td>
                                 </tr>
