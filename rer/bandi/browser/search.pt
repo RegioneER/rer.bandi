@@ -28,7 +28,6 @@
                  Batch python:modules['plone.batching'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
                  desc_length python: view.getSearchResultsDescriptionLength();
-                 desc_ellipsis python:30;
                  searchterm request/SearchableText|nothing;
                  use_view_action python:view.getTypesUseViewActionInListings();
                  test python:lambda cond, a, b: [b,a][cond];
@@ -111,7 +110,7 @@
                 </a>
           	</h2>
             <div class="bandoDetail">
-                <span tal:replace="python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
+                <span tal:replace="python:plone_view.cropText(result.Description, desc_length)">
                     Cropped description
                 </span>
 

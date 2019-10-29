@@ -22,10 +22,12 @@ def destinatari_bando(object, **kw):
 def getChiusura_procedimento_bando(object, **kw):
 
     date_chiusura_procedimento_bando = getattr(
-        object, 'chiusura_procedimento_bando', None)
+        object, 'chiusura_procedimento_bando', None
+    )
     if date_chiusura_procedimento_bando:
         datetime_chiusura_procedimento_bando = dateToDatetime(
-            date_chiusura_procedimento_bando)
+            date_chiusura_procedimento_bando
+        )
     else:
         return DateTime('2100/12/31')
 
@@ -55,23 +57,11 @@ def getTipologia_bando(object, **kw):
     return getattr(object, 'tipologia_bando', None)
 
 
-# @indexer(IBando)
-# def SearchableTextBandi(obj):
-#     pt = getToolByName(api.portal.get(), 'portal_transforms')
-#     stream = pt.convertTo('text/plain', obj.text.output, mimetype='text/html')
-#
-#     text = []
-#     li = []
-#     li.append(obj.Title())
-#     li.append(obj.Description())
-#     li.append(stream.getData().strip())
-#
-#     for string in li:
-#         for word in string.split():
-#             if word not in text:
-#                 if isinstance(word, unicode):
-#                     text.append(word.encode('utf-8'))
-#                 else:
-#                     text.append(word)
-#
-#     return ' '.join(text)
+@indexer(IBando)
+def getFinanziatori_bando(object, **kw):
+    return getattr(object, 'finanziatori', [])
+
+
+@indexer(IBando)
+def getMaterie_bando(object, **kw):
+    return getattr(object, 'materie', [])
