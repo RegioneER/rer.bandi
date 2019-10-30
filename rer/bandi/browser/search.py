@@ -18,19 +18,21 @@ class SearchBandiForm(BrowserView):
         pc = api.portal.get_tool(name='portal_catalog')
         return pc.uniqueValuesFor(index)
 
-    def getDestinatariNames(self):
+    def getVocabularyTermsForForm(self, vocab_name):
         """
         Return the values of destinatari vocabulary
         """
         dest_utility = getUtility(
-            IVocabularyFactory, 'rer.bandi.destinatari.vocabulary'
+            IVocabularyFactory, vocab_name
         )
 
         dest_values = []
 
         dest_vocab = dest_utility(self.context)
+
         for dest in dest_vocab:
-            dest_values.append(dest.value)
+            if dest.title != u'select_label':
+                dest_values.append(dest.value)
         return dest_values
 
 

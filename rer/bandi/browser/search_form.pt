@@ -71,7 +71,7 @@
                   Select an annonuncement type.
                 </div>
 
-                <tal:items repeat="tipologia python:view.getUniqueValuesForIndex('getTipologia_bando');">
+                <tal:items repeat="tipologia python:view.getVocabularyTermsForForm('rer.bandi.tipologie.vocabulary');">
                   <input class="noborder"
                          type="checkbox"
                          name="getTipologia_bando"
@@ -93,7 +93,7 @@
                 Select announcements recipients.
                 </div>
 
-                <tal:items repeat="destinatario python:view.getDestinatariNames();">
+                <tal:items repeat="destinatario python:view.getVocabularyTermsForForm('rer.bandi.destinatari.vocabulary');">
                 <input class="noborder"
                        type="checkbox"
                        name="getDestinatariBando"
