@@ -16,14 +16,14 @@ def checkRequiredField(value):
 class IBandoSchema(model.Schema):
     """ A Dexterity schema for Annoucements """
 
-    form.order_after(riferimenti_bando='IRichText.text')
+    form.order_after(riferimenti_bando='IRichTextBehavior.text')
     riferimenti_bando = RichText(
         title=_('riferimenti_bando_label', default=u"References"),
         description=_('riferimenti_bando_help', default=u""),
         required=False,
     )
 
-    form.order_after(chiusura_procedimento_bando='IRichText.text')
+    form.order_after(chiusura_procedimento_bando='IRichTextBehavior.text')
     chiusura_procedimento_bando = schema.Date(
         title=_(
             'chiusura_procedimento_bando_label',
@@ -33,7 +33,7 @@ class IBandoSchema(model.Schema):
         required=False,
     )
 
-    form.order_after(scadenza_bando='IRichText.text')
+    form.order_after(scadenza_bando='IRichTextBehavior.text')
     scadenza_bando = schema.Datetime(
         title=_('scadenza_bando_label', default=u"Expiration date and time"),
         description=_(
@@ -43,7 +43,7 @@ class IBandoSchema(model.Schema):
         required=False,
     )
 
-    form.order_after(destinatari='IRichText.text')
+    form.order_after(destinatari='IRichTextBehavior.text')
     directives.widget(destinatari=CheckBoxFieldWidget)
     destinatari = schema.List(
         title=_('destinatari_label', default=u'Who can apply'),
@@ -54,7 +54,7 @@ class IBandoSchema(model.Schema):
         ),
     )
 
-    form.order_after(tipologia_bando='IRichText.text')
+    form.order_after(tipologia_bando='IRichTextBehavior.text')
     # directives.widget(tipologia_bando=RadioFieldWidget)
     tipologia_bando = schema.Choice(
         title=_('tipologia_bando_label', default=u"Announcement type"),
@@ -64,7 +64,7 @@ class IBandoSchema(model.Schema):
         constraint=checkRequiredField,
     )
 
-    form.order_after(finanziatori='IRichText.text')
+    form.order_after(finanziatori='IRichTextBehavior.text')
     directives.widget(finanziatori=CheckBoxFieldWidget)
     finanziatori = schema.List(
         title=_('finanziatori_label', default=u'Founded with European funds'),
@@ -75,7 +75,7 @@ class IBandoSchema(model.Schema):
         ),
     )
 
-    form.order_after(materie='IRichText.text')
+    form.order_after(materie='IRichTextBehavior.text')
     directives.widget(materie=CheckBoxFieldWidget)
     materie = schema.List(
         title=_('materie_label', default=u'Topic'),
