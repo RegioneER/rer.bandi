@@ -23,26 +23,6 @@ class IBandoSchema(model.Schema):
         required=False,
     )
 
-    form.order_after(chiusura_procedimento_bando='IRichTextBehavior.text')
-    chiusura_procedimento_bando = schema.Date(
-        title=_(
-            'chiusura_procedimento_bando_label',
-            default=u"Closing date procedure",
-        ),
-        description=_('chiusura_procedimento_bando_help', default=u''),
-        required=False,
-    )
-
-    form.order_after(scadenza_bando='IRichTextBehavior.text')
-    scadenza_bando = schema.Datetime(
-        title=_('scadenza_bando_label', default=u"Expiration date and time"),
-        description=_(
-            'scadenza_bando_help',
-            default=u"Deadline to participate in the announcement",
-        ),
-        required=False,
-    )
-
     form.order_after(destinatari='IRichTextBehavior.text')
     directives.widget(destinatari=CheckBoxFieldWidget)
     destinatari = schema.List(
@@ -82,4 +62,24 @@ class IBandoSchema(model.Schema):
         description=_('materie_help', default=''),
         required=True,
         value_type=schema.Choice(vocabulary='rer.bandi.materie.vocabulary'),
+    )
+
+    form.order_after(chiusura_procedimento_bando='IRichTextBehavior.text')
+    chiusura_procedimento_bando = schema.Date(
+        title=_(
+            'chiusura_procedimento_bando_label',
+            default=u"Closing date procedure",
+        ),
+        description=_('chiusura_procedimento_bando_help', default=u''),
+        required=False,
+    )
+
+    form.order_after(scadenza_bando='IRichTextBehavior.text')
+    scadenza_bando = schema.Datetime(
+        title=_('scadenza_bando_label', default=u"Expiration date and time"),
+        description=_(
+            'scadenza_bando_help',
+            default=u"Deadline to participate in the announcement",
+        ),
+        required=False,
     )
