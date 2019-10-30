@@ -5,7 +5,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from rer.bandi import bandiMessageFactory as _
 from six.moves.urllib.parse import quote
+from zope.component import getUtility
 from zope.i18n import translate
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class SearchBandiForm(BrowserView):
@@ -15,6 +17,21 @@ class SearchBandiForm(BrowserView):
         """
         pc = api.portal.get_tool(name='portal_catalog')
         return pc.uniqueValuesFor(index)
+
+    def getDestinatariNames(self):
+        """
+        Return the values of destinatari vocabulary
+        """
+        dest_utility = getUtility(
+            IVocabularyFactory, 'rer.bandi.destinatari.vocabulary'
+        )
+
+        dest_values = []
+
+        dest_vocab = dest_utility(self.context)
+        for dest in dest_vocab:
+            dest_values.append(dest.value)
+        return dest_values
 
 
 class SearchBandi(BrowserView):
@@ -152,4 +169,3 @@ class SearchBandi(BrowserView):
         return api.portal.get_registry_record(
             "plone.types_use_view_action_in_listings"
         )
-

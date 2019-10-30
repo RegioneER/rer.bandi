@@ -18,7 +18,7 @@
 <div metal:fill-slot="main">
 
     <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
-    
+
 	<p class="searchBandiDescription" i18n:translate="bandi_search_help">
 		This search mask allows to find announcements in the site that satisfy one or more search criteria.
 	</p>
@@ -28,7 +28,7 @@
           name="search"
           id="searchform"
           tal:define="DateTime python:modules['DateTime'].DateTime">
-        
+
             <div class="field">
                 <label for="SearchableText" i18n:translate="bandi_search_text_label">Search text</label>
 
@@ -48,13 +48,13 @@
             <div class="field">
 
               <label i18n:translate="bandi_search_state_label">State</label>
-              
+
 			  <div class="formHelp" i18n:translate="bandi_search_state_help">
 				Search announcements <strong>open</strong> (with participation terms not expired),
 				<strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or
 				<strong>closed</strong> (the procedure is closed).
               </div>
-              
+
 			  <select name="stato_bandi" id="stato_bandi" i18n:domain="rer.bandi">
                 <option value="" selected="selected" i18n:translate="bandi_search_state_all">All</option>
                 <option value="open" i18n:translate="bandi_search_state_open">Open</option>
@@ -68,20 +68,20 @@
                 <label for="getTipologia_bando" i18n:translate="bandi_search_type_label">Type</label>
 
                 <div class="formHelp" i18n:translate="bandi_search_type_help">
-                Select an annonuncement type.
+                  Select an annonuncement type.
                 </div>
 
                 <tal:items repeat="tipologia python:view.getUniqueValuesForIndex('getTipologia_bando');">
-                <input class="noborder"
-                       type="checkbox"
-                       name="getTipologia_bando"
-                       checked="checked"
-                       id="tipol_${repeat/tipologia/index}"
-                       value="${tipologia}"/>
-                <label for="tipol_${repeat/tipologia/index}"
-                       tal:content="tipologia"
-                       />
-                <br />
+                  <input class="noborder"
+                         type="checkbox"
+                         name="getTipologia_bando"
+                         checked="checked"
+                         id="tipol_${repeat/tipologia/index}"
+                         value="${tipologia}"/>
+                  <label for="tipol_${repeat/tipologia/index}"
+                         tal:content="tipologia"
+                         />
+                  <br />
                 </tal:items>
             </div>
 
@@ -93,7 +93,7 @@
                 Select announcements recipients.
                 </div>
 
-                <tal:items repeat="destinatario python:view.getUniqueValuesForIndex('getDestinatariBando');">
+                <tal:items repeat="destinatario python:view.getDestinatariNames();">
                 <input class="noborder"
                        type="checkbox"
                        name="getDestinatariBando"
