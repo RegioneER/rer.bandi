@@ -265,7 +265,6 @@ msgstr ""
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
 #: ./interfaces/bandoSchema.py:49
-#, fuzzy
 msgid "destinatari_label"
 msgstr "Destinatari"
 
