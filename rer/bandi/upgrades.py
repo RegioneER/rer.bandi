@@ -2,23 +2,22 @@
 from Products.CMFCore.utils import getToolByName
 from plone import api
 from rer.bandi import logger
-from rer.bandi.setuphandlers import addKeyToCatalog
 
 default_profile = 'profile-rer.bandi:default'
 
 TIPOLOGIA_BANDO_MAPPING = {
-    'agevolazioni': 'Agevolazioni, finanziamenti, contributi',
-    'beni_servizi': 'Manifestazioni di interesse',
-    'lavori_pubblici': 'Manifestazioni di interesse',
-    'altro': 'Manifestazioni di interesse',
+    'agevolazioni': u'Agevolazioni, finanziamenti, contributi',
+    'beni_servizi': u'Manifestazioni di interesse',
+    'lavori_pubblici': u'Manifestazioni di interesse',
+    'altro': u'Manifestazioni di interesse',
 }
 
 DESTINATARI_BANDO_MAPPING = {
-    'Cittadini': ['Cittadini'],
-    'Imprese': ['Grandi Imprese', 'PMI', 'Micro Imprese'],
-    'Enti locali': ['Enti pubblici'],
-    'Associazioni': ['Enti del Terzo settore'],
-    'Altro': ['Scuole, università, enti di formazione'],
+    'Cittadini': [u'Cittadini'],
+    'Imprese': [u'Grandi imprese', u'PMI', u'Micro imprese'],
+    'Enti locali': [u'Enti pubblici'],
+    'Associazioni': [u'Enti del Terzo settore'],
+    'Altro': [u'Scuole, università, enti di formazione'],
 }
 
 
@@ -43,8 +42,8 @@ def to_2(context):
     """
     """
     logger.info('Upgrading rer.bandi to version 2.1.0')
-    portal = context.portal_url.getPortalObject()
-    addKeyToCatalog(portal)
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
 
 
 def migrate_to_2200(context):
@@ -98,7 +97,9 @@ def migrate_to_3000(context):
     setup_tool = getToolByName(context, 'portal_setup')
     setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
 
+    #  update indexes and topics
     setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
 
     bandi = api.content.find(portal_type='Bando')
     tot_results = len(bandi)

@@ -22,9 +22,7 @@ class SearchBandiForm(BrowserView):
         """
         Return the values of destinatari vocabulary
         """
-        dest_utility = getUtility(
-            IVocabularyFactory, vocab_name
-        )
+        dest_utility = getUtility(IVocabularyFactory, vocab_name)
 
         dest_values = []
 
@@ -70,7 +68,6 @@ class SearchBandi(BrowserView):
                 }
         if "SearchableText" in self.request.form and not SearchableText:
             del query["SearchableText"]
-
         return pc(**query)
 
     @property

@@ -54,7 +54,7 @@
 		                  <th i18n:translate="destinatari_label">Who can apply</th>
 		                  <td>
 		                    <ul>
-		                      <li tal:repeat="dest view/getDestinatariNames"
+		                      <li tal:repeat="dest context/destinatari"
 		                          tal:content="dest">
 		                          Destinatario
 		                      </li>

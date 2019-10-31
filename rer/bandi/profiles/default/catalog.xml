@@ -1,7 +1,29 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+ <index name="getChiusura_procedimento_bando" meta_type="DateIndex">
+  <indexed_attr value="getChiusura_procedimento_bando"/>
+ </index>
+ <index name="getDestinatariBando" meta_type="KeywordIndex">
+  <indexed_attr value="getDestinatariBando"/>
+ </index>
+ <index name="getScadenza_bando" meta_type="DateIndex">
+  <indexed_attr value="getScadenza_bando"/>
+ </index>
+ <index name="getTipologia_bando" meta_type="FieldIndex">
+  <indexed_attr value="getTipologia_bando"/>
+ </index>
+ <index name="getFinanziatori_bando" meta_type="KeywordIndex">
+  <indexed_attr value="getFinanziatori_bando"/>
+ </index>
+ <index name="getMaterie_bando" meta_type="KeywordIndex">
+  <indexed_attr value="getMaterie_bando"/>
+ </index>
+ 
  <column value="getChiusura_procedimento_bando"/>
  <column value="getDestinatariBando"/>
  <column value="getScadenza_bando"/>
  <column value="getTipologia_bando"/>
+ <!-- <column value="getFinanziatori_bando"/>
+ <column value="getMaterie_bando"/> -->
 </object>

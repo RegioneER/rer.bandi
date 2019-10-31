@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-10-30 15:22+0000\n"
+"POT-Creation-Date: 2019-10-31 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: ./browser/bando.py:216
 #: ./browser/collection.py:70
-#: ./browser/search.py:111
+#: ./browser/search.py:127
 msgid "Closed"
 msgstr "Chiuso"
 
@@ -49,7 +49,7 @@ msgstr "Modifica Portlet Bandi"
 
 #: ./browser/bando.py:221
 #: ./browser/collection.py:75
-#: ./browser/search.py:116
+#: ./browser/search.py:132
 msgid "In progress"
 msgstr "In corso"
 
@@ -75,7 +75,7 @@ msgstr ""
 
 #: ./browser/bando.py:209
 #: ./browser/collection.py:62
-#: ./browser/search.py:103
+#: ./browser/search.py:119
 msgid "Open"
 msgstr "Aperto"
 
@@ -133,15 +133,10 @@ msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che sodd
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
 
-#. Default: "Select announcements recipients."
-#: ./browser/search_form.pt:92
-msgid "bandi_search_recipients_help"
-msgstr "Seleziona i destinatari dei bandi."
-
-#. Default: "Recipients"
-#: ./browser/search_form.pt:90
-msgid "bandi_search_recipients_label"
-msgstr "Destinatari"
+#. Default: "Select one or more values."
+#: ./browser/search_form.pt:88
+msgid "bandi_search_multiselect_help"
+msgstr "Seleziona uno o più valori."
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
@@ -182,11 +177,6 @@ msgstr "Per una semplice ricerca di testo inserisci qui i termini desiderati. Po
 #: ./browser/search_form.pt:33
 msgid "bandi_search_text_label"
 msgstr "Ricerca testuale"
-
-#. Default: "Select an annonuncement type."
-#: ./browser/search_form.pt:70
-msgid "bandi_search_type_help"
-msgstr "Seleziona una tipologia di bando."
 
 #. Default: "Type"
 #: ./browser/search_form.pt:68
@@ -238,12 +228,12 @@ msgstr "${number} elementi soddisfano i criteri specificati"
 msgid "chiusura_procedimento_bando"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:32
+#: ./interfaces/bandoSchema.py:73
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./interfaces/bandoSchema.py:28
+#: ./interfaces/bandoSchema.py:69
 msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
@@ -257,25 +247,25 @@ msgstr "Non ci sono elementi."
 msgid "description_no_results_found"
 msgstr "Nessun risultato è stato trovato"
 
-#: ./interfaces/bandoSchema.py:50
+#: ./interfaces/bandoSchema.py:30
 msgid "destinatari_help"
 msgstr ""
 
 #. Default: "Who can apply"
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
-#: ./interfaces/bandoSchema.py:49
+#: ./browser/search_form.pt:87
 msgid "destinatari_label"
-msgstr "Destinatari"
+msgstr "Chi può fare domanda"
 
-#: ./interfaces/bandoSchema.py:71
+#: ./interfaces/bandoSchema.py:51
 msgid "finanziatori_help"
 msgstr ""
 
 #. Default: "Founded with European funds"
 #: ./browser/bando-right.pt:64
 #: ./browser/bando.pt:66
-#: ./interfaces/bandoSchema.py:70
+#: ./browser/search_form.pt:102
 msgid "finanziatori_label"
 msgstr "Finanziato con fondi europei"
 
@@ -285,18 +275,18 @@ msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
 #. Default: "Search"
-#: ./browser/search_form.pt:144
+#: ./browser/search_form.pt:165
 msgid "label_search"
 msgstr "Cerca"
 
-#: ./interfaces/bandoSchema.py:82
+#: ./interfaces/bandoSchema.py:62
 msgid "materie_help"
 msgstr "Specificare a quali materie si riferisce il bando"
 
 #. Default: "Topic"
 #: ./browser/bando-right.pt:73
 #: ./browser/bando.pt:75
-#: ./interfaces/bandoSchema.py:81
+#: ./browser/search_form.pt:117
 msgid "materie_label"
 msgstr "Materie"
 
@@ -320,12 +310,12 @@ msgid "riferimenti_bando_label"
 msgstr "Riferimenti"
 
 #. Default: "Deadline to participate in the announcement"
-#: ./interfaces/bandoSchema.py:39
+#: ./interfaces/bandoSchema.py:80
 msgid "scadenza_bando_help"
 msgstr "Scadenza dei termini per partecipare al bando"
 
 #. Default: "Expiration date and time"
-#: ./interfaces/bandoSchema.py:38
+#: ./interfaces/bandoSchema.py:79
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
@@ -339,7 +329,7 @@ msgstr "-- seleziona un valore --"
 msgid "tiles_collection_noresults"
 msgstr "Non sono stati trovati bandi"
 
-#: ./interfaces/bandoSchema.py:61
+#: ./interfaces/bandoSchema.py:41
 msgid "tipologia_bando_help"
 msgstr "Specificare la tipologia del bando"
 

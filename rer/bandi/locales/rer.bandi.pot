@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-10-30 15:22+0000\n"
+"POT-Creation-Date: 2019-10-31 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: ./browser/bando.py:216
 #: ./browser/collection.py:70
-#: ./browser/search.py:111
+#: ./browser/search.py:127
 msgid "Closed"
 msgstr ""
 
@@ -49,7 +49,7 @@ msgstr ""
 
 #: ./browser/bando.py:221
 #: ./browser/collection.py:75
-#: ./browser/search.py:116
+#: ./browser/search.py:132
 msgid "In progress"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 
 #: ./browser/bando.py:209
 #: ./browser/collection.py:62
-#: ./browser/search.py:103
+#: ./browser/search.py:119
 msgid "Open"
 msgstr ""
 
@@ -133,14 +133,9 @@ msgstr ""
 msgid "bandi_search_label"
 msgstr ""
 
-#. Default: "Select announcements recipients."
-#: ./browser/search_form.pt:92
-msgid "bandi_search_recipients_help"
-msgstr ""
-
-#. Default: "Recipients"
-#: ./browser/search_form.pt:90
-msgid "bandi_search_recipients_label"
+#. Default: "Select one or more values."
+#: ./browser/search_form.pt:88
+msgid "bandi_search_multiselect_help"
 msgstr ""
 
 #. Default: "All"
@@ -181,11 +176,6 @@ msgstr ""
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
 msgid "bandi_search_text_label"
-msgstr ""
-
-#. Default: "Select an annonuncement type."
-#: ./browser/search_form.pt:70
-msgid "bandi_search_type_help"
 msgstr ""
 
 #. Default: "Type"
@@ -238,12 +228,12 @@ msgstr ""
 msgid "chiusura_procedimento_bando"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:32
+#: ./interfaces/bandoSchema.py:73
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./interfaces/bandoSchema.py:28
+#: ./interfaces/bandoSchema.py:69
 msgid "chiusura_procedimento_bando_label"
 msgstr ""
 
@@ -257,25 +247,25 @@ msgstr ""
 msgid "description_no_results_found"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:50
+#: ./interfaces/bandoSchema.py:30
 msgid "destinatari_help"
 msgstr ""
 
 #. Default: "Who can apply"
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
-#: ./interfaces/bandoSchema.py:49
+#: ./browser/search_form.pt:87
 msgid "destinatari_label"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:71
+#: ./interfaces/bandoSchema.py:51
 msgid "finanziatori_help"
 msgstr ""
 
 #. Default: "Founded with European funds"
 #: ./browser/bando-right.pt:64
 #: ./browser/bando.pt:66
-#: ./interfaces/bandoSchema.py:70
+#: ./browser/search_form.pt:102
 msgid "finanziatori_label"
 msgstr ""
 
@@ -285,18 +275,18 @@ msgid "heading_search_results"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/search_form.pt:144
+#: ./browser/search_form.pt:165
 msgid "label_search"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:82
+#: ./interfaces/bandoSchema.py:62
 msgid "materie_help"
 msgstr ""
 
 #. Default: "Topic"
 #: ./browser/bando-right.pt:73
 #: ./browser/bando.pt:75
-#: ./interfaces/bandoSchema.py:81
+#: ./browser/search_form.pt:117
 msgid "materie_label"
 msgstr ""
 
@@ -319,12 +309,12 @@ msgid "riferimenti_bando_label"
 msgstr ""
 
 #. Default: "Deadline to participate in the announcement"
-#: ./interfaces/bandoSchema.py:39
+#: ./interfaces/bandoSchema.py:80
 msgid "scadenza_bando_help"
 msgstr ""
 
 #. Default: "Expiration date and time"
-#: ./interfaces/bandoSchema.py:38
+#: ./interfaces/bandoSchema.py:79
 msgid "scadenza_bando_label"
 msgstr ""
 
@@ -338,7 +328,7 @@ msgstr ""
 msgid "tiles_collection_noresults"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:61
+#: ./interfaces/bandoSchema.py:41
 msgid "tipologia_bando_help"
 msgstr ""
 
