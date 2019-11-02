@@ -6,48 +6,48 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 TIPOLOGIE_BANDO = [
-    'Agevolazioni, finanziamenti, contributi',
-    'Accreditamenti, albi, elenchi',
-    'Autorizzazioni di attivita',
-    'Manifestazioni di interesse',
+    u'Agevolazioni, finanziamenti, contributi',
+    u'Accreditamenti, albi, elenchi',
+    u'Autorizzazioni di attivita',
+    u'Manifestazioni di interesse',
 ]
 
 DESTINATARI_BANDO = [
-    'Cittadini',
-    'Confidi',
-    'Cooperative',
-    'Enti del Terzo settore',
-    'Enti e laboratori di ricerca',
-    'Enti pubblici',
-    'Grandi imprese',
-    'Liberi professionisti',
-    'Micro imprese',
-    'Partenariato pubblico/privato',
-    'PMI',
-    'Scuole, università, enti di formazione',
-    'Soggetti accreditati',
+    u'Cittadini',
+    u'Confidi',
+    u'Cooperative',
+    u'Enti del Terzo settore',
+    u'Enti e laboratori di ricerca',
+    u'Enti pubblici',
+    u'Grandi imprese',
+    u'Liberi professionisti',
+    u'Micro imprese',
+    u'Partenariato pubblico/privato',
+    u'PMI',
+    u'Scuole, università, enti di formazione',
+    u'Soggetti accreditati',
 ]
 
-FINANZIATORI_BANDO = ['FESR', 'FSE', 'FEASR', 'FEAMP']
+FINANZIATORI_BANDO = [u'FESR', u'FSE', u'FEASR', u'FEAMP']
 
 MATERIE_BANDO = [
-    'Agricoltura e sviluppo delle aree rurali',
-    'Ambiente',
-    'Beni immobili e mobili',
-    'Cultura',
-    'Diritti e sociale',
-    'Edilizia e rigenerazione urbana',
-    'Energia',
-    'Estero',
-    'Imprese e commercio',
-    'Innovazione e ICT',
-    'Istruzione e formazione',
-    'Lavoro',
-    'Mobilità e trasporti',
-    'Pesca',
-    'Ricerca',
-    'Riordino istituzionale',
-    'Sport',
+    u'Agricoltura e sviluppo delle aree rurali',
+    u'Ambiente',
+    u'Beni immobili e mobili',
+    u'Cultura',
+    u'Diritti e sociale',
+    u'Edilizia e rigenerazione urbana',
+    u'Energia',
+    u'Estero',
+    u'Imprese e commercio',
+    u'Innovazione e ICT',
+    u'Istruzione e formazione',
+    u'Lavoro',
+    u'Mobilità e trasporti',
+    u'Pesca',
+    u'Ricerca',
+    u'Riordino istituzionale',
+    u'Sport',
 ]
 
 
@@ -55,7 +55,9 @@ class BandiBaseVocabularyFactory(object):
     @property
     def terms(self):
         return [
-            SimpleTerm(value=x, token=x, title=x.decode('utf-8'))
+            SimpleTerm(
+                value=x.encode('utf-8'), token=x.encode('utf-8'), title=x
+            )
             for x in self.vocab_name
         ]
 
