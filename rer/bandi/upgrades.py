@@ -6,18 +6,18 @@ from rer.bandi import logger
 default_profile = 'profile-rer.bandi:default'
 
 TIPOLOGIA_BANDO_MAPPING = {
-    'agevolazioni': 'Agevolazioni, finanziamenti, contributi',
-    'beni_servizi': 'Manifestazioni di interesse',
-    'lavori_pubblici': 'Manifestazioni di interesse',
-    'altro': 'Manifestazioni di interesse',
+    'agevolazioni': u'Agevolazioni, finanziamenti, contributi',
+    'beni_servizi': u'Manifestazioni di interesse',
+    'lavori_pubblici': u'Manifestazioni di interesse',
+    'altro': u'Manifestazioni di interesse',
 }
 
 DESTINATARI_BANDO_MAPPING = {
-    'Cittadini': ['Cittadini'],
-    'Imprese': ['Grandi imprese', 'PMI', 'Micro imprese'],
-    'Enti locali': ['Enti pubblici'],
-    'Associazioni': ['Enti del Terzo settore'],
-    'Altro': ['Scuole, università, enti di formazione'],
+    'Cittadini': [u'Cittadini'],
+    'Imprese': [u'Grandi imprese', u'PMI', u'Micro imprese'],
+    'Enti locali': [u'Enti pubblici'],
+    'Associazioni': [u'Enti del Terzo settore'],
+    'Altro': [u'Scuole, università, enti di formazione'],
 }
 
 
