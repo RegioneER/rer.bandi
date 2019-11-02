@@ -1,0 +1,49 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="rer.bandi">
+
+  <utility
+    name="rer.bandi.tipologie.vocabulary"
+    component=".vocabularies.TipologieBandoVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.destinatari.vocabulary"
+    component=".vocabularies.DestinatariBandoVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.finanziatori.vocabulary"
+    component=".vocabularies.FinanziatoriBandoVocabulary"
+    />
+  
+  <utility
+    name="rer.bandi.materie.vocabulary"
+    component=".vocabularies.MaterieBandoVocabulary"
+    />
+
+  <!-- catalog vocabularies -->
+  <utility
+    name="rer.bandi.keywords.tipologie.vocabulary"
+    component=".catalog.TipologieBandoKeywordsVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.keywords.destinatari.vocabulary"
+    component=".catalog.DestinatariBandoKeywordsVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.keywords.finanziatori.vocabulary"
+    component=".catalog.FinanziatoriBandoKeywordsVocabulary"
+    />
+  
+  <utility
+    name="rer.bandi.keywords.materie.vocabulary"
+    component=".catalog.MaterieBandoKeywordsVocabulary"
+    />
+</configure>

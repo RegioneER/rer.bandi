@@ -30,6 +30,7 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include package=".vocabularies" />
   <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
   <include file="upgrades.zcml" />
 
@@ -72,27 +73,6 @@
       handler="rer.bandi.setuphandlers.import_various"
       />
   
-  <!-- registro i vocabolari -->
-  <utility
-    name="rer.bandi.tipologie.vocabulary"
-    component=".vocabularies.TipologieBandoVocabulary"
-    />
-
-  <utility
-    name="rer.bandi.destinatari.vocabulary"
-    component=".vocabularies.DestinatariBandoVocabulary"
-    />
-
-  <utility
-    name="rer.bandi.finanziatori.vocabulary"
-    component=".vocabularies.FinanziatoriBandoVocabulary"
-    />
-  
-  <utility
-    name="rer.bandi.materie.vocabulary"
-    component=".vocabularies.MaterieBandoVocabulary"
-    />
-
   <!-- indexer per i destinatari -->
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />

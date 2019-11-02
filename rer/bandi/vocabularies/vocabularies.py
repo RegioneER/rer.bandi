@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from rer.bandi import bandiMessageFactory as _
-from z3c.form.interfaces import NOVALUE
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
@@ -55,9 +53,7 @@ class BandiBaseVocabularyFactory(object):
     @property
     def terms(self):
         return [
-            SimpleTerm(
-                value=x.encode('utf-8'), token=x.encode('utf-8'), title=x
-            )
+            SimpleTerm(value=x, token=x.encode('utf-8'), title=x)
             for x in self.vocab_name
         ]
 
