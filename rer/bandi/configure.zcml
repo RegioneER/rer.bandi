@@ -77,7 +77,6 @@
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
-  <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
   <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
   <adapter name="getFinanziatori_bando" factory=".indexer.getFinanziatori_bando" />
   <adapter name="getMaterie_bando" factory=".indexer.getMaterie_bando" />
