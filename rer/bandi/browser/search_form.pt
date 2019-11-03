@@ -128,7 +128,7 @@
                 </select>
             </div>
             <div class="field">
-                <label for="Subject" i18n:translate="label_tags">Categories</label>
+                <label for="Subject" i18n:translate="label_tags" i18n:domain="plone">Categories</label>
                 <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
                     Select one or more values.
                 </div>
