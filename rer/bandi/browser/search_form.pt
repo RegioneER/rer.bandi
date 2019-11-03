@@ -127,7 +127,7 @@
                     </tal:options>
                 </select>
             </div>
-            <div class="field" i18n:domain="plone">
+            <div class="field">
                 <label for="Subject" i18n:translate="label_tags">Categories</label>
                 <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
                     Select one or more values.
