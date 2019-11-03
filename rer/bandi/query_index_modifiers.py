@@ -47,3 +47,18 @@ class BandiKeywordIndex(object):
 class Destinatari(BandiKeywordIndex):
 
     index_name = 'getDestinatariBando'
+
+
+class Tipologia(BandiKeywordIndex):
+
+    index_name = 'getTipologia_bando'
+
+
+class Finanziatori(BandiKeywordIndex):
+
+    index_name = 'getFinanaziatori_bando'
+
+
+class Materie(BandiKeywordIndex):
+
+    index_name = 'getMaterie_bando'

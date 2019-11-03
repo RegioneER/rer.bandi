@@ -7,4 +7,19 @@
         provides="plone.app.querystring.interfaces.IParsedQueryIndexModifier"
         name="getDestinatariBando"
         />
+    <utility
+        factory=".query_index_modifiers.Tipologia"
+        provides="plone.app.querystring.interfaces.IParsedQueryIndexModifier"
+        name="getTipologia_bando"
+        />
+    <utility
+        factory=".query_index_modifiers.Finanziatori"
+        provides="plone.app.querystring.interfaces.IParsedQueryIndexModifier"
+        name="getFinanziatori_bando"
+        />
+    <utility
+        factory=".query_index_modifiers.Materie"
+        provides="plone.app.querystring.interfaces.IParsedQueryIndexModifier"
+        name="getMaterie_bando"
+        />
 </configure>
