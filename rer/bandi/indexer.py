@@ -15,7 +15,10 @@ def dateToDatetime(d):
 
 @indexer(IBando)
 def destinatari_bando(object, **kw):
-    return [x.encode('utf-8') for x in getattr(object, 'destinatari', [])]
+    destinatari = getattr(object, 'destinatari', [])
+    if not destinatari:
+        return []
+    return [x.encode('utf-8') for x in destinatari]
 
 
 @indexer(IBando)
@@ -55,9 +58,15 @@ def getTipologia_bando(object, **kw):
 
 @indexer(IBando)
 def getFinanziatori_bando(object, **kw):
-    return [x.encode('utf-8') for x in getattr(object, 'finanziatori', [])]
+    finanziatori = getattr(object, 'finanziatori', [])
+    if not finanziatori:
+        return []
+    return [x.encode('utf-8') for x in finanziatori]
 
 
 @indexer(IBando)
 def getMaterie_bando(object, **kw):
-    return [x.encode('utf-8') for x in getattr(object, 'materie', [])]
+    materie = getattr(object, 'materie', [])
+    if not materie:
+        return []
+    return [x.encode('utf-8') for x in materie]

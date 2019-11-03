@@ -26,4 +26,24 @@
     component=".vocabularies.MaterieBandoVocabulary"
     />
 
+  <!-- catalog -->
+  <utility
+    name="rer.bandi.keywords.tipologie.vocabulary"
+    component=".catalog.TipologieBandoKeywordsVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.keywords.destinatari.vocabulary"
+    component=".catalog.DestinatariBandoKeywordsVocabulary"
+    />
+
+  <utility
+    name="rer.bandi.keywords.finanziatori.vocabulary"
+    component=".catalog.FinanziatoriBandoKeywordsVocabulary"
+    />
+  
+  <utility
+    name="rer.bandi.keywords.materie.vocabulary"
+    component=".catalog.MaterieBandoKeywordsVocabulary"
+    />
 </configure>
