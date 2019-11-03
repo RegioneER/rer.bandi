@@ -68,7 +68,7 @@
                 <label for="getTipologia_bando" i18n:translate="bandi_search_type_label">Type</label>
                 <br/>
 
-                <tal:items repeat="tipologia python:view.getUniqueValuesForIndex('getTipologia_bando');">
+                <tal:items repeat="tipologia python:view.getVocabularyTermsForForm('rer.bandi.tipologie.vocabulary');">
                   <input class="noborder"
                          type="checkbox"
                          name="getTipologia_bando"
@@ -89,7 +89,7 @@
                 <select name="getDestinatariBando"
                         multiple="multiple"
                         class="pat-select2"
-                        tal:define="destinatari python:view.getUniqueValuesForIndex('getDestinatariBando');">
+                        tal:define="destinatari python:view.getVocabularyTermsForForm('rer.bandi.destinatari.vocabulary');">
                     <tal:options repeat="destinatario destinatari">
                         <option value="${destinatario}">${destinatario}</option>
                     </tal:options>
@@ -101,7 +101,7 @@
                 <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
                     Select one or more values.
                 </div>
-                <tal:items repeat="finanziatore python:view.getUniqueValuesForIndex('getFinanziatori_bando');">
+                <tal:items repeat="finanziatore python:view.getVocabularyTermsForForm('rer.bandi.finanziatori.vocabulary');">
                     <input class="noborder"
                         type="checkbox"
                         name="getFinanziatori_bando"
@@ -121,7 +121,7 @@
                 <select name="getMaterie_bando"
                         multiple="multiple"
                         class="pat-select2"
-                        tal:define="materie python:view.getUniqueValuesForIndex('getMaterie_bando');">
+                        tal:define="materie python:view.getVocabularyTermsForForm('rer.bandi.materie.vocabulary');">
                     <tal:options repeat="materia materie">
                         <option value="${materia}">${materia}</option>
                     </tal:options>

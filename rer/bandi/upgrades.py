@@ -126,13 +126,14 @@ def remap_fields(brain):
                     tipologia=tipologia, bando=brain.getPath()
                 )
             )
-        new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
-        logger.info(
-            '  - TIPOLOGIA: {old} => {new}'.format(
-                old=tipologia, new=new_value
+        else:
+            new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
+            logger.info(
+                '  - TIPOLOGIA: {old} => {new}'.format(
+                    old=tipologia, new=new_value
+                )
             )
-        )
-        bando.tipologia_bando = new_value.decode('utf-8')
+            bando.tipologia_bando = new_value.decode('utf-8')
 
     if destinatari:
         new_value = []
@@ -143,11 +144,13 @@ def remap_fields(brain):
                         destinatario=destinatario, bando=brain.getPath()
                     )
                 )
-            new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
-        logger.info(
-            '  - DESTINATARIO: {old} => {new}'.format(
-                old=destinatari, new=new_value
+            else:
+                new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
+        if new_value:
+            logger.info(
+                '  - DESTINATARIO: {old} => {new}'.format(
+                    old=destinatari, new=new_value
+                )
             )
-        )
-        bando.destinatari = new_value
+            bando.destinatari = new_value
     bando.reindexObject(idxs=['getDestinatariBando', 'getTipologia_bando'])

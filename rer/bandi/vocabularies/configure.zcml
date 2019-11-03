@@ -25,7 +25,7 @@
     name="rer.bandi.materie.vocabulary"
     component=".vocabularies.MaterieBandoVocabulary"
     />
-
+<!-- 
   <!-- catalog vocabularies -->
   <utility
     name="rer.bandi.keywords.tipologie.vocabulary"
@@ -45,5 +45,5 @@
   <utility
     name="rer.bandi.keywords.materie.vocabulary"
     component=".catalog.MaterieBandoKeywordsVocabulary"
-    />
+    /> -->
 </configure>
