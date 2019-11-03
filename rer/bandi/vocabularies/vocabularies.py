@@ -6,7 +6,7 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 TIPOLOGIE_BANDO = [
     u'Agevolazioni, finanziamenti, contributi',
     u'Accreditamenti, albi, elenchi',
-    u'Autorizzazioni di attivita',
+    u'Autorizzazioni di attività',
     u'Manifestazioni di interesse',
 ]
 
