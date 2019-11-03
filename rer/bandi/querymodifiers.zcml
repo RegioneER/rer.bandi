@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="plone">
+
+    <utility
+        factory=".query_index_modifiers.Destinatari"
+        provides="plone.app.querystring.interfaces.IParsedQueryIndexModifier"
+        name="getDestinatariBando"
+        />
+</configure>
