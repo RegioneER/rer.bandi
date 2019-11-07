@@ -83,7 +83,7 @@
 
             <div class="field">
                 <label for="destinatari" i18n:translate="destinatari_label">Who can apply</label>
-                <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
                     Select one or more values.
                 </div>
                 <select name="getDestinatariBando"
@@ -97,8 +97,8 @@
             </div>
 
             <div class="field">
-                <label for="destinatari" i18n:translate="finanziatori_label">Founded with European funds</label>
-                <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
+                <label for="destinatari" i18n:translate="finanziatori_label">Financed by EU programmes</label>
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
                     Select one or more values.
                 </div>
                 <tal:items repeat="finanziatore python:view.getVocabularyTermsForForm('rer.bandi.finanziatori.vocabulary');">
@@ -115,7 +115,7 @@
             </div>
             <div class="field">
                 <label for="materie" i18n:translate="materie_label">Topic</label>
-                <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
                     Select one or more values.
                 </div>
                 <select name="getMaterie_bando"
@@ -129,7 +129,7 @@
             </div>
             <div class="field">
                 <label for="Subject" i18n:translate="label_tags" i18n:domain="plone">Categories</label>
-                <div class="formHelp" i18n:translate="bandi_search_multiselect_help">
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
                     Select one or more values.
                 </div>
                 <select name="Subject"

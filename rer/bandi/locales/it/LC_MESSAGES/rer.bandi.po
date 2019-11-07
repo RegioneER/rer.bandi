@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-10-31 14:04+0000\n"
+"POT-Creation-Date: 2019-11-07 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr "Inserisci un link interno. Questo campo sovrascriverà il campo link est
 msgid "Internal link"
 msgstr "Link interno."
 
-#: ./configure.zcml:59
+#: ./configure.zcml:61
 msgid "Migrate to version 2.2.0"
 msgstr ""
 
-#: ./configure.zcml:66
+#: ./configure.zcml:68
 msgid "Migrate to version 3.0.0"
 msgstr ""
 
@@ -83,15 +83,15 @@ msgstr "Aperto"
 msgid "Other text"
 msgstr "Testo per 'altro'"
 
-#: ./configure.zcml:43
+#: ./configure.zcml:45
 msgid "RER: Bandi"
 msgstr ""
 
-#: ./configure.zcml:59
+#: ./configure.zcml:61
 msgid "RER:Bandi migrate to version 2.2.0 (2200)"
 msgstr ""
 
-#: ./configure.zcml:66
+#: ./configure.zcml:68
 msgid "RER:Bandi migrate to version 3.0.0 (3000)"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
-#: ./configure.zcml:51
+#: ./configure.zcml:53
 msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
@@ -115,6 +115,12 @@ msgstr ""
 #: ./tiles/bandi_render.py:11
 msgid "bandi_layout"
 msgstr ""
+
+#. Default: "Select one or more values."
+#: ./browser/search_form.pt:86
+#: ./interfaces/bandoSchema.py:35
+msgid "bandi_multiselect_help"
+msgstr "Seleziona uno o più valori."
 
 #. Default: "Published on"
 #: ./browser/collection.pt:79
@@ -132,11 +138,6 @@ msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che sodd
 #: ./browser/search_form.pt:20
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
-
-#. Default: "Select one or more values."
-#: ./browser/search_form.pt:88
-msgid "bandi_search_multiselect_help"
-msgstr "Seleziona uno o più valori."
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
@@ -228,12 +229,12 @@ msgstr "${number} elementi soddisfano i criteri specificati"
 msgid "chiusura_procedimento_bando"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:73
+#: ./interfaces/bandoSchema.py:80
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./interfaces/bandoSchema.py:69
+#: ./interfaces/bandoSchema.py:76
 msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
@@ -247,25 +248,17 @@ msgstr "Non ci sono elementi."
 msgid "description_no_results_found"
 msgstr "Nessun risultato è stato trovato"
 
-#: ./interfaces/bandoSchema.py:30
-msgid "destinatari_help"
-msgstr ""
-
 #. Default: "Who can apply"
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
-#: ./browser/search_form.pt:87
+#: ./browser/search_form.pt:85
 msgid "destinatari_label"
 msgstr "Chi può fare domanda"
 
-#: ./interfaces/bandoSchema.py:51
-msgid "finanziatori_help"
-msgstr ""
-
-#. Default: "Founded with European funds"
+#. Default: "Financed by EU programmes"
 #: ./browser/bando-right.pt:64
 #: ./browser/bando.pt:66
-#: ./browser/search_form.pt:102
+#: ./browser/search_form.pt:100
 msgid "finanziatori_label"
 msgstr "Finanziato con fondi europei"
 
@@ -275,61 +268,52 @@ msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
 #. Default: "Search"
-#: ./browser/search_form.pt:165
+#: ./browser/search_form.pt:152
 msgid "label_search"
 msgstr "Cerca"
-
-#: ./interfaces/bandoSchema.py:62
-msgid "materie_help"
-msgstr "Specificare a quali materie si riferisce il bando"
 
 #. Default: "Topic"
 #: ./browser/bando-right.pt:73
 #: ./browser/bando.pt:75
 #: ./browser/search_form.pt:117
 msgid "materie_label"
-msgstr "Materie"
+msgstr "Materia"
 
 #. Default: "More…"
 #: ./tiles/bandi_render.pt:80
 msgid "more_url"
 msgstr "More..."
 
-#: ./configure.zcml:51
+#: ./configure.zcml:53
 msgid "rer.bandi uninstall"
 msgstr "disinstalla rer.bandi"
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
-#: ./interfaces/bandoSchema.py:22
+#: ./interfaces/bandoSchema.py:86
 msgid "riferimenti_bando_help"
 msgstr "indicare la struttura di riferimento e il responsabile del procedimento"
 
 #. Default: "References"
-#: ./interfaces/bandoSchema.py:21
+#: ./interfaces/bandoSchema.py:85
 msgid "riferimenti_bando_label"
 msgstr "Riferimenti"
 
 #. Default: "Deadline to participate in the announcement"
-#: ./interfaces/bandoSchema.py:80
+#: ./interfaces/bandoSchema.py:69
 msgid "scadenza_bando_help"
 msgstr "Scadenza dei termini per partecipare al bando"
 
 #. Default: "Expiration date and time"
-#: ./interfaces/bandoSchema.py:79
+#: ./interfaces/bandoSchema.py:68
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
-
-#. Default: "-- select a value --"
-#: ./vocabularies.py:76
-msgid "select_label"
-msgstr "-- seleziona un valore --"
 
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:23
 msgid "tiles_collection_noresults"
 msgstr "Non sono stati trovati bandi"
 
-#: ./interfaces/bandoSchema.py:41
+#: ./interfaces/bandoSchema.py:27
 msgid "tipologia_bando_help"
 msgstr "Specificare la tipologia del bando"
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-10-31 14:04+0000\n"
+"POT-Creation-Date: 2019-11-07 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr ""
 msgid "Internal link"
 msgstr ""
 
-#: ./configure.zcml:59
+#: ./configure.zcml:61
 msgid "Migrate to version 2.2.0"
 msgstr ""
 
-#: ./configure.zcml:66
+#: ./configure.zcml:68
 msgid "Migrate to version 3.0.0"
 msgstr ""
 
@@ -83,15 +83,15 @@ msgstr ""
 msgid "Other text"
 msgstr ""
 
-#: ./configure.zcml:43
+#: ./configure.zcml:45
 msgid "RER: Bandi"
 msgstr ""
 
-#: ./configure.zcml:59
+#: ./configure.zcml:61
 msgid "RER:Bandi migrate to version 2.2.0 (2200)"
 msgstr ""
 
-#: ./configure.zcml:66
+#: ./configure.zcml:68
 msgid "RER:Bandi migrate to version 3.0.0 (3000)"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr ""
 
-#: ./configure.zcml:51
+#: ./configure.zcml:53
 msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
@@ -114,6 +114,12 @@ msgstr ""
 #. Default: "Layout Bandi"
 #: ./tiles/bandi_render.py:11
 msgid "bandi_layout"
+msgstr ""
+
+#. Default: "Select one or more values."
+#: ./browser/search_form.pt:86
+#: ./interfaces/bandoSchema.py:35
+msgid "bandi_multiselect_help"
 msgstr ""
 
 #. Default: "Published on"
@@ -131,11 +137,6 @@ msgstr ""
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
 msgid "bandi_search_label"
-msgstr ""
-
-#. Default: "Select one or more values."
-#: ./browser/search_form.pt:88
-msgid "bandi_search_multiselect_help"
 msgstr ""
 
 #. Default: "All"
@@ -228,12 +229,12 @@ msgstr ""
 msgid "chiusura_procedimento_bando"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:73
+#: ./interfaces/bandoSchema.py:80
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./interfaces/bandoSchema.py:69
+#: ./interfaces/bandoSchema.py:76
 msgid "chiusura_procedimento_bando_label"
 msgstr ""
 
@@ -247,25 +248,17 @@ msgstr ""
 msgid "description_no_results_found"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:30
-msgid "destinatari_help"
-msgstr ""
-
 #. Default: "Who can apply"
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
-#: ./browser/search_form.pt:87
+#: ./browser/search_form.pt:85
 msgid "destinatari_label"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:51
-msgid "finanziatori_help"
-msgstr ""
-
-#. Default: "Founded with European funds"
+#. Default: "Financed by EU programmes"
 #: ./browser/bando-right.pt:64
 #: ./browser/bando.pt:66
-#: ./browser/search_form.pt:102
+#: ./browser/search_form.pt:100
 msgid "finanziatori_label"
 msgstr ""
 
@@ -275,12 +268,8 @@ msgid "heading_search_results"
 msgstr ""
 
 #. Default: "Search"
-#: ./browser/search_form.pt:165
+#: ./browser/search_form.pt:152
 msgid "label_search"
-msgstr ""
-
-#: ./interfaces/bandoSchema.py:62
-msgid "materie_help"
 msgstr ""
 
 #. Default: "Topic"
@@ -295,32 +284,27 @@ msgstr ""
 msgid "more_url"
 msgstr ""
 
-#: ./configure.zcml:51
+#: ./configure.zcml:53
 msgid "rer.bandi uninstall"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:22
+#: ./interfaces/bandoSchema.py:86
 msgid "riferimenti_bando_help"
 msgstr ""
 
 #. Default: "References"
-#: ./interfaces/bandoSchema.py:21
+#: ./interfaces/bandoSchema.py:85
 msgid "riferimenti_bando_label"
 msgstr ""
 
 #. Default: "Deadline to participate in the announcement"
-#: ./interfaces/bandoSchema.py:80
+#: ./interfaces/bandoSchema.py:69
 msgid "scadenza_bando_help"
 msgstr ""
 
 #. Default: "Expiration date and time"
-#: ./interfaces/bandoSchema.py:79
+#: ./interfaces/bandoSchema.py:68
 msgid "scadenza_bando_label"
-msgstr ""
-
-#. Default: "-- select a value --"
-#: ./vocabularies.py:76
-msgid "select_label"
 msgstr ""
 
 #. Default: "No results found"
@@ -328,7 +312,7 @@ msgstr ""
 msgid "tiles_collection_noresults"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:41
+#: ./interfaces/bandoSchema.py:27
 msgid "tipologia_bando_help"
 msgstr ""
 

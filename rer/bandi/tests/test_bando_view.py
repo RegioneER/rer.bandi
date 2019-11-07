@@ -112,7 +112,7 @@ class BandoViewTest(unittest.TestCase):
         view = api.content.get_view(
             name='bando_view', context=self.bando, request=self.request
         )
-        self.assertNotIn('Founded with European funds', view())
+        self.assertNotIn('Financed by EU programmes', view())
 
         bando_new = api.content.create(
             container=self.portal,
@@ -123,15 +123,14 @@ class BandoViewTest(unittest.TestCase):
         view_new = api.content.get_view(
             name='bando_view', context=bando_new, request=self.request
         )
-        self.assertIn('Founded with European funds', view_new())
-        self.assertIn('<li>Found1</li>', view_new())
-        self.assertIn('<li>Found2</li>', view_new())
+        self.assertIn('Financed by EU programmes', view_new())
+        self.assertIn('<span>Found1 | Found2</span>', view_new())
 
     def test_finanziatori_in_right_view(self):
         view = api.content.get_view(
             name='bando_right_view', context=self.bando, request=self.request
         )
-        self.assertNotIn('Founded with European funds', view())
+        self.assertNotIn('Financed by EU programmes', view())
 
         bando_new = api.content.create(
             container=self.portal,
@@ -142,9 +141,8 @@ class BandoViewTest(unittest.TestCase):
         view_new = api.content.get_view(
             name='bando_right_view', context=bando_new, request=self.request
         )
-        self.assertIn('Founded with European funds', view_new())
-        self.assertIn('<li>Found1</li>', view_new())
-        self.assertIn('<li>Found2</li>', view_new())
+        self.assertIn('Financed by EU programmes', view_new())
+        self.assertIn('<span>Found1 | Found2</span>', view_new())
 
     def test_materie_in_view(self):
         view = api.content.get_view(
@@ -162,8 +160,7 @@ class BandoViewTest(unittest.TestCase):
             name='bando_view', context=bando_new, request=self.request
         )
         self.assertIn('Topic', view_new())
-        self.assertIn('<li>Topic1</li>', view_new())
-        self.assertIn('<li>Topic2</li>', view_new())
+        self.assertIn('<span>Topic1 | Topic2</span>', view_new())
 
     def test_materie_in_right_view(self):
         view = api.content.get_view(
@@ -181,5 +178,4 @@ class BandoViewTest(unittest.TestCase):
             name='bando_right_view', context=bando_new, request=self.request
         )
         self.assertIn('Topic', view_new())
-        self.assertIn('<li>Topic1</li>', view_new())
-        self.assertIn('<li>Topic2</li>', view_new())
+        self.assertIn('<span>Topic1 | Topic2</span>', view_new())

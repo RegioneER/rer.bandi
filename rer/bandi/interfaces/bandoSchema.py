@@ -21,26 +21,6 @@ def checkRequiredField(value):
 class IBandoSchema(model.Schema):
     """ A Dexterity schema for Annoucements """
 
-    form.order_after(riferimenti_bando='IRichTextBehavior.text')
-    riferimenti_bando = RichText(
-        title=_('riferimenti_bando_label', default=u"References"),
-        description=_('riferimenti_bando_help', default=u""),
-        required=False,
-    )
-
-    form.order_after(destinatari='IRichTextBehavior.text')
-    directives.widget(destinatari=CheckBoxFieldWidget)
-    destinatari = schema.List(
-        title=_('destinatari_label', default=u'Who can apply'),
-        description=_('destinatari_help', default=''),
-        constraint=checkRequiredField,
-        required=True,
-        value_type=schema.Choice(
-            vocabulary='rer.bandi.destinatari.vocabulary'
-        ),
-    )
-
-    form.order_after(tipologia_bando='IRichTextBehavior.text')
     directives.widget(tipologia_bando=RadioFieldWidget)
     tipologia_bando = schema.Choice(
         title=_('tipologia_bando_label', default=u"Announcement type"),
@@ -49,27 +29,49 @@ class IBandoSchema(model.Schema):
         required=True,
     )
 
-    form.order_after(finanziatori='IRichTextBehavior.text')
+    directives.widget(destinatari=CheckBoxFieldWidget)
+    destinatari = schema.List(
+        title=_('destinatari_label', default=u'Who can apply'),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
+        constraint=checkRequiredField,
+        required=True,
+        value_type=schema.Choice(
+            vocabulary='rer.bandi.destinatari.vocabulary'
+        ),
+    )
+
     directives.widget(finanziatori=CheckBoxFieldWidget)
     finanziatori = schema.List(
-        title=_('finanziatori_label', default=u'Founded with European funds'),
-        description=_('finanziatori_help', default=''),
+        title=_('finanziatori_label', default=u'Financed by EU programmes'),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
         required=False,
         value_type=schema.Choice(
             vocabulary='rer.bandi.finanziatori.vocabulary'
         ),
     )
 
-    form.order_after(materie='IRichTextBehavior.text')
     directives.widget(materie=CheckBoxFieldWidget)
     materie = schema.List(
         title=_('materie_label', default=u'Topic'),
-        description=_('materie_help', default=''),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
         required=False,
         value_type=schema.Choice(vocabulary='rer.bandi.materie.vocabulary'),
     )
 
-    form.order_after(chiusura_procedimento_bando='IRichTextBehavior.text')
+    scadenza_bando = schema.Datetime(
+        title=_('scadenza_bando_label', default=u"Expiration date and time"),
+        description=_(
+            'scadenza_bando_help',
+            default=u"Deadline to participate in the announcement",
+        ),
+        required=False,
+    )
     chiusura_procedimento_bando = schema.Date(
         title=_(
             'chiusura_procedimento_bando_label',
@@ -79,12 +81,16 @@ class IBandoSchema(model.Schema):
         required=False,
     )
 
-    form.order_after(scadenza_bando='IRichTextBehavior.text')
-    scadenza_bando = schema.Datetime(
-        title=_('scadenza_bando_label', default=u"Expiration date and time"),
-        description=_(
-            'scadenza_bando_help',
-            default=u"Deadline to participate in the announcement",
-        ),
+    riferimenti_bando = RichText(
+        title=_('riferimenti_bando_label', default=u"References"),
+        description=_('riferimenti_bando_help', default=u""),
         required=False,
     )
+
+    form.order_after(tipologia_bando='IRichText.text')
+    form.order_after(destinatari='tipologia_bando')
+    form.order_after(finanziatori='destinatari')
+    form.order_after(materie='finanziatori')
+    form.order_after(scadenza_bando='materie')
+    form.order_after(chiusura_procedimento_bando='scadenza_bando')
+    form.order_after(riferimenti_bando='chiusura_procedimento_bando')

@@ -61,24 +61,6 @@
 		                    </ul>
 		                  </td>
 		                </tr>
-		                <tr tal:define="finanziatori context/finanziatori"
-                        tal:condition="finanziatori">
-                      <th i18n:translate="finanziatori_label">Founded with European funds</th>
-                      <td>
-                        <ul>
-                          <li tal:repeat="finanziatori finanziatori">${finanziatori}</li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr tal:define="materie context/materie"
-                        tal:condition="materie">
-                      <th i18n:translate="materie_label">Topic</th>
-                      <td>
-                        <ul>
-                          <li tal:repeat="materie materie">${materie}</li>
-                        </ul>
-                      </td>
-                    </tr>
 		                <tr tal:condition="view/getEffectiveDate">
 		                  <th i18n:translate="bando_pub_date">Publication date</th>
 		                  <td>
@@ -122,10 +104,20 @@
                 </div>
               </tal:text>
 
-                <hr />
-                <div tal:condition="context/riferimenti_bando" tal:content="structure context/riferimenti_bando/output">
-                    Riferimenti bando
-                </div>
+              <hr />
+              <div tal:condition="context/riferimenti_bando" tal:content="structure context/riferimenti_bando/output">
+                  Riferimenti bando
+              </div>
+              <div class="materie-bando" tal:define="materie context/materie"
+                  tal:condition="materie">
+                <strong><span i18n:translate="materie_label">Topic</span>:</strong>
+                <span tal:content="python:' | '.join(materie)"></span>
+              </div>
+              <div class="finanziatori-bando" tal:define="finanziatori context/finanziatori"
+                  tal:condition="finanziatori">
+                <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span>:</strong>
+                <span tal:content="python:' | '.join(finanziatori)"></span>
+              </div>
             </div>
             <div class="visualClear"></div>
             <section id="foldeeps">
