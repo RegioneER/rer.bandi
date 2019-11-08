@@ -56,7 +56,7 @@ class Tipologia(BandiKeywordIndex):
 
 class Finanziatori(BandiKeywordIndex):
 
-    index_name = 'getFinanaziatori_bando'
+    index_name = 'getFinanziatori_bando'
 
 
 class Materie(BandiKeywordIndex):
