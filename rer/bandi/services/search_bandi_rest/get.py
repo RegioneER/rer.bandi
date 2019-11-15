@@ -24,6 +24,7 @@ class SearchBandiGet(SearchGet):
         stato = query.get("stato_bandi")
         if stato:
             stato_query = query_stato(stato)
+            del query['stato_bandi']
 
         query.update(base_query_parameters)
         query.update(stato_query)
