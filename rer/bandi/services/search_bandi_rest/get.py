@@ -18,7 +18,7 @@ class SearchBandiGet(SearchGet):
 
         # Questi parametri vengono aggiunti di base a tutte le query
         base_query_parameters = {
-            'portal_type': 'Bando',
+            "portal_type": "Bando",
         }
 
         query.update(base_query_parameters)
