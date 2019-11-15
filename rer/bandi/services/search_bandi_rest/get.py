@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from plone.api.portal import translate
+from .utils import query_stato
 from plone.restapi.search.handler import SearchHandler
 from plone.restapi.search.utils import unflatten_dotted_dict
 from plone.restapi.services.search.get import SearchGet
@@ -21,6 +21,11 @@ class SearchBandiGet(SearchGet):
             "portal_type": "Bando",
         }
 
+        stato = query.get("stato_bandi")
+        if stato:
+            stato_query = query_stato(stato)
+
         query.update(base_query_parameters)
+        query.update(stato_query)
 
         return SearchHandler(self.context, self.request).search(query)
