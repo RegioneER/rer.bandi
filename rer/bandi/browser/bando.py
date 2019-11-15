@@ -4,7 +4,7 @@ from plone import api
 from plone.dexterity.browser import add, edit
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from rer.bandi.interfaces import IBandoFolderDeepening
 from z3c.form import field
 from zope.component import getMultiAdapter, getUtility

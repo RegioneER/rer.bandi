@@ -30,6 +30,7 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
+  <include package=".services" />
   <include package=".vocabularies" />
   <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
   <include file="querymodifiers.zcml" />

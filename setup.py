@@ -44,7 +44,7 @@ setup(
     namespace_packages=['rer'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=['setuptools', 'lxml'],
+    install_requires=['setuptools', 'lxml', 'plone.restapi'],
     extras_require={
         'test': [
             'plone.app.testing',

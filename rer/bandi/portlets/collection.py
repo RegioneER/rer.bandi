@@ -6,7 +6,7 @@ from plone.app.vocabularies.catalog import CatalogSource
 from plone.memoize.instance import memoize
 from plone.portlet.collection.collection import ICollectionPortlet
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from zope import schema
 from zope.component import getMultiAdapter, getUtility
 from zope.i18n import translate

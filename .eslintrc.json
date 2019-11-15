@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    // "plugin:flowtype/recommended",
+    "@redturtle/eslint-config"
+  ],
+  // "plugins": ["react", "flowtype"],
+  "plugins": ["react"],
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "trailingComma": "all"
+      }
+    ],
+    "no-console": "off"
+  }
+}

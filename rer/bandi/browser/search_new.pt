@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="rer.bandi">
+<head>
+<metal:style fill-slot="style_slot">
+  <link href="${context/portal_url}/++plone++rer.bandi.static/dist/dev/main.css" rel="stylesheet" />
+</metal:style>
+</head>
+<body>
+<metal:title fill-slot="content-title">
+    <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
+</metal:title>
+<metal:core fill-slot="content-core">
+  <div id="bandi-search" />
+  <script src="${context/portal_url}/++plone++rer.bandi.static/dist/dev/main.js"></script>
+</metal:core>
+</body>
+</html>

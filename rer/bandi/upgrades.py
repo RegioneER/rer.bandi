@@ -135,7 +135,11 @@ def remap_fields(brain):
             )
             bando.tipologia_bando = new_value.decode('utf-8')
 
-    if destinatari:
+    if not destinatari:
+        new_value = DESTINATARI_BANDO_MAPPING['Altro']
+        bando.destinatari = new_value
+        logger.info('  - DESTINATARIO: VUOTO => {new}'.format(new=new_value))
+    else:
         new_value = []
         for destinatario in destinatari:
             if destinatario not in DESTINATARI_BANDO_MAPPING:

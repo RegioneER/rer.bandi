@@ -3,7 +3,7 @@ from plone.app.textfield import RichText
 from plone.autoform import directives
 from plone.autoform import directives as form
 from plone.supermodel import model
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from z3c.form.interfaces import NOVALUE
 from zope import schema

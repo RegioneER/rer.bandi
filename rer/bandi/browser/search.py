@@ -3,7 +3,7 @@ from DateTime import DateTime
 from plone import api
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from six.moves.urllib.parse import quote
 from zope.component import getUtility
 from zope.i18n import translate
