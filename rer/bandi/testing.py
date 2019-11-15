@@ -7,6 +7,7 @@ from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 
+import plone.restapi
 import rer.bandi
 
 
@@ -19,9 +20,11 @@ class RerBandiLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         self.loadZCML(package=rer.bandi)
+        self.loadZCML(package=plone.restapi)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'rer.bandi:default')
+        applyProfile(portal, 'plone.restapi:default')
 
 
 RER_BANDI_FIXTURE = RerBandiLayer()
