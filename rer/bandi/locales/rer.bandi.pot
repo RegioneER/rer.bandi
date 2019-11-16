@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-07 13:44+0000\n"
+"POT-Creation-Date: 2019-11-16 14:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Alternative text to show in 'other' link."
 msgstr ""
 
-#: ./browser/configure.zcml:104
+#: ./browser/configure.zcml:112
 msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/configure.zcml:110
+#: ./browser/configure.zcml:118
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
@@ -61,11 +61,11 @@ msgstr ""
 msgid "Internal link"
 msgstr ""
 
-#: ./configure.zcml:61
+#: ./configure.zcml:62
 msgid "Migrate to version 2.2.0"
 msgstr ""
 
-#: ./configure.zcml:68
+#: ./configure.zcml:69
 msgid "Migrate to version 3.0.0"
 msgstr ""
 
@@ -83,15 +83,15 @@ msgstr ""
 msgid "Other text"
 msgstr ""
 
-#: ./configure.zcml:45
+#: ./configure.zcml:46
 msgid "RER: Bandi"
 msgstr ""
 
-#: ./configure.zcml:61
+#: ./configure.zcml:62
 msgid "RER:Bandi migrate to version 2.2.0 (2200)"
 msgstr ""
 
-#: ./configure.zcml:68
+#: ./configure.zcml:69
 msgid "RER:Bandi migrate to version 3.0.0 (3000)"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgstr ""
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr ""
 
-#: ./configure.zcml:53
+#: ./configure.zcml:54
 msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
@@ -136,6 +136,7 @@ msgstr ""
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
+#: ./browser/search_new.pt:14
 msgid "bandi_search_label"
 msgstr ""
 
@@ -185,25 +186,25 @@ msgid "bandi_search_type_label"
 msgstr ""
 
 #. Default: "Consulta gli approfondimenti"
-#: ./browser/bando.pt:111
+#: ./browser/bando.pt:93
 msgid "bando_anchor_foldeeps"
 msgstr ""
 
 #. Default: "Closing process"
-#: ./browser/bando-right.pt:98
-#: ./browser/bando.pt:100
+#: ./browser/bando-right.pt:80
+#: ./browser/bando.pt:82
 msgid "bando_chiusura_procedimento"
 msgstr ""
 
 #. Default: "Publication date"
-#: ./browser/bando-right.pt:81
-#: ./browser/bando.pt:83
+#: ./browser/bando-right.pt:63
+#: ./browser/bando.pt:65
 msgid "bando_pub_date"
 msgstr ""
 
 #. Default: "Deadline participation terms"
-#: ./browser/bando-right.pt:90
-#: ./browser/bando.pt:92
+#: ./browser/bando-right.pt:72
+#: ./browser/bando.pt:74
 #: ./browser/collection.pt:87
 msgid "bando_scadenza_partecipazione"
 msgstr ""
@@ -238,6 +239,10 @@ msgstr ""
 msgid "chiusura_procedimento_bando_label"
 msgstr ""
 
+#
+msgid "closed"
+msgstr ""
+
 #. Default: "There are currently no items in this folder."
 #: ./browser/collection.pt:98
 msgid "description_no_items_in_folder"
@@ -256,8 +261,8 @@ msgid "destinatari_label"
 msgstr ""
 
 #. Default: "Financed by EU programmes"
-#: ./browser/bando-right.pt:64
-#: ./browser/bando.pt:66
+#: ./browser/bando-right.pt:140
+#: ./browser/bando.pt:118
 #: ./browser/search_form.pt:100
 msgid "finanziatori_label"
 msgstr ""
@@ -267,14 +272,18 @@ msgstr ""
 msgid "heading_search_results"
 msgstr ""
 
+#
+msgid "inProgress"
+msgstr ""
+
 #. Default: "Search"
 #: ./browser/search_form.pt:152
 msgid "label_search"
 msgstr ""
 
 #. Default: "Topic"
-#: ./browser/bando-right.pt:73
-#: ./browser/bando.pt:75
+#: ./browser/bando-right.pt:135
+#: ./browser/bando.pt:113
 #: ./browser/search_form.pt:117
 msgid "materie_label"
 msgstr ""
@@ -284,8 +293,19 @@ msgstr ""
 msgid "more_url"
 msgstr ""
 
-#: ./configure.zcml:53
+#
+msgid "open"
+msgstr ""
+
+msgid "refine_search_label"
+msgstr ""
+
+#: ./configure.zcml:54
 msgid "rer.bandi uninstall"
+msgstr ""
+
+#
+msgid "results_tot_label"
 msgstr ""
 
 #: ./interfaces/bandoSchema.py:86

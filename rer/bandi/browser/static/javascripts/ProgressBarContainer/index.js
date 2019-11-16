@@ -43,7 +43,6 @@ const ProgressBarContainer = ({ authenticator, action }) => {
     clearInterval(intervalId);
   }
   const progress = tot === 0 ? 0 : Math.floor((counter * 100) / tot);
-  console.log(data);
   return (
     <div className="maintenance-wrapper">
       <div className="formControls">

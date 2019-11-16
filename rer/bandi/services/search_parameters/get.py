@@ -33,7 +33,7 @@ class SearchParametersGet(Service):
                     msgid='bandi_search_state_help', domain='rer.bandi'
                 ),
                 'type': 'select',
-                'values': [
+                'options': [
                     {
                         'label': translate(
                             msgid='bandi_search_state_all', domain='rer.bandi'
@@ -63,25 +63,51 @@ class SearchParametersGet(Service):
                 ],
             },
             {
-                'id': 'getTipoligia_bando',
+                'id': 'getTipologia_bando',
                 'label': translate(
                     msgid='bandi_search_type_label', domain='rer.bandi'
                 ),
                 'help': '',
                 'type': 'checkbox',
-                'values': self.getVocabularyTermsForForm(
+                'options': self.getVocabularyTermsForForm(
                     'rer.bandi.tipologie.vocabulary'
                 ),
             },
             {
-                'id': 'getTipoligia_bando',
+                'id': 'getDestinatariBando',
                 'label': translate(
-                    msgid='bandi_search_type_label', domain='rer.bandi'
+                    msgid='destinatari_label', domain='rer.bandi'
                 ),
-                'help': 'bandi_multiselect_help',
-                'type': 'checkbox',
-                'values': self.getVocabularyTermsForForm(
-                    'rer.bandi.tipologie.vocabulary'
+                'help': translate(
+                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                ),
+                'type': 'select',
+                'options': self.getVocabularyTermsForForm(
+                    'rer.bandi.destinatari.vocabulary'
+                ),
+            },
+            {
+                'id': 'getFinanziatori_bando',
+                'label': translate(
+                    msgid='finanziatori_label', domain='rer.bandi'
+                ),
+                'help': translate(
+                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                ),
+                'type': 'select',
+                'options': self.getVocabularyTermsForForm(
+                    'rer.bandi.finanziatori.vocabulary'
+                ),
+            },
+            {
+                'id': 'getMaterie_bando',
+                'label': translate(msgid='materie_label', domain='rer.bandi'),
+                'help': translate(
+                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                ),
+                'type': 'select',
+                'options': self.getVocabularyTermsForForm(
+                    'rer.bandi.materie.vocabulary'
                 ),
             },
         ]
@@ -98,5 +124,5 @@ class SearchParametersGet(Service):
 
         for entry in vocab:
             if entry.title != u'select_label':
-                values.append(entry.value)
+                values.append({'value': entry.value, 'label': entry.title})
         return values
