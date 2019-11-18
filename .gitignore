@@ -12,10 +12,11 @@
 *.py?
 *.pyc
 *~
+*.hot-update.*
 bin/
 buildout-cache/
 develop-eggs/
-dist
+/dist
 docs/doctrees
 docs/html
 docs/make.bat

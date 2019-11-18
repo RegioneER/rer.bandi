@@ -70,8 +70,6 @@ const App = () => {
         newQueryParameters,
       )}`,
     );
-    // console.log('OBJ: ', newQueryParameters);
-    // console.log('QS: ', queryString.stringify(newQueryParameters));
   };
   return (
     <TranslationsWrapper>

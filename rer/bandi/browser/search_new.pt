@@ -6,7 +6,7 @@
       i18n:domain="rer.bandi">
 <head>
 <metal:style fill-slot="style_slot">
-  <link href="${context/portal_url}/++plone++rer.bandi.static/dist/dev/main.css" rel="stylesheet" />
+  <link href="${view/get_resource_css}" rel="stylesheet" />
 </metal:style>
 </head>
 <body>
@@ -15,7 +15,7 @@
 </metal:title>
 <metal:core fill-slot="content-core">
   <div id="bandi-search" />
-  <script src="${context/portal_url}/++plone++rer.bandi.static/dist/dev/main.js"></script>
+  <script src="${view/get_resource_js}"></script>
 </metal:core>
 </body>
 </html>
