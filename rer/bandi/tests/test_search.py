@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
+from datetime import datetime
+from datetime import timedelta
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
@@ -35,7 +37,7 @@ class SearchBandiTest(unittest.TestCase):
 
         # Object creation
         self.bando = api.content.create(
-            container=self.portal, type="Bando", title="Bando foo"
+            container=self.portal, type="Bando", title="Bando foo setup"
         )
         self.document = api.content.create(
             container=self.portal, type="Document", title="Empty page"
@@ -57,5 +59,74 @@ class SearchBandiTest(unittest.TestCase):
             results[u"items_total"], 1,
         )
 
-    # def test_search_bando_all(self):
-    #     pass
+    def test_search_by_stato_bandi_closed(self):
+        menouno = timedelta(days=-1)
+        menocinque = timedelta(days=-5)
+
+        self.bando = api.content.create(
+            container=self.portal,
+            type="Bando",
+            title="Bando expired",
+            scadenza_bando=datetime.now() + menocinque,
+            chiusura_procedimento_bando=datetime.now() + menouno,
+        )
+        self.bando = api.content.create(
+            container=self.portal, type="Bando", title="Bando foo 1"
+        )
+        transaction.commit()
+
+        response = self.api_session.get("/@search_bandi_rest?stato_bandi=closed")
+        results = response.json()
+
+        self.assertEqual(
+            results[u"items_total"], 1,
+        )
+
+    def test_search_by_stato_bandi_inprogress(self):
+        menocinque = timedelta(days=-5)
+        piucinque = timedelta(days=+5)
+
+        self.bando = api.content.create(
+            container=self.portal,
+            type="Bando",
+            title="Bando in progress",
+            scadenza_bando=datetime.now() + menocinque,
+            chiusura_procedimento_bando=datetime.now() + piucinque,
+        )
+        self.bando = api.content.create(
+            container=self.portal, type="Bando", title="Bando foo 2"
+        )
+        transaction.commit()
+
+        response = self.api_session.get("/@search_bandi_rest?stato_bandi=inProgress")
+        results = response.json()
+
+        self.assertEqual(
+            results[u"items_total"], 1,
+        )
+
+    def test_search_by_stato_bandi_open(self):
+        piuuno = timedelta(days=+1)
+        piucinque = timedelta(days=+5)
+
+        self.bando = api.content.create(
+            container=self.portal,
+            type="Bando",
+            title="Bando open",
+            scadenza_bando=datetime.now() + piuuno,
+            chiusura_procedimento_bando=datetime.now() + piucinque,
+        )
+        self.bando = api.content.create(
+            container=self.portal, type="Bando", title="Bando foo 3"
+        )
+        transaction.commit()
+
+        response = self.api_session.get("/@search_bandi_rest?stato_bandi=open")
+        results = response.json()
+
+        bandi = results['items']
+        trovato = [x['title'] for x in bandi if x['title'] == u'Bando open']
+
+        self.assertEqual(
+            len(trovato), 1,
+        )
