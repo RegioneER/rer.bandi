@@ -6,8 +6,10 @@ from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
+from zope.configuration import xmlconfig
+from plone.restapi.testing import PLONE_RESTAPI_DX_FIXTURE
+from plone.restapi.testing import PloneRestApiDXLayer
 
-import plone.restapi
 import rer.bandi
 
 
@@ -20,11 +22,9 @@ class RerBandiLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         self.loadZCML(package=rer.bandi)
-        self.loadZCML(package=plone.restapi)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'rer.bandi:default')
-        applyProfile(portal, 'plone.restapi:default')
 
 
 RER_BANDI_FIXTURE = RerBandiLayer()
@@ -47,4 +47,29 @@ RER_BANDI_ACCEPTANCE_TESTING = FunctionalTesting(
         z2.ZSERVER_FIXTURE,
     ),
     name='RerBandiLayer:AcceptanceTesting',
+)
+
+
+class RerBandiRestApiLayer(PloneRestApiDXLayer):
+
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, )
+
+    def setUpZope(self, app, configurationContext):
+        super(RerBandiRestApiLayer, self).setUpZope(app, configurationContext)
+
+        self.loadZCML(package=rer.bandi)
+
+    def setUpPloneSite(self, portal):
+        super(RerBandiRestApiLayer, self).setUpPloneSite(portal)
+        applyProfile(portal, 'rer.bandi:default')
+
+
+RER_BANDI_API_FIXTURE = RerBandiRestApiLayer()
+RER_BANDI_API_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(RER_BANDI_API_FIXTURE,), name="RerBandiRestApiLayer:Integration"
+)
+
+RER_BANDI_API_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(RER_BANDI_API_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="RerBandiRestApiLayer:Functional",
 )
