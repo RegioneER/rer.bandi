@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "d856e950259af4d1626b";
+/******/ 	var hotCurrentHash = "570225993a5d349f2259";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -70609,8 +70609,7 @@ var App = function App() {
     setQueryParameters(newQueryParameters);
     history.pushState({
       id: 'search_bandi_new'
-    }, 'Search Bandi', "".concat(portalUrl, "/search_bandi_new?").concat(query_string__WEBPACK_IMPORTED_MODULE_5___default.a.stringify(newQueryParameters))); // console.log('OBJ: ', newQueryParameters);
-    // console.log('QS: ', queryString.stringify(newQueryParameters));
+    }, 'Search Bandi', "".concat(portalUrl, "/search_bandi_new?").concat(query_string__WEBPACK_IMPORTED_MODULE_5___default.a.stringify(newQueryParameters)));
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TranslationsContext__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FiltersWrapper__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -71085,7 +71084,7 @@ var ResultsWrapper = function ResultsWrapper(_ref) {
         'content-type': 'application/json',
         Accept: 'application/json'
       },
-      url: "".concat(portalUrl, "/@search"),
+      url: "".concat(portalUrl, "/@search_bandi_rest"),
       params: params,
       paramsSerializer: function paramsSerializer(params) {
         return parseParams(params);

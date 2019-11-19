@@ -12,21 +12,22 @@ class SearchBandiGet(SearchGet):
     def __init__(self, context, request):
         super(SearchBandiGet, self).__init__(context, request)
 
-    def reply(self):
+    @property
+    def query(self):
         query = self.request.form.copy()
         query = unflatten_dotted_dict(query)
 
         # Questi parametri vengono aggiunti di base a tutte le query
-        base_query_parameters = {
-            "portal_type": "Bando",
-        }
+        base_query_parameters = {"portal_type": "Bando"}
+
+        query.update(base_query_parameters)
 
         stato = query.get("stato_bandi")
         if stato:
             stato_query = query_stato(stato)
             del query['stato_bandi']
+            query.update(stato_query)
+        return query
 
-        query.update(base_query_parameters)
-        query.update(stato_query)
-
-        return SearchHandler(self.context, self.request).search(query)
+    def reply(self):
+        return SearchHandler(self.context, self.request).search(self.query)
