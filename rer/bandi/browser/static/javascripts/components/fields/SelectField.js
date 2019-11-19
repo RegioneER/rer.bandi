@@ -3,7 +3,6 @@ import Select from 'react-select';
 import { string, shape, arrayOf, func } from 'prop-types';
 
 const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
-  console.log(value);
   return (
     <Select
       isMulti

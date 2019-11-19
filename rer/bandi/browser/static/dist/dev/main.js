@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "570225993a5d349f2259";
+/******/ 	var hotCurrentHash = "2f07bd301180f6517df3";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -71264,7 +71264,6 @@ var SelectField = function SelectField(_ref) {
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? [] : _ref$value,
       updateQueryParameters = _ref.updateQueryParameters;
-  console.log(value);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
     isMulti: true,
     value: value.map(function (element) {
