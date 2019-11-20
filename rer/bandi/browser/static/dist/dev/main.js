@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "2f07bd301180f6517df3";
+/******/ 	var hotCurrentHash = "89b9515ba93234bc7583";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -5209,6 +5209,68 @@ module.exports = function isBuffer (obj) {
   return obj != null && obj.constructor != null &&
     typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
 
 
 /***/ }),
@@ -22745,6 +22807,17 @@ XmlEntities.prototype.encodeNonASCII = function(str) {
 
 module.exports = XmlEntities;
 
+
+/***/ }),
+
+/***/ "./node_modules/loaders.css/loaders.css":
+/*!**********************************************!*\
+  !*** ./node_modules/loaders.css/loaders.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -58882,6 +58955,360 @@ var index = Object(_chunk_b36baf1a_browser_esm_js__WEBPACK_IMPORTED_MODULE_23__[
 
 /***/ }),
 
+/***/ "./node_modules/react-spinkit/css/base.css":
+/*!*************************************************!*\
+  !*** ./node_modules/react-spinkit/css/base.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/chasing-dots.css":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/chasing-dots.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/circle.css":
+/*!***************************************************!*\
+  !*** ./node_modules/react-spinkit/css/circle.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/cube-grid.css":
+/*!******************************************************!*\
+  !*** ./node_modules/react-spinkit/css/cube-grid.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/double-bounce.css":
+/*!**********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/double-bounce.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/fade-in.css":
+/*!****************************************************!*\
+  !*** ./node_modules/react-spinkit/css/fade-in.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/folding-cube.css":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/folding-cube.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/loaders-css.css":
+/*!********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/loaders-css.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/pulse.css":
+/*!**************************************************!*\
+  !*** ./node_modules/react-spinkit/css/pulse.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/rotating-plane.css":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/rotating-plane.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/three-bounce.css":
+/*!*********************************************************!*\
+  !*** ./node_modules/react-spinkit/css/three-bounce.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/wandering-cubes.css":
+/*!************************************************************!*\
+  !*** ./node_modules/react-spinkit/css/wandering-cubes.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/wave.css":
+/*!*************************************************!*\
+  !*** ./node_modules/react-spinkit/css/wave.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/css/wordpress.css":
+/*!******************************************************!*\
+  !*** ./node_modules/react-spinkit/css/wordpress.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/dist/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-spinkit/dist/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _objectAssign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+
+var _objectAssign2 = _interopRequireDefault(_objectAssign);
+
+var _spinners = __webpack_require__(/*! ./spinners */ "./node_modules/react-spinkit/dist/spinners.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line import/no-extraneous-dependencies
+
+
+if (!process.env.REACT_SPINKIT_NO_STYLES) {
+  /* eslint-disable global-require */
+  __webpack_require__(/*! loaders.css */ "./node_modules/loaders.css/loaders.css");
+  __webpack_require__(/*! ../css/base.css */ "./node_modules/react-spinkit/css/base.css");
+  __webpack_require__(/*! ../css/loaders-css.css */ "./node_modules/react-spinkit/css/loaders-css.css");
+  __webpack_require__(/*! ../css/fade-in.css */ "./node_modules/react-spinkit/css/fade-in.css");
+  __webpack_require__(/*! ../css/chasing-dots.css */ "./node_modules/react-spinkit/css/chasing-dots.css");
+  __webpack_require__(/*! ../css/circle.css */ "./node_modules/react-spinkit/css/circle.css");
+  __webpack_require__(/*! ../css/cube-grid.css */ "./node_modules/react-spinkit/css/cube-grid.css");
+  __webpack_require__(/*! ../css/double-bounce.css */ "./node_modules/react-spinkit/css/double-bounce.css");
+  __webpack_require__(/*! ../css/folding-cube.css */ "./node_modules/react-spinkit/css/folding-cube.css");
+  __webpack_require__(/*! ../css/pulse.css */ "./node_modules/react-spinkit/css/pulse.css");
+  __webpack_require__(/*! ../css/rotating-plane.css */ "./node_modules/react-spinkit/css/rotating-plane.css");
+  __webpack_require__(/*! ../css/three-bounce.css */ "./node_modules/react-spinkit/css/three-bounce.css");
+  __webpack_require__(/*! ../css/wandering-cubes.css */ "./node_modules/react-spinkit/css/wandering-cubes.css");
+  __webpack_require__(/*! ../css/wave.css */ "./node_modules/react-spinkit/css/wave.css");
+  __webpack_require__(/*! ../css/wordpress.css */ "./node_modules/react-spinkit/css/wordpress.css");
+  /* eslint-enable global-require */
+}
+
+var noFadeInWarning = "Deprecation Warning (react-spinkit): noFadeIn prop should be replaced with fadeIn='none'";
+
+var Spinner = function (_React$Component) {
+  _inherits(Spinner, _React$Component);
+
+  function Spinner(props) {
+    _classCallCheck(this, Spinner);
+
+    if (props.noFadeIn) {
+      console.warn(noFadeInWarning); // eslint-disable-line no-console
+    }
+
+    var _this = _possibleConstructorReturn(this, (Spinner.__proto__ || Object.getPrototypeOf(Spinner)).call(this, props));
+
+    _this.displayName = 'SpinKit';
+    return _this;
+  }
+
+  _createClass(Spinner, [{
+    key: 'render',
+    value: function render() {
+      var _cx;
+
+      var spinnerInfo = _spinners.allSpinners[this.props.name] || _spinners.allSpinners['three-bounce'];
+      var classes = (0, _classnames2.default)((_cx = {
+        'sk-fade-in': this.props.fadeIn === 'full' && !this.props.noFadeIn,
+        'sk-fade-in-half-second': this.props.fadeIn === 'half' && !this.props.noFadeIn,
+        'sk-fade-in-quarter-second': this.props.fadeIn === 'quarter' && !this.props.noFadeIn,
+        'sk-spinner': !this.props.overrideSpinnerClassName
+      }, _defineProperty(_cx, this.props.overrideSpinnerClassName, !!this.props.overrideSpinnerClassName), _defineProperty(_cx, this.props.className, !!this.props.className), _defineProperty(_cx, spinnerInfo.className || this.props.name, true), _cx));
+
+      var props = (0, _objectAssign2.default)({}, this.props);
+      delete props.name;
+      delete props.fadeIn;
+      delete props.noFadeIn;
+      delete props.overrideSpinnerClassName;
+      delete props.className;
+
+      if (this.props.color) {
+        props.style = props.style ? _extends({}, props.style, { color: this.props.color }) : { color: this.props.color };
+      }
+
+      return _react2.default.createElement(
+        'div',
+        _extends({}, props, { className: classes }),
+        [].concat(_toConsumableArray(Array(spinnerInfo.divCount))).map(function (_, idx) {
+          return _react2.default.createElement('div', { key: idx });
+        })
+      );
+    }
+  }]);
+
+  return Spinner;
+}(_react2.default.Component);
+
+Spinner.propTypes = {
+  name: _propTypes2.default.string.isRequired,
+  noFadeIn: _propTypes2.default.bool,
+  fadeIn: _propTypes2.default.oneOf(['full', 'half', 'quarter', 'none']),
+  overrideSpinnerClassName: _propTypes2.default.string,
+  className: _propTypes2.default.string,
+  color: _propTypes2.default.string
+};
+
+Spinner.defaultProps = {
+  name: 'three-bounce',
+  noFadeIn: false,
+  fadeIn: 'full',
+  overrideSpinnerClassName: ''
+};
+
+module.exports = Spinner;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/react-spinkit/dist/spinners.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-spinkit/dist/spinners.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var spinkitSpinners = {
+  circle: { className: 'sk-circle', divCount: 12 },
+  'cube-grid': { className: 'sk-cube-grid', divCount: 9 },
+  wave: { className: 'sk-wave', divCount: 5 },
+  'folding-cube': { className: 'sk-folding-cube', divCount: 4 },
+  'three-bounce': { className: 'sk-three-bounce', divCount: 3 },
+  'double-bounce': { className: 'sk-double-bounce', divCount: 2 },
+  'wandering-cubes': { className: 'sk-wandering-cubes', divCount: 2 },
+  'chasing-dots': { className: 'sk-chasing-dots', divCount: 2 },
+  'rotating-plane': { className: 'sk-rotating-plane', divCount: 1 },
+  pulse: { className: 'sk-pulse', divCount: 1 },
+  wordpress: { className: 'sk-wordpress', divCount: 1 }
+};
+
+var loadersCssSpinners = {
+  'ball-grid-beat': { divCount: 9 },
+  'ball-grid-pulse': { divCount: 9 },
+  'line-spin-fade-loader': { divCount: 8 },
+  'ball-spin-fade-loader': { divCount: 8 },
+  'ball-pulse-rise': { divCount: 5 },
+  'line-scale': { divCount: 5 },
+  'line-scale-pulse-out': { divCount: 5 },
+  'line-scale-pulse-out-rapid': { divCount: 5 },
+  pacman: { divCount: 5 },
+  'line-scale-party': { divCount: 4 },
+  'ball-triangle-path': { divCount: 3 },
+  'ball-scale-multiple': { divCount: 3 },
+  'ball-scale-ripple-multiple': { divCount: 3 },
+  'ball-pulse-sync': { divCount: 3 },
+  'ball-beat': { divCount: 3 },
+  'ball-zig-zag': { divCount: 2 },
+  'ball-zig-zag-deflect': { divCount: 2 },
+  'ball-clip-rotate-pulse': { divCount: 2 },
+  'ball-clip-rotate-multiple': { divCount: 2 },
+  'ball-clip-rotate': { divCount: 1 },
+  'ball-scale-ripple': { divCount: 1 },
+  'triangle-skew-spin': { divCount: 1 }
+};
+
+module.exports = {
+  spinkitSpinners: spinkitSpinners,
+  loadersCssSpinners: loadersCssSpinners,
+  allSpinners: _extends({}, spinkitSpinners, loadersCssSpinners)
+};
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -70754,6 +71181,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js");
 /* harmony import */ var _TranslationsContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../TranslationsContext */ "./rer/bandi/browser/static/javascripts/TranslationsContext.js");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.less */ "./rer/bandi/browser/static/javascripts/components/BandoItem/index.less");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -70790,10 +71220,10 @@ var BandoItem = function BandoItem(_ref) {
   var bandoState = calculateState(data);
   var effectiveDate = effective ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "labelTB"
-  }, getTranslationFor('bandi_published_on', '')), ": ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(date_fns__WEBPACK_IMPORTED_MODULE_2__["format"])(new Date(effective), 'dd/MM/yyyy'))) : '';
+  }, getTranslationFor('bandi_published_on', '')), ":\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(date_fns__WEBPACK_IMPORTED_MODULE_2__["format"])(new Date(effective), 'dd/MM/yyyy'))) : '';
   var scadenzaBando = getScadenza_bando ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "labelTB"
-  }, getTranslationFor('bando_scadenza_partecipazione', '')), ": ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(date_fns__WEBPACK_IMPORTED_MODULE_2__["format"])(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm'))) : '';
+  }, getTranslationFor('bando_scadenza_partecipazione', '')), ":\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(date_fns__WEBPACK_IMPORTED_MODULE_2__["format"])(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm'))) : '';
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bando-result"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -70807,15 +71237,24 @@ var BandoItem = function BandoItem(_ref) {
     className: "bandoDetail"
   }, data.description, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bandoDates"
-  }, effectiveDate, effectiveDate && scadenzaBando ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "labelTB colspacer"
-  }, "|") : '', scadenzaBando)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, effectiveDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, scadenzaBando))));
 };
 
 BandoItem.propTypes = {
   data: prop_types__WEBPACK_IMPORTED_MODULE_1__["object"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (BandoItem);
+
+/***/ }),
+
+/***/ "./rer/bandi/browser/static/javascripts/components/BandoItem/index.less":
+/*!******************************************************************************!*\
+  !*** ./rer/bandi/browser/static/javascripts/components/BandoItem/index.less ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -70834,6 +71273,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _FormFieldWrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormFieldWrapper */ "./rer/bandi/browser/static/javascripts/components/FormFieldWrapper/index.js");
 /* harmony import */ var _TranslationsContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../TranslationsContext */ "./rer/bandi/browser/static/javascripts/TranslationsContext.js");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.less */ "./rer/bandi/browser/static/javascripts/components/FiltersWrapper/index.less");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -70845,14 +71287,7 @@ var FiltersWrapper = function FiltersWrapper(_ref) {
       isFetching = _ref.isFetching,
       updateQueryParameters = _ref.updateQueryParameters;
   var getTranslationFor = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_TranslationsContext__WEBPACK_IMPORTED_MODULE_3__["TranslationsContext"]);
-
-  if (isFetching) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "isFetching");
-  }
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-filter"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+  var filtersContent = isFetching ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "refineSearch"
   }, getTranslationFor('refine_search_label', 'Refine your search')), formParameters && formParameters.length ? formParameters.map(function (parameter) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormFieldWrapper__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -70862,6 +71297,9 @@ var FiltersWrapper = function FiltersWrapper(_ref) {
       updateQueryParameters: updateQueryParameters
     });
   }) : '');
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-filter col-lg-5 col-md-6 col-sm-12"
+  }, filtersContent);
 };
 
 FiltersWrapper.propTypes = {
@@ -70871,6 +71309,17 @@ FiltersWrapper.propTypes = {
   updateQueryParameters: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (FiltersWrapper);
+
+/***/ }),
+
+/***/ "./rer/bandi/browser/static/javascripts/components/FiltersWrapper/index.less":
+/*!***********************************************************************************!*\
+  !*** ./rer/bandi/browser/static/javascripts/components/FiltersWrapper/index.less ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -70890,6 +71339,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fields_TextField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../fields/TextField */ "./rer/bandi/browser/static/javascripts/components/fields/TextField.js");
 /* harmony import */ var _fields_SelectField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../fields/SelectField */ "./rer/bandi/browser/static/javascripts/components/fields/SelectField.js");
 /* harmony import */ var _fields_CheckboxField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../fields/CheckboxField */ "./rer/bandi/browser/static/javascripts/components/fields/CheckboxField.js");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.less */ "./rer/bandi/browser/static/javascripts/components/FormFieldWrapper/index.less");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -70901,23 +71353,27 @@ var FormFieldWrapper = function FormFieldWrapper(_ref) {
       value = _ref.value,
       updateQueryParameters = _ref.updateQueryParameters;
   var FieldComponent = '';
+  var className = '';
 
   switch (parameter.type) {
     case 'select':
       FieldComponent = _fields_SelectField__WEBPACK_IMPORTED_MODULE_3__["default"];
+      className = 'select';
       break;
 
     case 'checkbox':
       FieldComponent = _fields_CheckboxField__WEBPACK_IMPORTED_MODULE_4__["default"];
+      className = 'checkbox';
       break;
 
     default:
       FieldComponent = _fields_TextField__WEBPACK_IMPORTED_MODULE_2__["default"];
+      className = 'text';
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "field"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, parameter.label, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FieldComponent, {
+    className: "field ".concat(className, "-field")
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, parameter.label), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FieldComponent, {
     parameter: parameter,
     value: value,
     updateQueryParameters: updateQueryParameters
@@ -70930,6 +71386,17 @@ FormFieldWrapper.propTypes = {
   value: Object(prop_types__WEBPACK_IMPORTED_MODULE_1__["oneOfType"])([prop_types__WEBPACK_IMPORTED_MODULE_1__["string"], prop_types__WEBPACK_IMPORTED_MODULE_1__["array"]])
 };
 /* harmony default export */ __webpack_exports__["default"] = (FormFieldWrapper);
+
+/***/ }),
+
+/***/ "./rer/bandi/browser/static/javascripts/components/FormFieldWrapper/index.less":
+/*!*************************************************************************************!*\
+  !*** ./rer/bandi/browser/static/javascripts/components/FormFieldWrapper/index.less ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -71006,6 +71473,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BandoItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../BandoItem */ "./rer/bandi/browser/static/javascripts/components/BandoItem/index.js");
 /* harmony import */ var _PaginationContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../PaginationContainer */ "./rer/bandi/browser/static/javascripts/components/PaginationContainer/index.js");
 /* harmony import */ var _TranslationsContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../TranslationsContext */ "./rer/bandi/browser/static/javascripts/TranslationsContext.js");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.less */ "./rer/bandi/browser/static/javascripts/components/ResultsWrapper/index.less");
+/* harmony import */ var _index_less__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_less__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -71020,6 +71489,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+var Spinner = __webpack_require__(/*! react-spinkit */ "./node_modules/react-spinkit/dist/index.js");
 
 
 
@@ -71111,15 +71584,13 @@ var ResultsWrapper = function ResultsWrapper(_ref) {
     updateQueryParameters(parameter);
   };
 
-  if (isFetching) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "isFetching");
-  }
-
   var items_total = results.items_total,
       items = results.items;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-results"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var resultsContent = isFetching ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Spinner, {
+    name: "three-bounce",
+    fadeIn: "none",
+    className: "spinner"
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "results-total"
   }, getTranslationFor('results_tot_label', '', items_total || 0)), items ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "results-wrapper"
@@ -71134,6 +71605,9 @@ var ResultsWrapper = function ResultsWrapper(_ref) {
     totalResults: items_total,
     updateQueryParameters: updatedPagination
   })) : '');
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-results col-lg-7 col-md-6 col-sm-12"
+  }, resultsContent);
 };
 
 ResultsWrapper.propTypes = {
@@ -71141,6 +71615,17 @@ ResultsWrapper.propTypes = {
   updateQueryParameters: prop_types__WEBPACK_IMPORTED_MODULE_2__["func"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (ResultsWrapper);
+
+/***/ }),
+
+/***/ "./rer/bandi/browser/static/javascripts/components/ResultsWrapper/index.less":
+/*!***********************************************************************************!*\
+  !*** ./rer/bandi/browser/static/javascripts/components/ResultsWrapper/index.less ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -71253,7 +71738,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _TranslationsContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../TranslationsContext */ "./rer/bandi/browser/static/javascripts/TranslationsContext.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -71264,20 +71751,22 @@ var SelectField = function SelectField(_ref) {
       _ref$value = _ref.value,
       value = _ref$value === void 0 ? [] : _ref$value,
       updateQueryParameters = _ref.updateQueryParameters;
+  var getTranslationFor = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_TranslationsContext__WEBPACK_IMPORTED_MODULE_3__["TranslationsContext"]);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
     isMulti: true,
     value: value.map(function (element) {
       return {
         value: element,
-        label: element
+        label: element !== '' ? getTranslationFor(element, element) : getTranslationFor('bandi_search_state_all', element)
       };
     }),
     name: parameter.id,
     options: parameter.options,
+    placeholder: getTranslationFor('select_placeholder', 'Select...'),
     onChange: function onChange(options) {
-      updateQueryParameters(_defineProperty({}, parameter.id, options.map(function (option) {
+      updateQueryParameters(_defineProperty({}, parameter.id, options ? options.map(function (option) {
         return option.value;
-      })));
+      }) : []));
     }
   });
 };
@@ -71397,6 +71886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var rootElement = document.getElementById('bandi-search');
+rootElement.classList.add('row');
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), rootElement);
 
 /***/ }),
@@ -71408,9 +71898,9 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cekk/work/rer/regione-er-5/src/rer.bandi/node_modules/webpack-dev-server/client/index.js?http://localhost:3000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:3000");
-__webpack_require__(/*! /Users/cekk/work/rer/regione-er-5/src/rer.bandi/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
-module.exports = __webpack_require__(/*! /Users/cekk/work/rer/regione-er-5/src/rer.bandi/rer/bandi/browser/static/javascripts/index.js */"./rer/bandi/browser/static/javascripts/index.js");
+__webpack_require__(/*! /Users/nicola/workspace/regione-er-5/src/rer.bandi/node_modules/webpack-dev-server/client/index.js?http://localhost:3000 */"./node_modules/webpack-dev-server/client/index.js?http://localhost:3000");
+__webpack_require__(/*! /Users/nicola/workspace/regione-er-5/src/rer.bandi/node_modules/webpack/hot/dev-server.js */"./node_modules/webpack/hot/dev-server.js");
+module.exports = __webpack_require__(/*! /Users/nicola/workspace/regione-er-5/src/rer.bandi/rer/bandi/browser/static/javascripts/index.js */"./rer/bandi/browser/static/javascripts/index.js");
 
 
 /***/ })

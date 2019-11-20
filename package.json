@@ -70,6 +70,7 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-paginate": "^6.3.2",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+    "react-spinkit": "^3.0.0"
   }
 }
