@@ -120,7 +120,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
   );
 
   return (
-    <div className="search-results col-lg-7 col-md-6 col-sm-12">
+    <div className="search-results col-lg-8 col-md-6 col-sm-12">
       {resultsContent}
     </div>
   );

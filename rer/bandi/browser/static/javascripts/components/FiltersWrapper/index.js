@@ -34,7 +34,7 @@ const FiltersWrapper = ({
   );
 
   return (
-    <div className="search-filter col-lg-5 col-md-6 col-sm-12">
+    <div className="search-filter col-lg-4 col-md-6 col-sm-12">
       {filtersContent}
     </div>
   );
