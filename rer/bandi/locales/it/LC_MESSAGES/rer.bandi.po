@@ -241,7 +241,7 @@ msgstr "Data chiusura procedimento"
 
 #
 msgid "closed"
-msgstr "Chiuso"
+msgstr "Chiusi"
 
 #. Default: "There are currently no items in this folder."
 #: ./browser/collection.pt:98
@@ -295,7 +295,7 @@ msgstr "More..."
 
 #
 msgid "open"
-msgstr "Aperto"
+msgstr "Aperti"
 
 msgid "refine_search_label"
 msgstr "Raffina la tua ricerca"

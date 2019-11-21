@@ -33,6 +33,7 @@ class SearchParametersGet(Service):
                     msgid='bandi_search_state_help', domain='rer.bandi'
                 ),
                 'type': 'select',
+                'multivalued': False,
                 'options': [
                     {
                         'label': translate(
@@ -82,6 +83,7 @@ class SearchParametersGet(Service):
                     msgid='bandi_multiselect_help', domain='rer.bandi'
                 ),
                 'type': 'select',
+                'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
                     'rer.bandi.destinatari.vocabulary'
                 ),
@@ -95,6 +97,7 @@ class SearchParametersGet(Service):
                     msgid='bandi_multiselect_help', domain='rer.bandi'
                 ),
                 'type': 'select',
+                'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
                     'rer.bandi.finanziatori.vocabulary'
                 ),
@@ -106,6 +109,7 @@ class SearchParametersGet(Service):
                     msgid='bandi_multiselect_help', domain='rer.bandi'
                 ),
                 'type': 'select',
+                'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
                     'rer.bandi.materie.vocabulary'
                 ),
