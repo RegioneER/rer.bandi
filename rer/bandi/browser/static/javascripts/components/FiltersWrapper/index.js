@@ -3,6 +3,8 @@ import { array, bool, object, func } from 'prop-types';
 import FormFieldWrapper from '../FormFieldWrapper';
 import { TranslationsContext } from '../../TranslationsContext';
 
+import './index.less';
+
 const FiltersWrapper = ({
   formParameters,
   queryParameters,
@@ -11,11 +13,10 @@ const FiltersWrapper = ({
 }) => {
   const getTranslationFor = useContext(TranslationsContext);
 
-  if (isFetching) {
-    return <div>isFetching</div>;
-  }
-  return (
-    <div className="search-filter">
+  const filtersContent = isFetching ? (
+    <div>Loading...</div>
+  ) : (
+    <React.Fragment>
       <h2 className="refineSearch">
         {getTranslationFor('refine_search_label', 'Refine your search')}
       </h2>
@@ -29,6 +30,12 @@ const FiltersWrapper = ({
             />
           ))
         : ''}
+    </React.Fragment>
+  );
+
+  return (
+    <div className="search-filter col-lg-4 col-md-6 col-sm-12">
+      {filtersContent}
     </div>
   );
 };

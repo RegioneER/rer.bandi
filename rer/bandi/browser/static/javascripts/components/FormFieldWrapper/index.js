@@ -4,24 +4,30 @@ import TextField from '../fields/TextField';
 import SelectField from '../fields/SelectField';
 import CheckboxField from '../fields/CheckboxField';
 
+import './index.less';
+
 const FormFieldWrapper = ({ parameter, value, updateQueryParameters }) => {
   let FieldComponent = '';
+  let className = '';
 
   switch (parameter.type) {
     case 'select':
       FieldComponent = SelectField;
+      className = 'select';
       break;
     case 'checkbox':
       FieldComponent = CheckboxField;
+      className = 'checkbox';
       break;
     default:
       FieldComponent = TextField;
+      className = 'text';
   }
 
   return (
-    <div className="field">
+    <div className={`field ${className}-field`}>
       <label>
-        {parameter.label}
+        <span>{parameter.label}</span>
         <FieldComponent
           parameter={parameter}
           value={value}

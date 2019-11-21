@@ -9,6 +9,10 @@
   <link href="${view/get_resource_css}" rel="stylesheet" />
 </metal:style>
 </head>
+<metal:override fill-slot="top_slot"
+                tal:define="disable_column_one python: request.set('disable_plone.leftcolumn',1);
+                            disable_column_two python: request.set('disable_plone.rightcolumn',1)"
+                            />
 <body>
 <metal:title fill-slot="content-title">
     <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>

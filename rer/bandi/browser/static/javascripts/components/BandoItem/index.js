@@ -3,6 +3,8 @@ import { object } from 'prop-types';
 import { format, isPast } from 'date-fns';
 import { TranslationsContext } from '../../TranslationsContext';
 
+import './index.less';
+
 const BandoItem = ({ data }) => {
   const getTranslationFor = useContext(TranslationsContext);
   const calculateState = ({
@@ -37,7 +39,7 @@ const BandoItem = ({ data }) => {
       <span className="labelTB">
         {getTranslationFor('bandi_published_on', '')}
       </span>
-      : <span>{format(new Date(effective), 'dd/MM/yyyy')}</span>
+      :&nbsp;<span>{format(new Date(effective), 'dd/MM/yyyy')}</span>
     </React.Fragment>
   ) : (
     ''
@@ -47,7 +49,8 @@ const BandoItem = ({ data }) => {
       <span className="labelTB">
         {getTranslationFor('bando_scadenza_partecipazione', '')}
       </span>
-      : <span>{format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
+      :&nbsp;
+      <span>{format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
     </React.Fragment>
   ) : (
     ''
@@ -65,13 +68,8 @@ const BandoItem = ({ data }) => {
       <div className="bandoDetail">
         {data.description}
         <div className="bandoDates">
-          {effectiveDate}
-          {effectiveDate && scadenzaBando ? (
-            <span className="labelTB colspacer">|</span>
-          ) : (
-            ''
-          )}
-          {scadenzaBando}
+          <p>{effectiveDate}</p>
+          <p>{scadenzaBando}</p>
         </div>
       </div>
     </div>

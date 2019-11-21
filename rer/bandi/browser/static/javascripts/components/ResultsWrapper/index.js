@@ -4,6 +4,9 @@ import { object, func } from 'prop-types';
 import BandoItem from '../BandoItem';
 import PaginationContainer from '../PaginationContainer';
 import { TranslationsContext } from '../../TranslationsContext';
+const Spinner = require('react-spinkit');
+
+import './index.less';
 
 const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
   const [isFetching, setFetching] = useState(false);
@@ -86,12 +89,11 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
     updateQueryParameters(parameter);
   };
 
-  if (isFetching) {
-    return <div>isFetching</div>;
-  }
   const { items_total, items } = results;
-  return (
-    <div className="search-results">
+  const resultsContent = isFetching ? (
+    <Spinner name="three-bounce" fadeIn="none" className="spinner" />
+  ) : (
+    <React.Fragment>
       <div className="results-total">
         {getTranslationFor('results_tot_label', '', items_total || 0)}
       </div>
@@ -114,6 +116,12 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
       ) : (
         ''
       )}
+    </React.Fragment>
+  );
+
+  return (
+    <div className="search-results col-lg-8 col-md-6 col-sm-12">
+      {resultsContent}
     </div>
   );
 };

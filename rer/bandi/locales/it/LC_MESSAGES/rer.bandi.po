@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-16 14:36+0000\n"
+"POT-Creation-Date: 2019-11-20 11:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,7 +241,7 @@ msgstr "Data chiusura procedimento"
 
 #
 msgid "closed"
-msgstr "Chiuso"
+msgstr "Chiusi"
 
 #. Default: "There are currently no items in this folder."
 #: ./browser/collection.pt:98
@@ -295,7 +295,7 @@ msgstr "More..."
 
 #
 msgid "open"
-msgstr "Aperto"
+msgstr "Aperti"
 
 msgid "refine_search_label"
 msgstr "Raffina la tua ricerca"
@@ -327,6 +327,9 @@ msgstr "Scadenza dei termini per partecipare al bando"
 #: ./interfaces/bandoSchema.py:68
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
+
+msgid "select_placeholder"
+msgstr "Seleziona..."
 
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:23

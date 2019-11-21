@@ -34,3 +34,7 @@ msgid "results_tot_label"
 msgstr ""
 
 msgid "refine_search_label"
+msgstr ""
+
+msgid "select_placeholder"
+msgstr ""

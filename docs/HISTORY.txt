@@ -6,6 +6,8 @@ Changelog
 
 - Python 3 compatibility.
   [cekk]
+- New bandi search view
+  [cekk][nicola]
 
 
 3.0.15 (2019-02-11)
