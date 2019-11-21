@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "89b9515ba93234bc7583";
+/******/ 	var hotCurrentHash = "6ae64b3d70cf39f03a66";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -71298,7 +71298,7 @@ var FiltersWrapper = function FiltersWrapper(_ref) {
     });
   }) : '');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-filter col-lg-5 col-md-6 col-sm-12"
+    className: "search-filter col-lg-4 col-md-6 col-sm-12"
   }, filtersContent);
 };
 
@@ -71606,7 +71606,7 @@ var ResultsWrapper = function ResultsWrapper(_ref) {
     updateQueryParameters: updatedPagination
   })) : '');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "search-results col-lg-7 col-md-6 col-sm-12"
+    className: "search-results col-lg-8 col-md-6 col-sm-12"
   }, resultsContent);
 };
 
