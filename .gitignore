@@ -32,3 +32,4 @@ parts/
 pip-selfcheck.json
 src/
 var/
+rer/bandi/browser/static/dist/dev
