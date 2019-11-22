@@ -26,14 +26,11 @@ const FormFieldWrapper = ({ parameter, value, updateQueryParameters }) => {
 
   return (
     <div className={`field ${className}-field`}>
-      <label>
-        <span>{parameter.label}</span>
-        <FieldComponent
-          parameter={parameter}
-          value={value}
-          updateQueryParameters={updateQueryParameters}
-        />
-      </label>
+      <FieldComponent
+        parameter={parameter}
+        value={value}
+        updateQueryParameters={updateQueryParameters}
+      />
     </div>
   );
 };

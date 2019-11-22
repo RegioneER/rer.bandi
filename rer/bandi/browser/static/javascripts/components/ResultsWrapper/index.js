@@ -95,7 +95,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
   ) : (
     <React.Fragment>
       <div className="results-total">
-        {getTranslationFor('results_tot_label', '', items_total || 0)}
+        <h2>{getTranslationFor('results_tot_label', '', items_total || 0)}</h2>
       </div>
       {items ? (
         <div className="results-wrapper">

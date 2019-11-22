@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-20 11:23+0000\n"
+"POT-Creation-Date: 2019-11-22 10:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,7 @@ msgstr ""
 #. Default: "Select one or more values."
 #: ./browser/search_form.pt:86
 #: ./interfaces/bandoSchema.py:35
+#: ./services/search_parameters/get.py:100
 msgid "bandi_multiselect_help"
 msgstr ""
 
@@ -136,17 +137,19 @@ msgstr ""
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
-#: ./browser/search_new.pt:14
+#: ./browser/search_new.pt:18
 msgid "bandi_search_label"
 msgstr ""
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
+#: ./services/search_parameters/get.py:47
 msgid "bandi_search_state_all"
 msgstr ""
 
 #. Default: "Closed"
 #: ./browser/search_form.pt:62
+#: ./services/search_parameters/get.py:71
 msgid "bandi_search_state_closed"
 msgstr ""
 
@@ -157,16 +160,19 @@ msgstr ""
 
 #. Default: "In progress"
 #: ./browser/search_form.pt:61
+#: ./services/search_parameters/get.py:61
 msgid "bandi_search_state_inprogress"
 msgstr ""
 
 #. Default: "State"
 #: ./browser/search_form.pt:50
+#: ./services/search_parameters/get.py:38
 msgid "bandi_search_state_label"
 msgstr ""
 
 #. Default: "Open"
 #: ./browser/search_form.pt:60
+#: ./services/search_parameters/get.py:54
 msgid "bandi_search_state_open"
 msgstr ""
 
@@ -175,13 +181,20 @@ msgstr ""
 msgid "bandi_search_text_help"
 msgstr ""
 
+#. Default: "Search in title, description, text and subjects. Use OR to search more words (AND is the default)"
+#: ./services/search_parameters/get.py:25
+msgid "bandi_search_text_help2"
+msgstr ""
+
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
+#: ./services/search_parameters/get.py:21
 msgid "bandi_search_text_label"
 msgstr ""
 
 #. Default: "Type"
 #: ./browser/search_form.pt:68
+#: ./services/search_parameters/get.py:84
 msgid "bandi_search_type_label"
 msgstr ""
 
@@ -304,6 +317,9 @@ msgstr ""
 msgid "rer.bandi uninstall"
 msgstr ""
 
+msgid "reset_filters_label"
+msgstr ""
+
 #
 msgid "results_tot_label"
 msgstr ""
@@ -328,6 +344,11 @@ msgid "scadenza_bando_label"
 msgstr ""
 
 msgid "select_placeholder"
+msgstr ""
+
+#. Default: "Subjects"
+#: ./services/search_parameters/get.py:156
+msgid "subject_label"
 msgstr ""
 
 #. Default: "No results found"

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-20 11:23+0000\n"
+"POT-Creation-Date: 2019-11-22 10:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,7 @@ msgstr ""
 #. Default: "Select one or more values."
 #: ./browser/search_form.pt:86
 #: ./interfaces/bandoSchema.py:35
+#: ./services/search_parameters/get.py:100
 msgid "bandi_multiselect_help"
 msgstr "Seleziona uno o più valori."
 
@@ -136,17 +137,19 @@ msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che sodd
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
-#: ./browser/search_new.pt:14
+#: ./browser/search_new.pt:18
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
+#: ./services/search_parameters/get.py:47
 msgid "bandi_search_state_all"
 msgstr "Tutti"
 
 #. Default: "Closed"
 #: ./browser/search_form.pt:62
+#: ./services/search_parameters/get.py:71
 msgid "bandi_search_state_closed"
 msgstr "Chiusi"
 
@@ -157,16 +160,19 @@ msgstr "Cerca i bandi <strong>aperti</strong> (non sono scaduti i termini per la
 
 #. Default: "In progress"
 #: ./browser/search_form.pt:61
+#: ./services/search_parameters/get.py:61
 msgid "bandi_search_state_inprogress"
 msgstr "In corso"
 
 #. Default: "State"
 #: ./browser/search_form.pt:50
+#: ./services/search_parameters/get.py:38
 msgid "bandi_search_state_label"
 msgstr "Stato"
 
 #. Default: "Open"
 #: ./browser/search_form.pt:60
+#: ./services/search_parameters/get.py:54
 msgid "bandi_search_state_open"
 msgstr "Aperti"
 
@@ -175,13 +181,20 @@ msgstr "Aperti"
 msgid "bandi_search_text_help"
 msgstr "Per una semplice ricerca di testo inserisci qui i termini desiderati. Possono essere cercate più parole contemporaneamente combinandole con gli operatori <strong>AND</strong> e <strong>OR</strong>. Il testo inserito in questo campo verrà cercato nel titolo, descrizione e testo dei bandi."
 
+#. Default: "Search in title, description, text and subjects. Use OR to search more words (AND is the default)"
+#: ./services/search_parameters/get.py:25
+msgid "bandi_search_text_help2"
+msgstr "Cerca in titolo, descrizione, testo e parole chiave. Usa OR per cercare più parole (AND è il default)."
+
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
+#: ./services/search_parameters/get.py:21
 msgid "bandi_search_text_label"
 msgstr "Ricerca testuale"
 
 #. Default: "Type"
 #: ./browser/search_form.pt:68
+#: ./services/search_parameters/get.py:84
 msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
@@ -304,6 +317,9 @@ msgstr "Raffina la tua ricerca"
 msgid "rer.bandi uninstall"
 msgstr "disinstalla rer.bandi"
 
+msgid "reset_filters_label"
+msgstr "Rimuovi tutti i filtri"
+
 #
 msgid "results_tot_label"
 msgstr "Trovati ${variable} risultati."
@@ -330,6 +346,11 @@ msgstr "Data e ora di scadenza"
 
 msgid "select_placeholder"
 msgstr "Seleziona..."
+
+#. Default: "Subjects"
+#: ./services/search_parameters/get.py:156
+msgid "subject_label"
+msgstr "Categorie"
 
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:23

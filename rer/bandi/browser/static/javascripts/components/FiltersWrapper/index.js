@@ -10,6 +10,7 @@ const FiltersWrapper = ({
   queryParameters,
   isFetching,
   updateQueryParameters,
+  resetQueryParameters,
 }) => {
   const getTranslationFor = useContext(TranslationsContext);
 
@@ -30,6 +31,11 @@ const FiltersWrapper = ({
             />
           ))
         : ''}
+      <div className="reset-filters">
+        <button onClick={resetQueryParameters}>
+          {getTranslationFor('reset_filters_label', 'Reset all filters')}
+        </button>
+      </div>
     </React.Fragment>
   );
 
@@ -44,6 +50,7 @@ FiltersWrapper.propTypes = {
   queryParameters: object,
   isFetching: bool,
   updateQueryParameters: func,
+  resetQueryParameters: func,
 };
 
 export default FiltersWrapper;

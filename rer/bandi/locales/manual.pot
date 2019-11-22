@@ -38,3 +38,6 @@ msgstr ""
 
 msgid "select_placeholder"
 msgstr ""
+
+msgid "reset_filters_label"
+msgstr ""

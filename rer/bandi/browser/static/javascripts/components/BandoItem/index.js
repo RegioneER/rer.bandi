@@ -35,23 +35,23 @@ const BandoItem = ({ data }) => {
   const { effective, getScadenza_bando } = data;
   const bandoState = calculateState(data);
   const effectiveDate = effective ? (
-    <React.Fragment>
+    <p>
       <span className="labelTB">
         {getTranslationFor('bandi_published_on', '')}
       </span>
       :&nbsp;<span>{format(new Date(effective), 'dd/MM/yyyy')}</span>
-    </React.Fragment>
+    </p>
   ) : (
     ''
   );
   const scadenzaBando = getScadenza_bando ? (
-    <React.Fragment>
+    <p>
       <span className="labelTB">
         {getTranslationFor('bando_scadenza_partecipazione', '')}
       </span>
       :&nbsp;
       <span>{format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
-    </React.Fragment>
+    </p>
   ) : (
     ''
   );
@@ -68,8 +68,13 @@ const BandoItem = ({ data }) => {
       <div className="bandoDetail">
         {data.description}
         <div className="bandoDates">
-          <p>{effectiveDate}</p>
-          <p>{scadenzaBando}</p>
+          {effectiveDate}
+          {effectiveDate && scadenzaBando ? (
+            <span className="separator">|</span>
+          ) : (
+            ''
+          )}
+          {scadenzaBando}
         </div>
       </div>
     </div>

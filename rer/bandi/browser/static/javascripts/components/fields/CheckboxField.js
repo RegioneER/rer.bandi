@@ -27,7 +27,8 @@ const CheckboxField = ({ parameter, value = [], updateQueryParameters }) => {
     }
   };
   return (
-    <React.Fragment>
+    <fieldset>
+      <legend>{parameter.label}</legend>
       {parameter.options.map(option => (
         <div className="checkbox-option" key={option.label}>
           <label>
@@ -42,7 +43,7 @@ const CheckboxField = ({ parameter, value = [], updateQueryParameters }) => {
           </label>
         </div>
       ))}
-    </React.Fragment>
+    </fieldset>
   );
 };
 CheckboxField.propTypes = {

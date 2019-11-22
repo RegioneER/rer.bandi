@@ -71,10 +71,22 @@ const App = () => {
       )}`,
     );
   };
+
+  const resetQueryParameters = () => {
+    const newQueryParameters = { b_start: 0, b_size: 20 };
+    setQueryParameters(newQueryParameters);
+    history.pushState(
+      { id: 'search_bandi_new' },
+      'Search Bandi',
+      `${portalUrl}/search_bandi_new`,
+    );
+  };
+
   return (
     <TranslationsWrapper>
       <FiltersWrapper
         updateQueryParameters={updateQueryParameters}
+        resetQueryParameters={resetQueryParameters}
         formParameters={formParameters}
         queryParameters={queryParameters}
         isFetching={isFetching}

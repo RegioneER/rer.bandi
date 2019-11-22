@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from plone.api.portal import translate
 from plone.restapi.services import Service
 from zope.component import getUtility
+from zope.i18n import translate
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
 from zope.schema.interfaces import IVocabularyFactory
+from rer.bandi import _
 
 
 @implementer(IPublishTraverse)
@@ -17,47 +18,58 @@ class SearchParametersGet(Service):
             {
                 'id': 'SearchableText',
                 'label': translate(
-                    msgid='bandi_search_text_label', domain='rer.bandi'
+                    _('bandi_search_text_label', default=u'Search text'),
+                    context=self.request,
                 ),
                 'help': translate(
-                    msgid='bandi_search_text_help', domain='rer.bandi'
+                    _(
+                        'bandi_search_text_help2',
+                        default=u'Search in title, description, text and'
+                        u' subjects. Use OR to search more words'
+                        u' (AND is the default)',
+                    ),
+                    context=self.request,
                 ),
                 'type': 'text',
             },
             {
                 'id': 'stato_bandi',
                 'label': translate(
-                    msgid='bandi_search_state_label', domain='rer.bandi'
+                    _('bandi_search_state_label', default=u'State'),
+                    context=self.request,
                 ),
-                'help': translate(
-                    msgid='bandi_search_state_help', domain='rer.bandi'
-                ),
+                'help': '',
                 'type': 'select',
                 'multivalued': False,
                 'options': [
                     {
                         'label': translate(
-                            msgid='bandi_search_state_all', domain='rer.bandi'
+                            _('bandi_search_state_all', default='All'),
+                            context=self.request,
                         ),
                         'value': '',
                     },
                     {
                         'label': translate(
-                            msgid='bandi_search_state_open', domain='rer.bandi'
+                            _('bandi_search_state_open', default='Open'),
+                            context=self.request,
                         ),
                         'value': 'open',
                     },
                     {
                         'label': translate(
-                            msgid='bandi_search_state_inprogress',
-                            domain='rer.bandi',
+                            _(
+                                'bandi_search_state_inprogress',
+                                default='In progress',
+                            ),
+                            context=self.request,
                         ),
                         'value': 'inProgress',
                     },
                     {
                         'label': translate(
-                            msgid='bandi_search_state_closed',
-                            domain='rer.bandi',
+                            _('bandi_search_state_closed', default='Closed'),
+                            context=self.request,
                         ),
                         'value': 'closed',
                     },
@@ -66,7 +78,8 @@ class SearchParametersGet(Service):
             {
                 'id': 'getTipologia_bando',
                 'label': translate(
-                    msgid='bandi_search_type_label', domain='rer.bandi'
+                    _('bandi_search_type_label', default='Type'),
+                    context=self.request,
                 ),
                 'help': '',
                 'type': 'checkbox',
@@ -77,10 +90,15 @@ class SearchParametersGet(Service):
             {
                 'id': 'getDestinatariBando',
                 'label': translate(
-                    msgid='destinatari_label', domain='rer.bandi'
+                    _('destinatari_label', default='Who can apply'),
+                    context=self.request,
                 ),
                 'help': translate(
-                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                    _(
+                        'bandi_multiselect_help',
+                        default='Select one or more values.',
+                    ),
+                    context=self.request,
                 ),
                 'type': 'select',
                 'multivalued': True,
@@ -91,10 +109,18 @@ class SearchParametersGet(Service):
             {
                 'id': 'getFinanziatori_bando',
                 'label': translate(
-                    msgid='finanziatori_label', domain='rer.bandi'
+                    _(
+                        'finanziatori_label',
+                        default='Financed by EU programmes',
+                    ),
+                    context=self.request,
                 ),
                 'help': translate(
-                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                    _(
+                        'bandi_multiselect_help',
+                        default='Select one or more values.',
+                    ),
+                    context=self.request,
                 ),
                 'type': 'select',
                 'multivalued': True,
@@ -104,14 +130,39 @@ class SearchParametersGet(Service):
             },
             {
                 'id': 'getMaterie_bando',
-                'label': translate(msgid='materie_label', domain='rer.bandi'),
+                'label': translate(
+                    _('materie_label', default='Topic'), context=self.request
+                ),
                 'help': translate(
-                    msgid='bandi_multiselect_help', domain='rer.bandi'
+                    _(
+                        'bandi_multiselect_help',
+                        default='Select one or more values.',
+                    ),
+                    context=self.request,
                 ),
                 'type': 'select',
                 'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
                     'rer.bandi.materie.vocabulary'
+                ),
+            },
+            {
+                'id': 'Subject',
+                'label': translate(
+                    _('subject_label', default='Subjects'),
+                    context=self.request,
+                ),
+                'help': translate(
+                    _(
+                        'bandi_multiselect_help',
+                        default='Select one or more values.',
+                    ),
+                    context=self.request,
+                ),
+                'type': 'select',
+                'multivalued': True,
+                'options': self.getVocabularyTermsForForm(
+                    'plone.app.vocabularies.Keywords'
                 ),
             },
         ]

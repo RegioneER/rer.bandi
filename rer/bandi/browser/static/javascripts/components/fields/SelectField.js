@@ -5,34 +5,41 @@ import { TranslationsContext } from '../../TranslationsContext';
 
 const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
   const getTranslationFor = useContext(TranslationsContext);
-  console.log(value);
   return (
-    <Select
-      isMulti={parameter.multivalued}
-      value={value.map(element => {
-        return {
-          value: element,
-          label:
-            element !== ''
-              ? getTranslationFor(element, element)
-              : getTranslationFor('bandi_search_state_all', element),
-        };
-      })}
-      name={parameter.id}
-      options={parameter.options}
-      placeholder={getTranslationFor('select_placeholder', 'Select...')}
-      onChange={options => {
-        let newValue = [];
-        if (options) {
-          newValue = parameter.multivalued
-            ? options.map(option => option.value)
-            : [options.value];
-        }
-        updateQueryParameters({
-          [parameter.id]: newValue,
-        });
-      }}
-    />
+    <label>
+      <span>{parameter.label}</span>
+      {parameter.help.length ? (
+        <p className="discreet">{parameter.help}</p>
+      ) : (
+        ''
+      )}
+      <Select
+        isMulti={parameter.multivalued}
+        value={value.map(element => {
+          return {
+            value: element,
+            label:
+              element !== ''
+                ? getTranslationFor(element, element)
+                : getTranslationFor('bandi_search_state_all', element),
+          };
+        })}
+        name={parameter.id}
+        options={parameter.options}
+        placeholder={getTranslationFor('select_placeholder', 'Select...')}
+        onChange={options => {
+          let newValue = [];
+          if (options) {
+            newValue = parameter.multivalued
+              ? options.map(option => option.value)
+              : [options.value];
+          }
+          updateQueryParameters({
+            [parameter.id]: newValue,
+          });
+        }}
+      />
+    </label>
   );
 };
 
