@@ -15,6 +15,7 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
       )}
       <Select
         isMulti={parameter.multivalued}
+        tabSelectsValue={false}
         value={value.map(element => {
           return {
             value: element,
