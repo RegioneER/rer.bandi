@@ -25,7 +25,7 @@ class TestCollectionCriteria(unittest.TestCase):
             container=self.portal,
             type='Bando',
             title='Bando with destinatari',
-            destinatari=['d1', 'd2'],
+            destinatari=['d1', 'd2', 'dà'],
         )
 
         self.bando2 = api.content.create(
@@ -48,6 +48,19 @@ class TestCollectionCriteria(unittest.TestCase):
                 'i': 'getDestinatariBando',
                 'o': 'plone.app.querystring.operation.string.is',
                 'v': ['d1'],
+            }
+        ]
+        self.collection.setQuery(query)
+        results = self.collection.results()
+        self.assertEqual(results.sequence_length, 1)
+        self.assertEqual(results[0].Title(), self.bando1.Title())
+
+    def test_query_destinatari_with_accent(self):
+        query = [
+            {
+                'i': 'getDestinatariBando',
+                'o': 'plone.app.querystring.operation.string.is',
+                'v': ['dà'],
             }
         ]
         self.collection.setQuery(query)

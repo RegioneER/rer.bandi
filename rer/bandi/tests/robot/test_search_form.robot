@@ -34,7 +34,7 @@ Test Teardown  Close all browsers
 *** Test cases ***************************************************************
 
 Scenario: Search Bandi for Manifestazioni di interesse
-    Given a logged-in site administrator
+    Given a logged-in contributor
     When I go to search_bandi_form view
         and search for 'Manifestazioni di interesse' type
     Then 'Bando 1' and 'Bando 2' appears as results, and not 'Bando 3'
@@ -44,7 +44,7 @@ Scenario: Search Bandi for Manifestazioni di interesse
 
 Initialize test
     Open test browser
-    Enable autologin as  Site Administrator  Contributor  Reviewer
+    Enable autologin as  Contributor
     Create Bando with title 'Bando 1' and 'Manifestazioni di interesse' type and 'PMI' destinatari and 'FESR' founds and 'Sport' topic
     Create Bando with title 'Bando 2' and 'Manifestazioni di interesse' type and 'Cittadini' destinatari and 'FESR' founds and 'Ambiente' topic
     Create Bando with title 'Bando 3' and 'Agevolazioni, finanziamenti, contributi' type and 'Enti del Terzo settore' destinatari and 'FESR' founds and 'Sport' topic
@@ -62,8 +62,11 @@ Create Bando with title '${title}' and '${tipologia_bando}' type and '${destinat
 
 # --- Given ------------------------------------------------------------------
 
-a logged-in site administrator
-  Enable autologin as  Site Administrator  Contributor  Reviewer
+a logged-in contributor
+  Enable autologin as  Contributor
+
+a logged-in manager
+  Enable autologin as  Manager
 
 # --- When -------------------------------------------------------------------
 

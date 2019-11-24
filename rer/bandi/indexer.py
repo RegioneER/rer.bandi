@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from DateTime import DateTime
 from plone.indexer.decorator import indexer
 from rer.bandi.interfaces.bando import IBando
 
-# importo il datetime di python
-from datetime import datetime
-
-# funzione che riceve un date e torna un datetime con l'ora a zero
+import six
 
 
 def dateToDatetime(d):
@@ -18,7 +16,9 @@ def destinatari_bando(object, **kw):
     destinatari = getattr(object, 'destinatari', [])
     if not destinatari:
         return []
-    return [x.encode('utf-8') for x in destinatari]
+    if six.PY2:
+        return [x.encode('utf-8') for x in destinatari]
+    return destinatari
 
 
 @indexer(IBando)
@@ -53,7 +53,9 @@ def getScadenza_bando(object, **kw):
 @indexer(IBando)
 def getTipologia_bando(object, **kw):
     tipologia = getattr(object, 'tipologia_bando', '')
-    return tipologia.encode('utf-8')
+    if six.PY2:
+        return tipologia.encode('utf-8')
+    return tipologia
 
 
 @indexer(IBando)
@@ -61,7 +63,9 @@ def getFinanziatori_bando(object, **kw):
     finanziatori = getattr(object, 'finanziatori', [])
     if not finanziatori:
         return []
-    return [x.encode('utf-8') for x in finanziatori]
+    if six.PY2:
+        return [x.encode('utf-8') for x in finanziatori]
+    return finanziatori
 
 
 @indexer(IBando)
@@ -69,4 +73,6 @@ def getMaterie_bando(object, **kw):
     materie = getattr(object, 'materie', [])
     if not materie:
         return []
-    return [x.encode('utf-8') for x in materie]
+    if six.PY2:
+        return [x.encode('utf-8') for x in materie]
+    return materie
