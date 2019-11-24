@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-22 10:39+0000\n"
+"POT-Creation-Date: 2019-11-23 06:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,15 +143,13 @@ msgstr "Ricerca bandi"
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
-#: ./services/search_parameters/get.py:47
 msgid "bandi_search_state_all"
 msgstr "Tutti"
 
 #. Default: "Closed"
 #: ./browser/search_form.pt:62
-#: ./services/search_parameters/get.py:71
 msgid "bandi_search_state_closed"
-msgstr "Chiusi"
+msgstr "Chiuso"
 
 #. Default: "Search announcements <strong>open</strong> (with participation terms not expired), <strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or <strong>closed</strong> (the procedure is closed)."
 #: ./browser/search_form.pt:52
@@ -160,7 +158,6 @@ msgstr "Cerca i bandi <strong>aperti</strong> (non sono scaduti i termini per la
 
 #. Default: "In progress"
 #: ./browser/search_form.pt:61
-#: ./services/search_parameters/get.py:61
 msgid "bandi_search_state_inprogress"
 msgstr "In corso"
 
@@ -172,9 +169,8 @@ msgstr "Stato"
 
 #. Default: "Open"
 #: ./browser/search_form.pt:60
-#: ./services/search_parameters/get.py:54
 msgid "bandi_search_state_open"
-msgstr "Aperti"
+msgstr "Aperto"
 
 #. Default: "For a simple text search, enter your search term here. Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>. The text in this field will be matched with Announcements' title, description and text."
 #: ./browser/search_form.pt:35
@@ -222,6 +218,26 @@ msgstr "Data di pubblicazione"
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
+#. Default: "All"
+#: ./services/search_parameters/get.py:47
+msgid "bando_state_all_select_label"
+msgstr "Tutti"
+
+#. Default: "Closed"
+#: ./services/search_parameters/get.py:71
+msgid "bando_state_closed_select_label"
+msgstr "Chiusi"
+
+#. Default: "In progress"
+#: ./services/search_parameters/get.py:61
+msgid "bando_state_inProgress_select_label"
+msgstr "In corso"
+
+#. Default: "Open"
+#: ./services/search_parameters/get.py:54
+msgid "bando_state_open_select_label"
+msgstr "Aperti"
+
 #. Default: "Status"
 #: ./browser/bando-right.pt:32
 #: ./browser/bando.pt:35
@@ -252,10 +268,6 @@ msgstr ""
 msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
-#
-msgid "closed"
-msgstr "Chiusi"
-
 #. Default: "There are currently no items in this folder."
 #: ./browser/collection.pt:98
 msgid "description_no_items_in_folder"
@@ -285,10 +297,6 @@ msgstr "Finanziato con fondi europei"
 msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
-#
-msgid "inProgress"
-msgstr "In corso"
-
 #. Default: "Search"
 #: ./browser/search_form.pt:152
 msgid "label_search"
@@ -305,10 +313,6 @@ msgstr "Materia"
 #: ./tiles/bandi_render.pt:80
 msgid "more_url"
 msgstr "More..."
-
-#
-msgid "open"
-msgstr "Aperti"
 
 msgid "refine_search_label"
 msgstr "Raffina la tua ricerca"
@@ -348,7 +352,7 @@ msgid "select_placeholder"
 msgstr "Seleziona..."
 
 #. Default: "Subjects"
-#: ./services/search_parameters/get.py:156
+#: ./services/search_parameters/get.py:155
 msgid "subject_label"
 msgstr "Categorie"
 

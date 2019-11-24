@@ -54,6 +54,7 @@ setup(
             'plone.testing>=5.0.0',
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',
+            'requests',
         ]
     },
     test_suite='rer.bandi.tests.test_docs.test_suite',

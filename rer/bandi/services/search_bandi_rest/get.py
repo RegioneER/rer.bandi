@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from .utils import query_stato
+from DateTime import DateTime
 from plone.restapi.search.handler import SearchHandler
 from plone.restapi.search.utils import unflatten_dotted_dict
 from plone.restapi.services.search.get import SearchGet
@@ -24,10 +24,42 @@ class SearchBandiGet(SearchGet):
 
         stato = query.get("stato_bandi")
         if stato:
-            stato_query = query_stato(stato)
+            stato_query = self.query_stato(stato)
             del query['stato_bandi']
             query.update(stato_query)
         return query
+
+    def query_stato(self, stato):
+        """ In base allo stato che ci viene passato in ingresso generiamo
+        la query corretta da passare poi al catalogo.
+
+        Valori possibili per stato: [open, inProgress, closed]
+        """
+
+        query = {}
+
+        if stato:
+            now = DateTime()
+            if stato == "open":
+                query["getScadenza_bando"] = {"query": now, "range": "min"}
+                query["getChiusura_procedimento_bando"] = {
+                    "query": now,
+                    "range": "min",
+                }
+            if stato == "inProgress":
+                query["getScadenza_bando"] = {"query": now, "range": "max"}
+                query["getChiusura_procedimento_bando"] = {
+                    "query": now,
+                    "range": "min",
+                }
+            if stato == "closed":
+                query["getChiusura_procedimento_bando"] = {
+                    "query": now,
+                    "range": "max",
+                }
+            return query
+        else:
+            return {}
 
     def reply(self):
         return SearchHandler(self.context, self.request).search(self.query)

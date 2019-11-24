@@ -44,14 +44,14 @@ class SearchParametersGet(Service):
                 'options': [
                     {
                         'label': translate(
-                            _('bandi_search_state_all', default='All'),
+                            _('bando_state_all_select_label', default='All'),
                             context=self.request,
                         ),
                         'value': '',
                     },
                     {
                         'label': translate(
-                            _('bandi_search_state_open', default='Open'),
+                            _('bando_state_open_select_label', default='Open'),
                             context=self.request,
                         ),
                         'value': 'open',
@@ -59,7 +59,7 @@ class SearchParametersGet(Service):
                     {
                         'label': translate(
                             _(
-                                'bandi_search_state_inprogress',
+                                'bando_state_inProgress_select_label',
                                 default='In progress',
                             ),
                             context=self.request,
@@ -68,7 +68,10 @@ class SearchParametersGet(Service):
                     },
                     {
                         'label': translate(
-                            _('bandi_search_state_closed', default='Closed'),
+                            _(
+                                'bando_state_closed_select_label',
+                                default='Closed',
+                            ),
                             context=self.request,
                         ),
                         'value': 'closed',

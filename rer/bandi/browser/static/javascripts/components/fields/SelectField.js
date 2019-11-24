@@ -21,8 +21,11 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
             value: element,
             label:
               element !== ''
-                ? getTranslationFor(element, element)
-                : getTranslationFor('bandi_search_state_all', element),
+                ? getTranslationFor(
+                    `bando_state_${element}_select_label`,
+                    element,
+                  )
+                : getTranslationFor('bando_state_all_select_label', element),
           };
         })}
         name={parameter.id}

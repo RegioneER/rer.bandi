@@ -4,6 +4,8 @@ import { object, func } from 'prop-types';
 import BandoItem from '../BandoItem';
 import PaginationContainer from '../PaginationContainer';
 import { TranslationsContext } from '../../TranslationsContext';
+import ResultsList from '../ResultsList';
+
 const Spinner = require('react-spinkit');
 
 import './index.less';
@@ -57,6 +59,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
           'effective',
           'getScadenza_bando',
           'getChiusura_procedimento_bando',
+          'UID',
         ],
       },
     );
@@ -89,36 +92,15 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
     updateQueryParameters(parameter);
   };
 
-  const { items_total, items } = results;
   const resultsContent = isFetching ? (
     <Spinner name="three-bounce" fadeIn="none" className="spinner" />
   ) : (
-    <React.Fragment>
-      <div className="results-total">
-        <h2>{getTranslationFor('results_tot_label', '', items_total || 0)}</h2>
-      </div>
-      {items ? (
-        <div className="results-wrapper">
-          {items.map(data => (
-            <BandoItem data={data} key={data['@id']} />
-          ))}
-          <PaginationContainer
-            pageSize={queryParameters.b_size}
-            currentPage={
-              queryParameters.b_start === 0
-                ? 0
-                : queryParameters.b_start / queryParameters.b_size
-            }
-            totalResults={items_total}
-            updateQueryParameters={updatedPagination}
-          />
-        </div>
-      ) : (
-        ''
-      )}
-    </React.Fragment>
+    <ResultsList
+      results={results}
+      updatedPagination={updatedPagination}
+      queryParameters={queryParameters}
+    />
   );
-
   return (
     <div className="search-results col-lg-8 col-md-6 col-sm-12">
       {resultsContent}

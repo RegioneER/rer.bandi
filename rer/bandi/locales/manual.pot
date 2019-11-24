@@ -17,19 +17,6 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#
-msgid "closed"
-msgstr ""
-
-#
-msgid "open"
-msgstr ""
-
-#
-msgid "inProgress"
-msgstr ""
-
-#
 msgid "results_tot_label"
 msgstr ""
 
