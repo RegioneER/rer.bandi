@@ -25,7 +25,7 @@ class TestCollectionCriteria(unittest.TestCase):
             container=self.portal,
             type='Bando',
             title='Bando with destinatari',
-            destinatari=['d1', 'd2', 'dà'],
+            destinatari=[u'd1', u'd2', u'dà'],
         )
 
         self.bando2 = api.content.create(
