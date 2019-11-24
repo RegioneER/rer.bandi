@@ -38,9 +38,10 @@ jobs:
         run: |
           export DISPLAY=:99.0
           Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-          sleep 3
+          sleep 5
           firefox -v
       - name: Run tests
         run: |
           bin/code-analysis
-          bin/test
+          # bin/test --all
+          bin/test -s rer.bandi -t test_search_form.robot --all
