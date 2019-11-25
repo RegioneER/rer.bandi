@@ -39,10 +39,9 @@ jobs:
           export DISPLAY=:99.0 & Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1
           sleep 5
           firefox -v
-      - name: Setup Debug Session
-        uses: csexton/debugger-action@master
+      # - name: Setup Debug Session
+      #   uses: csexton/debugger-action@master
       - name: Run tests
         run: |
-          # bin/code-analysis
-          # bin/test --all
-          bin/test -s rer.bandi -t test_search_form.robot --all
+          bin/code-analysis
+          bin/test --all
