@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-25 10:51+0000\n"
+"POT-Creation-Date: 2019-11-25 13:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -290,6 +290,9 @@ msgstr ""
 #: ./browser/bando.pt:118
 #: ./browser/search_form.pt:100
 msgid "finanziatori_label"
+msgstr ""
+
+msgid "go_to_search_filters"
 msgstr ""
 
 msgid "go_to_search_results"

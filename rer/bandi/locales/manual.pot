@@ -34,3 +34,6 @@ msgstr ""
 
 msgid "go_to_search_results"
 msgstr ""
+
+msgid "go_to_search_filters"
+msgstr ""

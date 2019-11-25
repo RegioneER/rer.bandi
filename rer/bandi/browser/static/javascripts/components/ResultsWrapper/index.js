@@ -102,7 +102,12 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
     />
   );
   return (
-    <div className="search-results col-md-8 col-sm-12">{resultsContent}</div>
+    <div className="search-results col-md-8 col-sm-12">
+      {resultsContent}
+      <a href="#bandi-search-filters" className="sr-only">
+        {getTranslationFor('go_to_search_filters', 'Go to filters')}
+      </a>
+    </div>
   );
 };
 ResultsWrapper.propTypes = {
