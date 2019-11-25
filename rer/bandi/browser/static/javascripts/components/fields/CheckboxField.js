@@ -31,9 +31,10 @@ const CheckboxField = ({ parameter, value = [], updateQueryParameters }) => {
       <legend>{parameter.label}</legend>
       {parameter.options.map(option => (
         <div className="checkbox-option" key={option.label}>
-          <label>
+          <label htmlFor={option.value}>
             <input
               name={option.label}
+              id={option.value}
               value={option.value}
               checked={value.includes(option.value)}
               type="checkbox"

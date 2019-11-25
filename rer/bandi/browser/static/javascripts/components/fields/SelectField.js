@@ -6,8 +6,8 @@ import { TranslationsContext } from '../../TranslationsContext';
 const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
   const getTranslationFor = useContext(TranslationsContext);
   return (
-    <label>
-      <span>{parameter.label}</span>
+    <React.Fragment>
+      <label htmlFor={parameter.id}>{parameter.label}</label>
       {parameter.help.length ? (
         <p className="discreet">{parameter.help}</p>
       ) : (
@@ -15,6 +15,7 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
       )}
       <Select
         isMulti={parameter.multivalued}
+        inputId={parameter.id}
         tabSelectsValue={false}
         value={value.map(element => {
           return {
@@ -43,7 +44,7 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
           });
         }}
       />
-    </label>
+    </React.Fragment>
   );
 };
 

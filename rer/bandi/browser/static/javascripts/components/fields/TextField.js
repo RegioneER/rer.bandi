@@ -19,16 +19,17 @@ const TextField = ({ parameter, value = '', updateQueryParameters }) => {
     setData({ text: value, timeout: 0 });
   }, [value]);
   return (
-    <label>
-      <span>{parameter.label}</span>
+    <React.Fragment>
+      <label htmlFor={parameter.id}>{parameter.label}</label>
       {parameter.help ? <p className="discreet">{parameter.help}</p> : ''}
       <input
         name={parameter.id}
+        id={parameter.id}
         type="text"
         value={data.text}
         onChange={e => delaySearchSubmit(e.target.value)}
       />
-    </label>
+    </React.Fragment>
   );
 };
 
