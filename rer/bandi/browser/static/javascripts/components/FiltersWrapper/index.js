@@ -32,7 +32,7 @@ const FiltersWrapper = ({
           ))
         : ''}
       <div className="reset-filters">
-        <button onClick={resetQueryParameters}>
+        <button onClick={resetQueryParameters} className="btn btn-secondary">
           {getTranslationFor('reset_filters_label', 'Reset all filters')}
         </button>
       </div>

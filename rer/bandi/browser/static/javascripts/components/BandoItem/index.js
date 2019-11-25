@@ -57,7 +57,7 @@ const BandoItem = ({ data }) => {
   );
   return (
     <div className="bando-result">
-      <h2 className="bandoTitle contenttype-bando">
+      <h3 className="bandoTitle contenttype-bando">
         <span className={`state-${bandoState} bandoStateClass`}>
           {getTranslationFor(
             `bandi_search_state_${bandoState.toLowerCase()}`,
@@ -67,7 +67,7 @@ const BandoItem = ({ data }) => {
         <a className={`state-${data.review_state}`} href={data['@id']}>
           <span>{data.title}</span>
         </a>
-      </h2>
+      </h3>
       <div className="bandoDetail">
         {data.description}
         <div className="bandoDates">

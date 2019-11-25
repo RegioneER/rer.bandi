@@ -3,8 +3,8 @@ body#visual-portal-wrapper {
         #edit-bar {
             #edit-zone {
                 .contenttype-bando:after {
-                    content: "";
-                    background-image: url("/++plone++rer.bandi.images/bando_icon.svg");
+                    content: '';
+                    background-image: url('/++plone++rer.bandi.images/bando_icon.svg');
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: 1em;
@@ -140,8 +140,12 @@ h3.bandoTitle {
 
 h2.bandoTitle,
 .bandoInfos {
-    position: relative;
     padding: 15px 0;
+}
+
+.bandoTitle,
+.bandoInfos {
+    position: relative;
 
     .tileContent & {
         padding-left: 75px;
