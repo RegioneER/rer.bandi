@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-23 06:18+0000\n"
+"POT-Creation-Date: 2019-11-25 10:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,6 +292,9 @@ msgstr ""
 msgid "finanziatori_label"
 msgstr ""
 
+msgid "go_to_search_results"
+msgstr ""
+
 #. Default: "Announcements search results"
 #: ./browser/search.pt:39
 msgid "heading_search_results"
@@ -373,4 +376,7 @@ msgstr ""
 #. Default: "Subscribe to an always-updated feed of these search terms"
 #: ./browser/search.pt:74
 msgid "title_rss_feed"
+msgstr ""
+
+msgid "toggle_filters_label"
 msgstr ""

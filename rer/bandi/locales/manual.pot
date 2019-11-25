@@ -28,3 +28,9 @@ msgstr ""
 
 msgid "reset_filters_label"
 msgstr ""
+
+msgid "toggle_filters_label"
+msgstr ""
+
+msgid "go_to_search_results"
+msgstr ""

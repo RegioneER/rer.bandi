@@ -13,7 +13,9 @@ const ResultsList = ({ queryParameters, results, updatedPagination }) => {
   return (
     <React.Fragment>
       <div className="results-total">
-        <h2>{getTranslationFor('results_tot_label', '', items_total || 0)}</h2>
+        <h2 id="bandi-search-results">
+          {getTranslationFor('results_tot_label', '', items_total || 0)}
+        </h2>
       </div>
       {items ? (
         <div className="results-wrapper">

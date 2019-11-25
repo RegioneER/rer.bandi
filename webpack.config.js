@@ -45,7 +45,13 @@ module.exports = (webpackEnv, argv) => {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
+          // exclude: /(node_modules).(?!query-string)/,
+          exclude: function(modulePath) {
+            return (
+              /node_modules/.test(modulePath) &&
+              !/node_modules\/query-string/.test(modulePath)
+            );
+          },
           use: ['babel-loader'],
         },
         {

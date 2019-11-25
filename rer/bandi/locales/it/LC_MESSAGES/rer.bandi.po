@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-23 06:18+0000\n"
+"POT-Creation-Date: 2019-11-25 10:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -292,6 +292,9 @@ msgstr "Chi può fare domanda"
 msgid "finanziatori_label"
 msgstr "Finanziato con fondi europei"
 
+msgid "go_to_search_results"
+msgstr "Vai ai risultati"
+
 #. Default: "Announcements search results"
 #: ./browser/search.pt:39
 msgid "heading_search_results"
@@ -376,3 +379,6 @@ msgstr "Tipologia di bando"
 #: ./browser/search.pt:74
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
+
+msgid "toggle_filters_label"
+msgstr "Apri/chiudi i filtri"

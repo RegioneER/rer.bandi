@@ -102,9 +102,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
     />
   );
   return (
-    <div className="search-results col-lg-8 col-md-6 col-sm-12">
-      {resultsContent}
-    </div>
+    <div className="search-results col-md-8 col-sm-12">{resultsContent}</div>
   );
 };
 ResultsWrapper.propTypes = {

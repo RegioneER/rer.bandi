@@ -72,5 +72,10 @@
     "react-paginate": "^6.3.2",
     "react-select": "^3.0.8",
     "react-spinkit": "^3.0.0"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 11",
+    "iOS >= 9"
+  ]
 }
