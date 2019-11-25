@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-bionic
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
@@ -26,7 +26,7 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: |
-          # sudo apt-get update
+          sudo apt-get update
           sudo apt-get install firefox-geckodriver
           pip install -r requirements.txt -c constraints_plone${{ matrix.plone }}.txt
           cp test_plone${{ matrix.plone }}.cfg buildout.cfg
@@ -36,9 +36,7 @@ jobs:
           buildout -N -t 3 code-analysis:return-status-codes=True
       - name: Before script
         run: |
-          export DISPLAY=:99.0
-          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-          sleep 5
+          export DISPLAY=:99.0 & Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & sleep 5
           firefox -v
       - name: Run tests
         run: |
