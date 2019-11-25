@@ -36,7 +36,8 @@ jobs:
           buildout -N -t 3 code-analysis:return-status-codes=True
       - name: Before script
         run: |
-          export DISPLAY=:99.0 & Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 & sleep 5
+          export DISPLAY=:99.0 & Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1
+          sleep 5
           firefox -v
       - name: Setup Debug Session
         uses: csexton/debugger-action@master

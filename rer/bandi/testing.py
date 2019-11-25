@@ -5,10 +5,8 @@ from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
-from plone.testing import z2
-from zope.configuration import xmlconfig
-from plone.restapi.testing import PLONE_RESTAPI_DX_FIXTURE
 from plone.restapi.testing import PloneRestApiDXLayer
+from plone.testing import z2
 
 import rer.bandi
 
@@ -52,7 +50,7 @@ RER_BANDI_ACCEPTANCE_TESTING = FunctionalTesting(
 
 class RerBandiRestApiLayer(PloneRestApiDXLayer):
 
-    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, )
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
         super(RerBandiRestApiLayer, self).setUpZope(app, configurationContext)
