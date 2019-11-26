@@ -60,6 +60,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
           'getScadenza_bando',
           'getChiusura_procedimento_bando',
           'UID',
+          'site_name',
         ],
       },
     );

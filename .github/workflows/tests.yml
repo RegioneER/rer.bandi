@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y firefox-geckodriver
+          sudo apt-get install firefox-geckodriver
           pip install -r requirements.txt -c constraints_plone${{ matrix.plone }}.txt
           cp test_plone${{ matrix.plone }}.cfg buildout.cfg
       - name: Install buildout
@@ -36,12 +36,12 @@ jobs:
           buildout -N -t 3 code-analysis:return-status-codes=True
       - name: Before script
         run: |
-          export DISPLAY=:99.0
-          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          export DISPLAY=:99.0 & Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1
           sleep 5
           firefox -v
+      # - name: Setup Debug Session
+      #   uses: csexton/debugger-action@master
       - name: Run tests
         run: |
           bin/code-analysis
-          # bin/test --all
-          bin/test -s rer.bandi -t test_search_form.robot --all
+          bin/test --all
