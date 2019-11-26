@@ -34,7 +34,7 @@ const FiltersWrapper = ({
       </a>
       {isMobile && (
         <button
-          className="btn btn-secondary collapse-btn"
+          className="btn btn-secondary collapse-btn collapsed"
           type="button"
           data-toggle="collapse"
           data-target="#filtersCollapse"
