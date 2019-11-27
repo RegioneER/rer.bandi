@@ -59,27 +59,10 @@
     />
 
   <browser:page
-    for="*"
-    name="search_bandi_form"
-    layer="rer.bandi.interfaces.IRerBandiLayer"
-    class=".search.SearchBandiForm"
-    template="search_form.pt"
-    permission="zope2.View"
-    />
-
-  <browser:page
-    for="*"
-    name="search_bandi"
-    template="search.pt"
-	  class=".search.SearchBandi"
-    permission="zope2.View"
-    />
-
-  <browser:page
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    name="search_bandi_new"
-    template="search_new.pt"
-	  class=".search_new.View"
+    name="search_bandi_form"
+    template="search_rest.pt"
+	  class=".search_rest.View"
     permission="zope2.View"
     layer="rer.bandi.interfaces.IRerBandiLayer"
     />

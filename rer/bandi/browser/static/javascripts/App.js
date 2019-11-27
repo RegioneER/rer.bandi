@@ -64,9 +64,9 @@ const App = () => {
     const newQueryParameters = { ...queryParameters, ...parameter };
     setQueryParameters(newQueryParameters);
     history.pushState(
-      { id: 'search_bandi_new' },
+      { id: 'search_bandi_form' },
       'Search Bandi',
-      `${portalUrl}/search_bandi_new?${queryString.stringify(
+      `${portalUrl}/search_bandi_form?${queryString.stringify(
         newQueryParameters,
       )}`,
     );
@@ -76,9 +76,9 @@ const App = () => {
     const newQueryParameters = { b_start: 0, b_size: 20 };
     setQueryParameters(newQueryParameters);
     history.pushState(
-      { id: 'search_bandi_new' },
+      { id: 'search_bandi_form' },
       'Search Bandi',
-      `${portalUrl}/search_bandi_new`,
+      `${portalUrl}/search_bandi_form`,
     );
   };
 

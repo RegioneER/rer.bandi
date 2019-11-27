@@ -1,14 +1,17 @@
 Changelog
 =========
 
-3.1.0 (unreleased)
+4.0.0 (unreleased)
 -------------------
 
 - Python 3 compatibility.
   [cekk]
 - New bandi search view
   [cekk][nicola]
-
+- Change bando fields: dropped `ente_bando`, add `materie` and `finanziatori`.
+  [cekk]
+- Bando categorization fields vocabularies have now a pre-defined static list of values.
+  [cekk]
 
 3.0.15 (2019-02-11)
 -------------------
