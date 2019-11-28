@@ -4,8 +4,8 @@ Changelog
 4.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix search view url.
+  [cekk]
 
 4.0.0 (2019-11-28)
 ------------------
