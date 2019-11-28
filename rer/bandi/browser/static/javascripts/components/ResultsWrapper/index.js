@@ -72,7 +72,7 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
         'content-type': 'application/json',
         Accept: 'application/json',
       },
-      url: `${portalUrl}/@search_bandi_form`,
+      url: `${portalUrl}/@search_bandi_rest`,
       params,
       paramsSerializer: params => parseParams(params),
     }).then(({ status, statusText, data }) => {
