@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-01-30 08:16+0000\n"
+"POT-Creation-Date: 2019-11-25 13:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,25 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: rer.bandi\n"
 
-#: ./portlets/collection.py:266
+#: ./portlets/collection.py:299
 msgid "Add Bandi Portlet"
 msgstr "Aggiungi Portlet Bandi"
 
-#: ./portlets/collection.py:25
+#: ./portlets/collection.py:23
 msgid "Alternative text to show in 'other' link."
 msgstr "Testo alternativo da mostrare nel link ad 'altro'"
 
-#: ./profiles/default/controlpanel.xml
-msgid "Bandi Settings"
-msgstr "Impostazioni Bandi"
-
-#: ./browser/configure.zcml:104
+#: ./browser/configure.zcml:112
 msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/configure.zcml:110
+#: ./browser/configure.zcml:118
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
-#: ./browser/bando.py:215
-#: ./browser/collection.py:69
-#: ./browser/search.py:173
+#: ./browser/bando.py:216
+#: ./browser/collection.py:70
+#: ./browser/search.py:127
 msgid "Closed"
 msgstr "Chiuso"
 
@@ -47,26 +43,30 @@ msgstr "Chiuso"
 msgid "Default"
 msgstr ""
 
-#: ./portlets/collection.py:284
+#: ./portlets/collection.py:318
 msgid "Edit Bandi Portlet"
 msgstr "Modifica Portlet Bandi"
 
-#: ./browser/bando.py:219
-#: ./browser/collection.py:72
-#: ./browser/search.py:178
+#: ./browser/bando.py:221
+#: ./browser/collection.py:75
+#: ./browser/search.py:132
 msgid "In progress"
 msgstr "In corso"
 
-#: ./portlets/collection.py:32
+#: ./portlets/collection.py:30
 msgid "Insert an internal link. This field override external link field"
 msgstr "Inserisci un link interno. Questo campo sovrascriverà il campo link esterno."
 
-#: ./portlets/collection.py:31
+#: ./portlets/collection.py:29
 msgid "Internal link"
 msgstr "Link interno."
 
-#: ./configure.zcml:61
+#: ./configure.zcml:62
 msgid "Migrate to version 2.2.0"
+msgstr ""
+
+#: ./configure.zcml:69
+msgid "Migrate to version 3.0.0"
 msgstr ""
 
 #: ./browser/configure.zcml:59
@@ -74,32 +74,36 @@ msgid "Mostra altre informazioni a destra"
 msgstr ""
 
 #: ./browser/bando.py:209
-#: ./browser/collection.py:65
-#: ./browser/search.py:165
+#: ./browser/collection.py:62
+#: ./browser/search.py:119
 msgid "Open"
 msgstr "Aperto"
 
-#: ./portlets/collection.py:24
+#: ./portlets/collection.py:22
 msgid "Other text"
 msgstr "Testo per 'altro'"
 
-#: ./configure.zcml:45
+#: ./configure.zcml:46
 msgid "RER: Bandi"
 msgstr ""
 
-#: ./configure.zcml:61
+#: ./configure.zcml:62
 msgid "RER:Bandi migrate to version 2.2.0 (2200)"
+msgstr ""
+
+#: ./configure.zcml:69
+msgid "RER:Bandi migrate to version 3.0.0 (3000)"
 msgstr ""
 
 #: ./browser/configure.zcml:59
 msgid "Sulla destra"
 msgstr ""
 
-#: ./portlets/collection.py:267
+#: ./portlets/collection.py:300
 msgid "This portlet display a listing of bandi from a Collection."
 msgstr "Questa portlet mostra una lista di bandi da una collezione."
 
-#: ./configure.zcml:53
+#: ./configure.zcml:54
 msgid "Uninstalls the rer.bandi package"
 msgstr ""
 
@@ -112,17 +116,19 @@ msgstr ""
 msgid "bandi_layout"
 msgstr ""
 
+#. Default: "Select one or more values."
+#: ./browser/search_form.pt:86
+#: ./interfaces/bandoSchema.py:35
+#: ./services/search_parameters/get.py:100
+msgid "bandi_multiselect_help"
+msgstr "Seleziona uno o più valori."
+
 #. Default: "Published on"
 #: ./browser/collection.pt:79
-#: ./browser/search.pt:122
+#: ./browser/search.pt:121
 #: ./portlets/collection.pt:46
 msgid "bandi_published_on"
 msgstr "Pubblicato il"
-
-#. Default: "Authorities"
-#: ./browser/search_form.pt:111
-msgid "bandi_search_authority_label"
-msgstr "Enti"
 
 #. Default: "This search mask allows to find announcements in the site that satisfy one or more search criteria."
 #: ./browser/search_form.pt:22
@@ -131,18 +137,9 @@ msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che sodd
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
+#: ./browser/search_new.pt:18
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
-
-#. Default: "Select announcements recipients."
-#: ./browser/search_form.pt:92
-msgid "bandi_search_recipients_help"
-msgstr "Seleziona i destinatari dei bandi."
-
-#. Default: "Recipients"
-#: ./browser/search_form.pt:90
-msgid "bandi_search_recipients_label"
-msgstr "Destinatari"
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
@@ -152,7 +149,7 @@ msgstr "Tutti"
 #. Default: "Closed"
 #: ./browser/search_form.pt:62
 msgid "bandi_search_state_closed"
-msgstr "Chiusi"
+msgstr "Chiuso"
 
 #. Default: "Search announcements <strong>open</strong> (with participation terms not expired), <strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or <strong>closed</strong> (the procedure is closed)."
 #: ./browser/search_form.pt:52
@@ -166,77 +163,80 @@ msgstr "In corso"
 
 #. Default: "State"
 #: ./browser/search_form.pt:50
+#: ./services/search_parameters/get.py:38
 msgid "bandi_search_state_label"
 msgstr "Stato"
 
 #. Default: "Open"
 #: ./browser/search_form.pt:60
 msgid "bandi_search_state_open"
-msgstr "Aperti"
+msgstr "Aperto"
 
 #. Default: "For a simple text search, enter your search term here. Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>. The text in this field will be matched with Announcements' title, description and text."
 #: ./browser/search_form.pt:35
 msgid "bandi_search_text_help"
 msgstr "Per una semplice ricerca di testo inserisci qui i termini desiderati. Possono essere cercate più parole contemporaneamente combinandole con gli operatori <strong>AND</strong> e <strong>OR</strong>. Il testo inserito in questo campo verrà cercato nel titolo, descrizione e testo dei bandi."
 
+#. Default: "Search in title, description, text and subjects. Use OR to search more words (AND is the default)"
+#: ./services/search_parameters/get.py:25
+msgid "bandi_search_text_help2"
+msgstr "Cerca in titolo, descrizione, testo e parole chiave. Usa OR per cercare più parole (AND è il default)."
+
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
+#: ./services/search_parameters/get.py:21
 msgid "bandi_search_text_label"
 msgstr "Ricerca testuale"
 
-#. Default: "Select an annonuncement type."
-#: ./browser/search_form.pt:70
-msgid "bandi_search_type_help"
-msgstr "Seleziona una tipologia di bando."
-
 #. Default: "Type"
 #: ./browser/search_form.pt:68
+#: ./services/search_parameters/get.py:84
 msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
-#. Default: "Select where to search."
-#: ./browser/search_form.pt:182
-msgid "bandi_searchsites_help"
-msgstr "Seleziona i portali dove effettuare la ricerca."
-
-#. Default: "Available sites"
-#: ./browser/search_form.pt:181
-msgid "bandi_searchsites_label"
-msgstr "Portali disponibili"
-
-#. Default: "If checked, the search will be made on a selected list of ER Sites. If not checked, the search will be made only on this site."
-#: ./browser/search_form.pt:174
-msgid "bandi_use_solr_help"
-msgstr "Se selezionato, la ricerca verrà effettuata in una serie di portali ER. Se non selezionato, la ricerca verrà effettuata solamente in questo portale."
-
-#. Default: "Multisite search"
-#: ./browser/search_form.pt:173
-msgid "bandi_use_solr_label"
-msgstr "Ricerca multisito"
-
 #. Default: "Consulta gli approfondimenti"
-#: ./browser/bando.pt:104
+#: ./browser/bando.pt:93
 msgid "bando_anchor_foldeeps"
 msgstr ""
 
 #. Default: "Closing process"
-#: ./browser/bando-right.pt:91
-#: ./browser/bando.pt:93
+#: ./browser/bando-right.pt:80
+#: ./browser/bando.pt:82
 msgid "bando_chiusura_procedimento"
 msgstr "Chiusura procedimento"
 
 #. Default: "Publication date"
-#: ./browser/bando-right.pt:74
-#: ./browser/bando.pt:76
+#: ./browser/bando-right.pt:63
+#: ./browser/bando.pt:65
 msgid "bando_pub_date"
 msgstr "Data di pubblicazione"
 
 #. Default: "Deadline participation terms"
-#: ./browser/bando-right.pt:83
-#: ./browser/bando.pt:85
+#: ./browser/bando-right.pt:72
+#: ./browser/bando.pt:74
 #: ./browser/collection.pt:87
 msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
+
+#. Default: "All"
+#: ./services/search_parameters/get.py:47
+msgid "bando_state_all_select_label"
+msgstr "Tutti"
+
+#. Default: "Closed"
+#: ./services/search_parameters/get.py:71
+msgid "bando_state_closed_select_label"
+msgstr "Chiusi"
+
+#. Default: "In progress"
+#: ./services/search_parameters/get.py:61
+msgid "bando_state_inProgress_select_label"
+msgstr "In corso"
+
+#. Default: "Open"
+#: ./services/search_parameters/get.py:54
+msgid "bando_state_open_select_label"
+msgstr "Aperti"
 
 #. Default: "Status"
 #: ./browser/bando-right.pt:32
@@ -245,26 +245,26 @@ msgid "bando_status_label"
 msgstr "Stato"
 
 #. Default: "${number} item matching your search terms"
-#: ./browser/search.pt:57
+#: ./browser/search.pt:56
 msgid "batch_x_item_matching_your_criteria"
 msgstr "${number} elemento soddisfa i criteri specificati"
 
 #. Default: "${number} items matching your search terms"
-#: ./browser/search.pt:48
+#: ./browser/search.pt:47
 msgid "batch_x_items_matching_your_criteria"
 msgstr "${number} elementi soddisfano i criteri specificati"
 
 #. Default: "Chiusura procedimento bando"
-#: ./profiles/default/registry.xml
+#: ./profiles/default/registry/topic.xml
 msgid "chiusura_procedimento_bando"
 msgstr ""
 
-#: ./interfaces/bandoSchema.py:40
+#: ./interfaces/bandoSchema.py:80
 msgid "chiusura_procedimento_bando_help"
 msgstr ""
 
 #. Default: "Closing date procedure"
-#: ./interfaces/bandoSchema.py:36
+#: ./interfaces/bandoSchema.py:76
 msgid "chiusura_procedimento_bando_label"
 msgstr "Data chiusura procedimento"
 
@@ -274,85 +274,102 @@ msgid "description_no_items_in_folder"
 msgstr "Non ci sono elementi."
 
 #. Default: "No results were found."
-#: ./browser/search.pt:84
+#: ./browser/search.pt:83
 msgid "description_no_results_found"
 msgstr "Nessun risultato è stato trovato"
 
-#: ./interfaces/bandoSchema.py:70
-msgid "destinatari_help"
-msgstr ""
-
-#. Default: "Recipients"
+#. Default: "Who can apply"
 #: ./browser/bando-right.pt:52
 #: ./browser/bando.pt:54
-#: ./interfaces/bandoSchema.py:69
+#: ./browser/search_form.pt:85
 msgid "destinatari_label"
-msgstr "Destinatari"
+msgstr "Chi può fare domanda"
 
-#. Default: "Select some authorities."
-#: ./interfaces/bandoSchema.py:59
-msgid "ente_help"
-msgstr "Selezionare l'ente proponente del bando."
+#. Default: "Financed by EU programmes"
+#: ./browser/bando-right.pt:140
+#: ./browser/bando.pt:118
+#: ./browser/search_form.pt:100
+msgid "finanziatori_label"
+msgstr "Finanziato con fondi europei"
 
-#. Default: "Authority"
-#: ./browser/bando-right.pt:63
-#: ./browser/bando.pt:65
-#: ./interfaces/bandoSchema.py:58
-msgid "ente_label"
-msgstr "Ente"
+msgid "go_to_search_filters"
+msgstr "Vai ai filtri"
+
+msgid "go_to_search_results"
+msgstr "Vai ai risultati"
 
 #. Default: "Announcements search results"
-#: ./browser/search.pt:40
+#: ./browser/search.pt:39
 msgid "heading_search_results"
 msgstr "Risultati ricerca bandi"
 
-#. Default: "Return items matching some or all of these authorities. Multiple words may be found by pressing <strong>Ctrl</strong> (or <strong>Apple</strong> key on Mac) while clicking the keywords."
-#: ./browser/search_form.pt:113
-msgid "help_search_authorities"
-msgstr "Mostra i bandi appartenenti a questi enti. Possono essere selezionati più tag mantenendo premuto il tasto Ctrl (o il tasto Mela sul Mac)."
-
 #. Default: "Search"
-#: ./browser/search_form.pt:201
+#: ./browser/search_form.pt:152
 msgid "label_search"
 msgstr "Cerca"
+
+#. Default: "Topic"
+#: ./browser/bando-right.pt:135
+#: ./browser/bando.pt:113
+#: ./browser/search_form.pt:117
+msgid "materie_label"
+msgstr "Materia"
 
 #. Default: "More…"
 #: ./tiles/bandi_render.pt:80
 msgid "more_url"
-msgstr ""
+msgstr "More..."
 
-#: ./configure.zcml:53
+msgid "refine_search_label"
+msgstr "Raffina la tua ricerca"
+
+#: ./configure.zcml:54
 msgid "rer.bandi uninstall"
-msgstr ""
+msgstr "disinstalla rer.bandi"
+
+msgid "reset_filters_label"
+msgstr "Rimuovi tutti i filtri"
+
+#
+msgid "results_tot_label"
+msgstr "Trovati ${variable} risultati."
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
-#: ./interfaces/bandoSchema.py:30
+#: ./interfaces/bandoSchema.py:86
 msgid "riferimenti_bando_help"
 msgstr "indicare la struttura di riferimento e il responsabile del procedimento"
 
 #. Default: "References"
-#: ./interfaces/bandoSchema.py:29
+#: ./interfaces/bandoSchema.py:85
 msgid "riferimenti_bando_label"
 msgstr "Riferimenti"
 
 #. Default: "Deadline to participate in the announcement"
-#: ./interfaces/bandoSchema.py:47
+#: ./interfaces/bandoSchema.py:69
 msgid "scadenza_bando_help"
 msgstr "Scadenza dei termini per partecipare al bando"
 
 #. Default: "Expiration date and time"
-#: ./interfaces/bandoSchema.py:46
+#: ./interfaces/bandoSchema.py:68
 msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
+
+msgid "select_placeholder"
+msgstr "Seleziona..."
+
+#. Default: "Subjects"
+#: ./services/search_parameters/get.py:155
+msgid "subject_label"
+msgstr "Categorie"
 
 #. Default: "No results found"
 #: ./tiles/bandi_render.pt:23
 msgid "tiles_collection_noresults"
 msgstr "Non sono stati trovati bandi"
 
-#: ./interfaces/bandoSchema.py:79
+#: ./interfaces/bandoSchema.py:27
 msgid "tipologia_bando_help"
-msgstr ""
+msgstr "Specificare la tipologia del bando"
 
 #. Default: "Announcement type"
 #: ./browser/bando-right.pt:45
@@ -362,6 +379,9 @@ msgid "tipologia_bando_label"
 msgstr "Tipologia di bando"
 
 #. Default: "Subscribe to an always-updated feed of these search terms"
-#: ./browser/search.pt:75
+#: ./browser/search.pt:74
 msgid "title_rss_feed"
 msgstr "Ricevi il flusso RSS costantemente aggiornato dei risultati di questa ricerca"
+
+msgid "toggle_filters_label"
+msgstr "Apri/chiudi i filtri"

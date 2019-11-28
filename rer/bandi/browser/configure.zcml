@@ -58,23 +58,14 @@
     description="Mostra altre informazioni a destra"
     />
 
-
   <browser:page
-    for="*"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="search_bandi_form"
-    class=".search.SearchBandiForm"
-    template="search_form.pt"
+    template="search_rest.pt"
+	  class=".search_rest.View"
     permission="zope2.View"
+    layer="rer.bandi.interfaces.IRerBandiLayer"
     />
-
-  <browser:page
-    for="*"
-    name="search_bandi"
-    template="search.pt"
-	  class=".search.SearchBandi"
-    permission="zope2.View"
-    />
-
  <!-- Viste per le nuove collezioni -->
 
   <browser:page
@@ -127,6 +118,12 @@
     name="searchbandi.js"
     file="searchbandi.js"
     />
+  <!-- Publish static files -->
+  <plone:static
+      name="rer.bandi.static"
+      type="plone"
+      directory="static"
+      />
 
   <browser:page
     name="plone_context_state"

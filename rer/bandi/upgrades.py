@@ -2,9 +2,23 @@
 from Products.CMFCore.utils import getToolByName
 from plone import api
 from rer.bandi import logger
-from rer.bandi.setuphandlers import addKeyToCatalog
 
 default_profile = 'profile-rer.bandi:default'
+
+TIPOLOGIA_BANDO_MAPPING = {
+    'agevolazioni': u'Agevolazioni, finanziamenti, contributi',
+    'beni_servizi': u'Manifestazioni di interesse',
+    'lavori_pubblici': u'Manifestazioni di interesse',
+    'altro': u'Manifestazioni di interesse',
+}
+
+DESTINATARI_BANDO_MAPPING = {
+    'Cittadini': [u'Cittadini'],
+    'Imprese': [u'Grandi imprese', u'PMI', u'Micro imprese'],
+    'Enti locali': [u'Enti pubblici'],
+    'Associazioni': [u'Enti del Terzo settore'],
+    'Altro': [u'Scuole, università, enti di formazione'],
+}
 
 
 def upgrade(upgrade_product, version):
@@ -28,8 +42,8 @@ def to_2(context):
     """
     """
     logger.info('Upgrading rer.bandi to version 2.1.0')
-    portal = context.portal_url.getPortalObject()
-    addKeyToCatalog(portal)
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
 
 
 def migrate_to_2200(context):
@@ -53,7 +67,9 @@ def migrate_to_2200(context):
     setup_tool.runImportStepFromProfile(
         'profile-rer.bandi:default', 'plone.app.registry'
     )
-    setup_tool.runImportStepFromProfile('profile-rer.bandi:default', 'typeinfo')
+    setup_tool.runImportStepFromProfile(
+        'profile-rer.bandi:default', 'typeinfo'
+    )
 
     logger.info("Migrated to 2.2.0")
 
@@ -74,3 +90,71 @@ def migrate_to_2500(context):
     setup_tool = api.portal.get_tool('portal_setup')
     setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
     logger.info('Upgrading to 2500')
+
+
+def migrate_to_3000(context):
+    PROFILE_ID = 'profile-rer.bandi:migrate_to_3000'
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
+
+    #  update indexes and topics
+    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
+
+    bandi = api.content.find(portal_type='Bando')
+    tot_results = len(bandi)
+    logger.info('### There are {tot} Bandi to fix ###'.format(tot=tot_results))
+    for counter, brain in enumerate(bandi):
+        logger.info(
+            '[{counter}/{tot}] - {bando}'.format(
+                counter=counter + 1, tot=tot_results, bando=brain.getPath()
+            )
+        )
+        remap_fields(brain=brain)
+    logger.info('Upgrading to 3000')
+
+
+def remap_fields(brain):
+    bando = brain.getObject()
+    tipologia = getattr(bando, 'tipologia_bando', '')
+    destinatari = getattr(bando, 'destinatari', [])
+
+    if tipologia:
+        if tipologia not in TIPOLOGIA_BANDO_MAPPING:
+            logger.warning(
+                '  - Unable to find a match for tipologia "{tipologia}" in "{bando}"'.format(  # noqa
+                    tipologia=tipologia, bando=brain.getPath()
+                )
+            )
+        else:
+            new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
+            logger.info(
+                '  - TIPOLOGIA: {old} => {new}'.format(
+                    old=tipologia, new=new_value
+                )
+            )
+            bando.tipologia_bando = new_value.decode('utf-8')
+
+    if not destinatari:
+        new_value = DESTINATARI_BANDO_MAPPING['Altro']
+        bando.destinatari = new_value
+        logger.info('  - DESTINATARIO: VUOTO => {new}'.format(new=new_value))
+    else:
+        new_value = []
+        for destinatario in destinatari:
+            if destinatario not in DESTINATARI_BANDO_MAPPING:
+                logger.warning(
+                    '  - Unable to find a match for destinatario "{destinatario}" in "{bando}"'.format(  # noqa
+                        destinatario=destinatario, bando=brain.getPath()
+                    )
+                )
+            else:
+                new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
+        if new_value:
+            logger.info(
+                '  - DESTINATARIO: {old} => {new}'.format(
+                    old=destinatari, new=new_value
+                )
+            )
+            bando.destinatari = new_value
+    bando.reindexObject(idxs=['getDestinatariBando', 'getTipologia_bando'])

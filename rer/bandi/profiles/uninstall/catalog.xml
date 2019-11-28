@@ -16,4 +16,12 @@
   <indexed_attr value="getTipologia_bando"/>
  </index>
  <column value="getTipologia_bando" remove="True"/>
+ <index name="getFinanziatori_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getFinanziatori_bando"/>
+ </index>
+ <index name="getMaterie_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="getMaterie_bando"/>
+ </index>
+ <!-- <column value="getFinanziatori_bando" remove="True"/>
+ <column value="getMaterie_bando" remove="True"/> -->
 </object>

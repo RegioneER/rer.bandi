@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone import api
 from Products.Five import BrowserView
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from zope.component import getUtility
 from zope.i18n import translate
 from zope.interface import implementer
@@ -19,7 +19,7 @@ class CollectionBandiView(BrowserView):
         self.context = context
         self.request = request
         self.voc_tipologia = getUtility(
-            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary'
+            IVocabularyFactory, name='rer.bandi.tipologie.vocabulary'
         )(self.context)
 
     def getTipologiaTitle(self, key):

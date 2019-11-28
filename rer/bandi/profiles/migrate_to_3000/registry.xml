@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<registry>
+  <records interface="rer.bandi.interfaces.settings.IBandoSettings" remove="true" />
+</registry>

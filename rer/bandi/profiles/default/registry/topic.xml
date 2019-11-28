@@ -26,7 +26,7 @@
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.getDestinatariBando">
-    <value key="title" i18n:translate="destinatari_label">Recipients</value>
+    <value key="title" i18n:translate="destinatari_label">Who can apply</value>
     <value key="description">Announcement recipients</value>
     <value key="enabled">True</value>
     <value key="sortable">False</value>
@@ -50,7 +50,7 @@
     	<element>plone.app.querystring.operation.selection.any</element>
     	<element>plone.app.querystring.operation.selection.all</element>
     </value>
-    <value key="vocabulary">rer.bandi.tipologia.vocabulary</value>
+    <value key="vocabulary">rer.bandi.tipologie.vocabulary</value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
 
@@ -74,25 +74,32 @@
     </value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
-
-  <records interface="rer.bandi.interfaces.settings.IBandoSettings" />
-
-  <records prefix="plone.resources/rer-bandi"
-           interface="Products.CMFPlone.interfaces.IResourceRegistry">
-      <value key="css">
-          <element>++plone++rer.bandi.styles/bandi.css</element>
-      </value>
-  </records>
-
-  <!-- faccio un bundle con le risorse css -->
-  <records prefix="plone.bundles/rer-bandi-bundle"
-           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getFinanziatori_bando">
+    <value key="title" i18n:translate="finanziatori_label">Financed by EU programmes</value>
+    <value key="description"></value>
     <value key="enabled">True</value>
-    <value key="resources" purge="false">
-      <element>rer-bandi</element>
+    <value key="sortable">False</value>
+    <value key="operations">
+        <element>plone.app.querystring.operation.string.contains</element>
+        <element>plone.app.querystring.operation.selection.any</element>
+    	<element>plone.app.querystring.operation.selection.all</element>
     </value>
-    <value key="csscompilation">++plone++rer.bandi.styles/bandi.css</value>
-    <value key="last_compilation">2017-11-26 00:00:00</value>
+     <value key="vocabulary">rer.bandi.finanziatori.vocabulary</value>
+    <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
-
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getMaterie_bando">
+    <value key="title" i18n:translate="materie_label">Topic</value>
+    <value key="description"></value>
+    <value key="enabled">True</value>
+    <value key="sortable">False</value>
+    <value key="operations">
+        <element>plone.app.querystring.operation.string.contains</element>
+        <element>plone.app.querystring.operation.selection.any</element>
+    	<element>plone.app.querystring.operation.selection.all</element>
+    </value>
+     <value key="vocabulary">rer.bandi.materie.vocabulary</value>
+    <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
+  </records>
 </registry>

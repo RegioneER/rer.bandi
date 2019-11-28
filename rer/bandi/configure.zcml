@@ -30,8 +30,10 @@
   <include package=".browser" />
   <include package=".content" />
   <include package=".portlets" />
-  <include package=".interfaces" />
+  <include package=".services" />
+  <include package=".vocabularies" />
   <include zcml:condition="installed collective.tiles.collection" package=".tiles" />
+  <include file="querymodifiers.zcml" />
   <include file="upgrades.zcml" />
 
   <!-- Register the installation GenericSetup extension profile -->
@@ -58,6 +60,13 @@
       description="RER:Bandi migrate to version 2.2.0 (2200)"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <genericsetup:registerProfile
+      name="migrate_to_3000"
+      title="Migrate to version 3.0.0"
+      directory="profiles/migrate_to_3000"
+      description="RER:Bandi migrate to version 3.0.0 (3000)"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
   <genericsetup:importStep
       name="rer.bandi"
@@ -65,29 +74,13 @@
       description="Configures bandi properties"
       handler="rer.bandi.setuphandlers.import_various"
       />
-  <!-- -*- extra stuff goes here -*- -->
-  <!-- registro i vocabolari -->
-  <utility
-    name="rer.bandi.tipologia.vocabulary"
-    component=".vocabularies.TipologiaBandoVocabularyFactory"
-    />
-
-  <utility
-    name="rer.bandi.destinatari.vocabulary"
-    component=".vocabularies.DestinatariVocabulary"
-    />
-
-  <utility
-    name="rer.bandi.enti.vocabulary"
-    component=".vocabularies.EnteVocabulary"
-    />
-
+  
   <!-- indexer per i destinatari -->
   <adapter name="getDestinatariBando" factory=".indexer.destinatari_bando" />
   <adapter name="getChiusura_procedimento_bando" factory=".indexer.getChiusura_procedimento_bando" />
   <adapter name="getScadenza_bando" factory=".indexer.getScadenza_bando" />
-  <adapter name="getEnte_bando" factory=".indexer.getEnte_bando" />
   <adapter name="getTipologia_bando" factory=".indexer.getTipologia_bando" />
-  <!-- <adapter name="SearchableText" factory=".indexer.SearchableTextBandi" /> -->
+  <adapter name="getFinanziatori_bando" factory=".indexer.getFinanziatori_bando" />
+  <adapter name="getMaterie_bando" factory=".indexer.getMaterie_bando" />
 
 </configure>

@@ -1,82 +1,96 @@
 # -*- coding: utf-8 -*-
-from plone import api
 from plone.app.textfield import RichText
 from plone.autoform import directives
-from plone.supermodel import model
-from rer.bandi import bandiMessageFactory as _
-from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from plone.app.z3cform.widget import AjaxSelectFieldWidget
-from z3c.form.browser.radio import RadioFieldWidget
-from zope import schema
 from plone.autoform import directives as form
+from plone.supermodel import model
+from rer.bandi import _
+from z3c.form.browser.checkbox import CheckBoxFieldWidget
+from z3c.form.interfaces import NOVALUE
+from zope import schema
+from z3c.form.browser.radio import RadioFieldWidget
+from zope.interface import Invalid
+from zope.schema._messageid import _ as zsm
 
 
-def getDefaultEnte():
-    default_ente = api.portal.get_registry_record(
-        'rer.bandi.interfaces.settings.IBandoSettings.default_ente'
-    )
-    if default_ente:
-        return default_ente
-    else:
-        return None
+def checkRequiredField(value):
+    if value == NOVALUE or value == []:
+        raise Invalid(zsm("""Required input is missing."""))
+    return True
 
 
 class IBandoSchema(model.Schema):
     """ A Dexterity schema for Annoucements """
 
-    form.order_after(riferimenti_bando='IRichText.text')
-    riferimenti_bando = RichText(
-        title=_('riferimenti_bando_label', default=u"References"),
-        description=_('riferimenti_bando_help', default=u""),
-        required=False
-    )
-
-    form.order_after(chiusura_procedimento_bando='IRichText.text')
-    chiusura_procedimento_bando = schema.Date(
-        title=_(
-            'chiusura_procedimento_bando_label',
-            default=u"Closing date procedure"
-        ),
-        description=_('chiusura_procedimento_bando_help', default=u''),
-        required=False
-    )
-
-    form.order_after(scadenza_bando='IRichText.text')
-    scadenza_bando = schema.Datetime(
-        title=_('scadenza_bando_label', default=u"Expiration date and time"),
-        description=_(
-            'scadenza_bando_help',
-            default=u"Deadline to participate in the announcement"
-        ),
-        required=False
-    )
-
-    form.order_after(ente_bando='IRichText.text')
-    directives.widget('ente_bando', AjaxSelectFieldWidget,
-                      vocabulary='rer.bandi.enti.vocabulary')
-    ente_bando = schema.Tuple(
-        title=_(u'ente_label', default=u'Authority'),
-        description=_(u'ente_help', default=u'Select some authorities.'),
-        required=False,
-        defaultFactory=getDefaultEnte,
-        value_type=schema.TextLine(),
-        missing_value=None
-    )
-
-    form.order_after(destinatari='IRichText.text')
-    directives.widget(destinatari=CheckBoxFieldWidget)
-    destinatari = schema.List(
-        title=_('destinatari_label', default=u"Recipients"),
-        description=_('destinatari_help', default=''),
-        required=True,
-        value_type=schema.Choice(vocabulary='rer.bandi.destinatari.vocabulary')
-    )
-
-    form.order_after(tipologia_bando='IRichText.text')
     directives.widget(tipologia_bando=RadioFieldWidget)
     tipologia_bando = schema.Choice(
         title=_('tipologia_bando_label', default=u"Announcement type"),
         description=_('tipologia_bando_help', default=''),
-        vocabulary='rer.bandi.tipologia.vocabulary',
-        required=True
+        vocabulary='rer.bandi.tipologie.vocabulary',
+        required=True,
     )
+
+    directives.widget(destinatari=CheckBoxFieldWidget)
+    destinatari = schema.List(
+        title=_('destinatari_label', default=u'Who can apply'),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
+        constraint=checkRequiredField,
+        required=True,
+        value_type=schema.Choice(
+            vocabulary='rer.bandi.destinatari.vocabulary'
+        ),
+    )
+
+    directives.widget(finanziatori=CheckBoxFieldWidget)
+    finanziatori = schema.List(
+        title=_('finanziatori_label', default=u'Financed by EU programmes'),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
+        required=False,
+        value_type=schema.Choice(
+            vocabulary='rer.bandi.finanziatori.vocabulary'
+        ),
+    )
+
+    directives.widget(materie=CheckBoxFieldWidget)
+    materie = schema.List(
+        title=_('materie_label', default=u'Topic'),
+        description=_(
+            'bandi_multiselect_help', default='Select one or more values.'
+        ),
+        required=False,
+        value_type=schema.Choice(vocabulary='rer.bandi.materie.vocabulary'),
+    )
+
+    scadenza_bando = schema.Datetime(
+        title=_('scadenza_bando_label', default=u"Expiration date and time"),
+        description=_(
+            'scadenza_bando_help',
+            default=u"Deadline to participate in the announcement",
+        ),
+        required=False,
+    )
+    chiusura_procedimento_bando = schema.Date(
+        title=_(
+            'chiusura_procedimento_bando_label',
+            default=u"Closing date procedure",
+        ),
+        description=_('chiusura_procedimento_bando_help', default=u''),
+        required=False,
+    )
+
+    riferimenti_bando = RichText(
+        title=_('riferimenti_bando_label', default=u"References"),
+        description=_('riferimenti_bando_help', default=u""),
+        required=False,
+    )
+
+    form.order_after(tipologia_bando='IRichText.text')
+    form.order_after(destinatari='tipologia_bando')
+    form.order_after(finanziatori='destinatari')
+    form.order_after(materie='finanziatori')
+    form.order_after(scadenza_bando='materie')
+    form.order_after(chiusura_procedimento_bando='scadenza_bando')
+    form.order_after(riferimenti_bando='chiusura_procedimento_bando')

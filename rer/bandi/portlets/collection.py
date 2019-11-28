@@ -6,7 +6,7 @@ from plone.app.vocabularies.catalog import CatalogSource
 from plone.memoize.instance import memoize
 from plone.portlet.collection.collection import ICollectionPortlet
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from zope import schema
 from zope.component import getMultiAdapter, getUtility
 from zope.i18n import translate
@@ -129,7 +129,7 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         self.voc_tipologia = getUtility(
-            IVocabularyFactory, name='rer.bandi.tipologia.vocabulary'
+            IVocabularyFactory, name='rer.bandi.tipologie.vocabulary'
         )(self.context)
 
     # Cached version - needs a proper cache key
@@ -319,4 +319,3 @@ class EditForm(formhelper.EditForm):
     description = _(
         u"This portlet display a listing of bandi from a Collection."
     )
-

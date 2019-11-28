@@ -43,33 +43,22 @@
 
                                 <tr>
                                     <th i18n:translate="tipologia_bando_label">Announcement type</th>
-                                    <td tal:content="python:view.voc_tipologia.getTermByToken(context.tipologia_bando).title">
-                                        Tipologia bando
+                                    <td>
+                                        ${context/tipologia_bando}
                                     </td>
-                                </tr>
+                                    </tr>
 
-                                <tr tal:condition="context/destinatari|nothing">
-                                    <th i18n:translate="destinatari_label">Recipients</th>
+                                    <tr tal:condition="context/destinatari|nothing">
+                                    <th i18n:translate="destinatari_label">Who can apply</th>
                                     <td>
                                         <ul>
-                                            <li tal:repeat="dest view/getDestinatariNames"
-                                                tal:content="dest">
-                                                Destinatario
-                                            </li>
+                                        <li tal:repeat="dest view/getDestinatariNames"
+                                            tal:content="dest">
+                                            Destinatario
+                                        </li>
                                         </ul>
                                     </td>
-                                </tr>
-                                <tr tal:condition="context/ente_bando|nothing">
-                                    <th i18n:translate="ente_label">Authority</th>
-                                    <td>
-                                        <ul>
-                                            <li tal:repeat="ente context/ente_bando"
-                                                tal:content="ente">
-                                                Authority
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
+                                    </tr>
                                 <tr tal:condition="view/getEffectiveDate">
                                     <th i18n:translate="bando_pub_date">Publication date</th>
                                     <td>
@@ -140,6 +129,16 @@
                         <hr />
                         <div tal:condition="context/riferimenti_bando" tal:content="structure context/riferimenti_bando/output">
                             Riferimenti bando
+                        </div>
+                        <div class="materie-bando" tal:define="materie context/materie"
+                            tal:condition="materie">
+                            <strong><span i18n:translate="materie_label">Topic</span>:</strong>
+                            <span tal:content="python:' | '.join(materie)"></span>
+                        </div>
+                        <div class="finanziatori-bando" tal:define="finanziatori context/finanziatori"
+                            tal:condition="finanziatori">
+                            <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span>:</strong>
+                            <span tal:content="python:' | '.join(finanziatori)"></span>
                         </div>
                     </div>
                     <div class="visualClear"></div>

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from DateTime import DateTime
 from plone.indexer.decorator import indexer
 from rer.bandi.interfaces.bando import IBando
 
-# importo il datetime di python
-from datetime import datetime
-
-# funzione che riceve un date e torna un datetime con l'ora a zero
+import six
 
 
 def dateToDatetime(d):
@@ -15,17 +13,24 @@ def dateToDatetime(d):
 
 @indexer(IBando)
 def destinatari_bando(object, **kw):
-    return getattr(object, 'destinatari', None)
+    destinatari = getattr(object, 'destinatari', [])
+    if not destinatari:
+        return []
+    if six.PY2:
+        return [x.encode('utf-8') for x in destinatari]
+    return destinatari
 
 
 @indexer(IBando)
 def getChiusura_procedimento_bando(object, **kw):
 
     date_chiusura_procedimento_bando = getattr(
-        object, 'chiusura_procedimento_bando', None)
+        object, 'chiusura_procedimento_bando', None
+    )
     if date_chiusura_procedimento_bando:
         datetime_chiusura_procedimento_bando = dateToDatetime(
-            date_chiusura_procedimento_bando)
+            date_chiusura_procedimento_bando
+        )
     else:
         return DateTime('2100/12/31')
 
@@ -46,32 +51,28 @@ def getScadenza_bando(object, **kw):
 
 
 @indexer(IBando)
-def getEnte_bando(object, **kw):
-    return getattr(object, 'ente_bando', None)
+def getTipologia_bando(object, **kw):
+    tipologia = getattr(object, 'tipologia_bando', '')
+    if six.PY2:
+        return tipologia.encode('utf-8')
+    return tipologia
 
 
 @indexer(IBando)
-def getTipologia_bando(object, **kw):
-    return getattr(object, 'tipologia_bando', None)
+def getFinanziatori_bando(object, **kw):
+    finanziatori = getattr(object, 'finanziatori', [])
+    if not finanziatori:
+        return []
+    if six.PY2:
+        return [x.encode('utf-8') for x in finanziatori]
+    return finanziatori
 
 
-# @indexer(IBando)
-# def SearchableTextBandi(obj):
-#     pt = getToolByName(api.portal.get(), 'portal_transforms')
-#     stream = pt.convertTo('text/plain', obj.text.output, mimetype='text/html')
-#
-#     text = []
-#     li = []
-#     li.append(obj.Title())
-#     li.append(obj.Description())
-#     li.append(stream.getData().strip())
-#
-#     for string in li:
-#         for word in string.split():
-#             if word not in text:
-#                 if isinstance(word, unicode):
-#                     text.append(word.encode('utf-8'))
-#                 else:
-#                     text.append(word)
-#
-#     return ' '.join(text)
+@indexer(IBando)
+def getMaterie_bando(object, **kw):
+    materie = getattr(object, 'materie', [])
+    if not materie:
+        return []
+    if six.PY2:
+        return [x.encode('utf-8') for x in materie]
+    return materie

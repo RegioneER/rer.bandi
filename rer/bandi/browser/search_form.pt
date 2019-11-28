@@ -18,7 +18,7 @@
 <div metal:fill-slot="main">
 
     <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
-    
+
 	<p class="searchBandiDescription" i18n:translate="bandi_search_help">
 		This search mask allows to find announcements in the site that satisfy one or more search criteria.
 	</p>
@@ -28,7 +28,7 @@
           name="search"
           id="searchform"
           tal:define="DateTime python:modules['DateTime'].DateTime">
-        
+
             <div class="field">
                 <label for="SearchableText" i18n:translate="bandi_search_text_label">Search text</label>
 
@@ -48,13 +48,13 @@
             <div class="field">
 
               <label i18n:translate="bandi_search_state_label">State</label>
-              
+
 			  <div class="formHelp" i18n:translate="bandi_search_state_help">
 				Search announcements <strong>open</strong> (with participation terms not expired),
 				<strong>in progress</strong> (participation terms expired, but the procedure isn't already closed) or
 				<strong>closed</strong> (the procedure is closed).
               </div>
-              
+
 			  <select name="stato_bandi" id="stato_bandi" i18n:domain="rer.bandi">
                 <option value="" selected="selected" i18n:translate="bandi_search_state_all">All</option>
                 <option value="open" i18n:translate="bandi_search_state_open">Open</option>
@@ -65,130 +65,81 @@
 
 
             <div class="field">
-                <label for="tipologia" i18n:translate="bandi_search_type_label">Type</label>
+                <label for="getTipologia_bando" i18n:translate="bandi_search_type_label">Type</label>
+                <br/>
 
-                <div class="formHelp" i18n:translate="bandi_search_type_help">
-                Select an annonuncement type.
-                </div>
-
-                <tal:items repeat="t_tipo view/terms_tipologia">
-                <input class="noborder"
-                       type="checkbox"
-                       name="getTipologia_bando"
-                       checked="checked"
-                       tal:attributes="value t_tipo/token;
-                                       id python:'tipol_%s' % t_tipo.token" />
-                <label tal:attributes="for python:'tipol_%s'% t_tipo.token"
-                       tal:content="t_tipo/title"
-                       />
-                <br />
+                <tal:items repeat="tipologia python:view.getVocabularyTermsForForm('rer.bandi.tipologie.vocabulary');">
+                  <input class="noborder"
+                         type="checkbox"
+                         name="getTipologia_bando"
+                         id="tipol_${repeat/tipologia/index}"
+                         value="${tipologia}"/>
+                  <label for="tipol_${repeat/tipologia/index}"
+                         tal:content="tipologia"
+                         />
+                  <br />
                 </tal:items>
             </div>
-
 
             <div class="field">
-                <label for="destinatari" i18n:translate="bandi_search_recipients_label">Recipients</label>
-
-                <div class="formHelp" i18n:translate="bandi_search_recipients_help">
-                Select announcements recipients.
+                <label for="destinatari" i18n:translate="destinatari_label">Who can apply</label>
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
+                    Select one or more values.
                 </div>
+                <select name="getDestinatariBando"
+                        multiple="multiple"
+                        class="pat-select2"
+                        tal:define="destinatari python:view.getVocabularyTermsForForm('rer.bandi.destinatari.vocabulary');">
+                    <tal:options repeat="destinatario destinatari">
+                        <option value="${destinatario}">${destinatario}</option>
+                    </tal:options>
+                </select>
+            </div>
 
-                <tal:items repeat="t_dest view/terms_destinatari">
-                <input class="noborder"
-                       type="checkbox"
-                       name="getDestinatariBando"
-                       tal:attributes="value t_dest/token;
-                                       id python:'tipol_%s' % t_dest.token" />
-                <label tal:attributes="for python:'tipol_%s'% t_dest.token"
-                       tal:content="t_dest/title"
-                       />
-                <br />
+            <div class="field">
+                <label for="destinatari" i18n:translate="finanziatori_label">Financed by EU programmes</label>
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
+                    Select one or more values.
+                </div>
+                <tal:items repeat="finanziatore python:view.getVocabularyTermsForForm('rer.bandi.finanziatori.vocabulary');">
+                    <input class="noborder"
+                        type="checkbox"
+                        name="getFinanziatori_bando"
+                        value="${finanziatore}"
+                        id="finanziatore_${repeat/finanziatore/index}"/>
+                    <label for="finanziatore_${repeat/finanziatore/index}"
+                        tal:content="finanziatore"
+                        />
+                    <br />
                 </tal:items>
             </div>
-
-            <div class="field"
-                 tal:define="default_ente view/getDefaultEnte">
-                <label for="Subject" i18n:translate="bandi_search_authority_label">Authorities</label>
-
-                <div class="formHelp" i18n:translate="help_search_authorities">
-                Return items matching some or all of these authorities.
-                Multiple words may be found by pressing <strong>Ctrl</strong>
-                (or <strong>Apple</strong> key on Mac) while clicking the
-                keywords.
+            <div class="field">
+                <label for="materie" i18n:translate="materie_label">Topic</label>
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
+                    Select one or more values.
                 </div>
-
-                <select name="getEnte_bando:list"
-                        id="getEnte_bando"
-                        size="7"
+                <select name="getMaterie_bando"
                         multiple="multiple"
-                        tal:define="usedEnti python:view.getUniqueValuesForIndex('getEnte_bando');"
-                        >
-                    <option tal:condition="default_ente"
-                            tal:content="default_ente"
-                            tal:attributes="value default_ente" />
-                    <tal:other_enti repeat="ente usedEnti">
-                      <option value="#"
-                              tal:content="ente"
-                              tal:condition="python: ente != default_ente"
-                              tal:attributes="value ente"
-                              i18n:domain="plone-metadata"
-                              i18n:translate=""
-                              >dummy</option>
-                    </tal:other_enti>
+                        class="pat-select2"
+                        tal:define="materie python:view.getVocabularyTermsForForm('rer.bandi.materie.vocabulary');">
+                    <tal:options repeat="materia materie">
+                        <option value="${materia}">${materia}</option>
+                    </tal:options>
                 </select>
-                <br />
             </div>
-
-            <div class="field" i18n:domain="plone">
-                <label for="Subject" i18n:translate="label_tags">Categories</label>
-
-                <div class="formHelp" i18n:translate="help_search_tags">
-                Return items matching some or all of these Categories.
-                Multiple words may be found by pressing <strong>Ctrl</strong>
-                (or <strong>Apple</strong> key on Mac) while clicking the
-                keywords.
+            <div class="field">
+                <label for="Subject" i18n:translate="label_tags" i18n:domain="plone">Categories</label>
+                <div class="formHelp" i18n:translate="bandi_multiselect_help">
+                    Select one or more values.
                 </div>
-
-                <select name="Subject:list"
-                        id="Subject"
-                        size="7"
+                <select name="Subject"
                         multiple="multiple"
-                        tal:define="contentSubjects here/Subject;
-                                    usedSubjects python:view.getUniqueValuesForIndex('Subject');"
-                        >
-                    <option value="#"
-                            tal:repeat="subject usedSubjects"
-                            tal:content="subject"
-                            tal:attributes="value subject"
-                            i18n:domain="plone-metadata"
-                            i18n:translate=""
-                            >dummy</option>
+                        class="pat-select2"
+                        tal:define="subjects python:view.getUniqueValuesForIndex('Subject');">
+                    <tal:options repeat="subject subjects">
+                        <option value="${subject}">${subject}</option>
+                    </tal:options>
                 </select>
-                <br />
-            </div>
-
-            <div class="field"
-                tal:condition="view/isSolrEnabled">
-                <input name="use_solr:boolean" id="use_solr" type="checkbox"/>
-                <label for="use_solr" i18n:translate="bandi_use_solr_label">Multisite search</label>
-                <div class="formHelp" i18n:translate="bandi_use_solr_help">
-                  If checked, the search will be made on a selected list of ER Sites. If not checked, the search will be made only on this site.
-                </div>
-
-                <div class="siteSelection"
-                     tal:define="sites python:view.getUniqueValuesForIndex('ploneSite');"
-                     tal:condition="sites">
-                  <label for="ploneSite" i18n:translate="bandi_searchsites_label">Available sites</label>
-                  <div class="formHelp" i18n:translate="bandi_searchsites_help">
-                  Select where to search.
-                  </div>
-                  <select name="ploneSite"
-                          id="ploneSite"
-                          i18n:domain="rer.bandi"
-                          multiple="multiple">
-                    <option tal:repeat="site sites" tal:content="site" />
-                  </select>
-                </div>
             </div>
 
             <input type="hidden" name="portal_type" value="Bando" />

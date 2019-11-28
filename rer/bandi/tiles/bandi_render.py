@@ -2,7 +2,7 @@
 from Products.Five.browser import BrowserView
 from collective.tiles.collection.interfaces import ICollectionTileRenderer
 from zope.interface import implementer
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 
 
 @implementer(ICollectionTileRenderer)

@@ -1,82 +1,37 @@
 # -*- coding: utf-8 -*-
-
 from DateTime import DateTime
+from plone import api
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from zope.i18n import translate
-from plone import api
-
-from rer.bandi import bandiMessageFactory as _
+from rer.bandi import _
 from six.moves.urllib.parse import quote
-
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    from zope.schema.interfaces import IVocabularyFactory
-
-from zope.component import getUtility, queryUtility
-
-try:
-    from collective.solr.interfaces import ISolrConnectionConfig
-
-    HAS_SOLR = True
-except ImportError:
-    HAS_SOLR = False
-
-try:
-    from collective.solr_collection.solr import solrUniqueValuesFor
-
-    HAS_SOLR_COLLECTION = True
-except ImportError:
-    HAS_SOLR_COLLECTION = False
+from zope.component import getUtility
+from zope.i18n import translate
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class SearchBandiForm(BrowserView):
-    def __init__(self, context, request):
-        self.context = context
-        self.request = request
-
-        voc_tipologia = getUtility(
-            IVocabularyFactory, name="rer.bandi.tipologia.vocabulary"
-        )(self.context)
-        self.terms_tipologia = list(voc_tipologia)
-        voc_destinatari = getUtility(
-            IVocabularyFactory, name="rer.bandi.destinatari.vocabulary"
-        )(self.context)
-        self.terms_destinatari = list(voc_destinatari)
-        self.solr_enabled = self.isSolrEnabled()
-
-    def isSolrEnabled(self):
-        """
-        """
-        if not HAS_SOLR:
-            return False
-        util = queryUtility(ISolrConnectionConfig)
-        if util:
-            return getattr(util, "active", False)
-        return False
-
     def getUniqueValuesForIndex(self, index):
         """
         get uniqueValuesFor a given index
         """
-        if not self.solr_enabled or not HAS_SOLR_COLLECTION:
-            pc = getToolByName(self, "portal_catalog")
-            return pc.uniqueValuesFor(index)
-        else:
-            return solrUniqueValuesFor(index, portal_type="Bando")
+        pc = api.portal.get_tool(name='portal_catalog')
+        return pc.uniqueValuesFor(index)
 
-    def getDefaultEnte(self):
+    def getVocabularyTermsForForm(self, vocab_name):
         """
-        return the default ente
+        Return the values of destinatari vocabulary
         """
-        portal_properties = getToolByName(self, "portal_properties")
-        rer_bandi_settings = getattr(
-            portal_properties, "rer_bandi_settings", None
-        )
-        if rer_bandi_settings:
-            return rer_bandi_settings.getProperty("default_ente", "")
-        return ""
+        dest_utility = getUtility(IVocabularyFactory, vocab_name)
+
+        dest_values = []
+
+        dest_vocab = dest_utility(self.context)
+
+        for dest in dest_vocab:
+            if dest.title != u'select_label':
+                dest_values.append(dest.value)
+        return dest_values
 
 
 class SearchBandi(BrowserView):
@@ -113,7 +68,6 @@ class SearchBandi(BrowserView):
                 }
         if "SearchableText" in self.request.form and not SearchableText:
             del query["SearchableText"]
-
         return pc(**query)
 
     @property
@@ -214,4 +168,3 @@ class SearchBandi(BrowserView):
         return api.portal.get_registry_record(
             "plone.types_use_view_action_in_listings"
         )
-
