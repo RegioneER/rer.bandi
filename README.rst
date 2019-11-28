@@ -44,6 +44,33 @@ Tile
 In order to use layout bandi for tile is necessary have installed collective.tiles.collection product.
 
 
+Development
+===========
+
+New `@@search_bandi_form` view is a React view that searches through the catalog with a plone.restapi endpoint.
+
+To develop the new view, you need to install its dependencies with yarn::
+
+    > yarn
+
+or npm::
+
+    > npm install
+
+And then run development server::
+
+    > yarn start
+
+
+To see your changes, you need to enable resources registry in `development mode`.
+
+Before releasing a new package, you need to build the production app::
+
+    > yarn build
+
+and then commit.
+
+
 Compatibility
 =============
 
