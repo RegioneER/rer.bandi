@@ -26,8 +26,8 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install firefox-geckodriver
+          # sudo apt-get update
+          # sudo apt-get install firefox-geckodriver
           pip install -r requirements.txt -c constraints_plone${{ matrix.plone }}.txt
           cp test_plone${{ matrix.plone }}.cfg buildout.cfg
       - name: Install buildout
