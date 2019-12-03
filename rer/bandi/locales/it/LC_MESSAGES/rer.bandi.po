@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-25 13:51+0000\n"
+"POT-Creation-Date: 2019-12-02 15:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Filippo Campi <filippo.campi@redturtle.it>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr "Aggiungi Portlet Bandi"
 msgid "Alternative text to show in 'other' link."
 msgstr "Testo alternativo da mostrare nel link ad 'altro'"
 
-#: ./browser/configure.zcml:112
+#: ./browser/configure.zcml:95
 msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/configure.zcml:118
+#: ./browser/configure.zcml:101
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
@@ -119,7 +119,7 @@ msgstr ""
 #. Default: "Select one or more values."
 #: ./browser/search_form.pt:86
 #: ./interfaces/bandoSchema.py:35
-#: ./services/search_parameters/get.py:100
+#: ./services/search_parameters/get.py:92
 msgid "bandi_multiselect_help"
 msgstr "Seleziona uno o più valori."
 
@@ -137,9 +137,18 @@ msgstr "Questa maschera di ricerca permette di trovare i bandi nel sito che sodd
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
-#: ./browser/search_new.pt:18
 msgid "bandi_search_label"
 msgstr "Ricerca bandi"
+
+#. Default: "This section doesn't contain job or pubblic competition announcements"
+#: ./browser/search_rest.pt:21
+msgid "bandi_search_rest_help"
+msgstr "Questa sezione non contiene bandi per lavori e forniture o concorsi"
+
+#. Default: "Announcements for fundings and opportunities"
+#: ./browser/search_rest.pt:18
+msgid "bandi_search_rest_label"
+msgstr "Bandi per finanziamenti e opportunità"
 
 #. Default: "All"
 #: ./browser/search_form.pt:59
@@ -163,7 +172,7 @@ msgstr "In corso"
 
 #. Default: "State"
 #: ./browser/search_form.pt:50
-#: ./services/search_parameters/get.py:38
+#: ./services/search_parameters/get.py:30
 msgid "bandi_search_state_label"
 msgstr "Stato"
 
@@ -177,11 +186,6 @@ msgstr "Aperto"
 msgid "bandi_search_text_help"
 msgstr "Per una semplice ricerca di testo inserisci qui i termini desiderati. Possono essere cercate più parole contemporaneamente combinandole con gli operatori <strong>AND</strong> e <strong>OR</strong>. Il testo inserito in questo campo verrà cercato nel titolo, descrizione e testo dei bandi."
 
-#. Default: "Search in title, description, text and subjects. Use OR to search more words (AND is the default)"
-#: ./services/search_parameters/get.py:25
-msgid "bandi_search_text_help2"
-msgstr "Cerca in titolo, descrizione, testo e parole chiave. Usa OR per cercare più parole (AND è il default)."
-
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
 #: ./services/search_parameters/get.py:21
@@ -190,7 +194,7 @@ msgstr "Ricerca testuale"
 
 #. Default: "Type"
 #: ./browser/search_form.pt:68
-#: ./services/search_parameters/get.py:84
+#: ./services/search_parameters/get.py:76
 msgid "bandi_search_type_label"
 msgstr "Tipologia"
 
@@ -219,22 +223,22 @@ msgid "bando_scadenza_partecipazione"
 msgstr "Scadenza termini partecipazione"
 
 #. Default: "All"
-#: ./services/search_parameters/get.py:47
+#: ./services/search_parameters/get.py:39
 msgid "bando_state_all_select_label"
 msgstr "Tutti"
 
 #. Default: "Closed"
-#: ./services/search_parameters/get.py:71
+#: ./services/search_parameters/get.py:63
 msgid "bando_state_closed_select_label"
 msgstr "Chiusi"
 
 #. Default: "In progress"
-#: ./services/search_parameters/get.py:61
+#: ./services/search_parameters/get.py:53
 msgid "bando_state_inProgress_select_label"
 msgstr "In corso"
 
 #. Default: "Open"
-#: ./services/search_parameters/get.py:54
+#: ./services/search_parameters/get.py:46
 msgid "bando_state_open_select_label"
 msgstr "Aperti"
 
@@ -332,7 +336,7 @@ msgstr "Rimuovi tutti i filtri"
 
 #
 msgid "results_tot_label"
-msgstr "Trovati ${variable} risultati."
+msgstr "Trovati ${variable} bandi"
 
 #. Default: "indicare la struttura di riferimento e il responsabile del procedimento"
 #: ./interfaces/bandoSchema.py:86
@@ -355,10 +359,10 @@ msgid "scadenza_bando_label"
 msgstr "Data e ora di scadenza"
 
 msgid "select_placeholder"
-msgstr "Seleziona..."
+msgstr "Seleziona uno o più valori"
 
 #. Default: "Subjects"
-#: ./services/search_parameters/get.py:155
+#: ./services/search_parameters/get.py:147
 msgid "subject_label"
 msgstr "Categorie"
 

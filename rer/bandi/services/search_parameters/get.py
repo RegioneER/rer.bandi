@@ -21,15 +21,7 @@ class SearchParametersGet(Service):
                     _('bandi_search_text_label', default=u'Search text'),
                     context=self.request,
                 ),
-                'help': translate(
-                    _(
-                        'bandi_search_text_help2',
-                        default=u'Search in title, description, text and'
-                        u' subjects. Use OR to search more words'
-                        u' (AND is the default)',
-                    ),
-                    context=self.request,
-                ),
+                'help': '',
                 'type': 'text',
             },
             {
@@ -96,13 +88,7 @@ class SearchParametersGet(Service):
                     _('destinatari_label', default='Who can apply'),
                     context=self.request,
                 ),
-                'help': translate(
-                    _(
-                        'bandi_multiselect_help',
-                        default='Select one or more values.',
-                    ),
-                    context=self.request,
-                ),
+                'help': '',
                 'type': 'select',
                 'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
@@ -118,13 +104,7 @@ class SearchParametersGet(Service):
                     ),
                     context=self.request,
                 ),
-                'help': translate(
-                    _(
-                        'bandi_multiselect_help',
-                        default='Select one or more values.',
-                    ),
-                    context=self.request,
-                ),
+                'help': '',
                 'type': 'select',
                 'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
@@ -136,13 +116,7 @@ class SearchParametersGet(Service):
                 'label': translate(
                     _('materie_label', default='Topic'), context=self.request
                 ),
-                'help': translate(
-                    _(
-                        'bandi_multiselect_help',
-                        default='Select one or more values.',
-                    ),
-                    context=self.request,
-                ),
+                'help': '',
                 'type': 'select',
                 'multivalued': True,
                 'options': self.getVocabularyTermsForForm(
@@ -155,13 +129,7 @@ class SearchParametersGet(Service):
                     _('subject_label', default='Subjects'),
                     context=self.request,
                 ),
-                'help': translate(
-                    _(
-                        'bandi_multiselect_help',
-                        default='Select one or more values.',
-                    ),
-                    context=self.request,
-                ),
+                'help': '',
                 'type': 'select',
                 'multivalued': True,
                 'options': self.getVocabularyTermsForForm(

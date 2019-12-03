@@ -15,8 +15,13 @@
                             />
 <body>
 <metal:title fill-slot="content-title">
-    <h1 class="documentFirstHeading" i18n:translate="bandi_search_label">Announcements Search</h1>
+    <h1 class="documentFirstHeading" i18n:translate="bandi_search_rest_label">Announcements for fundings and opportunities</h1>
 </metal:title>
+<metal:description fill-slot="content-description">
+    <p class="discreet" i18n:translate="bandi_search_rest_help">
+      This section doesn't contain job or pubblic competition announcements
+    </p>
+</metal:description>
 <metal:core fill-slot="content-core">
   <div id="bandi-search" />
   <script src="${view/get_resource_js}"></script>
