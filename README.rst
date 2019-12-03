@@ -70,6 +70,15 @@ Before releasing a new package, you need to build the production app::
 
 and then commit.
 
+Release
+=======
+
+Simpy call::
+
+    > make deploy
+
+And a production build will be created and committed before a fullrelease.
+
 
 Compatibility
 =============

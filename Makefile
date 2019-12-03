@@ -3,4 +3,6 @@
 deploy:
 	nvm use
 	yarn build
-	fullrelease
+	git commit -am "production build for release"
+	git push
+	# fullrelease
