@@ -36,18 +36,21 @@ const BandoItem = ({ data }) => {
   const bandoState = calculateState(data);
   const effectiveDate = effective ? (
     <p>
-      {getTranslationFor('bandi_published_on', '')}
-      :&nbsp;
-      {format(new Date(effective), 'dd/MM/yyyy')}
+      <span className="labelTB">
+        {getTranslationFor('bandi_published_on', '')}
+      </span>
+      :&nbsp;<span>{format(new Date(effective), 'dd/MM/yyyy')}</span>
     </p>
   ) : (
     ''
   );
   const scadenzaBando = getScadenza_bando ? (
     <p>
-      {getTranslationFor('bando_scadenza_partecipazione', '')}
+      <span className="labelTB">
+        {getTranslationFor('bando_scadenza_partecipazione', '')}
+      </span>
       :&nbsp;
-      {format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}
+      <span>{format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
     </p>
   ) : (
     ''
