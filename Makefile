@@ -1,8 +1,8 @@
 .PHONY: deploy
+PATH := .:$(PATH)
 
 deploy:
-	nvm use
-	yarn build
+	bash -l -c 'nvm exec stable yarn build'
 	git commit -am "production build for release"
 	git push
 	# fullrelease
