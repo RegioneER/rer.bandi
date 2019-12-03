@@ -5,4 +5,7 @@ deploy:
 	bash -l -c 'nvm exec stable yarn build'
 	git commit -am "production build for release"
 	git push
-	# fullrelease
+	fullrelease
+
+develop:
+	bash -l -c 'nvm exec stable yarn start'
