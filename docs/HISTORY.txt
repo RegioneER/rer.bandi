@@ -4,8 +4,8 @@ Changelog
 4.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix translations
+  [cekk]
 
 4.0.2 (2019-12-05)
 ------------------
