@@ -16,6 +16,8 @@ exclude requirements.txt
 exclude tox.ini
 exclude webpack.config.js
 exclude yarn.lock
+exclude *.toml
+exclude Makefile
 prune .github
 prune rer/bandi/browser/css/.sass-cache
 prune rer/bandi/browser/static/dist/dev
