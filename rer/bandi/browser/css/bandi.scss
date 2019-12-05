@@ -143,13 +143,17 @@ h2.bandoTitle,
     padding: 15px 0;
 }
 
+.tileContent {
+    .bandoInfos {
+        padding-left: 75px;
+    }
+}
+
 .bandoTitle,
 .bandoInfos {
     position: relative;
 
     .tileContent & {
-        padding-left: 75px;
-
         .bandoStateClass {
             position: absolute;
             top: 2em;

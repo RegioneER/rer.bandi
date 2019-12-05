@@ -114,13 +114,13 @@ h2.bandoTitle,
   padding: 15px 0;
 }
 
+.tileContent .bandoInfos {
+  padding-left: 75px;
+}
+
 .bandoTitle,
 .bandoInfos {
   position: relative;
-}
-.tileContent .bandoTitle,
-.tileContent .bandoInfos {
-  padding-left: 75px;
 }
 .tileContent .bandoTitle .bandoStateClass,
 .tileContent .bandoInfos .bandoStateClass {

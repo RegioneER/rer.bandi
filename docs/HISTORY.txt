@@ -6,6 +6,8 @@ Changelog
 
 - Revert last tag.
   [cekk]
+- Fix tile bando title padding
+  [nzambello]
 
 4.0.1 (2019-11-28)
 ------------------
@@ -19,7 +21,7 @@ Changelog
 - Python 3 compatibility.
   [cekk]
 - New bandi search view
-  [cekk][nicola]
+  [cekk][nzambello]
 - Change bando fields: dropped `ente_bando`, add `materie` and `finanziatori`.
   [cekk]
 - Bando categorization fields vocabularies have now a pre-defined static list of values.
