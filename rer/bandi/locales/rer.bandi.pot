@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-25 13:51+0000\n"
+"POT-Creation-Date: 2019-12-02 15:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Alternative text to show in 'other' link."
 msgstr ""
 
-#: ./browser/configure.zcml:112
+#: ./browser/configure.zcml:95
 msgid "Bandi con scadenza"
 msgstr ""
 
-#: ./browser/configure.zcml:118
+#: ./browser/configure.zcml:101
 msgid "Bandi con tipologia e scadenza"
 msgstr ""
 
@@ -119,7 +119,7 @@ msgstr ""
 #. Default: "Select one or more values."
 #: ./browser/search_form.pt:86
 #: ./interfaces/bandoSchema.py:35
-#: ./services/search_parameters/get.py:100
+#: ./services/search_parameters/get.py:92
 msgid "bandi_multiselect_help"
 msgstr ""
 
@@ -137,8 +137,17 @@ msgstr ""
 
 #. Default: "Announcements Search"
 #: ./browser/search_form.pt:20
-#: ./browser/search_new.pt:18
 msgid "bandi_search_label"
+msgstr ""
+
+#. Default: "This section doesn't contain job or pubblic competition announcements"
+#: ./browser/search_rest.pt:21
+msgid "bandi_search_rest_help"
+msgstr ""
+
+#. Default: "Announcements for fundings and opportunities"
+#: ./browser/search_rest.pt:18
+msgid "bandi_search_rest_label"
 msgstr ""
 
 #. Default: "All"
@@ -163,7 +172,7 @@ msgstr ""
 
 #. Default: "State"
 #: ./browser/search_form.pt:50
-#: ./services/search_parameters/get.py:38
+#: ./services/search_parameters/get.py:30
 msgid "bandi_search_state_label"
 msgstr ""
 
@@ -177,11 +186,6 @@ msgstr ""
 msgid "bandi_search_text_help"
 msgstr ""
 
-#. Default: "Search in title, description, text and subjects. Use OR to search more words (AND is the default)"
-#: ./services/search_parameters/get.py:25
-msgid "bandi_search_text_help2"
-msgstr ""
-
 #. Default: "Search text"
 #: ./browser/search_form.pt:33
 #: ./services/search_parameters/get.py:21
@@ -190,7 +194,7 @@ msgstr ""
 
 #. Default: "Type"
 #: ./browser/search_form.pt:68
-#: ./services/search_parameters/get.py:84
+#: ./services/search_parameters/get.py:76
 msgid "bandi_search_type_label"
 msgstr ""
 
@@ -219,22 +223,22 @@ msgid "bando_scadenza_partecipazione"
 msgstr ""
 
 #. Default: "All"
-#: ./services/search_parameters/get.py:47
+#: ./services/search_parameters/get.py:39
 msgid "bando_state_all_select_label"
 msgstr ""
 
 #. Default: "Closed"
-#: ./services/search_parameters/get.py:71
+#: ./services/search_parameters/get.py:63
 msgid "bando_state_closed_select_label"
 msgstr ""
 
 #. Default: "In progress"
-#: ./services/search_parameters/get.py:61
+#: ./services/search_parameters/get.py:53
 msgid "bando_state_inProgress_select_label"
 msgstr ""
 
 #. Default: "Open"
-#: ./services/search_parameters/get.py:54
+#: ./services/search_parameters/get.py:46
 msgid "bando_state_open_select_label"
 msgstr ""
 
@@ -356,7 +360,7 @@ msgid "select_placeholder"
 msgstr ""
 
 #. Default: "Subjects"
-#: ./services/search_parameters/get.py:155
+#: ./services/search_parameters/get.py:147
 msgid "subject_label"
 msgstr ""
 

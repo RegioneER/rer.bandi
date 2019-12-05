@@ -26,7 +26,7 @@ const FiltersWrapper = ({
     <div>Loading...</div>
   ) : (
     <React.Fragment>
-      <h2 id="bandi-search-filters" className="refineSearch">
+      <h2 id="bandi-search-filters" className="refineSearch sr-only">
         {getTranslationFor('refine_search_label', 'Refine your search')}
       </h2>
       <a href="#bandi-search-results" className="sr-only">
