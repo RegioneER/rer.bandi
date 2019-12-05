@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-12-02 15:17+0000\n"
+"POT-Creation-Date: 2019-12-05 11:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,7 +119,6 @@ msgstr ""
 #. Default: "Select one or more values."
 #: ./browser/search_form.pt:86
 #: ./interfaces/bandoSchema.py:35
-#: ./services/search_parameters/get.py:92
 msgid "bandi_multiselect_help"
 msgstr ""
 
@@ -359,8 +358,11 @@ msgstr ""
 msgid "select_placeholder"
 msgstr ""
 
+msgid "select_placeholder_multi"
+msgstr ""
+
 #. Default: "Subjects"
-#: ./services/search_parameters/get.py:147
+#: ./services/search_parameters/get.py:129
 msgid "subject_label"
 msgstr ""
 

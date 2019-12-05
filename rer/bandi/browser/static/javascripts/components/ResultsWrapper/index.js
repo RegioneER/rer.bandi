@@ -56,11 +56,9 @@ const ResultsWrapper = ({ queryParameters, updateQueryParameters }) => {
         sort_on: 'effective',
         sort_order: 'reverse',
         metadata_fields: [
-          'effective',
           'getScadenza_bando',
           'getChiusura_procedimento_bando',
           'UID',
-          'site_name',
         ],
       },
     );

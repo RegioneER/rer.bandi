@@ -5,6 +5,10 @@ import { TranslationsContext } from '../../TranslationsContext';
 
 const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
   const getTranslationFor = useContext(TranslationsContext);
+  const { multivalued } = parameter;
+  const placeholderLabel = multivalued
+    ? 'select_placeholder_multi'
+    : 'select_placeholder';
   return (
     <React.Fragment>
       <label htmlFor={parameter.id}>{parameter.label}</label>
@@ -14,7 +18,7 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
         ''
       )}
       <Select
-        isMulti={parameter.multivalued}
+        isMulti={multivalued}
         inputId={parameter.id}
         tabSelectsValue={false}
         value={value.map(element => {
@@ -31,11 +35,11 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
         })}
         name={parameter.id}
         options={parameter.options}
-        placeholder={getTranslationFor('select_placeholder', 'Select...')}
+        placeholder={getTranslationFor(placeholderLabel, 'Select...')}
         onChange={options => {
           let newValue = [];
           if (options) {
-            newValue = parameter.multivalued
+            newValue = multivalued
               ? options.map(option => option.value)
               : [options.value];
           }

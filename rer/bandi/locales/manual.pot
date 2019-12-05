@@ -26,6 +26,9 @@ msgstr ""
 msgid "select_placeholder"
 msgstr ""
 
+msgid "select_placeholder_multi"
+msgstr ""
+
 msgid "reset_filters_label"
 msgstr ""
 
