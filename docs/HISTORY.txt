@@ -6,7 +6,8 @@ Changelog
 
 - Install plone.restapi when installing product.
   [cekk]
-
+- Fix dates in search view (#20711).
+  [cekk]
 
 4.0.3 (2019-12-05)
 ------------------

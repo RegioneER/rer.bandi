@@ -59,7 +59,7 @@
     />
 
   <browser:page
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    for="*"
     name="search_bandi_form"
     template="search_rest.pt"
 	  class=".search_rest.View"
