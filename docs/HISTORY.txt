@@ -4,7 +4,8 @@ Changelog
 4.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- (a11y) changed bando state label color for color contrast
+  [nzambello]
 
 
 4.0.4 (2019-12-17)

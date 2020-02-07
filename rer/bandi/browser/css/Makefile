@@ -1,2 +1,2 @@
 build:
-	sass --precision 8 --unix-newlines bandi.scss bandi.css
+	sass --precision 8 bandi.scss bandi.css

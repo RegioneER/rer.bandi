@@ -95,7 +95,7 @@ a.bandoTitleLink {
   margin-top: 4px;
 }
 .bandoTitle .bandoStateClass {
-  font-size: 70%;
+  font-size: 13px;
   margin-bottom: 0;
   margin-top: 7px;
   text-align: center;
@@ -143,17 +143,17 @@ h2.bandoTitle,
 .bandoTitle .state-open,
 .bandoInfos .state-open {
   background-image: url(++plone++rer.bandi.images/bando_open.png);
-  color: #255a01;
+  color: #1c2024;
 }
 .bandoTitle .state-inProgress,
 .bandoInfos .state-inProgress {
   background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
-  color: #9c6f02;
+  color: #1c2024;
 }
 .bandoTitle .state-closed,
 .bandoInfos .state-closed {
   background-image: url(++plone++rer.bandi.images/bando_closed.png);
-  color: #700;
+  color: #1c2024;
 }
 
 .bandi-collection .bando-item {
