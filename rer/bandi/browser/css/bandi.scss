@@ -89,13 +89,14 @@ body.portaltype-bando {
         background-repeat: no-repeat;
         display: block;
         float: left;
-        font-size: 0.8em;
+        font-size: 13px;
         font-weight: normal;
         margin-right: 1em;
         padding-top: 5px;
         text-transform: uppercase;
         width: 57px;
         min-width: 57px;
+        line-height: 3rem;
         text-align: center;
     }
 
@@ -148,7 +149,7 @@ h2.bandoTitle,
 
         .bandoStateClass {
             position: absolute;
-            top: 2em;
+            top: 3em;
             left: 0;
         }
     }
