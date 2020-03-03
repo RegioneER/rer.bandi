@@ -122,7 +122,7 @@ a.bandoTitleLink {
     }
 
     .bandoTitle & {
-        font-size: 70%;
+        font-size: 13px;
         margin-bottom: 0;
         margin-top: 7px;
         text-align: center;
@@ -171,20 +171,23 @@ h2.bandoTitle,
 
     .state-open {
         background-image: url(++plone++rer.bandi.images/bando_open.png);
-        color: #255a01;
+        // color: #255a01;
         // border-color: #27af0f;
+        color: #1c2024;
     }
 
     .state-inProgress {
         background-image: url(++plone++rer.bandi.images/bando_inprogress.png);
-        color: #9c6f02;
+        // color: #9c6f02;
         // border-color: #e5c001;
+        color: #1c2024;
     }
 
     .state-closed {
         background-image: url(++plone++rer.bandi.images/bando_closed.png);
-        color: #700;
+        // color: #700;
         // border-color: #c00;
+        color: #1c2024;
     }
 }
 
