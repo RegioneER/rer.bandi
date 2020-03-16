@@ -74,6 +74,7 @@ body.portaltype-bando #content .rer-contextual-portlets .bandoInfos {
   text-transform: uppercase;
   width: 57px;
   min-width: 57px;
+  line-height: 3rem;
   text-align: center;
 }
 table .bandoInfos .bandoStateClass,
@@ -125,7 +126,7 @@ h2.bandoTitle,
 .tileContent .bandoTitle .bandoStateClass,
 .tileContent .bandoInfos .bandoStateClass {
   position: absolute;
-  top: 2em;
+  top: 3rem;
   left: 0;
 }
 .searchResults .bandoTitle .bandoStateClass,
@@ -138,7 +139,7 @@ h2.bandoTitle,
 .bandoInfos .state-open,
 .bandoInfos .state-inProgress,
 .bandoInfos .state-closed {
-  padding: 10px 0 5px;
+  padding: 15px 0 5px;
 }
 .bandoTitle .state-open,
 .bandoInfos .state-open {
@@ -176,6 +177,20 @@ h2.bandoTitle,
   position: absolute;
   top: 15px;
   left: 0;
+}
+
+#bandi-search .bando-result .bandoTitle {
+  display: inline-flex;
+}
+#bandi-search .bando-result .bandoTitle a {
+  display: inline-block;
+  margin-left: 70px;
+}
+#bandi-search .bando-result .bandoTitle .bandoStateClass {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  margin: 0;
 }
 
 .bandoDetail {

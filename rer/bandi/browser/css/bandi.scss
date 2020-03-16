@@ -172,7 +172,7 @@ h2.bandoTitle,
   .state-inProgress,
   .state-closed {
     // float: none;
-    padding: 10px 0 5px;
+    padding: 15px 0 5px;
     // color: #666;
     // font-weight: 600;
     // border-top: 5px solid;
@@ -220,6 +220,26 @@ h2.bandoTitle,
         position: absolute;
         top: 15px;
         left: 0;
+      }
+    }
+  }
+}
+
+#bandi-search {
+  .bando-result {
+    .bandoTitle {
+      display: inline-flex;
+
+      a {
+        display: inline-block;
+        margin-left: 70px;
+      }
+
+      .bandoStateClass {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        margin: 0;
       }
     }
   }
