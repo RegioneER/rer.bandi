@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.7 (unreleased)
+4.0.7 (2020-04-21)
 ------------------
 
 - Spaces and styles for bando state label in bandi-search
