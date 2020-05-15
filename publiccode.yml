@@ -1,0 +1,82 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - application-development
+  - content-management
+logo: docs/rer-logo.png
+dependsOn:
+  open:
+    - name: Plone
+      optional: false
+      version: ''
+      versionMax: ''
+      versionMin: '4'
+description:
+  it:
+    features:
+      - Bandi
+      - Ricerca
+      - Tile
+      - Portlet
+    genericName: Plone addon
+    longDescription: >
+      Definisce un contenuto folderish e permette di impostare informazioni
+      riguardanti i bandi come le scadenze per la partecipazione e la data di
+      chiusura.
+
+
+      Ha due diverse visualizzazioni e una cartella speciale per gli allegati.
+
+
+      Permette di impostare degli argomenti per effettuare ricerche veloci e una
+      vista di ricerca ad hoc, portlet e tile per collezioni di bandi.
+
+
+      Nei risultati di ricerca, come nelle viste di tile e portlet e del
+      contenuto, sono sempre visibili le informazioni sullo stato del bando
+      (aperto, in corso, chiuso).
+    shortDescription: Prodotto per la gestione dei bandi
+developmentStatus: stable
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: GPL-2.0-only
+  mainCopyrightOwner: Regione Emilia-Romagna
+  repoOwner: Regione Emilia-Romagna
+localisation:
+  availableLanguages:
+    - it
+    - en
+  localisationReady: true
+maintenance:
+  contacts:
+    - affiliation: Regione Emilia-Romagna
+      email: webmaster@regione.emilia-romagna.it
+      name: Sara Turra
+  contractors:
+    - name: RedTurtle
+      until: '2020-08-31'
+      website: 'https://www.redturtle.it/'
+  type: contract
+name: rer.bandi
+platforms:
+  - web
+releaseDate: '2011-04-15'
+softwareType: addon
+softwareVersion: 4.0.7
+url: 'https://github.com/RegioneER/rer.bandi'
+usedBy:
+  - Regione Emilia-Romagna
