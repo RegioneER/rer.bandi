@@ -41,6 +41,8 @@ description:
     shortDescription: Prodotto per la gestione dei bandi
 developmentStatus: stable
 it:
+  riuso:
+    codiceIPA: r_emiro
   conforme:
     gdpr: true
     lineeGuidaDesign: false
