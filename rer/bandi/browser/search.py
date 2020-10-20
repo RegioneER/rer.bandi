@@ -50,19 +50,19 @@ class SearchBandi(BrowserView):
         if stato:
             now = DateTime()
             if stato == "open":
-                query["getScadenza_bando"] = {"query": now, "range": "min"}
-                query["getChiusura_procedimento_bando"] = {
+                query["scadenza_bando"] = {"query": now, "range": "min"}
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "min",
                 }
             if stato == "inProgress":
-                query["getScadenza_bando"] = {"query": now, "range": "max"}
-                query["getChiusura_procedimento_bando"] = {
+                query["scadenza_bando"] = {"query": now, "range": "max"}
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "min",
                 }
             if stato == "closed":
-                query["getChiusura_procedimento_bando"] = {
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "max",
                 }
@@ -82,29 +82,29 @@ class SearchBandi(BrowserView):
             if stato == "open":
                 query = (
                     query
-                    + "&getScadenza_bando.query:record=%s&getScadenza_bando.range:record=min"
+                    + "&scadenza_bando.query:record=%s&scadenza_bando.range:record=min"
                     % quote(now)
                 )
                 query = (
                     query
-                    + "&getChiusura_procedimento_bando.query:record=%s&getChiusura_procedimento_bando.range:record=min"
+                    + "&chiusura_procedimento_bando.query:record=%s&chiusura_procedimento_bando.range:record=min"
                     % quote(now)
                 )
             if stato == "inProgress":
                 query = (
                     query
-                    + "&amp;getScadenza_bando.query:record=%s&getScadenza_bando.range:record=max"
+                    + "&amp;scadenza_bando.query:record=%s&scadenza_bando.range:record=max"
                     % quote(now)
                 )
                 query = (
                     query
-                    + "&amp;getChiusura_procedimento_bando.query:record=%s&getChiusura_procedimento_bando.range:record=min"
+                    + "&amp;chiusura_procedimento_bando.query:record=%s&chiusura_procedimento_bando.range:record=min"
                     % quote(now)
                 )
             if stato == "closed":
                 query = (
                     query
-                    + "&amp;getChiusura_procedimento_bando.query:record=%s&getChiusura_procedimento_bando.range:record=max"
+                    + "&amp;chiusura_procedimento_bando.query:record=%s&chiusura_procedimento_bando.range:record=max"
                     % quote(now)
                 )
 
@@ -114,8 +114,8 @@ class SearchBandi(BrowserView):
         """
         """
 
-        scadenza_bando = bando.getScadenza_bando
-        chiusura_procedimento_bando = bando.getChiusura_procedimento_bando
+        scadenza_bando = bando.scadenza_bando
+        chiusura_procedimento_bando = bando.chiusura_procedimento_bando
         state = ("open", translate(_(u"Open"), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if (

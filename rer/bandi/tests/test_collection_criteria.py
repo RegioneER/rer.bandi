@@ -45,7 +45,7 @@ class TestCollectionCriteria(unittest.TestCase):
     def test_query_destinatari(self):
         query = [
             {
-                'i': 'getDestinatariBando',
+                'i': 'destinatari',
                 'o': 'plone.app.querystring.operation.string.is',
                 'v': ['d1'],
             }
@@ -58,7 +58,7 @@ class TestCollectionCriteria(unittest.TestCase):
     def test_query_destinatari_with_accent(self):
         query = [
             {
-                'i': 'getDestinatariBando',
+                'i': 'destinatari',
                 'o': 'plone.app.querystring.operation.string.is',
                 'v': ['dà'],
             }
@@ -71,7 +71,7 @@ class TestCollectionCriteria(unittest.TestCase):
     def test_query_finanziatori(self):
         query = [
             {
-                'i': 'getFinanziatori_bando',
+                'i': 'finanziatori',
                 'o': 'plone.app.querystring.operation.string.is',
                 'v': ['f1'],
             }
@@ -84,7 +84,7 @@ class TestCollectionCriteria(unittest.TestCase):
     def test_query_materie(self):
         query = [
             {
-                'i': 'getMaterie_bando',
+                'i': 'materie',
                 'o': 'plone.app.querystring.operation.string.is',
                 'v': ['m1'],
             }

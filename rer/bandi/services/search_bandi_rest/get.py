@@ -41,19 +41,19 @@ class SearchBandiGet(SearchGet):
         if stato:
             now = DateTime()
             if stato == "open":
-                query["getScadenza_bando"] = {"query": now, "range": "min"}
-                query["getChiusura_procedimento_bando"] = {
+                query["scadenza_bando"] = {"query": now, "range": "min"}
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "min",
                 }
             if stato == "inProgress":
-                query["getScadenza_bando"] = {"query": now, "range": "max"}
-                query["getChiusura_procedimento_bando"] = {
+                query["scadenza_bando"] = {"query": now, "range": "max"}
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "min",
                 }
             if stato == "closed":
-                query["getChiusura_procedimento_bando"] = {
+                query["chiusura_procedimento_bando"] = {
                     "query": now,
                     "range": "max",
                 }

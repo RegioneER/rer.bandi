@@ -22,7 +22,7 @@ def destinatari_bando(object, **kw):
 
 
 @indexer(IBando)
-def getChiusura_procedimento_bando(object, **kw):
+def chiusura_procedimento_bando(object, **kw):
 
     date_chiusura_procedimento_bando = getattr(
         object, 'chiusura_procedimento_bando', None
@@ -39,7 +39,7 @@ def getChiusura_procedimento_bando(object, **kw):
 
 
 @indexer(IBando)
-def getScadenza_bando(object, **kw):
+def scadenza_bando(object, **kw):
     datetime_scadenza_bando = getattr(object, 'scadenza_bando', None)
     if not datetime_scadenza_bando:
         return DateTime('2100/12/31')
@@ -51,7 +51,7 @@ def getScadenza_bando(object, **kw):
 
 
 @indexer(IBando)
-def getTipologia_bando(object, **kw):
+def tipologia_bando(object, **kw):
     tipologia = getattr(object, 'tipologia_bando', '')
     if six.PY2:
         return tipologia.encode('utf-8')
@@ -59,7 +59,7 @@ def getTipologia_bando(object, **kw):
 
 
 @indexer(IBando)
-def getFinanziatori_bando(object, **kw):
+def finanziatori(object, **kw):
     finanziatori = getattr(object, 'finanziatori', [])
     if not finanziatori:
         return []
@@ -69,7 +69,7 @@ def getFinanziatori_bando(object, **kw):
 
 
 @indexer(IBando)
-def getMaterie_bando(object, **kw):
+def materie(object, **kw):
     materie = getattr(object, 'materie', [])
     if not materie:
         return []

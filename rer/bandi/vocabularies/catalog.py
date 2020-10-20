@@ -4,22 +4,22 @@ from plone.app.vocabularies.catalog import KeywordsVocabulary
 
 class TipologieBandoKeywordsVocabularyFactory(KeywordsVocabulary):
 
-    keyword_index = 'getTipologia_bando'
+    keyword_index = 'tipologia_bando'
 
 
 class MaterieBandoKeywordsVocabularyFactory(KeywordsVocabulary):
 
-    keyword_index = 'getMaterie_bando'
+    keyword_index = 'materie'
 
 
 class FinanziatoriBandoKeywordsVocabularyFactory(KeywordsVocabulary):
 
-    keyword_index = 'getFinanziatori_bando'
+    keyword_index = 'finanziatori'
 
 
 class DestinatariBandoKeywordsVocabularyFactory(KeywordsVocabulary):
 
-    keyword_index = 'getDestinatariBando'
+    keyword_index = 'destinatari'
 
 
 TipologieBandoKeywordsVocabulary = TipologieBandoKeywordsVocabularyFactory()

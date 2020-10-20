@@ -4,7 +4,7 @@
   <!-- usa come criterio per creare la collection la data di chiusura -->
   <!-- aggiunge una serie di controlli che sono possibili da fare sulla data di chiusura procedimento bando -->
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getChiusura_procedimento_bando">
+           prefix="plone.app.querystring.field.chiusura_procedimento_bando">
     <value key="title" i18n:translate="chiusura_procedimento_bando">Chiusura procedimento bando</value>
     <value key="description">Deadline to participate in the announcement</value>
     <value key="enabled">True</value>
@@ -25,7 +25,7 @@
   </records>
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getDestinatariBando">
+           prefix="plone.app.querystring.field.destinatari">
     <value key="title" i18n:translate="destinatari_label">Who can apply</value>
     <value key="description">Announcement recipients</value>
     <value key="enabled">True</value>
@@ -40,7 +40,7 @@
   </records>
 
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getTipologia_bando">
+           prefix="plone.app.querystring.field.tipologia_bando">
     <value key="title" i18n:translate="tipologia_bando_label">Announcement type</value>
     <value key="description">Announcement type</value>
     <value key="enabled">True</value>
@@ -55,7 +55,7 @@
   </records>
 
    <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getScadenza_bando">
+           prefix="plone.app.querystring.field.scadenza_bando">
     <value key="title" i18n:translate="bando_scadenza_partecipazione">Deadline participation terms</value>
     <value key="description">Closing date of the announcements</value>
     <value key="enabled">True</value>
@@ -75,7 +75,7 @@
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getFinanziatori_bando">
+           prefix="plone.app.querystring.field.finanziatori">
     <value key="title" i18n:translate="finanziatori_label">Financed by EU programmes</value>
     <value key="description"></value>
     <value key="enabled">True</value>
@@ -89,7 +89,7 @@
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.getMaterie_bando">
+           prefix="plone.app.querystring.field.materie">
     <value key="title" i18n:translate="materie_label">Topic</value>
     <value key="description"></value>
     <value key="enabled">True</value>

@@ -71,7 +71,7 @@ class SearchParametersGet(Service):
                 ],
             },
             {
-                'id': 'getTipologia_bando',
+                'id': 'tipologia_bando',
                 'label': translate(
                     _('bandi_search_type_label', default='Type'),
                     context=self.request,
@@ -83,7 +83,7 @@ class SearchParametersGet(Service):
                 ),
             },
             {
-                'id': 'getDestinatariBando',
+                'id': 'destinatari',
                 'label': translate(
                     _('destinatari_label', default='Who can apply'),
                     context=self.request,
@@ -96,7 +96,7 @@ class SearchParametersGet(Service):
                 ),
             },
             {
-                'id': 'getFinanziatori_bando',
+                'id': 'finanziatori',
                 'label': translate(
                     _(
                         'finanziatori_label',
@@ -112,7 +112,7 @@ class SearchParametersGet(Service):
                 ),
             },
             {
-                'id': 'getMaterie_bando',
+                'id': 'materie',
                 'label': translate(
                     _('materie_label', default='Topic'), context=self.request
                 ),

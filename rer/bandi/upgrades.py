@@ -21,6 +21,52 @@ DESTINATARI_BANDO_MAPPING = {
 }
 
 
+def remap_fields(brain):
+    bando = brain.getObject()
+    tipologia = getattr(bando, 'tipologia_bando', '')
+    destinatari = getattr(bando, 'destinatari', [])
+
+    if tipologia:
+        if tipologia not in TIPOLOGIA_BANDO_MAPPING:
+            logger.warning(
+                '  - Unable to find a match for tipologia "{tipologia}" in "{bando}"'.format(  # noqa
+                    tipologia=tipologia, bando=brain.getPath()
+                )
+            )
+        else:
+            new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
+            logger.info(
+                '  - TIPOLOGIA: {old} => {new}'.format(
+                    old=tipologia, new=new_value
+                )
+            )
+            bando.tipologia_bando = new_value.decode('utf-8')
+
+    if not destinatari:
+        new_value = DESTINATARI_BANDO_MAPPING['Altro']
+        bando.destinatari = new_value
+        logger.info('  - DESTINATARIO: VUOTO => {new}'.format(new=new_value))
+    else:
+        new_value = []
+        for destinatario in destinatari:
+            if destinatario not in DESTINATARI_BANDO_MAPPING:
+                logger.warning(
+                    '  - Unable to find a match for destinatario "{destinatario}" in "{bando}"'.format(  # noqa
+                        destinatario=destinatario, bando=brain.getPath()
+                    )
+                )
+            else:
+                new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
+        if new_value:
+            logger.info(
+                '  - DESTINATARIO: {old} => {new}'.format(
+                    old=destinatari, new=new_value
+                )
+            )
+            bando.destinatari = new_value
+    bando.reindexObject(idxs=['destinatari', 'tipologia_bando'])
+
+
 def upgrade(upgrade_product, version):
     """ Decorator for updating the QuickInstaller of a upgrade """
 
@@ -57,10 +103,10 @@ def migrate_to_2200(context):
     for bando in bandi:
         bando.getObject().reindexObject(
             idxs=[
-                "getChiusura_procedimento_bando",
-                "getDestinatariBando",
-                "getScadenza_bando",
-                "getTipologia_bando",
+                "chiusura_procedimento_bando",
+                "destinatari",
+                "scadenza_bando",
+                "tipologia_bando",
             ]
         )
 
@@ -114,47 +160,55 @@ def migrate_to_3000(context):
     logger.info('Upgrading to 3000')
 
 
-def remap_fields(brain):
-    bando = brain.getObject()
-    tipologia = getattr(bando, 'tipologia_bando', '')
-    destinatari = getattr(bando, 'destinatari', [])
+def migrate_to_3100(context):
+    PROFILE_ID = 'profile-rer.bandi:migrate_to_3100'
+    setup_tool = getToolByName(context, 'portal_setup')
+    setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
 
-    if tipologia:
-        if tipologia not in TIPOLOGIA_BANDO_MAPPING:
-            logger.warning(
-                '  - Unable to find a match for tipologia "{tipologia}" in "{bando}"'.format(  # noqa
-                    tipologia=tipologia, bando=brain.getPath()
-                )
-            )
-        else:
-            new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
-            logger.info(
-                '  - TIPOLOGIA: {old} => {new}'.format(
-                    old=tipologia, new=new_value
-                )
-            )
-            bando.tipologia_bando = new_value.decode('utf-8')
+    #  update indexes and topics
+    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
 
-    if not destinatari:
-        new_value = DESTINATARI_BANDO_MAPPING['Altro']
-        bando.destinatari = new_value
-        logger.info('  - DESTINATARIO: VUOTO => {new}'.format(new=new_value))
-    else:
-        new_value = []
-        for destinatario in destinatari:
-            if destinatario not in DESTINATARI_BANDO_MAPPING:
-                logger.warning(
-                    '  - Unable to find a match for destinatario "{destinatario}" in "{bando}"'.format(  # noqa
-                        destinatario=destinatario, bando=brain.getPath()
-                    )
-                )
-            else:
-                new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
-        if new_value:
-            logger.info(
-                '  - DESTINATARIO: {old} => {new}'.format(
-                    old=destinatari, new=new_value
-                )
+    bandi = api.content.find(portal_type='Bando')
+    tot_results = len(bandi)
+    logger.info('### Fixing {tot} Bandi ###'.format(tot=tot_results))
+    for counter, brain in enumerate(bandi):
+        logger.info(
+            '[{counter}/{tot}] - {bando}'.format(
+                counter=counter + 1, tot=tot_results, bando=brain.getPath()
             )
-            bando.destinatari = new_value
-    bando.reindexObject(idxs=['getDestinatariBando', 'getTipologia_bando'])
+        )
+        bando = brain.getObject()
+        bando.reindexObject(idxs=[
+            "chiusura_procedimento_bando",
+            "destinatari",
+            "scadenza_bando",
+            "tipologia_bando",
+            "finanziatori",
+            "materie",
+        ])
+
+    criteria_mapping = {
+        u'getTipologia_bando': u'tipologia_bando',
+        u'getChiusura_procedimento_bando': u'chiusura_procedimento_bando',
+        u'getScadenza_bando': u'scadenza_bando',
+        u'getFinanziatori_bando': u'finanziatori',
+        u'getMaterie_bando': u'materie',
+        u'getDestinatariBando': u'destinatari'
+    }
+    collections = api.content.find(portal_type='Collection')
+    tot_results = len(collections)
+    logger.info('### Fixing {tot} Collections ###'.format(tot=tot_results))
+    for counter, brain in enumerate(collections):
+        collection = brain.getObject()
+        query = []
+        for criteria in getattr(collection, 'query', []):
+            criteria['i'] = criteria_mapping.get(criteria['i'], criteria['i'])
+            query.append(criteria)
+        collection.query = query
+        logger.info(
+            '[{counter}/{tot}] - {collection}'.format(
+                counter=counter + 1, tot=tot_results, collection=brain.getPath()
+            )
+        )
+    logger.info('Upgrade to 3100 complete')
