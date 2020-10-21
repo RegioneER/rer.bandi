@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+
+ <index name="getChiusura_procedimento_bando" remove="True" />
+ <index name="getDestinatariBando" remove="True" />
+ <index name="getScadenza_bando" remove="True" />
+ <index name="getTipologia_bando" remove="True" />
+ <index name="getFinanziatori_bando" remove="True" />
+ <index name="getMaterie_bando" remove="True" />
+ 
+ <column value="getChiusura_procedimento_bando" remove="True"/>
+ <column value="getDestinatariBando" remove="True"/>
+ <column value="getScadenza_bando" remove="True" />
+ <column value="getTipologia_bando" remove="True"/>
+</object>

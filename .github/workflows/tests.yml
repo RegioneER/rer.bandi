@@ -29,6 +29,7 @@ jobs:
           # sudo apt-get update
           # sudo apt-get install firefox-geckodriver
           pip install -r requirements.txt -c constraints_plone${{ matrix.plone }}.txt
+          pip install setuptools==40.8.0
           cp test_plone${{ matrix.plone }}.cfg buildout.cfg
       - name: Install buildout
         run: |
