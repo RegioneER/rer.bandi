@@ -1,0 +1,28 @@
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="rer.bandi">
+
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getChiusura_procedimento_bando"
+           remove="True">
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getDestinatariBando"
+           remove="True">
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getTipologia_bando"
+           remove="True">
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.getScadenza_bando"
+           remove="True">
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+            prefix="plone.app.querystring.field.getFinanziatori_bando"
+           remove="True">
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+            prefix="plone.app.querystring.field.getMaterie_bando"
+           remove="True">
+  </records>
+</registry>
