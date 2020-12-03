@@ -3,28 +3,28 @@ from Products.CMFCore.utils import getToolByName
 from plone import api
 from rer.bandi import logger
 
-default_profile = 'profile-rer.bandi:default'
+default_profile = "profile-rer.bandi:default"
 
 TIPOLOGIA_BANDO_MAPPING = {
-    'agevolazioni': u'Agevolazioni, finanziamenti, contributi',
-    'beni_servizi': u'Manifestazioni di interesse',
-    'lavori_pubblici': u'Manifestazioni di interesse',
-    'altro': u'Manifestazioni di interesse',
+    "agevolazioni": u"Agevolazioni, finanziamenti, contributi",
+    "beni_servizi": u"Manifestazioni di interesse",
+    "lavori_pubblici": u"Manifestazioni di interesse",
+    "altro": u"Manifestazioni di interesse",
 }
 
 DESTINATARI_BANDO_MAPPING = {
-    'Cittadini': [u'Cittadini'],
-    'Imprese': [u'Grandi imprese', u'PMI', u'Micro imprese'],
-    'Enti locali': [u'Enti pubblici'],
-    'Associazioni': [u'Enti del Terzo settore'],
-    'Altro': [u'Scuole, università, enti di formazione'],
+    "Cittadini": [u"Cittadini"],
+    "Imprese": [u"Grandi imprese", u"PMI", u"Micro imprese"],
+    "Enti locali": [u"Enti pubblici"],
+    "Associazioni": [u"Enti del Terzo settore"],
+    "Altro": [u"Scuole, università, enti di formazione"],
 }
 
 
 def remap_fields(brain):
     bando = brain.getObject()
-    tipologia = getattr(bando, 'tipologia_bando', '')
-    destinatari = getattr(bando, 'destinatari', [])
+    tipologia = getattr(bando, "tipologia_bando", "")
+    destinatari = getattr(bando, "destinatari", [])
 
     if tipologia:
         if tipologia not in TIPOLOGIA_BANDO_MAPPING:
@@ -36,16 +36,16 @@ def remap_fields(brain):
         else:
             new_value = TIPOLOGIA_BANDO_MAPPING[tipologia]
             logger.info(
-                '  - TIPOLOGIA: {old} => {new}'.format(
+                "  - TIPOLOGIA: {old} => {new}".format(
                     old=tipologia, new=new_value
                 )
             )
-            bando.tipologia_bando = new_value.decode('utf-8')
+            bando.tipologia_bando = new_value.decode("utf-8")
 
     if not destinatari:
-        new_value = DESTINATARI_BANDO_MAPPING['Altro']
+        new_value = DESTINATARI_BANDO_MAPPING["Altro"]
         bando.destinatari = new_value
-        logger.info('  - DESTINATARIO: VUOTO => {new}'.format(new=new_value))
+        logger.info("  - DESTINATARIO: VUOTO => {new}".format(new=new_value))
     else:
         new_value = []
         for destinatario in destinatari:
@@ -59,12 +59,12 @@ def remap_fields(brain):
                 new_value.extend(DESTINATARI_BANDO_MAPPING[destinatario])
         if new_value:
             logger.info(
-                '  - DESTINATARIO: {old} => {new}'.format(
+                "  - DESTINATARIO: {old} => {new}".format(
                     old=destinatari, new=new_value
                 )
             )
             bando.destinatari = new_value
-    bando.reindexObject(idxs=['destinatari', 'tipologia_bando'])
+    bando.reindexObject(idxs=["destinatari", "tipologia_bando"])
 
 
 def upgrade(upgrade_product, version):
@@ -72,10 +72,10 @@ def upgrade(upgrade_product, version):
 
     def wrap_func(fn):
         def wrap_func_args(context, *args):
-            p = getToolByName(context, 'portal_quickinstaller').get(
+            p = getToolByName(context, "portal_quickinstaller").get(
                 upgrade_product
             )
-            setattr(p, 'installedversion', version)
+            setattr(p, "installedversion", version)
             return fn(context, *args)
 
         return wrap_func_args
@@ -83,22 +83,22 @@ def upgrade(upgrade_product, version):
     return wrap_func
 
 
-@upgrade('rer.bandi', '2.1.0')
+@upgrade("rer.bandi", "2.1.0")
 def to_2(context):
     """
     """
-    logger.info('Upgrading rer.bandi to version 2.1.0')
-    setup_tool = getToolByName(context, 'portal_setup')
-    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    logger.info("Upgrading rer.bandi to version 2.1.0")
+    setup_tool = getToolByName(context, "portal_setup")
+    setup_tool.runImportStepFromProfile(default_profile, "catalog")
 
 
 def migrate_to_2200(context):
-    PROFILE_ID = 'profile-rer.bandi:migrate_to_2200'
-    setup_tool = getToolByName(context, 'portal_setup')
+    PROFILE_ID = "profile-rer.bandi:migrate_to_2200"
+    setup_tool = getToolByName(context, "portal_setup")
     setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
-    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
+    setup_tool.runImportStepFromProfile(default_profile, "catalog")
     logger.info("Reindexing catalog indexes")
-    catalog = getToolByName(context, 'portal_catalog')
+    catalog = getToolByName(context, "portal_catalog")
     bandi = catalog(portal_type="Bando")
     for bando in bandi:
         bando.getObject().reindexObject(
@@ -111,104 +111,115 @@ def migrate_to_2200(context):
         )
 
     setup_tool.runImportStepFromProfile(
-        'profile-rer.bandi:default', 'plone.app.registry'
+        "profile-rer.bandi:default", "plone.app.registry"
     )
     setup_tool.runImportStepFromProfile(
-        'profile-rer.bandi:default', 'typeinfo'
+        "profile-rer.bandi:default", "typeinfo"
     )
 
     logger.info("Migrated to 2.2.0")
 
 
 def migrate_to_2300(context):
-    setup_tool = api.portal.get_tool('portal_setup')
-    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
-    logger.info('Add sortable collection criteria')
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runImportStepFromProfile(default_profile, "plone.app.registry")
+    logger.info("Add sortable collection criteria")
 
 
 def migrate_to_2400(context):
-    setup_tool = api.portal.get_tool('portal_setup')
-    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
-    logger.info('Upgrading to 2400')
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runImportStepFromProfile(default_profile, "typeinfo")
+    logger.info("Upgrading to 2400")
 
 
 def migrate_to_2500(context):
-    setup_tool = api.portal.get_tool('portal_setup')
-    setup_tool.runImportStepFromProfile(default_profile, 'typeinfo')
-    logger.info('Upgrading to 2500')
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runImportStepFromProfile(default_profile, "typeinfo")
+    logger.info("Upgrading to 2500")
 
 
 def migrate_to_3000(context):
-    PROFILE_ID = 'profile-rer.bandi:migrate_to_3000'
-    setup_tool = getToolByName(context, 'portal_setup')
+    PROFILE_ID = "profile-rer.bandi:migrate_to_3000"
+    setup_tool = getToolByName(context, "portal_setup")
     setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
 
     #  update indexes and topics
-    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
-    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
+    setup_tool.runImportStepFromProfile(default_profile, "catalog")
+    setup_tool.runImportStepFromProfile(default_profile, "plone.app.registry")
 
-    bandi = api.content.find(portal_type='Bando')
+    bandi = api.content.find(portal_type="Bando")
     tot_results = len(bandi)
-    logger.info('### There are {tot} Bandi to fix ###'.format(tot=tot_results))
+    logger.info("### There are {tot} Bandi to fix ###".format(tot=tot_results))
     for counter, brain in enumerate(bandi):
         logger.info(
-            '[{counter}/{tot}] - {bando}'.format(
+            "[{counter}/{tot}] - {bando}".format(
                 counter=counter + 1, tot=tot_results, bando=brain.getPath()
             )
         )
         remap_fields(brain=brain)
-    logger.info('Upgrading to 3000')
+    logger.info("Upgrading to 3000")
 
 
 def migrate_to_3100(context):
-    PROFILE_ID = 'profile-rer.bandi:migrate_to_3100'
-    setup_tool = getToolByName(context, 'portal_setup')
+    PROFILE_ID = "profile-rer.bandi:migrate_to_3100"
+    setup_tool = getToolByName(context, "portal_setup")
     setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
 
     #  update indexes and topics
-    setup_tool.runImportStepFromProfile(default_profile, 'catalog')
-    setup_tool.runImportStepFromProfile(default_profile, 'plone.app.registry')
+    setup_tool.runImportStepFromProfile(default_profile, "catalog")
+    setup_tool.runImportStepFromProfile(default_profile, "plone.app.registry")
 
-    bandi = api.content.find(portal_type='Bando')
+    bandi = api.content.find(portal_type="Bando")
     tot_results = len(bandi)
-    logger.info('### Fixing {tot} Bandi ###'.format(tot=tot_results))
+    logger.info("### Fixing {tot} Bandi ###".format(tot=tot_results))
     for counter, brain in enumerate(bandi):
         logger.info(
-            '[{counter}/{tot}] - {bando}'.format(
+            "[{counter}/{tot}] - {bando}".format(
                 counter=counter + 1, tot=tot_results, bando=brain.getPath()
             )
         )
         bando = brain.getObject()
-        bando.reindexObject(idxs=[
-            "chiusura_procedimento_bando",
-            "destinatari",
-            "scadenza_bando",
-            "tipologia_bando",
-            "finanziatori",
-            "materie",
-        ])
+        bando.reindexObject(
+            idxs=[
+                "chiusura_procedimento_bando",
+                "destinatari",
+                "scadenza_bando",
+                "tipologia_bando",
+                "finanziatori",
+                "materie",
+            ]
+        )
 
     criteria_mapping = {
-        u'getTipologia_bando': u'tipologia_bando',
-        u'getChiusura_procedimento_bando': u'chiusura_procedimento_bando',
-        u'getScadenza_bando': u'scadenza_bando',
-        u'getFinanziatori_bando': u'finanziatori',
-        u'getMaterie_bando': u'materie',
-        u'getDestinatariBando': u'destinatari'
+        u"getTipologia_bando": u"tipologia_bando",
+        u"getChiusura_procedimento_bando": u"chiusura_procedimento_bando",
+        u"getScadenza_bando": u"scadenza_bando",
+        u"getFinanziatori_bando": u"finanziatori",
+        u"getMaterie_bando": u"materie",
+        u"getDestinatariBando": u"destinatari",
     }
-    collections = api.content.find(portal_type='Collection')
+    collections = api.content.find(portal_type="Collection")
     tot_results = len(collections)
-    logger.info('### Fixing {tot} Collections ###'.format(tot=tot_results))
+    logger.info("### Fixing {tot} Collections ###".format(tot=tot_results))
     for counter, brain in enumerate(collections):
         collection = brain.getObject()
         query = []
-        for criteria in getattr(collection, 'query', []):
-            criteria['i'] = criteria_mapping.get(criteria['i'], criteria['i'])
+        for criteria in getattr(collection, "query", []):
+            criteria["i"] = criteria_mapping.get(criteria["i"], criteria["i"])
             query.append(criteria)
         collection.query = query
+
+        # fix sort_on
+        sort_on = getattr(collection, "sort_on", "")
+        if sort_on in criteria_mapping:
+            collection.sort_on = criteria_mapping[sort_on]
+
         logger.info(
-            '[{counter}/{tot}] - {collection}'.format(
-                counter=counter + 1, tot=tot_results, collection=brain.getPath()
+            "[{counter}/{tot}] - {collection}".format(
+                counter=counter + 1,
+                tot=tot_results,
+                collection=brain.getPath(),
             )
         )
-    logger.info('Upgrade to 3100 complete')
+    logger.info("Upgrade to 3100 complete")
+
