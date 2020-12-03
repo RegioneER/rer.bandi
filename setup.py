@@ -5,7 +5,7 @@ This module contains the tool of rer.bandi
 import os
 from setuptools import setup, find_packages
 
-version = '4.1.1'
+version = '4.1.2.dev0'
 
 setup(
     name='rer.bandi',
