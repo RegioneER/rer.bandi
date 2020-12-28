@@ -38,4 +38,4 @@ jobs:
           bin/code-analysis
       - name: Run tests
         run: |
-          bin/testx
+          bin/test
