@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="rer.bandi">
+
+  <!-- advanced filters for rer.sitesearch -->
+  <adapter
+    zcml:condition="installed rer.sitesearch"
+    factory=".custom_filters.BandiAdapter"
+    name="bandi"
+  />
+
+
+</configure>
