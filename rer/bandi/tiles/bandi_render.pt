@@ -50,13 +50,13 @@
                        tal:condition="is_present"
                            tal:content="type" />
                     <div class="bandoDates"
-                         tal:condition="python:(is_show_effective_visible or is_show_scadenza_bando_visible) and (obj.effective!='None' or obj.getScadenza_bando)"
+                         tal:condition="python:(is_show_effective_visible or is_show_scadenza_bando_visible) and (obj.effective!='None' or obj.scadenza_bando)"
                          tal:define="show_effective string:effective;
                                      is_show_effective_visible python:show_effective in classes;
                                      show_scadenza_bando string:scadenza_bando;
                                      is_show_scadenza_bando_visible python: show_scadenza_bando in classes;
                                      has_effective_date python:obj.effective.Date() != '1969/12/31';
-                                     valid_scadenza python:helper_view.isValidDeadline(obj.getScadenza_bando)">
+                                     valid_scadenza python:helper_view.isValidDeadline(obj.scadenza_bando)">
                       <tal:pubblicazione condition="python:is_show_effective_visible and has_effective_date">
                         <div class="bando-data-pubblicazione">
                           <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:

@@ -12,15 +12,15 @@ import './index.less';
 const BandoItem = ({ data }) => {
   const getTranslationFor = useContext(TranslationsContext);
   const calculateState = ({
-    getScadenza_bando,
-    getChiusura_procedimento_bando,
+    scadenza_bando,
+    chiusura_procedimento_bando,
   }) => {
     let state = 'open';
-    const scadenzaDate = getScadenza_bando.length
-      ? new Date(getScadenza_bando)
+    const scadenzaDate = scadenza_bando.length
+      ? new Date(scadenza_bando)
       : null;
-    const chiusuraDate = getChiusura_procedimento_bando.length
-      ? new Date(getChiusura_procedimento_bando)
+    const chiusuraDate = chiusura_procedimento_bando.length
+      ? new Date(chiusura_procedimento_bando)
       : null;
     if (scadenzaDate && isPast(scadenzaDate)) {
       if (isPast(chiusuraDate)) {
@@ -36,7 +36,7 @@ const BandoItem = ({ data }) => {
     return state;
   };
 
-  const { effective, getScadenza_bando } = data;
+  const { effective, scadenza_bando } = data;
   const bandoState = calculateState(data);
 
   let effectiveDateItem = '';
@@ -54,8 +54,8 @@ const BandoItem = ({ data }) => {
       );
     }
   }
-  if (getScadenza_bando) {
-    const scadenzaDate = new Date(getScadenza_bando);
+  if (scadenza_bando) {
+    const scadenzaDate = new Date(scadenza_bando);
     if (isBefore(scadenzaDate, new Date(2100, 11, 31))) {
       scadenzaBandoItem = (
         <p>
@@ -63,7 +63,7 @@ const BandoItem = ({ data }) => {
             {getTranslationFor('bando_scadenza_partecipazione', '')}
           </span>
           :&nbsp;
-          <span>{format(new Date(getScadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
+          <span>{format(new Date(scadenza_bando), 'dd/MM/yyyy HH:mm')}</span>
         </p>
       );
     }

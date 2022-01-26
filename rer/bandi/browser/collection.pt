@@ -73,7 +73,7 @@
                           </span>: <span tal:content="python:view.getTipologiaTitle(item.tipologia_bando)" />
                         </div>
                         <div class="bandoDates"
-                             tal:define="valid_scadenza python:view.isValidDeadline(item.getScadenza_bando)"
+                             tal:define="valid_scadenza python:view.isValidDeadline(item.scadenza_bando)"
                              tal:condition="python:item.portal_type=='Bando' and (item.effective.Date() != '1969/12/31' or valid_scadenza)">
                           <tal:pubblicazione condition="python:item.effective.Date() != '1969/12/31'">
                               <span class="labelTB" i18n:translate="bandi_published_on">Published on</span>:

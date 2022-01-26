@@ -21,3 +21,4 @@ exclude Makefile
 prune .github
 prune rer/bandi/browser/css/.sass-cache
 prune rer/bandi/browser/static/dist/dev
+include publiccode.yml

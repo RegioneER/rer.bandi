@@ -18,11 +18,11 @@ msgstr ""
 "Domain: plone\n"
 
 #: Custom bandi indexes
-msgid "getTipologia_bando"
+msgid "tipologia_bando"
 msgstr "Tipologia bando"
 
 #: Custom bandi indexes
-msgid "getChiusura_procedimento_bando"
+msgid "chiusura_procedimento_bando"
 msgstr "Chiusura procedimento bando"
 
 #: Custom bandi indexes
@@ -30,9 +30,9 @@ msgid "getEnte_bando"
 msgstr "Ente bando"
 
 #: Custom bandi indexes
-msgid "getDestinatariBando"
+msgid "destinatari"
 msgstr "Destinatari bando"
 
 #: Custom bandi indexes
-msgid "getScadenza_bando"
+msgid "scadenza_bando"
 msgstr "Scadenza bando"

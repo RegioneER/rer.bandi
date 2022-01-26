@@ -227,9 +227,9 @@ class Renderer(base.Renderer):
         return api.content.get(UID=collectionUID)
 
     def getScadenzaDate(self, brain):
-        date = brain.getScadenza_bando
+        date = brain.scadenza_bando
         long_format = True
-        if brain.getScadenza_bando.Time() == '00:00:00':
+        if brain.scadenza_bando.Time() == '00:00:00':
             # indexer add 1 day to this date, to make a bando ends at midnight
             # of the day-after, if time is not provided
             date = date - 1
@@ -248,8 +248,8 @@ class Renderer(base.Renderer):
         """
         return corretc bando state
         """
-        scadenza_bando = bando.getScadenza_bando
-        chiusura_procedimento_bando = bando.getChiusura_procedimento_bando
+        scadenza_bando = bando.scadenza_bando
+        chiusura_procedimento_bando = bando.chiusura_procedimento_bando
         state = ('open', translate(_(u'Open'), context=self.request))
         if scadenza_bando and scadenza_bando.isPast():
             if (

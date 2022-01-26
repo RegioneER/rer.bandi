@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
- <index name="getChiusura_procedimento_bando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getChiusura_procedimento_bando"/>
+ <index name="chiusura_procedimento_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="chiusura_procedimento_bando"/>
  </index>
- <column value="getChiusura_procedimento_bando" remove="True"/>
- <index name="getDestinatariBando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getDestinatariBando"/>
+ <column value="chiusura_procedimento_bando" remove="True"/>
+ <index name="destinatari" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="destinatari"/>
  </index>
- <column value="getDestinatariBando" remove="True"/>
- <index name="getScadenza_bando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getScadenza_bando"/>
+ <column value="destinatari" remove="True"/>
+ <index name="scadenza_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="scadenza_bando"/>
  </index>
- <column value="getScadenza_bando" remove="True"/>
- <index name="getTipologia_bando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getTipologia_bando"/>
+ <column value="scadenza_bando" remove="True"/>
+ <index name="tipologia_bando" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="tipologia_bando"/>
  </index>
- <column value="getTipologia_bando" remove="True"/>
- <index name="getFinanziatori_bando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getFinanziatori_bando"/>
+ <column value="tipologia_bando" remove="True"/>
+ <index name="finanziatori" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="finanziatori"/>
  </index>
- <index name="getMaterie_bando" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="getMaterie_bando"/>
+ <index name="materie" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="materie"/>
  </index>
- <!-- <column value="getFinanziatori_bando" remove="True"/>
- <column value="getMaterie_bando" remove="True"/> -->
+ <!-- <column value="finanziatori" remove="True"/>
+ <column value="materie" remove="True"/> -->
 </object>

@@ -23,22 +23,19 @@ description:
       - Portlet
     genericName: Plone addon
     longDescription: >
-      Definisce un contenuto folderish e permette di impostare informazioni
-      riguardanti i bandi come le scadenze per la partecipazione e la data di
-      chiusura.
-
-
-      Ha due diverse visualizzazioni e una cartella speciale per gli allegati.
-
-
-      Permette di impostare degli argomenti per effettuare ricerche veloci e una
-      vista di ricerca ad hoc, portlet e tile per collezioni di bandi.
-
-
-      Nei risultati di ricerca, come nelle viste di tile e portlet e del
-      contenuto, sono sempre visibili le informazioni sullo stato del bando
-      (aperto, in corso, chiuso).
-    shortDescription: Prodotto per la gestione dei bandi
+      Plugin per Plone che aggiunge un nuovo tipo di contenuto "Bando" con un tipo di cartella speciale per gli allegati, con due diverse visualizzazioni di dettaglio, una vista di ricerca ad hoc, portlet e tile per collezioni di bandi.
+      
+      Questo contenuto è folderish (come le cartelle), e permette di impostare informazioni tipiche dei bandi come le scadenze per la partecipazione e la data di chiusura procedimento e degli argomenti per effettuare ricerche veloci (tipologia di bando, destinatari, materia, fonte di finanziamento).
+      
+      Inoltre nelle sue cartelle di approfondimento si possono inserire link e allegati.
+      
+      Nei risultati di ricerca, come nelle viste di tile e portlet e del contenuto, sono sempre visibili le informazioni sullo stato del bando (aperto, in corso, chiuso) e le date di pubblicazione e scadenza.
+    shortDescription: Modulo per la pubblicizzazione dei bandi per finanziamenti e opportunità
+    screenshots:
+      - docs/Bandi.JPG
+      - docs/Bandi_dettaglio_vista-a-destra.jpg
+      - docs/Bandi_dettaglio_vista-sotto.jpg
+      - docs/Bandi_motore-di-ricerca.JPG
 developmentStatus: stable
 it:
   riuso:
@@ -73,7 +70,7 @@ maintenance:
       until: '2020-08-31'
       website: 'https://www.redturtle.it/'
   type: contract
-name: rer.bandi
+name: Pubblicazione Bandi per CMS Plone
 platforms:
   - web
 releaseDate: '2011-04-15'
