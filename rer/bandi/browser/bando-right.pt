@@ -135,10 +135,10 @@
                             <strong><span i18n:translate="materie_label">Topic</span>:</strong>
                             <span tal:content="python:' | '.join(materie)"></span>
                         </div>
-                        <div class="finanziatori-bando" tal:define="finanziatori context/finanziatori"
-                            tal:condition="finanziatori">
+                        <div class="finanziatori-bando" tal:define="finanziato context/finanziato"
+                            tal:condition="finanziato">
                             <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span>:</strong>
-                            <span tal:content="python:' | '.join(finanziatori)"></span>
+                            <span tal:content="python:' | '.join(finanziato)"></span>
                         </div>
                     </div>
                     <div class="visualClear"></div>
