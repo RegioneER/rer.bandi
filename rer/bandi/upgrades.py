@@ -224,9 +224,6 @@ def migrate_to_3100(context):
 
 
 def migrate_to_3200(context):
-    import pdb
-
-    pdb.set_trace()
     PROFILE_ID = "profile-rer.bandi:migrate_to_3200"
     setup_tool = getToolByName(context, "portal_setup")
     setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
@@ -245,12 +242,14 @@ def migrate_to_3200(context):
             )
         )
         bando = brain.getObject()
+        import pdb
 
+        pdb.set_trace()
         if getattr(bando, "finanziatori", []):
             setattr(bando, "finanziato", True)
             keywords = [k for k in getattr(bando, "finanziatori", []) if k]
             if bando.Subject():
-                keywords.extends(getattr(bando, "Subject"))
+                keywords.extend(bando.Subject())
             if keywords:
                 setattr(bando, "subject", tuple(set(keywords)))
             delattr(bando, "finanziatori")
