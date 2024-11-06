@@ -15,11 +15,6 @@
     name="rer.bandi.destinatari.vocabulary"
     component=".vocabularies.DestinatariBandoVocabulary"
     />
-
-  <utility
-    name="rer.bandi.finanziatori.vocabulary"
-    component=".vocabularies.FinanziatoriBandoVocabulary"
-    />
   
   <utility
     name="rer.bandi.materie.vocabulary"
@@ -35,11 +30,6 @@
   <utility
     name="rer.bandi.keywords.destinatari.vocabulary"
     component=".catalog.DestinatariBandoKeywordsVocabulary"
-    />
-
-  <utility
-    name="rer.bandi.keywords.finanziatori.vocabulary"
-    component=".catalog.FinanziatoriBandoKeywordsVocabulary"
     />
   
   <utility

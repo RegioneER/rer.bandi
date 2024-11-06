@@ -6,18 +6,18 @@ from rer.bandi import logger
 default_profile = "profile-rer.bandi:default"
 
 TIPOLOGIA_BANDO_MAPPING = {
-    "agevolazioni": u"Agevolazioni, finanziamenti, contributi",
-    "beni_servizi": u"Manifestazioni di interesse",
-    "lavori_pubblici": u"Manifestazioni di interesse",
-    "altro": u"Manifestazioni di interesse",
+    "agevolazioni": "Agevolazioni, finanziamenti, contributi",
+    "beni_servizi": "Manifestazioni di interesse",
+    "lavori_pubblici": "Manifestazioni di interesse",
+    "altro": "Manifestazioni di interesse",
 }
 
 DESTINATARI_BANDO_MAPPING = {
-    "Cittadini": [u"Cittadini"],
-    "Imprese": [u"Grandi imprese", u"PMI", u"Micro imprese"],
-    "Enti locali": [u"Enti pubblici"],
-    "Associazioni": [u"Enti del Terzo settore"],
-    "Altro": [u"Scuole, università, enti di formazione"],
+    "Cittadini": ["Cittadini"],
+    "Imprese": ["Grandi imprese", "PMI", "Micro imprese"],
+    "Enti locali": ["Enti pubblici"],
+    "Associazioni": ["Enti del Terzo settore"],
+    "Altro": ["Scuole, università, enti di formazione"],
 }
 
 
@@ -68,7 +68,7 @@ def remap_fields(brain):
 
 
 def upgrade(upgrade_product, version):
-    """ Decorator for updating the QuickInstaller of a upgrade """
+    """Decorator for updating the QuickInstaller of a upgrade"""
 
     def wrap_func(fn):
         def wrap_func_args(context, *args):
@@ -85,8 +85,7 @@ def upgrade(upgrade_product, version):
 
 @upgrade("rer.bandi", "2.1.0")
 def to_2(context):
-    """
-    """
+    """ """
     logger.info("Upgrading rer.bandi to version 2.1.0")
     setup_tool = getToolByName(context, "portal_setup")
     setup_tool.runImportStepFromProfile(default_profile, "catalog")
@@ -191,12 +190,12 @@ def migrate_to_3100(context):
         )
 
     criteria_mapping = {
-        u"getTipologia_bando": u"tipologia_bando",
-        u"getChiusura_procedimento_bando": u"chiusura_procedimento_bando",
-        u"getScadenza_bando": u"scadenza_bando",
-        u"getFinanziatori_bando": u"finanziatori",
-        u"getMaterie_bando": u"materie",
-        u"getDestinatariBando": u"destinatari",
+        "getTipologia_bando": "tipologia_bando",
+        "getChiusura_procedimento_bando": "chiusura_procedimento_bando",
+        "getScadenza_bando": "scadenza_bando",
+        "getFinanziatori_bando": "finanziatori",
+        "getMaterie_bando": "materie",
+        "getDestinatariBando": "destinatari",
     }
     collections = api.content.find(portal_type="Collection")
     tot_results = len(collections)
@@ -223,3 +222,70 @@ def migrate_to_3100(context):
         )
     logger.info("Upgrade to 3100 complete")
 
+
+def migrate_to_3200(context):
+    import pdb
+
+    pdb.set_trace()
+    PROFILE_ID = "profile-rer.bandi:migrate_to_3200"
+    setup_tool = getToolByName(context, "portal_setup")
+    setup_tool.runAllImportStepsFromProfile(PROFILE_ID)
+
+    #  update indexes and topics
+    setup_tool.runImportStepFromProfile(default_profile, "catalog")
+    setup_tool.runImportStepFromProfile(default_profile, "plone.app.registry")
+
+    bandi = api.content.find(portal_type="Bando")
+    tot_results = len(bandi)
+    logger.info("### Fixing {tot} Bandi ###".format(tot=tot_results))
+    for counter, brain in enumerate(bandi):
+        logger.info(
+            "[{counter}/{tot}] - {bando}".format(
+                counter=counter + 1, tot=tot_results, bando=brain.getPath()
+            )
+        )
+        bando = brain.getObject()
+
+        if getattr(bando, "finanziatori", []):
+            setattr(bando, "finanziato", True)
+            keywords = [k for k in getattr(bando, "finanziatori", []) if k]
+            if bando.Subject():
+                keywords.extends(getattr(bando, "Subject"))
+            if keywords:
+                setattr(bando, "subject", tuple(set(keywords)))
+            delattr(bando, "finanziatori")
+
+    bando.reindexObject(
+        idxs=[
+            "finanziatori",
+            "finanziato",
+        ]
+    )
+
+    criteria_mapping = {
+        "finanziatori": "finanziato",
+    }
+    collections = api.content.find(portal_type="Collection")
+    tot_results = len(collections)
+    logger.info("### Fixing {tot} Collections ###".format(tot=tot_results))
+    for counter, brain in enumerate(collections):
+        collection = brain.getObject()
+        query = []
+        for criteria in getattr(collection, "query", []):
+            criteria["i"] = criteria_mapping.get(criteria["i"], criteria["i"])
+            query.append(criteria)
+        collection.query = query
+
+        # fix sort_on
+        sort_on = getattr(collection, "sort_on", "")
+        if sort_on in criteria_mapping:
+            collection.sort_on = criteria_mapping[sort_on]
+
+        logger.info(
+            "[{counter}/{tot}] - {collection}".format(
+                counter=counter + 1,
+                tot=tot_results,
+                collection=brain.getPath(),
+            )
+        )
+    logger.info("Upgrade to 3100 complete")
