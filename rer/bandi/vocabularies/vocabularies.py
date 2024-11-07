@@ -52,7 +52,7 @@ class BandiBaseVocabularyFactory(object):
     @property
     def terms(self):
         return [
-            SimpleTerm(value=x, token=x.encode("utf-8"), title=x)
+            SimpleTerm(value=x, token=x.decode("utf-8"), title=x)
             for x in self.vocab_name
         ]
 

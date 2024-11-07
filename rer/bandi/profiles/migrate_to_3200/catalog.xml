@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
 
- <index name="fiinanziatori" remove="True" />
+ <index name="finanziatori" remove="True" />
 </object>

@@ -13,7 +13,7 @@
  <index name="tipologia_bando" meta_type="FieldIndex">
   <indexed_attr value="tipologia_bando"/>
  </index>
- <index name="finanziato" meta_type="KeywordIndex">
+ <index name="finanziato" meta_type="BooleanIndex">
   <indexed_attr value="finanziato"/>
  </index>
  <index name="materie" meta_type="KeywordIndex">

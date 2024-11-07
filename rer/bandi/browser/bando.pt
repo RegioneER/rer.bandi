@@ -115,8 +115,8 @@
               </div>
               <div class="finanziatori-bando" tal:define="finanziato context/finanziato"
                   tal:condition="finanziato">
-                <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span>:</strong>
-                <span tal:content="python:' | '.join(finanziato)"></span>
+                <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span></strong>
+                <!--span tal:content="finanziato"></span-->
               </div>
             </div>
             <div class="visualClear"></div>

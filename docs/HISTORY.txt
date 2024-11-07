@@ -4,7 +4,8 @@ Changelog
 4.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Refactoring for field finanziamenti #28788
+  [daniele]
 
 
 4.2.0 (2022-01-26)
