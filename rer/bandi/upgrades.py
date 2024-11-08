@@ -258,41 +258,4 @@ def migrate_to_3200(context):
         ]
     )
 
-    criteria_mapping = {
-        "finanziatori": "finanziato",
-    }
-    collections = api.content.find(portal_type="Collection")
-    tot_results = len(collections)
-    logger.info("### Fixing {tot} Collections ###".format(tot=tot_results))
-    for counter, brain in enumerate(collections):
-        collection = brain.getObject()
-
-        crit_list = collection.query
-        filtered_crit = [x for x in crit_list if x['i'] == "finanziatori"]
-        if not filtered_crit:
-            continue
-    
-        query = []
-        for criteria in getattr(collection, "query", []):
-            if criteria["i"] == "finanziatori":
-                criteria["o"] = 'plone.app.querystring.operation.boolean.isTrue'
-                criteria["v"] = ""
-            criteria["i"] = criteria_mapping.get(criteria["i"], criteria["i"])
-
-            if criteria not in query:
-                query.append(criteria)
-        collection.query = query
-
-        # fix sort_on
-        #sort_on = getattr(collection, "sort_on", "")
-        #if sort_on in criteria_mapping:
-        #    collection.sort_on = criteria_mapping[sort_on]
-
-        logger.info(
-            "[{counter}/{tot}] - {collection}".format(
-                counter=counter + 1,
-                tot=tot_results,
-                collection=brain.getPath(),
-            )
-        )
     logger.info("Upgrade to 3200 complete")
