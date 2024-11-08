@@ -29,7 +29,7 @@ def getVocabularyTermsForForm(vocab_name, context):
 def getSearchFields():
     request = getRequest()
     portal = api.portal.get()
-
+    import pdb;pdb.set_trace()
     return [
         {
             "id": "SearchableText",
@@ -111,17 +111,23 @@ def getSearchFields():
             ),
         },
         {
-            "id": "finanziatori",
+            "id": "finanziato",
             "label": translate(
                 _("finanziatori_label", default="Financed by EU programmes",),
                 context=request,
             ),
             "help": "",
-            "type": "select",
-            "multivalued": True,
-            "options": getVocabularyTermsForForm(
-                context=portal, vocab_name="rer.bandi.finanziatori.vocabulary"
-            ),
+            "type": "checkbox",
+            "multivalued": False,
+            "options": [
+                            {   
+                                "value": "Si",
+                            },
+                            {   
+                                "value": "No",
+                            },
+                       ]
+
         },
         {
             "id": "materie",
