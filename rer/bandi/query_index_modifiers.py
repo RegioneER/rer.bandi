@@ -9,7 +9,6 @@ import six
 
 @implementer(IParsedQueryIndexModifier)
 class BandiKeywordIndex(object):
-
     """
     All Keyword fields in Plone currently uses a utf-8 encoded string.
     When a catalog query tries to compare a unicode string from the
@@ -22,7 +21,7 @@ class BandiKeywordIndex(object):
     """
 
     def __call__(self, value):
-        query = value['query']
+        query = value["query"]
         # query can be a unicode string or a list of unicode strings.
         if six.PY2 and isinstance(query, six.text_type):
             query = query.encode("utf-8")
@@ -40,25 +39,25 @@ class BandiKeywordIndex(object):
             query = copy_of_query
         else:
             pass
-        value['query'] = query
+        value["query"] = query
         return (self.index_name, value)
 
 
 class Destinatari(BandiKeywordIndex):
 
-    index_name = 'destinatari'
+    index_name = "destinatari"
 
 
 class Tipologia(BandiKeywordIndex):
 
-    index_name = 'tipologia_bando'
+    index_name = "tipologia_bando"
 
 
 class Finanziatori(BandiKeywordIndex):
 
-    index_name = 'finanziatori'
+    index_name = "finanziato"
 
 
 class Materie(BandiKeywordIndex):
 
-    index_name = 'materie'
+    index_name = "materie"
