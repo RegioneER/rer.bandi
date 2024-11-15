@@ -251,11 +251,11 @@ def migrate_to_3200(context):
                 setattr(bando, "subject", tuple(set(keywords)))
             delattr(bando, "finanziatori")
 
-    bando.reindexObject(
-        idxs=[
-            "finanziatori",
-            "finanziato",
-        ]
-    )
+        bando.reindexObject(
+            idxs=[
+                "finanziatori",
+                "finanziato"
+            ]
+        )
 
     logger.info("Upgrade to 3200 complete")

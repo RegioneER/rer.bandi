@@ -24,6 +24,4 @@
  <column value="destinatari"/>
  <column value="scadenza_bando"/>
  <column value="tipologia_bando"/>
- <!-- <column value="finanziatori"/>
- <column value="materie"/> -->
 </object>

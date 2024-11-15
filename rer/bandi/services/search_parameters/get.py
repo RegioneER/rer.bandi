@@ -120,16 +120,19 @@ def getSearchFields():
                 context=request,
             ),
             "help": "",
-            "type": "checkbox",
+            "type": "select",
             "multivalued": False,
             "options": [
-                {
-                    "value": "Si",
-                },
-                {
-                    "value": "No",
-                },
-            ],
+                    {
+                        "value": "true",
+                        "label": api.portal.translate(_("yes_label", default="Yes")),
+                    },
+                    {
+                        "value": "false",
+                        "label": api.portal.translate(_("no_label", default="No")),
+                    },
+                ],
+
         },
         {
             "id": "materie",
