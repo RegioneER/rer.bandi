@@ -10,7 +10,6 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
     ? 'select_placeholder_multi'
     : 'select_placeholder';
 
-  console.log(parameter);
   return (
     <React.Fragment>
       <label htmlFor={parameter.id}>{parameter.label}</label>
