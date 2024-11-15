@@ -9,6 +9,8 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
   const placeholderLabel = multivalued
     ? 'select_placeholder_multi'
     : 'select_placeholder';
+
+  console.log(parameter);
   return (
     <React.Fragment>
       <label htmlFor={parameter.id}>{parameter.label}</label>
@@ -20,18 +22,22 @@ const SelectField = ({ parameter, value = [], updateQueryParameters }) => {
       <Select
         isMulti={multivalued}
         inputId={parameter.id}
+        isClearable={true}
         tabSelectsValue={false}
         value={value.map(element => {
-          return {
-            value: element,
-            label:
-              element !== ''
-                ? getTranslationFor(
-                    `bando_state_${element}_select_label`,
-                    element,
-                  )
-                : getTranslationFor('bando_state_all_select_label', element),
-          };
+          if (parameter.id === 'stato_bandi') {
+            return {
+              value: element,
+              label:
+                element !== ''
+                  ? getTranslationFor(
+                      `bando_state_${element}_select_label`,
+                      element,
+                    )
+                  : getTranslationFor('bando_state_all_select_label', element),
+            };
+          }
+          return parameter.options.filter(x => x.value === element)[0];
         })}
         name={parameter.id}
         options={parameter.options}
