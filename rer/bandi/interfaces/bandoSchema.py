@@ -20,7 +20,12 @@ def checkRequiredField(value):
 
 class IBandoSchema(model.Schema):
     """A Dexterity schema for Annoucements"""
-
+    finanziato = schema.Bool(
+        title=_("finanziatori_label", default="Financed by EU programmes"),
+        description=_("finanziatori_help", default="Seleziona questo campo se il bando è finanziato con fondi europei."),
+        required=False,
+    )
+    
     directives.widget(tipologia_bando=RadioFieldWidget)
     tipologia_bando = schema.Choice(
         title=_("tipologia_bando_label", default="Announcement type"),
@@ -40,12 +45,6 @@ class IBandoSchema(model.Schema):
         value_type=schema.Choice(
             vocabulary="rer.bandi.destinatari.vocabulary"
         ),
-    )
-
-    finanziato = schema.Bool(
-        title=_("finanziatori_label", default="Financed by EU programmes"),
-        description=_("", default=""),
-        required=False,
     )
 
     directives.widget(materie=CheckBoxFieldWidget)
@@ -81,10 +80,10 @@ class IBandoSchema(model.Schema):
         required=False,
     )
 
-    form.order_after(tipologia_bando="IRichText.text")
+    form.order_after(finanziato="IRichText.text")
+    form.order_after(tipologia_bando="finanziato")
     form.order_after(destinatari="tipologia_bando")
-    form.order_after(finanziato="destinatari")
-    form.order_after(materie="finanziato")
+    form.order_after(materie="destinatari")
     form.order_after(scadenza_bando="materie")
     form.order_after(chiusura_procedimento_bando="scadenza_bando")
     form.order_after(riferimenti_bando="chiusura_procedimento_bando")
