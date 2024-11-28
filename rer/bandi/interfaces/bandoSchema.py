@@ -22,7 +22,7 @@ class IBandoSchema(model.Schema):
     """A Dexterity schema for Annoucements"""
     finanziato = schema.Bool(
         title=_("finanziatori_label", default="Financed by EU programmes"),
-        description=_("finanziatori_help", default="Seleziona questo campo se il bando è finanziato con fondi europei."),
+        description=_("finanziatori_help", default=u"Seleziona questo campo se il bando è finanziato con fondi europei."),
         required=False,
     )
     
