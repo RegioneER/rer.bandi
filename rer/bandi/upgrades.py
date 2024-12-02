@@ -253,10 +253,7 @@ def migrate_to_3200(context):
         else:
             setattr(bando, "finanziato", False)
         bando.reindexObject(
-            idxs=[
-                "finanziatori",
-                "finanziato"
-            ]
+            idxs=["finanziato", "Subject", "SearchableText"]
         )
 
     logger.info("Upgrade to 3200 complete")
