@@ -250,7 +250,8 @@ def migrate_to_3200(context):
             if keywords:
                 setattr(bando, "subject", tuple(set(keywords)))
             delattr(bando, "finanziatori")
-
+        else:
+            setattr(bando, "finanziato", False)
         bando.reindexObject(
             idxs=[
                 "finanziatori",
