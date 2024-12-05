@@ -49,7 +49,13 @@
 		                    ${context/tipologia_bando}
 		                  </td>
 		                </tr>
-
+                    <tr tal:define="finanziato context/finanziato" tal:condition="finanziato">
+                      <td colspan="2">
+                        <strong>
+                          <span i18n:translate="finanziatori_label">Financed by EU programmes</span>
+                        </strong>
+                      </td>
+                    </tr>
 		                <tr tal:condition="context/destinatari|nothing">
 		                  <th i18n:translate="destinatari_label">Who can apply</th>
 		                  <td>
@@ -112,11 +118,6 @@
                   tal:condition="materie">
                 <strong><span i18n:translate="materie_label">Topic</span>:</strong>
                 <span tal:content="python:' | '.join(materie)"></span>
-              </div>
-              <div class="finanziatori-bando" tal:define="finanziatori context/finanziatori"
-                  tal:condition="finanziatori">
-                <strong><span i18n:translate="finanziatori_label">Financed by EU programmes</span>:</strong>
-                <span tal:content="python:' | '.join(finanziatori)"></span>
               </div>
             </div>
             <div class="visualClear"></div>

@@ -75,17 +75,15 @@
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
   <records interface="plone.app.querystring.interfaces.IQueryField"
-           prefix="plone.app.querystring.field.finanziatori">
+           prefix="plone.app.querystring.field.finanziato">
     <value key="title" i18n:translate="finanziatori_label">Financed by EU programmes</value>
     <value key="description"></value>
-    <value key="enabled">True</value>
+    <value key="enabled">False</value>
     <value key="sortable">False</value>
     <value key="operations">
-        <element>plone.app.querystring.operation.string.contains</element>
-        <element>plone.app.querystring.operation.selection.any</element>
-    	<element>plone.app.querystring.operation.selection.all</element>
+        <element>plone.app.querystring.operation.boolean.isTrue</element>
+        <element>plone.app.querystring.operation.boolean.isFalse</element>
     </value>
-     <value key="vocabulary">rer.bandi.finanziatori.vocabulary</value>
     <value i18n:translate="" i18n:domain="plone" key="group">Bando</value>
   </records>
   <records interface="plone.app.querystring.interfaces.IQueryField"

@@ -16,8 +16,8 @@
   <indexed_attr value="tipologia_bando"/>
  </index>
  <column value="tipologia_bando" remove="True"/>
- <index name="finanziatori" meta_type="FieldIndex" remove="True">
-  <indexed_attr value="finanziatori"/>
+ <index name="finanziato" meta_type="FieldIndex" remove="True">
+  <indexed_attr value="finanziato"/>
  </index>
  <index name="materie" meta_type="FieldIndex" remove="True">
   <indexed_attr value="materie"/>

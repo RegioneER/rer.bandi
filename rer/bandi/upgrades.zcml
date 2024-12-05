@@ -55,4 +55,11 @@
         destination="3100"
         handler=".upgrades.migrate_to_3100"
         profile="rer.bandi:default" />
+   <gs:upgradeStep
+        title="Upgrade rer.bandi 3200"
+        description="rer.bandi upgrade step"
+        source="3100"
+        destination="3200"
+        handler=".upgrades.migrate_to_3200"
+        profile="rer.bandi:default" />
 </configure>

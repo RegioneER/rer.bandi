@@ -21,7 +21,7 @@ def getVocabularyTermsForForm(vocab_name, context):
     vocab = utility(context)
 
     for entry in vocab:
-        if entry.title != u"select_label":
+        if entry.title != "select_label":
             values.append({"value": entry.value, "label": entry.title})
     return values
 
@@ -29,12 +29,11 @@ def getVocabularyTermsForForm(vocab_name, context):
 def getSearchFields():
     request = getRequest()
     portal = api.portal.get()
-
     return [
         {
             "id": "SearchableText",
             "label": translate(
-                _("bandi_search_text_label", default=u"Search text"),
+                _("bandi_search_text_label", default="Search text"),
                 context=request,
             ),
             "help": "",
@@ -43,7 +42,7 @@ def getSearchFields():
         {
             "id": "stato_bandi",
             "label": translate(
-                _("bandi_search_state_label", default=u"State"),
+                _("bandi_search_state_label", default="State"),
                 context=request,
             ),
             "help": "",
@@ -89,7 +88,8 @@ def getSearchFields():
         {
             "id": "tipologia_bando",
             "label": translate(
-                _("bandi_search_type_label", default="Type"), context=request,
+                _("bandi_search_type_label", default="Type"),
+                context=request,
             ),
             "help": "",
             "type": "checkbox",
@@ -111,17 +111,28 @@ def getSearchFields():
             ),
         },
         {
-            "id": "finanziatori",
+            "id": "finanziato",
             "label": translate(
-                _("finanziatori_label", default="Financed by EU programmes",),
+                _(
+                    "finanziatori_label",
+                    default="Financed by EU programmes",
+                ),
                 context=request,
             ),
             "help": "",
             "type": "select",
-            "multivalued": True,
-            "options": getVocabularyTermsForForm(
-                context=portal, vocab_name="rer.bandi.finanziatori.vocabulary"
-            ),
+            "multivalued": False,
+            "options": [
+                    {
+                        "value": "true",
+                        "label": api.portal.translate(_("yes_label", default="Yes")),
+                    },
+                    {
+                        "value": "false",
+                        "label": api.portal.translate(_("no_label", default="No")),
+                    },
+                ],
+
         },
         {
             "id": "materie",
@@ -138,7 +149,8 @@ def getSearchFields():
         {
             "id": "Subject",
             "label": translate(
-                _("subject_label", default="Subjects"), context=request,
+                _("subject_label", default="Subjects"),
+                context=request,
             ),
             "help": "",
             "type": "select",

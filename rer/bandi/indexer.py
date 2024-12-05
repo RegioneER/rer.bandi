@@ -13,11 +13,11 @@ def dateToDatetime(d):
 
 @indexer(IBando)
 def destinatari_bando(object, **kw):
-    destinatari = getattr(object, 'destinatari', [])
+    destinatari = getattr(object, "destinatari", [])
     if not destinatari:
         return []
     if six.PY2:
-        return [x.encode('utf-8') for x in destinatari]
+        return [x.encode("utf-8") for x in destinatari]
     return destinatari
 
 
@@ -25,14 +25,14 @@ def destinatari_bando(object, **kw):
 def chiusura_procedimento_bando(object, **kw):
 
     date_chiusura_procedimento_bando = getattr(
-        object, 'chiusura_procedimento_bando', None
+        object, "chiusura_procedimento_bando", None
     )
     if date_chiusura_procedimento_bando:
         datetime_chiusura_procedimento_bando = dateToDatetime(
             date_chiusura_procedimento_bando
         )
     else:
-        return DateTime('2100/12/31')
+        return DateTime("2100/12/31")
 
     if datetime_chiusura_procedimento_bando:
         return DateTime(datetime_chiusura_procedimento_bando)
@@ -40,11 +40,11 @@ def chiusura_procedimento_bando(object, **kw):
 
 @indexer(IBando)
 def scadenza_bando(object, **kw):
-    datetime_scadenza_bando = getattr(object, 'scadenza_bando', None)
+    datetime_scadenza_bando = getattr(object, "scadenza_bando", None)
     if not datetime_scadenza_bando:
-        return DateTime('2100/12/31')
+        return DateTime("2100/12/31")
     zope_dt_scadenza_bando = DateTime(datetime_scadenza_bando)
-    if zope_dt_scadenza_bando.Time() == '00:00:00':
+    if zope_dt_scadenza_bando.Time() == "00:00:00":
         return zope_dt_scadenza_bando + 1
     else:
         return zope_dt_scadenza_bando
@@ -52,27 +52,24 @@ def scadenza_bando(object, **kw):
 
 @indexer(IBando)
 def tipologia_bando(object, **kw):
-    tipologia = getattr(object, 'tipologia_bando', '')
+    tipologia = getattr(object, "tipologia_bando", "")
     if six.PY2:
-        return tipologia.encode('utf-8')
+        return tipologia.encode("utf-8")
     return tipologia
 
 
 @indexer(IBando)
-def finanziatori(object, **kw):
-    finanziatori = getattr(object, 'finanziatori', [])
-    if not finanziatori:
-        return []
-    if six.PY2:
-        return [x.encode('utf-8') for x in finanziatori]
-    return finanziatori
+def finanziato(object, **kw):
+    finanziato = getattr(object, "finanziato", [])
+
+    return finanziato
 
 
 @indexer(IBando)
 def materie(object, **kw):
-    materie = getattr(object, 'materie', [])
+    materie = getattr(object, "materie", [])
     if not materie:
         return []
     if six.PY2:
-        return [x.encode('utf-8') for x in materie]
+        return [x.encode("utf-8") for x in materie]
     return materie
